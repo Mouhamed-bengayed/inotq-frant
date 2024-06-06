@@ -1,0 +1,110 @@
+<div class="main-content bg-body  ">
+    <div class="container-fluid">
+        <div class="row bg-body ">
+            <div class="col-md-12  " >
+                <div class="cardo">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Listes Medecins</h4>
+                        <p class="card-category"> Tout listes des Medecins</p>
+                    </div>
+                    <div class="formbold-main-wrapper white-text bg-body" >
+        
+                          <mat-stepper>
+                            <mat-step [stepControl]="firstFormGroup">
+                              
+                              <form [formGroup]="firstFormGroup">
+                                <ng-template matStepLabel>Informations personnelles</ng-template>          
+                                <mat-form-field>
+                                  <mat-label>Date de consultation</mat-label>
+                                  <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Date de consultation">
+                                  <mat-hint>MM/DD/YYYY</mat-hint>
+                                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                                <br>
+     
+                                  <br>
+                                  <mat-form-field>
+                                    <mat-label>Diagnostic préop:</mat-label>
+                                    <input matInput formControlName="diagnostic_preop" placeholder="Diagnostic préop">
+                                  </mat-form-field>
+                                  <br>
+                                
+                                  <br>
+  
+                                  <mat-checkbox class="example-margin" [formControl]="checkboxControl1" (change)="onChange()">Traitement Antalgique!</mat-checkbox>
+                                  <br>
+                                  <mat-radio-group aria-label="Select an option" formControlName="indication_Antalgique" *ngIf="checkboxControl1.value">
+                                     <mat-radio-button value="1">AINS</mat-radio-button>
+                                     <mat-radio-button value="2">Corticoide</mat-radio-button>
+
+                                  </mat-radio-group>
+                                <br>
+
+                                <br>
+                                <mat-checkbox class="example-margin" [formControl]="checkboxControl" (change)="onChange()">lnfiltrations! :</mat-checkbox>
+                                <br>
+                                <mat-form-field *ngIf="checkboxControl.value">
+                                  <mat-label>Numéro</mat-label>
+                                  <input matInput formControlName="indication_Infiltrations_Nbreinfiltrations" placeholder="Numéro " type="number">
+                                </mat-form-field>
+                                <br>
+                                <mat-checkbox class="example-margin" [formControl]="checkboxControl1" (change)="onChange()">Rééducation! :</mat-checkbox>
+                                <br>
+                                <mat-form-field *ngIf="checkboxControl1.value">
+                                  <mat-label>Numéro</mat-label>
+                                  <input matInput formControlName="indication_Reeducation_Nbreseances" placeholder="Numéro " type="number">
+                                </mat-form-field>
+                                <br>
+
+                              <mat-checkbox class="example-margin" [formControl]="checkboxControl3" (change)="onChange()">Dissectomie!</mat-checkbox>
+                              <br>
+                              <mat-radio-group aria-label="Select an option" formControlName="indication_Dissectomie_etage" *ngIf="checkboxControl3.value">
+                                <label>Etage  :</label>
+
+                                 <mat-radio-button value="1">L3L4</mat-radio-button>
+                                 <mat-radio-button value="2">L4L5</mat-radio-button>
+                                 <mat-radio-button value="3">L5s1</mat-radio-button>
+
+                              </mat-radio-group>
+                            <br>
+                            <mat-checkbox class="example-margin" [formControl]="checkboxControl4" (change)="onChange()">Libération post!</mat-checkbox>
+                              <br>
+                              <mat-radio-group aria-label="Select an option" formControlName="indication_Liberation_etage" *ngIf="checkboxControl4.value">
+                                <label>Etage  :</label>
+
+                               <mat-radio-button value="1">L3L4</mat-radio-button>
+                               <mat-radio-button value="2">L4L5</mat-radio-button>
+                               <mat-radio-button value="3">L5s1</mat-radio-button>
+
+                            </mat-radio-group>
+                          <br>
+
+                          <mat-checkbox class="example-margin" [formControl]="checkboxControl5" (change)="onChange()">Arthrodése!</mat-checkbox>
+
+                          <mat-checkbox-group class="example-margin"  formControlName="indication_Arthrodese" *ngIf="checkboxControl5.value">
+                          <br>
+                            <mat-checkbox value="option1">PLlF</mat-checkbox>
+                            <mat-checkbox value="option2">ALIF</mat-checkbox>
+                            <mat-checkbox value="option3">TLlF </mat-checkbox>
+                            <mat-checkbox value="option3">Postéro-latérale </mat-checkbox>
+                            <mat-checkbox value="option3">Auter </mat-checkbox>
+
+                          </mat-checkbox-group>
+                              
+                               
+                                
+                                
+                                <br>
+                                <div>
+                                  <button mat-flat-button color="primary" mat-button matStepperNext  (click)="addSuiviStafff()" >Next</button>
+                                </div>
+                              </form>
+                            </mat-step> 
+                                                      
+                          </mat-stepper>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

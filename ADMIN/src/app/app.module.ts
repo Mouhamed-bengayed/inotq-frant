@@ -1,0 +1,63 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { AdminLayoutModule } from './admin/admin-layout.module';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatRippleModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CommonModule } from '@angular/common';
+import { SuiviPostImmediatComponent } from './admin/suivi-post-immediat/suivi-post-immediat.component';
+@NgModule({
+  declarations: [
+    AppComponent,
+    SuiviPostImmediatComponent
+  ],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatRippleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTooltipModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    TextFieldModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+   
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    
+    FormsModule,
+    RouterModule,
+    AppRoutingModule,
+
+    HttpClientModule,
+    
+    AdminLayoutModule,
+  ],
+  
+  schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

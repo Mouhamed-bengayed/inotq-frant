@@ -1,0 +1,69 @@
+ <!-- Topbar -->
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">ListePatient</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Home</a></li>
+              <li class="breadcrumb-item">Patient</li>
+              <li class="breadcrumb-item active" aria-current="page">ListePatient</li>
+            </ol>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">ListePatient</h6>
+                </div>
+                <div class="table-responsive p-3">
+                  <table class="table align-items-center table-flush" id="dataTable">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Id</th>
+                        <th>date_de_consultation </th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Sexe</th>
+                        <th>Addresse</th>
+                        <th>annee_de_naissance</th>
+                        <th>telephone</th>
+                        <th>consulter </th>
+                        <th>Modefier </th>
+                        <th>supprime</th>
+
+
+                      </tr>
+                    </thead>
+                  
+                    <tbody  >
+                      <tr *ngFor="let med of patients">
+                        <td>{{med.id}}</td>
+                        <td>{{med.date_de_consultation}}</td>
+                        <td>{{med.name}}</td>
+                        <td>{{med.username}}</td>
+                        <td>{{med.sexe}}</td>
+                        <td>{{med.addresse}}</td>
+                        <td>{{med.annee_de_naissance}}</td>
+                        <td>{{med.telephone}}</td>
+                        <td>
+                          <button  type="button" class="btn btn-secondary">consulter</button>
+                        </td>
+                        <td>
+                          <button  type="button" class="btn btn-success">Modefier</button>
+                        </td>
+                        <td>
+                          <button (click)="suprimerPatient(med)" type="button" class="btn btn-danger" >supprimer</button>
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+         
+
+        </div>
+       
