@@ -75,8 +75,6 @@ const AdminLayoutRoutes: Routes = [
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule
-   
-   
   ],
   declarations: [
     ListesMedecinComponent,

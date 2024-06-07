@@ -16,7 +16,43 @@ export class SuiviTttDissectComponent implements OnInit {
   checkboxControl2 = new FormControl(false);
   checkboxControl3 = new FormControl(false);
   checkboxControl4 = new FormControl(false);
+  checkboxControl8 = new FormControl(false);
+  checkboxControl9 = new FormControl(false);
+  checkboxControl10 = new FormControl(false);
+  checkboxControl11 = new FormControl(false);
+  checkboxControl12 = new FormControl(false);
+  checkboxControl13 = new FormControl(false);
+  checkboxControl14 = new FormControl(false);
+  checkboxControl15 = new FormControl(false);
+  checkboxControl16 = new FormControl(false);
+  checkboxControl17 = new FormControl(false);
+
+
+  distanceControl = new FormControl('');
+  causeControl = new FormControl('');
+  incontinenceControl = new FormControl('');
+
+  etageControl = new FormControl('');
+  typeControl = new FormControl('');
+  intensityControl = new FormControl('');
+  modeControl = new FormControl('');
+  evolutionControl = new FormControl('');
+  responseControl = new FormControl('');
+
+  pincement22 = new FormControl();
+  pincement23 = new FormControl();
+
+  treatmentControl = new FormControl();
+
+  radioControl = new FormControl();
+
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
+  picker2!: MatDatepicker<any>;
+  showOtherCheckboxes = false;
+  antalgiqueControl = new FormControl(false);
+  isLinear = false;
+  formA!: FormGroup;
+  form!: FormGroup;
   constructor( private patientService: PatientService) { }
 
   ngOnInit(): void {
@@ -151,7 +187,23 @@ export class SuiviTttDissectComponent implements OnInit {
      iRM_etat_disques_sous_jacent: new FormControl(''),
      iRM_etat_disques_sus_jacent: new FormControl(''),
 });
-
+symptomatologieFormGroup = new FormGroup({
+  date_debut_maladie: new FormControl(''),
+  facture_declanchants: new FormControl(''),
+  Date_1consultation_medicale: new FormControl(''),
+  Date_1consultation_specialisee: new FormControl(''),
+  medecin_traitants: new FormControl(''),
+  traitants_anterieur: new FormControl(''),
+  Nbre_infiltration: new FormControl(''),
+  Nbre_seances: new FormControl(''),
+  evalution: new FormControl(''),
+  n_symptomatologies: new FormControl(''),
+  indication_chirurgicale: new FormControl(''),
+  date: new FormControl(''),
+  Motif_de_consultation: new FormControl(''),     
+  Motif_de_consultation_l: new FormControl(''),
+  
+});
 saveFirstForm() {
   const thridFormGroupData1 = this.firstFormGroup.value;
   if (this.firstFormGroup.valid) {
@@ -173,12 +225,20 @@ savesecondForm() {
     localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
   }
  }
+ savesympFormGroup() {
+  const symptomatologieFormGroupData1 = this.fourthFormGroup.value;
+  if (this.symptomatologieFormGroup.valid) {
+    localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData1));
+  }
+ }
 
  savesuivi() {
   // Récupérer les données des formulaires depuis le localStorage
 const firstFormGroupData = JSON.parse(localStorage.getItem('firstFormGroupData') || '{}');
 const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
 const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
+const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
+
 
  // Fusionner les données des formulaires avec les données du patient
  const patientData = {

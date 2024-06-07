@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PatientService } from '../Services/patient.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-suivi-post-immediat',
@@ -19,7 +20,14 @@ export class SuiviPostImmediatComponent implements OnInit {
   checkboxControl7 = new FormControl(false);
   checkboxControl8 = new FormControl(false);
 
+  @ViewChild('picker1') picker1!: MatDatepicker<any>;
+  picker2!: MatDatepicker<any>;
+  picker4!: MatDatepicker<any>;
+  picker6!: MatDatepicker<any>;
 
+
+  showOtherCheckboxes = false;
+  antalgiqueControl = new FormControl(false);
 
   constructor( private patientService: PatientService) { }
 
