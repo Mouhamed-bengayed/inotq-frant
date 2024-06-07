@@ -42,7 +42,7 @@ const AdminLayoutRoutes: Routes = [
      { path: 'admindashboard',  component: DashboardAdminComponent },
      { path: 'user/profile',component: ProfileComponent },
      { path: 'liste/patinet',component: ListesPatientsComponent },
-     { path: 'ajouter/patinet',component: AjouterPatientComponent},
+     { path: 'ajouter/patient',component: AjouterPatientComponent},
      { path: 'liste/Medecin',component: ListesMedecinComponent },
      { path: 'navbar',  component: NavBarComponent },
      { path: 'sidenavbar',  component: SideBarComponent },
