@@ -1,0 +1,101 @@
+.mat-radio-label-content{
+    padding-right: 13px;
+    padding-right:10px;
+  }
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    background-color: rgb(47, 155, 151) !important;
+    border-color: rgb(47, 155, 151) !important;
+}
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-inner-circle {
+    background-color: rgb(47, 155, 151) !important;
+}
+                         
+/* For checked state */
+::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background {
+    background-color:rgb(47, 155, 151) !important;
+    border-color:rgb(47, 155, 151)!important;
+}
+::ng-deep .mat-step-header .mat-step-icon-selected, 
+::ng-deep .mat-step-header .mat-step-icon-state-done, 
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+    background-color: rgb(47, 155, 151);
+    color: #fff;
+}
+.custom-label {
+    font-size: 16px; /* Adjust the font size */
+    color: #272727; /* Text color */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 15px; /* Space below the label */
+margin-right: auto;
+    padding: 5px; /* Padding around the text */
+    display: inline-block; /* Ensures margin and padding behave as expected */
+    background-color: #f0f0f0; /* Background color */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+/*
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+    width: 100%;
+} */
+
+::ng-deep .mat-form-field .mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 100%;
+}
+.sexe{
+width: 200px;
+}
+.button {
+    /* Couleur de fond avec transparence */
+    background-color: rgb(47, 155, 151);
+    
+    /* Couleur du texte */
+    color: #fff;
+    margin-left: 180px;
+
+    /* Ajout de bordure */
+    border: none;
+    
+    /* Arrondir les coins */
+    border-radius: 5px;
+    
+    /* Ajout de marge intérieure */
+    padding: 10px 40px;
+    
+    /* Style du curseur au survol */
+    cursor: pointer;
+    padding-right: 30px;
+    /* Style du texte */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Style au survol */
+.button:hover {
+    background-color: rgb(8, 114, 43); /* Réduire légèrement l'opacité */
+}
+
+.titer{
+
+    font-size: 20px; /* Adjust the font size */
+    color: #272727; /* Text color */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 6px; /* Space below the label */
+margin-right: auto;
+    padding: 5px; /* Padding around the text */
+    display: inline-block; /* Ensures margin and padding behave as expected */
+    background-color: #f0f0f0; /* Background color */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline:hover{
+    background-color: rgb(47, 155, 151);
+
+}

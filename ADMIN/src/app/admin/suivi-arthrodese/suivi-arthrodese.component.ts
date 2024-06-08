@@ -12,12 +12,37 @@ import { PatientService } from '../Services/patient.service';
 })
 export class SuiviArthrodeseComponent implements OnInit {
 
+  treatmentControl = new FormControl();
 
   checkboxControl = new FormControl(false);
   checkboxControl1 = new FormControl(false);
   checkboxControl2 = new FormControl(false);
   checkboxControl3 = new FormControl(false);
   checkboxControl4 = new FormControl(false);
+  checkboxControl8 = new FormControl(false);
+  checkboxControl7 = new FormControl(false);
+  checkboxControl9 = new FormControl(false);
+
+  checkboxControl10 = new FormControl(false);
+  checkboxControl11 = new FormControl(false);
+  checkboxControl12 = new FormControl(false);
+  checkboxControl13 = new FormControl(false);
+  checkboxControl14 = new FormControl(false);
+  checkboxControl15 = new FormControl(false);
+  checkboxControl16 = new FormControl(false);
+  checkboxControl17 = new FormControl(false);
+
+  distanceControl = new FormControl('');
+  causeControl = new FormControl('');
+  etageControl = new FormControl('');
+  typeControl = new FormControl('');
+  intensityControl = new FormControl('');
+  modeControl = new FormControl('');
+  evolutionControl = new FormControl('');
+  responseControl = new FormControl('');
+
+  pincement22 = new FormControl();
+  pincement23 = new FormControl();
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
   constructor( private patientService: PatientService) { }
 
@@ -37,6 +62,23 @@ export class SuiviArthrodeseComponent implements OnInit {
     evolution: new FormControl(''),
     evolution_nouvelles_symptomatologies: new FormControl(''),
  });
+ symptomatologieFormGroup = new FormGroup({
+  date_debut_maladie: new FormControl(''),
+  facture_declanchants: new FormControl(''),
+  Date_1consultation_medicale: new FormControl(''),
+  Date_1consultation_specialisee: new FormControl(''),
+  medecin_traitants: new FormControl(''),
+  traitants_anterieur: new FormControl(''),
+  Nbre_infiltration: new FormControl(''),
+  Nbre_seances: new FormControl(''),
+  evalution: new FormControl(''),
+  n_symptomatologies: new FormControl(''),
+  indication_chirurgicale: new FormControl(''),
+  date: new FormControl(''),
+  Motif_de_consultation: new FormControl(''),     
+  Motif_de_consultation_l: new FormControl(''),
+  
+});
 
  secondFormGroup = new FormGroup({
     poids: new FormControl(''),
@@ -95,6 +137,18 @@ export class SuiviArthrodeseComponent implements OnInit {
 
    
  });
+ odiFormGroup = new FormGroup({
+  intensite_douleur: new FormControl(''),
+  soins_personnels: new FormControl(''),
+  levee: new FormControl(''),
+  marche: new FormControl(''),
+  assis: new FormControl(''),
+  debout: new FormControl(''),
+  sommeil: new FormControl(''),
+  vie_sexuelle: new FormControl(''),
+  vie_sociale: new FormControl(''),
+  voyage: new FormControl(''),
+});
  fourthFormGroup = new FormGroup({
    
 
@@ -160,11 +214,23 @@ saveFirstForm() {
     localStorage.setItem('firstFormGroupData', JSON.stringify(FirstFormGroupData1));
   }
  }
+ savesympFormGroup() {
+  const symptomatologieFormGroupData1 = this.fourthFormGroup.value;
+  if (this.symptomatologieFormGroup.valid) {
+    localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData1));
+  }
+ }
 
 savesecondForm() {
   const secondFormGroupData1 = this.secondFormGroup.value;
   if (this.secondFormGroup.valid) {
     localStorage.setItem('secondFormGroupData', JSON.stringify(secondFormGroupData1));
+  }
+ }
+ saveodiForm() {
+  const odiFormGroupData1 = this.odiFormGroup.value;
+  if (this.odiFormGroup.valid) {
+    localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
   }
  }
  saveFourthFormGroup() {
@@ -173,17 +239,24 @@ savesecondForm() {
     localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
   }
  }
+ 
+
 
  savesuivi() {
   // Récupérer les données des formulaires depuis le localStorage
 const firstFormGroupData = JSON.parse(localStorage.getItem('firstFormGroupData') || '{}');
+const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
 const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
+const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
 const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
+
 
  // Fusionner les données des formulaires avec les données du patient
  const patientData = {
   ...firstFormGroupData,
+  ...symptomatologieFormGroupData,
   ...secondFormGroupData,
+  ...odiFormGroupData,
   ...fourthFormGroupData
 };
 
@@ -192,8 +265,11 @@ this.patientService.createSuiviArthrodese(patientData).subscribe(
     console.log("Patient enregistré avec succès : ", response);
     // Nettoyer les données des formulaires après l'enregistrement
     localStorage.removeItem('firstFormGroupData');
+    localStorage.removeItem('symptomatologieFormGroupData');
     localStorage.removeItem('secondFormGroupData');
     localStorage.removeItem('fourthFormGroupData');
+    localStorage.removeItem('odiFormGroupData');
+
   },
   (error) => {
     console.error("Erreur lors de l'enregistrement du patient : ", error);

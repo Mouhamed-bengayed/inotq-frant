@@ -17,6 +17,8 @@ export class SuiviTttDissectComponent implements OnInit {
   checkboxControl3 = new FormControl(false);
   checkboxControl4 = new FormControl(false);
   checkboxControl8 = new FormControl(false);
+  checkboxControl7 = new FormControl(false);
+
   checkboxControl9 = new FormControl(false);
   checkboxControl10 = new FormControl(false);
   checkboxControl11 = new FormControl(false);
@@ -26,6 +28,7 @@ export class SuiviTttDissectComponent implements OnInit {
   checkboxControl15 = new FormControl(false);
   checkboxControl16 = new FormControl(false);
   checkboxControl17 = new FormControl(false);
+
 
 
   distanceControl = new FormControl('');
@@ -53,6 +56,7 @@ export class SuiviTttDissectComponent implements OnInit {
   isLinear = false;
   formA!: FormGroup;
   form!: FormGroup;
+  thridFormGroup: any;
   constructor( private patientService: PatientService) { }
 
   ngOnInit(): void {
@@ -71,8 +75,8 @@ export class SuiviTttDissectComponent implements OnInit {
      evolution: new FormControl(''),
      evolution_nouvelles_symptomatologies: new FormControl(''),
   });
-
-  secondFormGroup = new FormGroup({
+ 
+  examFormGroup = new FormGroup({
      poids: new FormControl(''),
      taille: new FormControl(''),
      bMI: new FormControl(''),
@@ -129,64 +133,20 @@ export class SuiviTttDissectComponent implements OnInit {
 
     
   });
-  fourthFormGroup = new FormGroup({
-    
 
-     rx_standard: new FormControl(''),
-     rx_standard_qualite: new FormControl(''),
-     pincement_discal: new FormControl(''),
-     pincement_discal_etage: new FormControl(''),
-     pincement_discal_Pourcentage: new FormControl(''),
-     vide_discal: new FormControl(''),
-     vide_discal_etage: new FormControl(''),
-     sPDL: new FormControl(''),
-     sPDL_etage: new FormControl(''),
-     sPDL_Grade: new FormControl(''),
-     anomalie_transitionnelle: new FormControl(''),
-     canal_lombaire_etroit: new FormControl(''),
-     lordose_Lombaire: new FormControl(''),
-     incidence_pelvienne: new FormControl(''),
-     pente_sacree: new FormControl(''),
-     version_perlvienne: new FormControl(''),
-     rx_dynamique: new FormControl(''),
-     rx_dynamique_qualite: new FormControl(''),
-     rx_dynamique_Instabilite: new FormControl(''),
-
-     tDM: new FormControl(''),
-     tDM_pincement_discal: new FormControl(''),
-     tDM_pincement_discal_etage: new FormControl(''),
-     tDM_pincement_discal_pourcentage: new FormControl(''),
-     tDM_vide_discal: new FormControl(''),
-     tDM_vide_discal_etage: new FormControl(''),
-     tDM_vide_discal_Pourcentage: new FormControl(''),
-     tDM_hernie_discale: new FormControl(''),
-     tDM_hernie_discale_type: new FormControl(''),
-     tDM_hernie_discale_etage: new FormControl(''),
-     tDM_sPDL: new FormControl(''),
-     tDM_sPDL_etage: new FormControl(''),
-     tDM_sPDL_grade: new FormControl(''),
-     tDM_instabilite: new FormControl(''),
-     tDM_instabilite_etage: new FormControl(''),
-     tDM_apophysaire: new FormControl(''),
-     tDM_apophysaire_etage: new FormControl(''),
-     tDM_anomalie_transitionnelle: new FormControl(''),
-     tDM_canal_lombaire_etroit: new FormControl(''),
-     tDM_qualite_fusion: new FormControl(''),
-     iRM: new FormControl(''),
-     iRM_pincementdiscal: new FormControl(''),
-     iRM_pincementdiscal_etage: new FormControl(''),
-     iRM_pincementdiscal_Pourcentage: new FormControl(''),
-     iRM_herniediscale: new FormControl(''),
-     iRM_herniediscale_etage: new FormControl(''),
-     iRM_herniediscale_Type: new FormControl(''),
-     iRM_hypertrophie_jaunes : new FormControl(''),
-     iRM_arthrose_apophysaire: new FormControl(''),
-     iRM_arthrose_apophysaire_etage: new FormControl(''),
-     iRM_canal_lombaire_etroit: new FormControl(''),
-     iRM_volume_disque_hernie: new FormControl(''),
-     iRM_etat_disques_sous_jacent: new FormControl(''),
-     iRM_etat_disques_sus_jacent: new FormControl(''),
+odiFormGroup = new FormGroup({
+  intensite_douleur: new FormControl(''),
+  soins_personnels: new FormControl(''),
+  levee: new FormControl(''),
+  marche: new FormControl(''),
+  assis: new FormControl(''),
+  debout: new FormControl(''),
+  sommeil: new FormControl(''),
+  vie_sexuelle: new FormControl(''),
+  vie_sociale: new FormControl(''),
+  voyage: new FormControl(''),
 });
+
 symptomatologieFormGroup = new FormGroup({
   date_debut_maladie: new FormControl(''),
   facture_declanchants: new FormControl(''),
@@ -204,25 +164,69 @@ symptomatologieFormGroup = new FormGroup({
   Motif_de_consultation_l: new FormControl(''),
   
 });
+
+fourthFormGroup = new FormGroup({
+  rx_standard: new FormControl(''),
+  rx_standard_qualite: new FormControl(''),
+  pincement_discal: new FormControl(''),
+  pincement_discal_etage: new FormControl(''),
+  pincement_discal_Pourcentage: new FormControl(''),
+  vide_discal: new FormControl(''),
+  vide_discal_etage: new FormControl(''),
+  sPDL: new FormControl(''),
+  sPDL_etage: new FormControl(''),
+  sPDL_Grade: new FormControl(''),
+  anomalie_transitionnelle: new FormControl(''),
+  canal_lombaire_etroit: new FormControl(''),
+  lordose_Lombaire: new FormControl(''),
+  incidence_pelvienne: new FormControl(''),
+  pente_sacree: new FormControl(''),
+  version_perlvienne: new FormControl(''),
+  rx_dynamique: new FormControl(''),
+  rx_dynamique_qualite: new FormControl(''),
+  rx_dynamique_Instabilite: new FormControl(''),
+
+  tDM: new FormControl(''),
+  tDM_pincement_discal: new FormControl(''),
+  tDM_pincement_discal_etage: new FormControl(''),
+  tDM_pincement_discal_pourcentage: new FormControl(''),
+  tDM_vide_discal: new FormControl(''),
+  tDM_vide_discal_etage: new FormControl(''),
+  tDM_vide_discal_Pourcentage: new FormControl(''),
+  tDM_hernie_discale: new FormControl(''),
+  tDM_hernie_discale_type: new FormControl(''),
+  tDM_hernie_discale_etage: new FormControl(''),
+  tDM_sPDL: new FormControl(''),
+  tDM_sPDL_etage: new FormControl(''),
+  tDM_sPDL_grade: new FormControl(''),
+  tDM_instabilite: new FormControl(''),
+  tDM_instabilite_etage: new FormControl(''),
+  tDM_apophysaire: new FormControl(''),
+  tDM_apophysaire_etage: new FormControl(''),
+  tDM_anomalie_transitionnelle: new FormControl(''),
+  tDM_canal_lombaire_etroit: new FormControl(''),
+  tDM_qualite_fusion: new FormControl(''),
+  iRM: new FormControl(''),
+  iRM_pincementdiscal: new FormControl(''),
+  iRM_pincementdiscal_etage: new FormControl(''),
+  iRM_pincementdiscal_Pourcentage: new FormControl(''),
+  iRM_herniediscale: new FormControl(''),
+  iRM_herniediscale_etage: new FormControl(''),
+  iRM_herniediscale_Type: new FormControl(''),
+  iRM_hypertrophie_jaunes : new FormControl(''),
+  iRM_arthrose_apophysaire: new FormControl(''),
+  iRM_arthrose_apophysaire_etage: new FormControl(''),
+  iRM_canal_lombaire_etroit: new FormControl(''),
+  iRM_volume_disque_hernie: new FormControl(''),
+  iRM_etat_disques_sous_jacent: new FormControl(''),
+  iRM_etat_disques_sus_jacent: new FormControl(''),
+});
+
 saveFirstForm() {
   const thridFormGroupData1 = this.firstFormGroup.value;
   if (this.firstFormGroup.valid) {
     localStorage.setItem('firstFormGroupData', JSON.stringify(thridFormGroupData1));
 
-  }
- }
-
-savesecondForm() {
-  const secondFormGroupData1 = this.secondFormGroup.value;
-  if (this.secondFormGroup.valid) {
-    localStorage.setItem('secondFormGroupData', JSON.stringify(secondFormGroupData1));
-
-  }
- }
- saveFourthFormGroup() {
-  const fourthFormGroupData1 = this.fourthFormGroup.value;
-  if (this.secondFormGroup.valid) {
-    localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
   }
  }
  savesympFormGroup() {
@@ -232,18 +236,45 @@ savesecondForm() {
   }
  }
 
+saveexamForm() {
+  const examFormGroupData1 = this.examFormGroup.value;
+  if (this.examFormGroup.valid) {
+    localStorage.setItem('examFormGroupData', JSON.stringify(examFormGroupData1));
+
+  }
+ }
+ 
+ saveodiForm() {
+  const odiFormGroupData1 = this.odiFormGroup.value;
+  if (this.odiFormGroup.valid) {
+    localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
+  }
+ }
+
+
+ savethridForm() {
+  const thridFormGroupData1 = this.thridFormGroup.value;
+  if (this.thridFormGroup.valid) {
+    localStorage.setItem('thridFormGroupData', JSON.stringify(thridFormGroupData1));
+
+  }
+ }
+
  savesuivi() {
   // Récupérer les données des formulaires depuis le localStorage
 const firstFormGroupData = JSON.parse(localStorage.getItem('firstFormGroupData') || '{}');
-const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
-const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
 const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
+const examFormGroupData = JSON.parse(localStorage.getItem('examFormGroupData') || '{}');
+const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
+const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
 
 
  // Fusionner les données des formulaires avec les données du patient
  const patientData = {
   ...firstFormGroupData,
-  ...secondFormGroupData,
+  ...symptomatologieFormGroupData,
+  ...examFormGroupData,
+  ...odiFormGroupData,
   ...fourthFormGroupData
 };
 
@@ -252,6 +283,7 @@ this.patientService.createsuivitttDissect(patientData).subscribe(
     console.log("Patient enregistré avec succès : ", response);
     // Nettoyer les données des formulaires après l'enregistrement
     localStorage.removeItem('firstFormGroupGroupData');
+    localStorage.removeItem('symptomatologieFormGroupData');
     localStorage.removeItem('secondFormGroupData');
     localStorage.removeItem('fourthFormGroupData');
   },
@@ -276,6 +308,8 @@ this.patientService.createsuivitttDissect(patientData).subscribe(
   }
   
 }
+
+
 
 
 }

@@ -117,7 +117,7 @@ export class AjouterPatientComponent implements OnInit {
     origine: new FormControl(''),
     idPatient: new FormControl(''),
     addresse: new FormControl(''),
-    telephone: new FormControl(''),
+    telephone: new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)]),
     profession: new FormControl(''),
     adresse_par: new FormControl(''),
     statut_social: new FormControl(''),
@@ -232,7 +232,8 @@ export class AjouterPatientComponent implements OnInit {
     
   });
   fourthFormGroup = new FormGroup({
-   
+    checkboxControl7 : new FormControl(''),
+
 
     rx_Standard: new FormControl(''),
     rx_Standard_qualite: new FormControl(''),

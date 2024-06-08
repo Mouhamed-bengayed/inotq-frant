@@ -120,7 +120,14 @@
                                   Le numéro de téléphone doit comporter 10 chiffres.
                                 </mat-error>
                               </mat-form-field> -->
-
+                              <!-- <mat-form-field>
+                                <mat-label class="custom-label">Téléphone</mat-label>
+                                <input matInput formControlName="telephone" placeholder="Téléphone" type="number">
+                                <mat-error *ngIf="firstFormGroup.get('telephone').invalid && firstFormGroup.get('telephone').touched">
+                                  <span *ngIf="firstFormGroup.get('telephone').hasError('required')">Téléphone est requis.</span>
+                                  <span *ngIf="firstFormGroup.get('telephone').hasError('pattern')">Format invalide. Doit être un numéro à 10 chiffres.</span>
+                                </mat-error>
+                              </mat-form-field> -->
 
                               <br>
                               <mat-form-field>
@@ -622,6 +629,7 @@
                                 </div>
                               </form>
                             </mat-step>
+
                           <mat-step [stepControl]="thridFormGroup" label="Examen clinique">
                               <form [formGroup]="thridFormGroup">
                              
@@ -993,7 +1001,7 @@
     <br>
   
     <mat-radio-button style="padding-right: 30px;" value="chirurgie">Chirurgie</mat-radio-button>
-    <!-- ajtype -->
+   
     <br>
   
     <mat-radio-button style="padding-right: 30px;" value="autres">Autres</mat-radio-button>
@@ -1186,32 +1194,32 @@
                        <br>
                      
 
-<br>   <label  class="custom-label" style="padding-right: 30px;" >Pincement discal</label>
+<br>  
+ 
+
+<label class="custom-label" style="padding-right: 30px;">Pincement discal</label>
 <mat-radio-group [formControl]="pincement22" (change)="onChange()">
- <mat-radio-button style="padding-right: 30px;" value="oui8">Oui</mat-radio-button>
- <mat-form-field *ngIf="pincement22.value === 'oui8'">             
-   <label  class="custom-label" style="padding-right: 30px;" >etage</label>
-   
-   <mat-radio-group aria-label="Select an option"  formControlName="pincement_discal_etage">
+  <mat-radio-button style="padding-right: 30px;" value="oui8">Oui</mat-radio-button>
+  <mat-radio-button style="padding-right: 30px;" value="non">Non</mat-radio-button>
+</mat-radio-group>
+
+<div *ngIf="pincement22.value === 'oui8'">
+  <br>
+  <label class="custom-label" style="padding-right: 30px;">etage</label>
+  <mat-radio-group aria-label="Select an option" formControlName="pincement_discal_etage">
     <mat-radio-button style="padding-right: 30px;" value="1">L3L4</mat-radio-button>
     <mat-radio-button style="padding-right: 30px;" value="2">L4L5</mat-radio-button>
     <mat-radio-button style="padding-right: 30px;" value="3">L5s1</mat-radio-button>
+  </mat-radio-group>
 
-   </mat-radio-group>
-   <br>
-   <label  class="custom-label" style="padding-right: 30px;" >Pourcentage</label>
-
-   <mat-radio-group aria-label="Select an option"formControlName="pincement_discal_Pourcentage">
+  <br>
+  <label class="custom-label" style="padding-right: 30px;">Pourcentage</label>
+  <mat-radio-group aria-label="Select an option" formControlName="pincement_discal_Pourcentage">
     <mat-radio-button style="padding-right: 30px;" value="1">inf 50</mat-radio-button>
     <mat-radio-button style="padding-right: 30px;" value="2">sup 50</mat-radio-button>
+  </mat-radio-group>
+</div>
 
-   </mat-radio-group>
- </mat-form-field>
- <mat-radio-button style="padding-right: 30px;" value="non">Non</mat-radio-button>
-
-</mat-radio-group>
-
-                     
 <br>
                      <label class="custom-label" style="padding-right: 30px;">Vide discal</label>
 <mat-radio-group [formControl]="pincement23" (change)="onChange()">
@@ -1240,17 +1248,16 @@
                        <label  class="custom-label" style="padding-right: 30px;" >sPDL_etage</label>
                        
                        <mat-radio-group aria-label="Select an option"formControlName="sPDL_etage">
-                        <mat-radio-button style="padding-right: 30px;" value="1">L3L4
-                       </mat-radio-button>
+                        <mat-radio-button style="padding-right: 30px;" value="1">L3L4 </mat-radio-button>
                         <mat-radio-button style="padding-right: 30px;" value="2">L4L5</mat-radio-button>
                         <mat-radio-button style="padding-right: 30px;" value="3">L5s1</mat-radio-button>
                     
                        </mat-radio-group>
                        <br>
-                       <mat-form-field>
-                         <mat-label>Garade </mat-label>
-                         <input matInput placeholder="Garade " type="text"formControlName="sPDL_Grade">
-                       </mat-form-field>
+                       <!-- <mat-form-field>
+                         <mat-label class="custom-label">Garade </mat-label>
+                         <input matInput placeholder="Garade" formControlName="sPDL_Grade" >
+                       </mat-form-field> -->
                      
                      <br>
                      <label  class="custom-label" style="padding-right: 30px;" >Anomalie transitionnelle</label>
@@ -1279,21 +1286,21 @@
                       <mat-radio-button style="padding-right: 30px;" value="2">Inversée</mat-radio-button>
                      </mat-radio-group>
                      <br>
-                     
+                   
                      <mat-form-field>
-                       <mat-label>Incidence pelvienne</mat-label>
-                       <input matInput placeholder="Incidence pelvienne" formControlName="incidence_pelvienne">
-                     </mat-form-field>
-                     <br>
-                     <mat-form-field>
-                       <mat-label>pente sacrée</mat-label>
-                       <input matInput placeholder="pente sacrée" formControlName="pente_sacree">
-                     </mat-form-field>
-                     <br>
-                     <mat-form-field>
-                       <mat-label>version perlvienne</mat-label>
-                       <input matInput placeholder="version perlvienne"formControlName="version_perlvienne">
-                     </mat-form-field>
+                      <mat-label class="custom-label">Incidence pelvienne</mat-label>
+                      <input matInput placeholder="Incidence pelvienne" formControlName="incidence_pelvienne">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field>
+                      <mat-label class="custom-label">Pente sacrée</mat-label>
+                      <input matInput placeholder="Pente sacrée" formControlName="pente_sacree">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field>
+                      <mat-label class="custom-label">Version pelvienne</mat-label>
+                      <input matInput placeholder="Version pelvienne" formControlName="version_perlvienne">
+                    </mat-form-field>
 
 
                    </mat-form-field>
