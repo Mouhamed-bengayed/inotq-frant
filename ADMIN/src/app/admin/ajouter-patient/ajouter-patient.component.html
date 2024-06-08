@@ -106,7 +106,7 @@
                                 <input matInput formControlName="addresse" placeholder="Adresse">
                               </mat-form-field>
                               <br>
-                              <mat-form-field>
+                              <mat-form-field style="width: 20%;">
                                 <mat-label class="custom-label">Pays</mat-label>
                                 <mat-select formControlName="country" (selectionChange)="onCountryChange($event.value)">
                                   <mat-option *ngFor="let country of countries" [value]="country.code">
@@ -1152,7 +1152,7 @@
                                    <br>
                                 <div>
                                   <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
-                                  <button style="padding-right: 30px;" class="button" mat-button >Enregistrer</button>
+                                  <button style="padding-right: 30px;" class="button" mat-button (click)="saveODIAndShowScore()">Enregistrer</button>
 
                                   <button style="padding-right: 30px;" class="button" mat-button matStepperNext>Suivant</button>
                                 </div>
@@ -1293,7 +1293,7 @@
 
                    </mat-form-field>
                    
-                   <br>
+                   
                    <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl8" (change)="onChange()">RX dynamique</mat-checkbox>
 
                    <mat-form-field *ngIf="checkboxControl8.value">
@@ -1327,7 +1327,7 @@
                    
                    
                    
-                  <br>
+                  
                   <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl9" (change)="onChange()">TDM  </mat-checkbox>
                   <mat-form-field *ngIf="checkboxControl9.value">
          
@@ -1500,7 +1500,7 @@
                   <br>
                  
         </mat-form-field>
-        <br>
+        
         <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl10" (change)="onChange()">IRM  </mat-checkbox>
         <mat-form-field *ngIf="checkboxControl10.value">
           <br>

@@ -3,6 +3,7 @@ import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms
 import { PatientService } from '../Services/patient.service';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { telephoneValidator } from '../Services/CustomDateAdapter';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ajouter-patient',
@@ -180,7 +181,7 @@ export class AjouterPatientComponent implements OnInit {
     Motif_de_consultation_l: new FormControl(''),
   });
 
-
+  
   odiFormGroup = new FormGroup({
     intensite_douleur: new FormControl(''),
     soins_personnels: new FormControl(''),
@@ -193,7 +194,37 @@ export class AjouterPatientComponent implements OnInit {
     vie_sociale: new FormControl(''),
     voyage: new FormControl(''),
   });
+  scorefinale:number=0;
+  calculateScore(): number {
+    const odiFormGroupData = this.odiFormGroup.value as { [key: string]: string | null };
+    let score = 0;
+    for (const key in odiFormGroupData) {
+      if (odiFormGroupData.hasOwnProperty(key) && odiFormGroupData[key]) {
+        score += parseInt(odiFormGroupData[key]!, 10);
+      }
+    }
+    this.scorefinale = score;
+    return score;
+  }
+  saveODIAndShowScore() {
+    this.saveodiForm();
+   
 
+    
+
+    // this.patientService.SaveODIresult(this.scorefinale).subscribe(
+    //   (response) => {
+    //     console.log('Patient enregistré avec succès : ', response);
+        
+    //   },
+    //   (error) => {
+    //     console.error('Erreur lors de l\'enregistrement du patient : ', error);
+    //   }
+    // );
+
+    const score = this.calculateScore();
+    Swal.fire('ODI SCORE', `VOTRE SCORE EST : ${score}`, 'success');
+  }
   
   secondFormGroup = new FormGroup({
     date_debut_maladie: new FormControl(''),
@@ -381,9 +412,15 @@ export class AjouterPatientComponent implements OnInit {
   }
 
   saveSecondForm() {
-    const SecondFormGroupData1 = this.firstFormGroup.value;
+    const SecondFormGroupData1 = this.secondFormGroup.value;
     if (this.secondFormGroup.valid) {
       localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData1));
+    }
+   }
+   saveodiForm() {
+    const odiFormGroupData1 = this.odiFormGroup.value;
+    if (this.odiFormGroup.valid) {
+      localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
     }
    }
   
@@ -406,31 +443,38 @@ export class AjouterPatientComponent implements OnInit {
 
  // Enregistrer le patient
  savePatient() {
-    // Récupérer les données des formulaires depuis le localStorage
-  const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
-  const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
-  const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
+  // Récupérer les données des formulaires depuis le localStorage
+const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
+const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
+const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
+const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
 
-   // Fusionner les données des formulaires avec les données du patient
-  const patientData = {
-    thridFormGroupData: thridFormGroupData,
-    secondFormGroupData: secondFormGroupData,
-    fourthFormGroupData: fourthFormGroupData
-  };
 
-  this.patientService.createPatient(patientData).subscribe(
-    (response) => {
-      console.log("Patient enregistré avec succès : ", response);
-      // Nettoyer les données des formulaires après l'enregistrement
-      localStorage.removeItem('terrorismeFormGroupData');
-      localStorage.removeItem('secondFormGroupData');
-      localStorage.removeItem('fourthFormGroupData');
-    },
-    (error) => {
-      console.error("Erreur lors de l'enregistrement du patient : ", error);
-    }
-  );
+ // Fusionner les données des formulaires avec les données du patient
+
+const patientData = {
+  ...thridFormGroupData,
+  ...secondFormGroupData,
+  ...fourthFormGroupData,
+  ...odiFormGroupData,
+
+};
+this.patientService.createPatient(patientData).subscribe(
+  (response) => {
+    console.log("Patient enregistré avec succès : ", response);
+    // Nettoyer les données des formulaires après l'enregistrement
+    localStorage.removeItem('terrorismeFormGroupData');
+    localStorage.removeItem('secondFormGroupData');
+    localStorage.removeItem('fourthFormGroupData');
+    localStorage.removeItem('odiFormGroupData');
+
+  },
+  (error) => {
+    console.error("Erreur lors de l'enregistrement du patient : ", error);
+  }
+);
 }
+
 
 }
   

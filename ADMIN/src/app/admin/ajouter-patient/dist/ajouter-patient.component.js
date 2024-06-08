@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,6 +21,7 @@ exports.AjouterPatientComponent = void 0;
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var CustomDateAdapter_1 = require("../Services/CustomDateAdapter");
+var sweetalert2_1 = require("sweetalert2");
 var AjouterPatientComponent = /** @class */ (function () {
     function AjouterPatientComponent(patientService, fb) {
         this.patientService = patientService;
@@ -105,6 +117,7 @@ var AjouterPatientComponent = /** @class */ (function () {
             vie_sociale: new forms_1.FormControl(''),
             voyage: new forms_1.FormControl('')
         });
+        this.scorefinale = 0;
         this.secondFormGroup = new forms_1.FormGroup({
             date_debut_maladie: new forms_1.FormControl(''),
             facture_declanchants: new forms_1.FormControl(''),
@@ -319,6 +332,30 @@ var AjouterPatientComponent = /** @class */ (function () {
     AjouterPatientComponent.prototype.onAntalgiqueChange = function (event) {
         this.showOtherCheckboxes = event.checked;
     };
+    AjouterPatientComponent.prototype.calculateScore = function () {
+        var odiFormGroupData = this.odiFormGroup.value;
+        var score = 0;
+        for (var key in odiFormGroupData) {
+            if (odiFormGroupData.hasOwnProperty(key) && odiFormGroupData[key]) {
+                score += parseInt(odiFormGroupData[key], 10);
+            }
+        }
+        this.scorefinale = score;
+        return score;
+    };
+    AjouterPatientComponent.prototype.saveODIAndShowScore = function () {
+        this.saveodiForm();
+        // this.patientService.SaveODIresult(this.scorefinale).subscribe(
+        //   (response) => {
+        //     console.log('Patient enregistré avec succès : ', response);
+        //   },
+        //   (error) => {
+        //     console.error('Erreur lors de l\'enregistrement du patient : ', error);
+        //   }
+        // );
+        var score = this.calculateScore();
+        sweetalert2_1["default"].fire('ODI SCORE', "VOTRE SCORE EST : " + score, 'success');
+    };
     AjouterPatientComponent.prototype.addPatient = function () {
         var _this = this;
         if (this.firstFormGroup.valid) {
@@ -348,9 +385,15 @@ var AjouterPatientComponent = /** @class */ (function () {
         }
     };
     AjouterPatientComponent.prototype.saveSecondForm = function () {
-        var SecondFormGroupData1 = this.firstFormGroup.value;
+        var SecondFormGroupData1 = this.secondFormGroup.value;
         if (this.secondFormGroup.valid) {
             localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData1));
+        }
+    };
+    AjouterPatientComponent.prototype.saveodiForm = function () {
+        var odiFormGroupData1 = this.odiFormGroup.value;
+        if (this.odiFormGroup.valid) {
+            localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
         }
     };
     AjouterPatientComponent.prototype.savethridForm = function () {
@@ -371,18 +414,16 @@ var AjouterPatientComponent = /** @class */ (function () {
         var thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
         var secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
         var fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
+        var odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
         // Fusionner les données des formulaires avec les données du patient
-        var patientData = {
-            thridFormGroupData: thridFormGroupData,
-            secondFormGroupData: secondFormGroupData,
-            fourthFormGroupData: fourthFormGroupData
-        };
+        var patientData = __assign(__assign(__assign(__assign({}, thridFormGroupData), secondFormGroupData), fourthFormGroupData), odiFormGroupData);
         this.patientService.createPatient(patientData).subscribe(function (response) {
             console.log("Patient enregistré avec succès : ", response);
             // Nettoyer les données des formulaires après l'enregistrement
             localStorage.removeItem('terrorismeFormGroupData');
             localStorage.removeItem('secondFormGroupData');
             localStorage.removeItem('fourthFormGroupData');
+            localStorage.removeItem('odiFormGroupData');
         }, function (error) {
             console.error("Erreur lors de l'enregistrement du patient : ", error);
         });
