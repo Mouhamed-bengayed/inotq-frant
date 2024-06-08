@@ -330,12 +330,18 @@ export class AjouterPatientComponent implements OnInit {
   }
 
   saveSecondForm() {
-    const SecondFormGroupData1 = this.firstFormGroup.value;
+    const SecondFormGroupData1 = this.secondFormGroup.value;
     if (this.secondFormGroup.valid) {
       localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData1));
     }
    }
-  
+   saveodiForm() {
+    const odiFormGroupData1 = this.odiFormGroup.value;
+    if (this.odiFormGroup.valid) {
+      localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
+    }
+   }
+
   savethridForm() {
     const thridFormGroupData1 = this.thridFormGroup.value;
     if (this.thridFormGroup.valid) {
@@ -359,14 +365,18 @@ export class AjouterPatientComponent implements OnInit {
   const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
   const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
   const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
+  const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
+
 
    // Fusionner les données des formulaires avec les données du patient
+ 
   const patientData = {
-    thridFormGroupData: thridFormGroupData,
-    secondFormGroupData: secondFormGroupData,
-    fourthFormGroupData: fourthFormGroupData
+    ...thridFormGroupData,
+    ...secondFormGroupData,
+    ...fourthFormGroupData,
+    ...odiFormGroupData,
+  
   };
-
   this.patientService.createPatient(patientData).subscribe(
     (response) => {
       console.log("Patient enregistré avec succès : ", response);
@@ -374,6 +384,8 @@ export class AjouterPatientComponent implements OnInit {
       localStorage.removeItem('terrorismeFormGroupData');
       localStorage.removeItem('secondFormGroupData');
       localStorage.removeItem('fourthFormGroupData');
+      localStorage.removeItem('odiFormGroupData');
+
     },
     (error) => {
       console.error("Erreur lors de l'enregistrement du patient : ", error);
