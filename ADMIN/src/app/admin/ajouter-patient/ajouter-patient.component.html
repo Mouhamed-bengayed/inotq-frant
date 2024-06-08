@@ -106,32 +106,27 @@
                                 <input matInput formControlName="addresse" placeholder="Adresse">
                               </mat-form-field>
                               <br>
-                              <!-- <mat-form-field>
-                                <mat-label  class="custom-label">Téléphone</mat-label>
-                                <input matInput formControlName="telephone" placeholder="Téléphone" type="number">
-                              </mat-form-field> -->
-                              <!-- <mat-form-field>
-                                <mat-label class="custom-label">Téléphone</mat-label>
-                                <input matInput formControlName="telephone" placeholder="Téléphone" type="text">
-                                <mat-error *ngIf="telephone?.hasError('required')">
-                                  Le téléphone est requis.
-                                </mat-error>
-                                <mat-error *ngIf="telephone?.hasError('pattern')">
-                                  Le numéro de téléphone doit comporter 10 chiffres.
-                                </mat-error>
-                              </mat-form-field> -->
+                              <mat-form-field>
+                                <mat-label class="custom-label">Pays</mat-label>
+                                <mat-select formControlName="country" (selectionChange)="onCountryChange($event.value)">
+                                  <mat-option *ngFor="let country of countries" [value]="country.code">
+                                    {{ country.name }} ({{ country.code }})
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
 
 
                               <br>
-                              <mat-form-field>
+
+                               <mat-form-field >
                                 <mat-label class="custom-label">Téléphone</mat-label>
-                                <input matInput formControlName="telephone" placeholder="Téléphone" type="text" appTelephoneValidator>
-                                <mat-error *ngIf="form.get('telephone')?.invalid && (form.get('telephone')?.dirty || form.get('telephone')?.touched)">
+                                <input matInput formControlName="telephone" placeholder="Téléphone" type="text">
+                                <mat-error class ="p-2" *ngIf="firstFormGroup.get('telephone')?.invalid && (firstFormGroup.get('telephone')?.dirty || firstFormGroup.get('telephone')?.touched)">
                                   {{ getTelephoneErrorMessage() }}
                                 </mat-error>
                               </mat-form-field>
                               <br>
-                              <label  class="custom-label" style="padding-right: 30px;" >Profession</label>
+                              <label  class="custom-label" style="padding-right: 30px; padding-top: 10px;" >Profession</label>
                               <br>
                               <mat-radio-group aria-label="Select an option" formControlName="profession">
                                 <mat-radio-button style="padding-right: 30px;" value="1">FAF</mat-radio-button>
@@ -627,12 +622,12 @@
                              
                                   <mat-form-field>
                                       <mat-label  >Poids </mat-label>
-                                      <input style="padding-right: 30px;" matInput placeholder="Poids" type="number" formControlName="poids">                                
+                                      <input style="padding-right: 30px;" matInput placeholder="Poids en Kg" type="number" formControlName="poids">                                
                                   </mat-form-field>
                                 
                                   <mat-form-field>
                                       <mat-label  style="padding-right: 30px;">Taille</mat-label>
-                                      <input style="padding-right: 30px;" matInput placeholder="Taille" type="number" formControlName="taille">                                
+                                      <input style="padding-right: 30px;" matInput placeholder="Taille en Cm" type="number" formControlName="taille">                                
                                   </mat-form-field>
                                 
 
