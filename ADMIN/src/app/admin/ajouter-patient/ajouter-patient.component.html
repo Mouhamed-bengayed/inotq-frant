@@ -140,7 +140,7 @@
                               <br>
                               <label  class="custom-label" style="padding-right: 30px;" >Profession</label>
                               <br>
-                              <mat-radio-group aria-label="Select an option" formControlName="profession">
+                              <mat-radio-group aria-label="Select an option" formControlName="profession" class="profession-grid">
                                 <mat-radio-button style="padding-right: 30px;" value="1">FAF</mat-radio-button>
                                 
 
@@ -224,7 +224,6 @@
                             </form>
                           </mat-step> 
                                                     
-
                          <mat-step  [stepControl]="secondFormGroup" label="Histoire de la maladie">
                             <form [formGroup]="secondFormGroup">
 
@@ -1171,8 +1170,7 @@
                                 </div>
                               </form>
                             </mat-step> 
-
-                         
+                   
                        <mat-step [stepControl]="fourthFormGroup" label="lmagerie">
                         <form [formGroup]="fourthFormGroup">
 
@@ -1355,12 +1353,10 @@
                   <br>
                   <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl9" (change)="onChange()">TDM  </mat-checkbox>
                   <mat-form-field *ngIf="checkboxControl9.value">
-         
-                            
+
                              <br>
                              <mat-radio-group aria-label="Select an option"formControlName="tDM">
-                              <mat-radio-button style="padding-right: 30px;" value="1">oui
-                             </mat-radio-button>
+                              <mat-radio-button style="padding-right: 30px;" value="1">oui</mat-radio-button>
                               <mat-radio-button style="padding-right: 30px;" value="2">non</mat-radio-button>
                              </mat-radio-group>
                              <br>
@@ -1518,9 +1514,9 @@
                 <label  class="custom-label" style="padding-right: 30px;" >Canal lombaire étroit</label>
 
                 <mat-radio-group aria-label="Select an option"formControlName="pincement_discal">
-                 <mat-radio-button style="padding-right: 30px;" value="1">L5</mat-radio-button>
-                 <mat-radio-button style="padding-right: 30px;" value="2">S1</mat-radio-button>
-                 <mat-radio-button style="padding-right: 30px;" value="3">au</mat-radio-button>
+                 <mat-radio-button style="padding-right: 30px;" value="1">Constitutionnel</mat-radio-button>
+                 <mat-radio-button style="padding-right: 30px;" value="2">mixte</mat-radio-button>
+                 <mat-radio-button style="padding-right: 30px;" value="3">bipolaire</mat-radio-button>
                 </mat-radio-group>
                   <br>
                  
