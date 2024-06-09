@@ -22,12 +22,36 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { SuiviPostImmediatComponent } from './admin/suivi-post-immediat/suivi-post-immediat.component';
+import {ValidationComponent} from "./FrontOffice/validation/validation.component";
+import {VerificationComponent} from "./FrontOffice/ForgetPass/verification.component";
+import {SignUpComponent} from "./FrontOffice/sign-up/sign-up.component";
+import {SignInComponent} from "./FrontOffice/sign-in/sign-in.component";
+import {NavbarComponent} from "./FrontOffice/navbar/navbar.component";
+import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
+import { NgOtpInputModule } from 'ng-otp-input';
+import {environment} from "../environments/environment";
+
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
+    SignInComponent,
+    SignUpComponent,
+    VerificationComponent,
+    ValidationComponent,
     SuiviPostImmediatComponent
   ],
-  imports: [
+  imports: [RouterModule,
+    NgOtpInputModule,
+
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    BrowserModule,
+    AppRoutingModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
     CommonModule,
     MatButtonModule,
     MatRippleModule,
@@ -41,23 +65,25 @@ import { SuiviPostImmediatComponent } from './admin/suivi-post-immediat/suivi-po
     MatRadioModule,
     MatCheckboxModule,
     MatSlideToggleModule,
-   
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    
-    FormsModule,
-    RouterModule,
+
     AppRoutingModule,
 
-    HttpClientModule,
-    
+
     AdminLayoutModule,
   ],
-  
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
-  providers: [],
+  providers: [{
+    provide: RECAPTCHA_SETTINGS,
+    useValue: {
+      siteKey: environment.recaptcha.siteKey,
+      size: 'normal'
+    } as RecaptchaSettings,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

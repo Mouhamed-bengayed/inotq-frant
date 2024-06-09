@@ -150,6 +150,10 @@
                                 <mat-radio-button style="padding-right: 30px;" value="8"> Sportif professionnel</mat-radio-button>
 
                                 <mat-radio-button style="padding-right: 30px;" value="9">Autres</mat-radio-button>
+                                <mat-form-field *ngIf="treatmentControl.value === 'autres'">
+                                  <mat-label>Description</mat-label>
+                                  <input matInput formControlName="description_autres" placeholder="Description" type="text">
+                                </mat-form-field>
                               </mat-radio-group>
                               <br>
                               <mat-form-field>
@@ -185,6 +189,10 @@
                                 <mat-checkbox style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin" value="3">Diabéte    </mat-checkbox>
                                 <mat-checkbox style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin" value="4">Scoliose      </mat-checkbox>
                                 <mat-checkbox style="padding-right: 30px;" value="9">Autres</mat-checkbox>
+                                <mat-form-field *ngIf="treatmentControl.value === 'autres'">
+                                  <mat-label>Description</mat-label>
+                                  <input matInput formControlName="description_autres" placeholder="Description" type="text">
+                                </mat-form-field>
 
                               </mat-radio-group>
 <br>
@@ -227,6 +235,10 @@
                                 <mat-checkbox style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin" value="3">L5    </mat-checkbox>
                                 <mat-checkbox style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin" value="4">S1      </mat-checkbox>
                                 <mat-checkbox style="padding-right: 30px;" value="9">Autres</mat-checkbox>
+                                <mat-form-field *ngIf="treatmentControl.value === 'autres'">
+                                  <mat-label>Description</mat-label>
+                                  <input matInput formControlName="description_autres" placeholder="Description" type="text">
+                                </mat-form-field>
 
                               </mat-radio-group>
                               <br>
@@ -263,6 +275,10 @@
                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">Traumatisme</mat-radio-button>
                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">mode de vie sédentaire</mat-radio-button>
                                   <mat-radio-button style="padding-right: 30px;" value="9">Autres</mat-radio-button>
+                                <mat-form-field *ngIf="treatmentControl.value === 'autres'">
+                                  <mat-label>Description</mat-label>
+                                  <input matInput formControlName="description_autres" placeholder="Description" type="text">
+                                </mat-form-field>
 
 
 

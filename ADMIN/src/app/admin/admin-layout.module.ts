@@ -41,7 +41,7 @@ const AdminLayoutRoutes: Routes = [
 
      { path: 'admindashboard',  component: DashboardAdminComponent },
      { path: 'user/profile',component: ProfileComponent },
-     { path: 'liste/patinet',component: ListesPatientsComponent },
+     { path: 'liste/patient',component: ListesPatientsComponent },
      { path: 'ajouter/patient',component: AjouterPatientComponent},
      { path: 'liste/Medecin',component: ListesMedecinComponent },
      { path: 'navbar',  component: NavBarComponent },
@@ -50,12 +50,12 @@ const AdminLayoutRoutes: Routes = [
      { path: 'SuivitttDissect',  component: SuiviTttDissectComponent },
      { path: 'suiviArhrodese',  component: SuiviArthrodeseComponent },
      { path: 'stafff',  component: StaffComponent },
-  
+
   ]},
 ];
 @NgModule({
   imports: [
-    CommonModule,   
+    CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
@@ -90,13 +90,13 @@ const AdminLayoutRoutes: Routes = [
     SuiviArthrodeseComponent,
     StaffComponent ,
   ],
-  
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
   providers: [
     { provide: DateAdapter, useClass: CustomDateAdapter },
     { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS }
   ],
-  
+
       exports: [RouterModule]
 
 })

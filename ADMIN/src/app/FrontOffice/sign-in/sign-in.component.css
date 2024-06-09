@@ -1,0 +1,46 @@
+.container {
+    margin-top: 50px;
+    display: grid;
+    place-items: center;
+}
+.card { width: 500px;
+    display: center;
+    justify-content: center;    
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.input-group {
+    margin-bottom: 15px;
+}
+.input-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.input-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #0056b3;
+}
+.text-center {
+    text-align: center;
+}

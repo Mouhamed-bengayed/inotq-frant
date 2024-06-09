@@ -1,0 +1,105 @@
+<app-navbar></app-navbar>
+<main>
+  <div class="container pt-lg-md">
+    <div class="row justify-content-center">
+      <div>
+        <div class="card card-body px-lg-5 py-lg-5">
+          <div class="text-center text-muted mb-4">
+            <h2 class="heading text-black">CREER VOTRE COMPTE</h2>
+          </div>
+          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <div class="form-group" [ngClass]="{'focused': focus1}">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                </div>
+                <input class="form-control" placeholder="name" type="text" formControlName="name" (focus)="focus1 = true" (blur)="focus1 = false">
+              </div>
+              <div *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.invalid">
+                <p *ngIf="signupForm.get('name')?.errors?.['required']" class="text-red">name est requis.</p>
+              </div>
+            </div>
+
+            <div class="form-group" [ngClass]="{'focused': focus1}">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                </div>
+                <input class="form-control" placeholder="username" type="text" formControlName="username" (focus)="focus1 = true" (blur)="focus1 = false">
+              </div>
+              <div *ngIf="signupForm.get('username')?.touched && signupForm.get('username')?.invalid">
+                <p *ngIf="signupForm.get('username')?.errors?.['required']" class="text-red">username est requis.</p>
+              </div>
+            </div>
+
+            <div class="form-group" [ngClass]="{'focused': focus1}">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-building" aria-hidden="true"></i></span>
+                </div>
+                <input class="form-control" placeholder="localisation" type="text" formControlName="address" (focus)="focus1 = true" (blur)="focus1 = false">
+              </div>
+              <div *ngIf="signupForm.get('address')?.touched && signupForm.get('address')?.invalid">
+                <p *ngIf="signupForm.get('address')?.errors?.['required']" class="text-red">l'adresse est requis.</p>
+              </div>
+            </div>
+
+            <div class="form-group" [ngClass]="{'focused': focus1}">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                </div>
+                <input class="form-control" placeholder="telephone +216..." type="number" formControlName="number" (focus)="focus1 = true" (blur)="focus1 = false">
+              </div>
+              <div *ngIf="signupForm.get('number')?.touched && signupForm.get('number')?.invalid">
+                <p *ngIf="signupForm.get('number')?.errors?.['required']" class="text-red">Le numéro est requis.</p>
+              </div>
+            </div>
+
+            <div class="form-group" [ngClass]="{'focused': focus1}">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                </div>
+                <input class="form-control" placeholder="Email" type="email" formControlName="email" (focus)="focus1 = true" (blur)="focus1 = false">
+              </div>
+              <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
+                <p *ngIf="signupForm.get('email')?.errors?.['required']" class="text-red">L'email est requis.</p>
+                <p *ngIf="signupForm.get('email')?.errors?.['email']" class="text-red">L'email n'est pas valide.</p>
+              </div>
+            </div>
+
+            <div class="form-group" [ngClass]="{'focused': focus1}">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+                </div>
+                <input class="form-control" placeholder="Password" type="password" formControlName="password" required pattern="^(?=.*[a-zA-Z])(?=.*\d).+$" (focus)="focus1 = true" (blur)="focus1 = false">
+              </div>
+              <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid">
+                <p *ngIf="signupForm.get('password')?.errors?.['required']" class="text-red">Le mot de passe est requis.</p>
+                <p *ngIf="signupForm.get('password')?.errors?.['pattern']" class="text-red">Le mot de passe doit contenir des lettres et des chiffres.</p>
+              </div>
+            </div>
+
+            <div class="row my-4">
+              <div class="col-12">
+                <div class="custom-control custom-control-alternative custom-checkbox">
+                  <input class="custom-control-input" id="customCheckRegister" type="checkbox"  required>
+                  <label class="custom-control-label" for="customCheckRegister">
+                    <span>J'accepte les 
+                      <a href="javascript:void(0)">Politiques Privées</a>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary mt-4">Créer mon compte</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

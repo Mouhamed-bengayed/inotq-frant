@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<div class="OTP  ">
+    <!-- Include the stylesheet link correctly -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons" rel="stylesheet">
+  
+    <section class="section" >
+      <div class="container marg">
+        <div class=" align-items-center">
+          <div class="bg-gradient-white shadow border-0 p-2 g-col-6">
+            <div class="d-flex justify-content-center">
+              <div class="icon-block">
+                <img src="https://img.icons8.com/ios/50/2E9AFE/lock-2.png" />
+              </div>
+            </div>
+            <div class="text-center my-1">
+              <h2 class="fw-bold"> Termes de verification </h2>
+              <div class="text-muted">Entrer le  6-digit code de  votre mail  de verification</div>
+            </div>
+  
+            <div class="ng-otp-input-container">
+              <!-- Apply ng-otp-input-container class -->
+              <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="configOptions"></ng-otp-input>
+            </div>
+  
+            <div class="text-center mt-4">
+              <!-- Apply text-center and mt-2 class for button alignment -->
+              <button class="btn digit-otp-button btn-lg w-100" [ngClass]="btnStatus" (click)="onButtonClick()">{{ this.inputDigitLeft }}</button>
+            </div>
+            <button class="btn bg-white text-black" (click)="resend()">Reenvoyer le  code?</button>
+
+          </div>
+  
+        </div>
+      </div>
+    </section>
+  </div>
+  
