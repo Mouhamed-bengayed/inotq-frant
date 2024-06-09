@@ -231,6 +231,7 @@ export class AjouterPatientComponent implements OnInit {
 
     
   });
+  
   fourthFormGroup = new FormGroup({
     checkboxControl7 : new FormControl(''),
 
@@ -293,21 +294,7 @@ export class AjouterPatientComponent implements OnInit {
 
 
 
-  addPatient() {
-    if (this.firstFormGroup.valid) {
-      const patient = this.firstFormGroup.value;
-      this.patientService.createPatient(patient).subscribe(
-        (response) => {
-          console.log('Patient ajouté avec succès : ', response);
-          // Réinitialiser le formulaire après l'ajout du patient
-          this.firstFormGroup.reset();
-        },
-        (error) => {
-          console.log('Erreur lors de l\'ajout du patient : ', error);
-        }
-      );
-    }
-  }
+
   
 
 
@@ -326,8 +313,26 @@ export class AjouterPatientComponent implements OnInit {
         statutSocialControl.reset();
       }
     }
-    
   }
+
+  addPatient() {
+    if (this.firstFormGroup.valid) {
+      const patient = this.firstFormGroup.value;
+      this.patientService.createPatient(patient).subscribe(
+        (response) => {
+          console.log('Patient ajouté avec succès : ', response);
+          // Réinitialiser le formulaire après l'ajout du patient
+          this.firstFormGroup.reset();
+        },
+        (error) => {
+          console.log('Erreur lors de l\'ajout du patient : ', error);
+        }
+      );
+    }
+  }
+
+
+
 
   saveSecondForm() {
     const SecondFormGroupData1 = this.secondFormGroup.value;
@@ -335,13 +340,13 @@ export class AjouterPatientComponent implements OnInit {
       localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData1));
     }
    }
+
    saveodiForm() {
     const odiFormGroupData1 = this.odiFormGroup.value;
     if (this.odiFormGroup.valid) {
       localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
     }
    }
-
   savethridForm() {
     const thridFormGroupData1 = this.thridFormGroup.value;
     if (this.thridFormGroup.valid) {
@@ -356,35 +361,37 @@ export class AjouterPatientComponent implements OnInit {
     }
    }
  
-    
-
 
  // Enregistrer le patient
  savePatient() {
     // Récupérer les données des formulaires depuis le localStorage
-  const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
   const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
-  const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
+  const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
+  const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
   const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
-
+  const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
 
    // Fusionner les données des formulaires avec les données du patient
  
   const patientData = {
-    ...thridFormGroupData,
     ...secondFormGroupData,
-    ...fourthFormGroupData,
+    ...symptomatologieFormGroupData,
+    ...thridFormGroupData,
     ...odiFormGroupData,
+    ...fourthFormGroupData,
+  
   
   };
+
   this.patientService.createPatient(patientData).subscribe(
     (response) => {
+
       console.log("Patient enregistré avec succès : ", response);
-      // Nettoyer les données des formulaires après l'enregistrement
-      localStorage.removeItem('terrorismeFormGroupData');
       localStorage.removeItem('secondFormGroupData');
-      localStorage.removeItem('fourthFormGroupData');
+      localStorage.removeItem('symptomatologieFormGroupData');
+      localStorage.removeItem('thridFormGroupData');
       localStorage.removeItem('odiFormGroupData');
+      localStorage.removeItem('fourthFormGroupData');
 
     },
     (error) => {
