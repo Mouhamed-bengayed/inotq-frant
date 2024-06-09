@@ -4,11 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    
-      loadChildren: () => import('./admin/admin-layout.module').then(m => m.AdminLayoutModule)
-
+    loadChildren: () => import('./admin/admin-layout.module').then(m => m.AdminLayoutModule)
   }, 
- 
 ];
 
 @NgModule({
