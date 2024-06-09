@@ -42,14 +42,14 @@ export class AjouterPatientComponent implements OnInit {
   modeControl = new FormControl('');
   evolutionControl = new FormControl('');
   responseControl = new FormControl('');
-
+  treatmentC = new FormControl();
   pincement22 = new FormControl();
   pincement23 = new FormControl();
-
+  pincementN = new FormControl();
   treatmentControl = new FormControl();
-
+  showNiveau = false;
   radioControl = new FormControl();
-
+  showNiveauOptions = false;
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
   picker2!: MatDatepicker<any>;
   showOtherCheckboxes = false;
@@ -57,6 +57,7 @@ export class AjouterPatientComponent implements OnInit {
   isLinear = false;
   formA!: FormGroup;
   form!: FormGroup;
+  formS!: FormGroup ;
 
   constructor( private patientService: PatientService,private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -74,7 +75,7 @@ export class AjouterPatientComponent implements OnInit {
     return this.form.get('telephone');
   }
   
-   
+
   
   ngOnInit() {
     this.form = this.fb.group({
@@ -86,6 +87,9 @@ export class AjouterPatientComponent implements OnInit {
     this.formA = this.fb.group({
       telephone: ['', [Validators.required, telephoneValidator()]]
     });
+
+ 
+  
   }
 
   getTelephoneErrorMessage() {
@@ -104,7 +108,7 @@ export class AjouterPatientComponent implements OnInit {
   onAntalgiqueChange(event: any) {
     this.showOtherCheckboxes = event.checked;
   }
-
+ 
   firstFormGroup = new FormGroup({
     date_de_consultation: new FormControl(new Date()),
     dossierMedical: new FormControl(''),  
@@ -122,7 +126,7 @@ export class AjouterPatientComponent implements OnInit {
     adresse_par: new FormControl(''),
     statut_social: new FormControl(''),
     entourage_actuel: new FormControl(''),
-    ATCD: new FormControl(''),
+    atcd: new FormControl(''),
     Tabac: new FormControl(''),
     Motif_de_consultation: new FormControl(''),     
     Motif_de_consultation_l: new FormControl(''),
@@ -231,7 +235,7 @@ export class AjouterPatientComponent implements OnInit {
 
     
   });
-  
+
   fourthFormGroup = new FormGroup({
     checkboxControl7 : new FormControl(''),
 
