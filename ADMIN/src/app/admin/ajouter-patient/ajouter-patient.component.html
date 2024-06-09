@@ -636,10 +636,10 @@
     <div *ngIf="typeControl.value === '2'">
       <label class="custom-label" style="padding-right: 30px;">Distance</label>
       <mat-radio-group aria-label="Select an option" [formControl]="distanceControl">
-        <mat-radio-button style="padding-right: 30px;" value="1">D100</mat-radio-button>
-        <mat-radio-button style="padding-right: 30px;" value="2">500'<'1000</mat-radio-button>
-        <mat-radio-button style="padding-right: 30px;" value="1">100D500</mat-radio-button>
-        <mat-radio-button style="padding-right: 30px;" value="2">D1km</mat-radio-button>
+        <mat-radio-button style="padding-right: 30px;" value="1">D&lt;100m</mat-radio-button>
+        <mat-radio-button style="padding-right: 30px;" value="2">5OOm&lt;D&lt;100m</mat-radio-button>
+        <mat-radio-button style="padding-right: 30px;" value="3">1000m&lt;D&lt;500</mat-radio-button>
+        <mat-radio-button style="padding-right: 30px;" value="4">D&gt;1km</mat-radio-button>
       </mat-radio-group>
       <br>
       <label class="custom-label" style="padding-right: 30px;">Cause d'arrêt</label>
@@ -766,9 +766,9 @@
                                          <label  class="custom-label" style="padding-right: 30px;" >Laségue  </label>
 
                                         <mat-radio-group aria-label="Select an option" formControlName="lasegue">
-                                            <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">& Inferieur 30</mat-radio-button>
-                                            <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Enter 30 et 60 </mat-radio-button>
-                                            <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">superieur 60</mat-radio-button>
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="1">& &lt;30° </mat-radio-button>
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="2">30°&lt; & &lt;60° </mat-radio-button>
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="3">& &gt;60° </mat-radio-button>
 
                                           </mat-radio-group>
                                           <br> <label  class="custom-label" style="padding-right: 30px;" >Laségue controlatéral
@@ -1267,8 +1267,9 @@
   <br>
   <label class="custom-label" style="padding-right: 30px;">Pourcentage</label>
   <mat-radio-group aria-label="Select an option" formControlName="pincement_discal_Pourcentage">
-    <mat-radio-button style="padding-right: 30px;" value="1">inf 50</mat-radio-button>
-    <mat-radio-button style="padding-right: 30px;" value="2">sup 50</mat-radio-button>
+    <mat-radio-button style="padding-right: 30px;" value="1">&lt;50%</mat-radio-button>
+    <mat-radio-button style="padding-right: 30px;" value="2">&gt;50%</mat-radio-button>
+
   </mat-radio-group>
 </div>
 
@@ -1431,8 +1432,8 @@
 
                              <label class="custom-label" style="padding-right: 30px;">Pourcentage</label>
                              <mat-radio-group aria-label="Select an option" formControlName="tDM_Pincement_discal_pourcentage">
-                               <mat-radio-button style="padding-right: 30px;" value="1">inf 50</mat-radio-button>
-                               <mat-radio-button style="padding-right: 30px;" value="2">sup 50</mat-radio-button>
+                              <mat-radio-button style="padding-right: 30px;" value="1">&lt;50%</mat-radio-button>
+    <mat-radio-button style="padding-right: 30px;" value="2">&gt;50%</mat-radio-button>
                              </mat-radio-group>
 
                            <label  class="custom-label" style="padding-right: 30px;" >Vide discal</label>
@@ -1457,10 +1458,8 @@
                          <label  class="custom-label" style="padding-right: 30px;" >Pourcentage</label>
 
                          <mat-radio-group aria-label="Select an option"formControlName="tDM_vide_discal_Pourcentage">
-                          <mat-radio-button style="padding-right: 30px;" value="1">inf 50
-                         </mat-radio-button>
-                          <mat-radio-button style="padding-right: 30px;" value="2">sup 50</mat-radio-button>
-
+                          <mat-radio-button style="padding-right: 30px;" value="1">&lt;50%</mat-radio-button>
+    <mat-radio-button style="padding-right: 30px;" value="2">&gt;50%</mat-radio-button>
                          </mat-radio-group>
                          <br>
                          <label  class="custom-label" style="padding-right: 30px;" >Hernie discale</label>
@@ -1485,9 +1484,10 @@
                        <label  class="custom-label" style="padding-right: 30px;" >Etage</label>
 
                        <mat-radio-group aria-label="Select an option"formControlName="pincement_discal_Pourcentage">
-                        <mat-radio-button style="padding-right: 30px;" value="1">inf 50
-                       </mat-radio-button>
-                        <mat-radio-button style="padding-right: 30px;" value="2">sup 50</mat-radio-button>
+                       
+                        <mat-radio-button style="padding-right: 30px;" value="1">&lt;50%</mat-radio-button>
+                        <mat-radio-button style="padding-right: 30px;" value="2">&gt;50%</mat-radio-button>
+                    
 
                        </mat-radio-group>
                        <br>
@@ -1605,8 +1605,9 @@
   <br>
   <label class="custom-label" style="padding-right: 30px;">Pourcentage</label>
   <mat-radio-group aria-label="Select an option" formControlName="iRM_Pincementdiscal_Pourcentage">
-    <mat-radio-button style="padding-right: 30px;" value="1">inf 50</mat-radio-button>
-    <mat-radio-button style="padding-right: 30px;" value="2">sup 50</mat-radio-button>
+    <mat-radio-button style="padding-right: 30px;" value="1">&lt;50%</mat-radio-button>
+    <mat-radio-button style="padding-right: 30px;" value="2">&gt;50%</mat-radio-button>
+
   </mat-radio-group>
 </div>
 

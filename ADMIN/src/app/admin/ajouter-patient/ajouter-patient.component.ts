@@ -225,6 +225,7 @@ export class AjouterPatientComponent implements OnInit {
 
     const score = this.calculateScore();
     Swal.fire('ODI SCORE', `VOTRE SCORE EST : ${score}`, 'success');
+    
   }
 
   secondFormGroup = new FormGroup({
