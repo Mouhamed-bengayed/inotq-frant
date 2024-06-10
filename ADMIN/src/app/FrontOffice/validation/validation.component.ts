@@ -74,10 +74,10 @@ export class ValidationComponent {
     this.otpservice.resendOTP(this.email).subscribe((newotp: OTP) => {
       this.newotp = newotp;
       console.log('Generated OTP:', newotp.identification);
-      Swal.fire("check your mail again !");
+      Swal.fire("Vérifier votre mail !");
     }, error => {
       console.error('Error while resending OTP:', error);
-      Swal.fire("An error occurred while resending OTP. Please try again later .");
+      Swal.fire("Erreur survenue essayer une autre fois !");
     }
     
     

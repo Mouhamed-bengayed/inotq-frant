@@ -67,6 +67,8 @@ export class AjouterPatientComponent implements OnInit {
   treatmentC = new FormControl();
   pincement22 = new FormControl();
   pincement23 = new FormControl();
+  pincement24 = new FormControl();
+
   pincementN = new FormControl();
   treatmentControl = new FormControl();
   showNiveau = false;
@@ -80,6 +82,7 @@ export class AjouterPatientComponent implements OnInit {
   formA!: FormGroup;
   form!: FormGroup;
   formS!: FormGroup ;
+  treatmentCont!: string ;
 
   constructor( private patientService: PatientService,private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -137,7 +140,7 @@ export class AjouterPatientComponent implements OnInit {
     });
 
     this.formA = this.fb.group({
-      telephone: ['', [Validators.required, telephoneValidator()]]
+      telephone: ['', [Validators.required, telephoneValidator(),Validators.minLength(12)]]
     });
   }
 
@@ -147,7 +150,7 @@ export class AjouterPatientComponent implements OnInit {
       return ''; // or any appropriate default message
     }
     if (telephoneControl.hasError('required')) {
-      return 'Le numéro de téléphone est requis.';
+      return 'Le numéro de téléphone est incorrecte.';
     } else if (telephoneControl.hasError('invalidTelephone')) {
       return 'Le numéro de téléphone doit commencer par +216 et contenir 9 chiffres.';
     }

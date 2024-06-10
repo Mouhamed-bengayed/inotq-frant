@@ -10,7 +10,7 @@
                     
                     <input type="text" name="username" id="username" class="input-box" placeholder="email or username" formControlName="username">
                     <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="text-danger">
-                        <div *ngIf="username?.errors?.['required']">Nom/Email is required.</div>
+                        <div *ngIf="username?.errors?.['required']">Nom/Email est requis.</div>
                         <div *ngIf="username?.errors?.['email']">Invalid email format.</div>
                     </div>
                 </div>
@@ -18,14 +18,14 @@
                     <label for="password" class="input-label">Mot de passe</label>
                     <input type="password" name="password" id="password" class="input-box" placeholder="*********" formControlName="password">
                     <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
-                        <div *ngIf="password?.errors?.['required']">Mot de passe is required.</div>
-                        <div *ngIf="password?.errors?.['minlength']">Mot de passe must be at least 6 characters long.</div>
+                        <div *ngIf="password?.errors?.['required']">Mot de passe est incorrect.</div>
+                        <div *ngIf="password?.errors?.['minlength']">Mot de passe doit être composé au moins de 6 caractères.</div>
                     </div>
                 </div>
                 
             </div>
             <p class="text-center">
-                <button class="btn" type="submit" [disabled]="signInForm.invalid">Login</button>
+                <button class="btn" type="submit" [disabled]="signInForm.invalid">S'authentifier</button>
             </p>
         </form>
     </div>

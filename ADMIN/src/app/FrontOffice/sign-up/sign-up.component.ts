@@ -44,8 +44,8 @@ export class SignUpComponent {
 
           console.log('User registered successfully!');
           Swal.fire({
-            title: "Open Your mail?",
-            text: "check your mail account for verification !",
+            title: "Ouvrir votre mail?",
+           
             icon: "success"
           });
         },
@@ -54,7 +54,7 @@ export class SignUpComponent {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Something went wrong! ",
+            text: "Erreur : vérifier vos données! ",
           });
           this.signupError = 'Error during registration. Please try again.';
         }

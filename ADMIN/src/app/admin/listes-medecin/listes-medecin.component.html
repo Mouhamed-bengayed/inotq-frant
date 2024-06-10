@@ -22,12 +22,12 @@
                           <th>Id</th>
                           <th>Nom</th>
                           <th>Prénom</th>
-                          <th>Age</th>
+                          <!-- <th>Age</th>
                           <th>Start date</th>
-                          <th>Salary</th>
-                          <th>Salary</th>
-                          <th>bloque?</th>
-                          <th>supprime</th>
+                          <th>addresse</th> -->
+                          <!-- <th>Numéro</th> -->
+                          <th>Statut</th>
+                          <!-- <th>supprime</th> -->
 
                         </tr>
                       </thead>
@@ -37,16 +37,16 @@
                           <td>{{med.id}}</td>
                           <td>{{med.name}}</td>
                           <td>{{med.username}}</td>
-                          <td>{{med.specialite}}</td>
-                          <td>{{med.addresse}}</td>
+                          <!-- <td>{{med.specialite}}</td> -->
+                          <!-- <td>{{med.addresse}}</td> -->
                           <td>{{med.number}}</td>
                           <td>{{med.blocked}}</td>
                           <td>
-                            <button *ngIf="!med.valid"(click)="activateMedecin(med)" type="button" class="btn btn-success" >Active</button>
-                            <button *ngIf="med.valid"(click)="bloqueMedecin(med)" type="button" class="btn btn-danger">Bloque</button>
+                            <button *ngIf="!med.valid"(click)="activateMedecin(med)" type="button" class="btn btn-success" >Activer</button>
+                            <button *ngIf="med.valid"(click)="bloqueMedecin(med)" type="button" class="btn btn-danger">Bloquer</button>
                           </td>
                           <td>
-                            <button (click)="supprimeMedecin(med)" type="button" class="btn btn-danger" >supprime</button>
+                            <!-- <button (click)="supprimeMedecin(med)" type="button" class="btn btn-danger" >Supprimer</button> -->
                           </td>
                         </tr>
                         

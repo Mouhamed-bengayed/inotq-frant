@@ -48,8 +48,8 @@ if(this.fg.valid){
   { 
     this.showResetPasswordCard = true;
     Swal.fire({
-      title: "Chek your mail",
-      text: "code sent successfully to your mail",
+      title: "Ouvrir votre  mail",
+      text: "code envoyé à votre mail",
       icon: "success"
     });
     //alert ("code sent successfully to your mail")
@@ -58,7 +58,7 @@ if(this.fg.valid){
   (error) => Swal.fire({
     icon: "error",
     title: "Oops...",
-    text: "Mail not found!",
+    text: "E-mail n'existe pas!",
   }));
 
 }}
@@ -72,7 +72,7 @@ if(this.fgreset.valid){
       this.acountservice.forgetPasswordbyemail(this.fg.value.email, formData).subscribe( (response) => {
         Swal.fire({
           //title: "The Internet?",
-          text: "password changed successfully",
+          text: "Mot de Passe est bien modifié",
           icon: "success"
         });
        // alert ("password changed successfully")
@@ -82,7 +82,7 @@ if(this.fgreset.valid){
       error => Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Try later!",
+        text: "Essayer ultérieurement!",
       }));
 
       
@@ -91,7 +91,7 @@ else{
   Swal.fire({
     icon: "error",
     title: "Oops...",
-    text: "Form inputs invalide!",
+    text: "Données invalides!",
   });
 
 }
