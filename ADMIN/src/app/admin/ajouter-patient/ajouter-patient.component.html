@@ -276,7 +276,7 @@
                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">Traumatisme</mat-radio-button>
                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">mode de vie sédentaire</mat-radio-button>
                                   <mat-radio-button style="padding-right: 30px;" value="9">Autres</mat-radio-button>
-                                <mat-form-field *ngIf="treatmentControl.value === '9'">
+                                <mat-form-field *ngIf="treatmentControl.value === 'autres'">
                                   <mat-label>Description</mat-label>
                                   <input matInput formControlName="description_autres" placeholder="Description" type="text">
                                 </mat-form-field>

@@ -37,7 +37,7 @@ password: any;
 
        
           const userAuthorities = response.authorities.map((authority:any) => authority.authority);
-          this.router.navigate(['admin/ajouter/patient']);
+          this.router.navigate(['admin/liste/patient']);
           /*
           if (userAuthorities.includes("ROLE_MEDECIN")) {
            c

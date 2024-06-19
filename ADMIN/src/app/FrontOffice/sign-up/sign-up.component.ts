@@ -44,7 +44,7 @@ export class SignUpComponent {
 
           console.log('User registered successfully!');
           Swal.fire({
-            title: "Ouvrir votre mail?",
+            title: "Ouvrir votre mail!",
            
             icon: "success"
           });
