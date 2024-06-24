@@ -59,7 +59,19 @@ export class SuiviPostImmediatComponent implements OnInit {
      examen_Post_Examen_perinee_Reflexe_anal: new FormControl(''),
   });
   
-
+  hypotheseFormGroup = new FormGroup({
+    Nbre_infiltration: new FormControl(''),
+    Nbre_seances: new FormControl(''),
+    description_autres: new FormControl(''),
+    Hypothese_diagnostic_HD: new FormControl(''),
+    Hypothese_diagnostic_type: new FormControl(''),
+    Hypothese_diagnostic_Localisation: new FormControl(''),
+    Traitement_propose : new FormControl(''),
+    Traitement_propose_Nbre_infiltrations : new FormControl(''),
+    Traitement_propose_Nbre_seances: new FormControl(''),
+    Traitement_propose_Type_chirurgie: new FormControl(''),
+    Traitement_propose_Auter: new FormControl(''),
+  });
   ngOnInit(): void {
   }
   addsuiviImed() {

@@ -16,6 +16,8 @@ export class StaffComponent implements OnInit {
   checkboxControl3 = new FormControl(false);
   checkboxControl4 = new FormControl(false);
   checkboxControl5 = new FormControl(false);
+  checkboxControl7 = new FormControl(false);
+
 
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
   constructor( private patientService: PatientService) { }

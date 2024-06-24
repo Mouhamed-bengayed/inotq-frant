@@ -16,7 +16,7 @@
                       
                               
                                 <mat-form-field>
-                                  <mat-label  class="custom-label">Date de chirurgie</mat-label>
+                                  <mat-label  class="custom-label">Date de la chirurgie</mat-label>
                                   <input matInput [matDatepicker]="picker2" formControlName="date_chirurgie" placeholder="Date de chirurgie">
                                   <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                                   <mat-datepicker #picker2></mat-datepicker>
@@ -24,7 +24,7 @@
                                 <br>
                                
                                   <mat-form-field>
-                                    <mat-label  class="custom-label">Date de consultation</mat-label>
+                                    <mat-label  class="custom-label">Date du suivi</mat-label>
                                     <input matInput [matDatepicker]="picker7" formControlName="date_suiui" placeholder="Date de consultation">
                                     <mat-datepicker-toggle matSuffix [for]="picker7"></mat-datepicker-toggle>
                                     <mat-datepicker #picker7></mat-datepicker>
@@ -77,8 +77,8 @@
                                 </mat-radio-group>
                                 
                                 <mat-form-field>
-                                    <mat-label>Auter</mat-label>
-                                    <input matInput  placeholder="Auter">
+                                    <mat-label  class="custom-label">Auters</mat-label>
+                                    <input matInput  placeholder="Auters">
                                   </mat-form-field>  
                                 <br>
                                 <label class="custom-label">Symptomatologie</label>
@@ -93,7 +93,7 @@
                                 </mat-radio-group>
                                 <br>
                                
-                                <label    class="custom-label"  >Symptomatologie Sciatique</label >
+                                <label    class="custom-label"  > Sciatique</label >
                                 <mat-radio-group aria-label="Select an option" formControlName="symptomatologie_Sciatique" >
                                    
                                    <mat-radio-button  style="padding-right: 30px;"  value="1">Diminution   </mat-radio-button>
@@ -103,7 +103,7 @@
                                 </mat-radio-group>
                                 <br>
                                
-                                <label    class="custom-label"  >Symptomatologie Cruralgie</label >
+                                <label    class="custom-label"  > Cruralgie</label >
                                     <mat-radio-group aria-label="Select an option" formControlName="symptomatologie_Cruralgie">
                                         
                                    <mat-radio-button style="padding-right: 30px;"  value="1">Diminution</mat-radio-button>
@@ -112,7 +112,7 @@
   
                                 </mat-radio-group>
                                 <br>
-                                <label    class="custom-label"  >Sphinctériens</label >
+                                <label    class="custom-label"  >Trouble vésico sphinctériens</label >
                                 <mat-radio-group aria-label="Select an option" formControlName="symptomatologie_sphinctériens" >
                                  
                                 <mat-radio-button style="padding-right: 30px;"  value="1">Incontinence urinaire</mat-radio-button>
@@ -124,7 +124,7 @@
                                 <label  class="custom-label">Testing musculaire (motricité)</label>
                                 <br>
                                              <label  class="custom-label">L2  </label>
-                                             <br>
+                                         
                                             <mat-radio-group aria-label="Select an option" formControlName="examen_Post_Testing_musculaire_l2">
                                                 <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1" >0</mat-radio-button>
                                                 <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">1</mat-radio-button>
@@ -138,7 +138,7 @@
                                               </mat-radio-group>
                                               <br>
                                               <label  class="custom-label">L3  </label>
-                                             <br>
+                                          
                                             <mat-radio-group aria-label="Select an option" formControlName="examen_Post_Testing_musculaire_l3">
                                                 <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">0</mat-radio-button>
                                                 <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">1</mat-radio-button>
@@ -151,7 +151,7 @@
                                         
                                               </mat-radio-group>
                                               <br><label  class="custom-label">L4  </label>
-                                              <br>
+                                            
                                              <mat-radio-group aria-label="Select an option" formControlName="examen_Post_Testing_musculaire_l4">
                                                  <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">0</mat-radio-button>
                                                  <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">1</mat-radio-button>
@@ -164,7 +164,7 @@
                                          
                                                </mat-radio-group>
                                                <br><label  class="custom-label">S1  </label>
-                                               <br>
+                                           
                                               <mat-radio-group aria-label="Select an option" formControlName="examen_Post_Testing_musculaire_s1">
                                                   <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">0</mat-radio-button>
                                                   <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">1</mat-radio-button>
@@ -180,7 +180,7 @@
                                                  <label  class="custom-label">Examen Post-Op Sensibilté </label>
                                                  <br>
                                                  <label  class="custom-label"> L2 </label>
-                                                 <br>
+                                               
                                                 <mat-radio-group aria-label="Select an option" formControlName="examen_Post_Sensibilte_musculaire_l2">
                                                     <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
                                                     <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
@@ -191,14 +191,14 @@
                                                   </mat-radio-group>
                                                   <br>
                                                   <label  class="custom-label">L3  </label>
-                                                 <br>
+                                              
                                                 <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Sensibilte_musculaire_l3">
                                                     <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
                                                     <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
                                                     <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">Anesthésie</mat-radio-button>  
               </mat-radio-group>
                                                   <br><label  class="custom-label">L4  </label>
-                                                  <br>
+                                                 
                                                  <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Sensibilte_musculaire_l4">
                                                      <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
                                                      <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
@@ -206,17 +206,14 @@
                                                    
                                                    </mat-radio-group>
                                                    <br><label  class="custom-label">L5  </label>
-                                                   <br>
+                                                 
                                                   <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Sensibilte_musculaire_l5">
                                                       <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
                                                       <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
                                                       <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">Anesthésie</mat-radio-button>  
-                                                      
-     
-                                              
+
                                                     </mat-radio-group>
                                                     <br><label  class="custom-label">S1  </label>
-                                                    <br>
                                                    <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Sensibilte_musculaire_s1">
                                                        <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
                                                        <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
@@ -224,9 +221,10 @@
                                               
                                                      </mat-radio-group>
                                                      <br>
-                                                     <br><label  class="custom-label">Examen périnée  </label>
-                                                     <label  class="custom-label">sensibilité </label>
+                                                     <br><label  class="titer-label">Examen périnée sensibilité </label>
                                                      <br>
+                                                     <label  class="custom-label">sensibilité </label>
+                                                   
                                                     <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Examen_perinee_sensibilite">
                                                         <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
                                                         <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
@@ -234,7 +232,7 @@
                                                       </mat-radio-group>
                                                       <br>
                                                      <label  class="custom-label">Tonus anal </label>
-                                                     <br>
+                                                  
                                                     <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Examen_perinee_Tonus_anal">
                                                         <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
                                                         <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Diminué</mat-radio-button>
@@ -242,7 +240,7 @@
                                                       </mat-radio-group>
                                                       <br>
                                                       <label  class="custom-label">Refléxe anal </label>
-                                                      <br>
+                                                     
                                                      <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Examen_perinee_Reflexe_anal">
                                                          <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
                                                          <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Diminué</mat-radio-button>

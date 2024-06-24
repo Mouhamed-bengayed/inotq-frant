@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { PatientService } from '../Services/patient.service';
+import { telephoneValidator } from '../Services/CustomDateAdapter';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-suivi-ttt-dissect',
@@ -9,7 +11,28 @@ import { PatientService } from '../Services/patient.service';
   styleUrls: ['./suivi-ttt-dissect.component.css']
 })
 export class SuiviTttDissectComponent implements OnInit {
-
+  countries = [
+    { name: 'Tunisia', code: '+216' },
+    { name: 'United States', code: '+1' },
+    { name: 'United Kingdom', code: '+44' },
+    { name: 'Canada', code: '+1' },
+    { name: 'Australia', code: '+61' },
+    { name: 'Germany', code: '+49' },
+    { name: 'France', code: '+33' },
+    { name: 'Japan', code: '+81' },
+    { name: 'Brazil', code: '+55' },
+    { name: 'Italy', code: '+39' },
+    { name: 'Spain', code: '+34' },
+    { name: 'China', code: '+86' },
+    { name: 'India', code: '+91' },
+    { name: 'Mexico', code: '+52' },
+    { name: 'Russia', code: '+7' },
+    { name: 'South Africa', code: '+27' },
+    { name: 'South Korea', code: '+82' },
+    { name: 'Nigeria', code: '+234' },
+    { name: 'Saudi Arabia', code: '+966' },
+    { name: 'Argentina', code: '+54' },
+  ];
 
   checkboxControl = new FormControl(false);
   checkboxControl1 = new FormControl(false);
@@ -44,7 +67,7 @@ export class SuiviTttDissectComponent implements OnInit {
 
   pincement22 = new FormControl();
   pincement23 = new FormControl();
-
+  pincement24= new FormControl();
   treatmentControl = new FormControl();
 
   radioControl = new FormControl();
@@ -57,11 +80,76 @@ export class SuiviTttDissectComponent implements OnInit {
   formA!: FormGroup;
   form!: FormGroup;
   thridFormGroup: any;
-  constructor( private patientService: PatientService) { }
+  fb: any;
+  constructor( private patientService: PatientService) {
+   
 
-  ngOnInit(): void {
   }
+  hypotheseFormGroup = new FormGroup({
+    Nbre_infiltration: new FormControl(''),
+    Nbre_seances: new FormControl(''),
+    description_autres: new FormControl(''),
+    Hypothese_diagnostic_HD: new FormControl(''),
+    Hypothese_diagnostic_type: new FormControl(''),
+    Hypothese_diagnostic_Localisation: new FormControl(''),
+    Traitement_propose : new FormControl(''),
+    Traitement_propose_Nbre_infiltrations : new FormControl(''),
+    Traitement_propose_Nbre_seances: new FormControl(''),
+    Traitement_propose_Type_chirurgie: new FormControl(''),
+    Traitement_propose_Auter: new FormControl(''),
+  });
+  ngOnInit() {     
   
+    this.setupBmiCalculation();
+   
+  }
+
+  setupBmiCalculation() {
+    this.examFormGroup.get('poids')?.valueChanges.subscribe(() => this.calculateBmi());
+    this.examFormGroup.get('taille')?.valueChanges.subscribe(() => this.calculateBmi());
+  }
+
+  calculateBmi() {
+    const poids = this.examFormGroup.get('poids')?.value as any;
+    const taille = this.examFormGroup.get('taille')?.value as any;
+    if (poids && taille) {
+      const heightInMeters = taille / 100;
+      const bmi = poids / (heightInMeters * heightInMeters);
+      this.examFormGroup.get('bMI')?.setValue(bmi.toFixed(2));
+    } else {
+      this.examFormGroup.get('bMI')?.setValue('');
+    }
+  }
+  scorefinale:number=0;
+
+
+  saveODIAndShowScore() {
+    this.saveodiForm();
+
+
+    
+      const score = this.calculateScore();
+      Swal.fire('ODI SCORE', `VOTRE SCORE EST : ${score}`, 'success');
+      
+    }
+    calculateScore(): number {
+      const odiFormGroupData = this.odiFormGroup.value as { [key: string]: string | null };
+      let score = 0;
+      for (const key in odiFormGroupData) {
+        if (odiFormGroupData.hasOwnProperty(key) && odiFormGroupData[key]) {
+          score += parseInt(odiFormGroupData[key]!, 10);
+        }
+      }
+      this.scorefinale = score;
+      return score;
+    }
+  
+
+
+  onAntalgiqueChange(event: any) {
+    this.showOtherCheckboxes = event.checked;
+  }
+
   firstFormGroup = new FormGroup({
      date_de_consultation: new FormControl(''),
      age: new FormControl(''),
@@ -221,6 +309,7 @@ fourthFormGroup = new FormGroup({
   iRM_etat_disques_sous_jacent: new FormControl(''),
   iRM_etat_disques_sus_jacent: new FormControl(''),
 });
+
 
 saveFirstForm() {
   const thridFormGroupData1 = this.firstFormGroup.value;
