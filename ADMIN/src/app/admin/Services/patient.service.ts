@@ -10,6 +10,7 @@ export class PatientService {
 
   private baseURLAjouterPatient  ="http://localhost:8082/api/patient/register-patient/";
   private deletedUser="http://localhost:8082/api/patient/delete-patient/";
+  private baseUrl: string = 'http://localhost:8082/api/fichPatient';
 
 
   constructor(private httpClient: HttpClient,private http: HttpClient) { }
@@ -17,9 +18,10 @@ export class PatientService {
       return this.httpClient.post(this.baseURLAjouterPatient,patient);
       }
 
-      createPatient(patient: any): Observable<any> {
-        return this.httpClient.post("http://localhost:8082/api/patient/register-patient/", patient);
-      }
+  createPatient(patient: any, id: number): Observable<any> {
+    const url = `${this.baseUrl}/register-patient/${id}`;
+    return this.httpClient.post(url, patient);
+  }
       createsuiviImedia(patient: any): Observable<any> {
         return this.httpClient.post("http://localhost:8082/api/Suivi1/register/suivi1Post-Immediatt/", patient);
       }
@@ -30,7 +32,7 @@ export class PatientService {
       createSuiviArthrodese(patient: any): Observable<any> {
         return this.httpClient.post("http://localhost:8082/api/SuiviArthrodese/register/Suivi_Arthodese/", patient);
       }
-     
+
       createSuiviStafff(patient: any): Observable<any> {
         return this.httpClient.post("http://localhost:8082/api/staff/register/staff/", patient);
       }
@@ -41,9 +43,9 @@ export class PatientService {
       supprimerPatient(id:Number):Observable<any>{
         return this.httpClient.delete(this.deletedUser+id);
       }
-      
-      
-  
+
+
+
 
 
 

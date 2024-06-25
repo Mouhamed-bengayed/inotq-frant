@@ -384,6 +384,13 @@ var AjouterPatientComponent = /** @class */ (function () {
             }
         }
     };
+
+  AjouterPatientComponent.prototype.saveSecondForm = function () {
+    var SecondFormGroupData1 = this.secondFormGroup.value;
+    if (this.secondFormGroup.valid) {
+      localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData1));
+    }
+  };
     AjouterPatientComponent.prototype.saveSecondForm = function () {
         var SecondFormGroupData1 = this.secondFormGroup.value;
         if (this.secondFormGroup.valid) {
