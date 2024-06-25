@@ -185,19 +185,7 @@ export class AjouterPatientComponent implements OnInit {
     Motif_de_consultation_l: new FormControl(''),
   });
 
-  hypotheseFormGroup = new FormGroup({
-    Nbre_infiltration: new FormControl(''),
-    Nbre_seances: new FormControl(''),
-    description_autres: new FormControl(''),
-    Hypothese_diagnostic_HD: new FormControl(''),
-    Hypothese_diagnostic_type: new FormControl(''),
-    Hypothese_diagnostic_Localisation: new FormControl(''),
-    Traitement_propose : new FormControl(''),
-    Traitement_propose_Nbre_infiltrations : new FormControl(''),
-    Traitement_propose_Nbre_seances: new FormControl(''),
-    Traitement_propose_Type_chirurgie: new FormControl(''),
-    Traitement_propose_Auter: new FormControl(''),
-  });
+
   odiFormGroup = new FormGroup({
     intensite_douleur: new FormControl(''),
     soins_personnels: new FormControl(''),
@@ -225,9 +213,22 @@ export class AjouterPatientComponent implements OnInit {
   saveODIAndShowScore() {
     this.saveodiForm();
 
+
+
+
+    // this.patientService.SaveODIresult(this.scorefinale).subscribe(
+    //   (response) => {
+    //     console.log('Patient enregistré avec succès : ', response);
+
+    //   },
+    //   (error) => {
+    //     console.error('Erreur lors de l\'enregistrement du patient : ', error);
+    //   }
+    // );
+
     const score = this.calculateScore();
     Swal.fire('ODI SCORE', `VOTRE SCORE EST : ${score}`, 'success');
-    
+
   }
 
   secondFormGroup = new FormGroup({
@@ -416,7 +417,12 @@ export class AjouterPatientComponent implements OnInit {
       );
     }
   }
-
+  saveFirstForm() {
+    const FirstFormData = this.firstFormGroup.value;
+    if (this.firstFormGroup.valid) {
+      localStorage.setItem('FirstFormData', JSON.stringify(FirstFormData));
+    }
+  }
   saveSecondForm() {
     const SecondFormGroupData1 = this.secondFormGroup.value;
     if (this.secondFormGroup.valid) {
@@ -449,7 +455,20 @@ export class AjouterPatientComponent implements OnInit {
 
  // Enregistrer le patient
  savePatient() {
+
+    const patient = this.firstFormGroup.value;
+   this.patientService.createPatient(patient).subscribe(
+     (response) => {
+       console.log('Patient ajouté avec succès : ', response);
+       // Réinitialiser le formulaire après l'ajout du patient
+       this.firstFormGroup.reset();
+     },
+     (error) => {
+       console.log('Erreur lors de l\'ajout du patient : ', error);
+     }
+   );
     // Récupérer les données des formulaires depuis le localStorage
+   const FirstFormData = JSON.parse(localStorage.getItem('FirstFormData') || '{}');
   const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
   const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
   const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
@@ -459,6 +478,7 @@ export class AjouterPatientComponent implements OnInit {
    // Fusionner les données des formulaires avec les données du patient
 
   const patientData = {
+    ...FirstFormData,
     ...secondFormGroupData,
     ...symptomatologieFormGroupData,
     ...thridFormGroupData,
