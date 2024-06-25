@@ -12,7 +12,7 @@
                             <mat-step [stepControl]="firstFormGroup">
                               
                               <form [formGroup]="firstFormGroup">
-                                <ng-template class="custom-label" matStepLabel>Informations personnelles</ng-template>          
+                                <ng-template class="custom-label" matStepLabel>Informations staf</ng-template>          
                                 <mat-form-field>
                                   <mat-label class="custom-label">Date de consultation</mat-label>
                                   <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Date de consultation">
@@ -93,6 +93,10 @@
                                 
                                 
                                 <br>
+                                <mat-form-field>
+                                  <mat-label class="custom-label"> Conclusion</mat-label>
+                                  <input matInput formControlName="conclusion" placeholder="Conclusion">
+                                </mat-form-field>
                                 <div>
                                   <button mat-flat-button color="primary" mat-button matStepperNext  (click)="addSuiviStafff()" >Next</button>
                                 </div>

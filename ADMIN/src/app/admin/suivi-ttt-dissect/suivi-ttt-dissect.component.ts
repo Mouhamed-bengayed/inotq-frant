@@ -64,12 +64,16 @@ export class SuiviTttDissectComponent implements OnInit {
   modeControl = new FormControl('');
   evolutionControl = new FormControl('');
   responseControl = new FormControl('');
-
+  sPDL= new FormControl();
+  pincement27= new FormControl();
+  pincement_discal= new FormControl();
+  tDM_hernie_discale= new FormControl();
   pincement22 = new FormControl();
   pincement23 = new FormControl();
   pincement24= new FormControl();
   treatmentControl = new FormControl();
-
+  spondylolisthesis = new FormControl();
+  
   radioControl = new FormControl();
 
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
