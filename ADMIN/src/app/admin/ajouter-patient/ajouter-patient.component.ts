@@ -53,7 +53,7 @@ export class AjouterPatientComponent implements OnInit {
   checkboxControl16 = new FormControl(false);
   checkboxControl17 = new FormControl(false);
 
-  spondylolisthesis = new FormControl();
+
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
   incontinenceControl = new FormControl('');
@@ -68,10 +68,7 @@ export class AjouterPatientComponent implements OnInit {
   pincement22 = new FormControl();
   pincement23 = new FormControl();
   pincement24 = new FormControl();
-  pincement27= new FormControl();
-  pincement_discal= new FormControl();
-  tDM_hernie_discale= new FormControl();
-  sPDL= new FormControl();
+
   pincementN = new FormControl();
   treatmentControl = new FormControl();
   showNiveau = false;
@@ -405,10 +402,10 @@ export class AjouterPatientComponent implements OnInit {
     }
   }
 
-  addPatient() {
+  /*addPatient() {
     if (this.firstFormGroup.valid) {
       const patient = this.firstFormGroup.value;
-      this.patientService.createPatient(patient).subscribe(
+      this.patientService.createPatient(patient ).subscribe(
         (response) => {
           console.log('Patient ajouté avec succès : ', response);
           // Réinitialiser le formulaire après l'ajout du patient
@@ -419,7 +416,7 @@ export class AjouterPatientComponent implements OnInit {
         }
       );
     }
-  }
+  }*/
   saveFirstForm() {
     const FirstFormData = this.firstFormGroup.value;
     if (this.firstFormGroup.valid) {
@@ -456,22 +453,11 @@ export class AjouterPatientComponent implements OnInit {
 
 
 
- // Enregistrer le patient
+ // Enregistrer le fiche  patient
  savePatient() {
 
-    const patient = this.firstFormGroup.value;
-   this.patientService.createPatient(patient).subscribe(
-     (response) => {
-       console.log('Patient ajouté avec succès : ', response);
-       // Réinitialiser le formulaire après l'ajout du patient
-       this.firstFormGroup.reset();
-     },
-     (error) => {
-       console.log('Erreur lors de l\'ajout du patient : ', error);
-     }
-   );
     // Récupérer les données des formulaires depuis le localStorage
-   const FirstFormData = JSON.parse(localStorage.getItem('FirstFormData') || '{}');
+ const FirstFormData = JSON.parse(localStorage.getItem('FirstFormData') || '{}');
   const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
   const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
   const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
@@ -490,11 +476,13 @@ export class AjouterPatientComponent implements OnInit {
 
 
   };
+   const user:any=localStorage.getItem("user")!
 
-  this.patientService.createPatient(patientData).subscribe(
+  this.patientService.createPatient(patientData,user.id).subscribe(
     (response) => {
 
       console.log("Patient enregistré avec succès : ", response);
+      localStorage.removeItem('FirstFormData');
       localStorage.removeItem('secondFormGroupData');
       localStorage.removeItem('symptomatologieFormGroupData');
       localStorage.removeItem('thridFormGroupData');
