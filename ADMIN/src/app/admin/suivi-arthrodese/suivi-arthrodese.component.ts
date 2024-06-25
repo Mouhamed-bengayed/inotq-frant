@@ -40,12 +40,17 @@ export class SuiviArthrodeseComponent implements OnInit {
   modeControl = new FormControl('');
   evolutionControl = new FormControl('');
   responseControl = new FormControl('');
-
+  spondylolisthesis= new FormControl('');
   pincement22 = new FormControl();
   pincement23 = new FormControl();
+  pincement24 = new FormControl();
+
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
   constructor( private patientService: PatientService) { }
-
+  pincement27= new FormControl();
+  pincement_discal= new FormControl();
+  tDM_hernie_discale= new FormControl();
+  sPDL= new FormControl();
   ngOnInit(): void {
   }
   
@@ -79,7 +84,19 @@ export class SuiviArthrodeseComponent implements OnInit {
   Motif_de_consultation_l: new FormControl(''),
   
 });
-
+hypotheseFormGroup = new FormGroup({
+  Nbre_infiltration: new FormControl(''),
+  Nbre_seances: new FormControl(''),
+  description_autres: new FormControl(''),
+  Hypothese_diagnostic_HD: new FormControl(''),
+  Hypothese_diagnostic_type: new FormControl(''),
+  Hypothese_diagnostic_Localisation: new FormControl(''),
+  Traitement_propose : new FormControl(''),
+  Traitement_propose_Nbre_infiltrations : new FormControl(''),
+  Traitement_propose_Nbre_seances: new FormControl(''),
+  Traitement_propose_Type_chirurgie: new FormControl(''),
+  Traitement_propose_Auter: new FormControl(''),
+});
  secondFormGroup = new FormGroup({
     poids: new FormControl(''),
     taille: new FormControl(''),
