@@ -417,19 +417,19 @@ export class AjouterPatientComponent implements OnInit {
       );
     }
   }*/
-  saveFirstForm() {
-    const FirstFormData = this.firstFormGroup.value;
-    if (this.firstFormGroup.valid) {
-      localStorage.setItem('FirstFormData', JSON.stringify(FirstFormData));
-    }
-  }
+
   saveSecondForm() {
     const SecondFormGroupData1 = this.secondFormGroup.value;
     if (this.secondFormGroup.valid) {
       localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData1));
     }
    }
-
+  saveFirstForm() {
+    const FirstFormData = this.firstFormGroup.value;
+    if (this.firstFormGroup.valid) {
+      localStorage.setItem('FirstFormData', JSON.stringify(FirstFormData));
+    }
+  }
    saveodiForm() {
     const odiFormGroupData1 = this.odiFormGroup.value;
     if (this.odiFormGroup.valid) {
