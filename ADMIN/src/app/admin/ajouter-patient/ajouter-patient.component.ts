@@ -53,7 +53,7 @@ export class AjouterPatientComponent implements OnInit {
   checkboxControl16 = new FormControl(false);
   checkboxControl17 = new FormControl(false);
 
-
+  spondylolisthesis = new FormControl();
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
   incontinenceControl = new FormControl('');
@@ -68,7 +68,10 @@ export class AjouterPatientComponent implements OnInit {
   pincement22 = new FormControl();
   pincement23 = new FormControl();
   pincement24 = new FormControl();
-
+  pincement27= new FormControl();
+  pincement_discal= new FormControl();
+  tDM_hernie_discale= new FormControl();
+  sPDL= new FormControl();
   pincementN = new FormControl();
   treatmentControl = new FormControl();
   showNiveau = false;
