@@ -40,7 +40,7 @@ const AdminLayoutRoutes: Routes = [
   children: [
 
      { path: 'admindashboard',  component: DashboardAdminComponent },
-     { path: 'user/profile',component: ProfileComponent },
+     { path: 'profile',component: ProfileComponent },
      { path: 'liste/patient',component: ListesPatientsComponent },
      { path: 'ajouter/patient',component: AjouterPatientComponent},
      { path: 'liste/Medecin',component: ListesMedecinComponent },
