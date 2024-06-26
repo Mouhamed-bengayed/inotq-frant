@@ -1,0 +1,14 @@
+/* Custom styles for the dropdown to ensure it appears above the content */
+.dropdown-menu {
+  z-index: 1050; /* Adjust this value as needed */
+}
+
+/* Additional styling to ensure the dropdown menu is visible */
+#content-wrapper {
+  position: relative;
+  z-index: 1; /* Ensure this is lower than the dropdown */
+}
+
+.navbar-nav {
+  z-index: 10500; /* Ensure this is higher than the content */
+}
