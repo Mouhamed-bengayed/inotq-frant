@@ -16,7 +16,7 @@
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-      
+
     </div>
     <li class="nav-item active">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
@@ -30,11 +30,11 @@
           <h6 class="collapse-header">Gestion des patients</h6>
           <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/ajouter/patient']">Ajouter un patient</a>
           <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/liste/patient']">Liste des patients</a>
-         
+
         </div>
       </div>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="isadmi">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
         aria-controls="collapseForm">
         <i class="fab fa-fw fa-wpforms"></i>
@@ -62,8 +62,8 @@
         </div>
       </div>
     </li>
-    
-   
+
+
     <hr class="sidebar-divider">
     <div class="version" id="version-ruangadmin"></div>
   </ul>

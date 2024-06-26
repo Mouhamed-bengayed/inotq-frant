@@ -53,7 +53,7 @@ export class AjouterPatientComponent implements OnInit {
   checkboxControl16 = new FormControl(false);
   checkboxControl17 = new FormControl(false);
 
- pondylolisthesis = new FormControl();
+ spondylolisthesis = new FormControl();
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
   incontinenceControl = new FormControl('');

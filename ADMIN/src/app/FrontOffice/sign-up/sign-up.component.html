@@ -13,10 +13,10 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
                 </div>
-                <input class="form-control" placeholder="Nom et Prénom" type="text" formControlName="name" (focus)="focus1 = true" (blur)="focus1 = false">
+                <input class="form-control" placeholder=" Prénom" type="text" formControlName="name" (focus)="focus1 = true" (blur)="focus1 = false">
               </div>
               <div *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.invalid">
-                <p *ngIf="signupForm.get('name')?.errors?.['required']" class="text-red">nom est requis.</p>
+                <p *ngIf="signupForm.get('name')?.errors?.['required']" class="text-red">Prénom est requis.</p>
               </div>
             </div>
 
@@ -25,10 +25,10 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
                 </div>
-                <input class="form-control" placeholder="Code médecin" type="text" formControlName="username" (focus)="focus1 = true" (blur)="focus1 = false">
+                <input class="form-control" placeholder="Nom de la famille" type="text" formControlName="username" (focus)="focus1 = true" (blur)="focus1 = false">
               </div>
               <div *ngIf="signupForm.get('username')?.touched && signupForm.get('username')?.invalid">
-                <p *ngIf="signupForm.get('username')?.errors?.['required']" class="text-red">Code médecin est requis.</p>
+                <p *ngIf="signupForm.get('username')?.errors?.['required']" class="text-red">Nom de la famille est requis.</p>
               </div>
             </div>
 
@@ -87,7 +87,7 @@
                 <div class="custom-control custom-control-alternative custom-checkbox">
                   <input class="custom-control-input" id="customCheckRegister" type="checkbox"  required>
                   <label class="custom-control-label" for="customCheckRegister">
-                    <span>J'accepte les 
+                    <span>J'accepte les
                       <a href="javascript:void(0)">Politiques Privées</a>
                     </span>
                   </label>
