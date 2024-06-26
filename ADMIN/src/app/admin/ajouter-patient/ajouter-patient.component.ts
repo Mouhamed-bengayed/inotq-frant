@@ -53,7 +53,7 @@ export class AjouterPatientComponent implements OnInit {
   checkboxControl16 = new FormControl(false);
   checkboxControl17 = new FormControl(false);
 
-
+ pondylolisthesis = new FormControl();
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
   incontinenceControl = new FormControl('');
@@ -68,7 +68,10 @@ export class AjouterPatientComponent implements OnInit {
   pincement22 = new FormControl();
   pincement23 = new FormControl();
   pincement24 = new FormControl();
-
+  pincement27= new FormControl();
+  pincement_discal= new FormControl();
+  tDM_hernie_discale= new FormControl();
+  sPDL= new FormControl();
   pincementN = new FormControl();
   treatmentControl = new FormControl();
   showNiveau = false;
@@ -185,7 +188,19 @@ export class AjouterPatientComponent implements OnInit {
     Motif_de_consultation_l: new FormControl(''),
   });
 
-
+  hypotheseFormGroup = new FormGroup({
+    Nbre_infiltration: new FormControl(''),
+    Nbre_seances: new FormControl(''),
+    description_autres: new FormControl(''),
+    Hypothese_diagnostic_HD: new FormControl(''),
+    Hypothese_diagnostic_type: new FormControl(''),
+    Hypothese_diagnostic_Localisation: new FormControl(''),
+    Traitement_propose : new FormControl(''),
+    Traitement_propose_Nbre_infiltrations : new FormControl(''),
+    Traitement_propose_Nbre_seances: new FormControl(''),
+    Traitement_propose_Type_chirurgie: new FormControl(''),
+    Traitement_propose_Auter: new FormControl(''),
+  });
   odiFormGroup = new FormGroup({
     intensite_douleur: new FormControl(''),
     soins_personnels: new FormControl(''),
@@ -212,19 +227,6 @@ export class AjouterPatientComponent implements OnInit {
   }
   saveODIAndShowScore() {
     this.saveodiForm();
-
-
-
-
-    // this.patientService.SaveODIresult(this.scorefinale).subscribe(
-    //   (response) => {
-    //     console.log('Patient enregistré avec succès : ', response);
-
-    //   },
-    //   (error) => {
-    //     console.error('Erreur lors de l\'enregistrement du patient : ', error);
-    //   }
-    // );
 
     const score = this.calculateScore();
     Swal.fire('ODI SCORE', `VOTRE SCORE EST : ${score}`, 'success');
@@ -453,7 +455,7 @@ export class AjouterPatientComponent implements OnInit {
 
 
 
- // Enregistrer le fiche  patient
+ // Enregistrer le patient
  savePatient() {
 
     // Récupérer les données des formulaires depuis le localStorage
