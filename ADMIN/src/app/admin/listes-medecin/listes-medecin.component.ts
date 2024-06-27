@@ -33,7 +33,7 @@ export class ListesMedecinComponent implements OnInit {
         () => {
           console.log('Utilisateur activé avec succès.');
           window.location.reload();
-          medecin.valid=true;
+          medecin.blocked=true;
         },
         (error) => {
           console.error('Une erreur s\'est produite lors de l\'activation :', error);
@@ -46,7 +46,7 @@ export class ListesMedecinComponent implements OnInit {
         () => {
         console.log('Utilisateur activé avec succès.');
           window.location.reload();
-          medecin.valid=false;
+          medecin.blockedByAdmin=false;
         },
         (error) => {
           console.error('Une erreur s\'est produite lors de l\'activation :', error);

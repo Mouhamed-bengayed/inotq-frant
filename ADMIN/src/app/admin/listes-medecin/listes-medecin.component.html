@@ -22,13 +22,15 @@
                           <th>Id</th>
                           <th>Nom</th>
                           <th>Prénom</th>
-                          <th>addresse</th>
-                          <!-- <th>Start date</th>
-                          <th>addresse</th> -->
-                          <th>Numéro</th>
-                        
-                          <th>Statut</th>
-                          <!-- <th>supprime</th> -->
+                          <th>Email</th>
+                          <th>Addresse</th>                
+                          <th>Numéro Telephone</th> 
+                          <th>Date de creation</th>                  
+                          <th>Bloque par admin</th>
+                          <th>Activer/bloquer par adminstrateur</th>
+                          <th>Statut </th>
+
+
 
                         </tr>
                       </thead>
@@ -38,13 +40,22 @@
                           <td>{{med.id}}</td>
                           <td>{{med.name}}</td>
                           <td>{{med.username}}</td>
-                          <!-- <td>{{med.specialite}}</td> -->
-                          <!-- <td>{{med.addresse}}</td> -->
+                          <td>{{med.email}}</td>
+                          <td>{{med.addresse}}</td>
                           <td>{{med.number}}</td>
-                          <td>{{med.blocked}}</td>
+                          <td>{{med.date}}</td>
+                          <td>{{med.blockedByAdmin}}</td>
+
+
+                          
+
                           <td>
-                            <button *ngIf="!med.valid"(click)="activateMedecin(med)" type="button" class="btn btn-success" >Activer</button>
-                            <button *ngIf="med.valid"(click)="bloqueMedecin(med)" type="button" class="btn btn-danger">Bloquer</button>
+                            <button *ngIf="!med.blockedByAdmin"(click)="activateMedecin(med)" type="button" class="btn btn-success" >Activer Compte </button>
+                            <button *ngIf="med.blockedByAdmin"(click)="bloqueMedecin(med)" type="button" class="btn btn-danger">Bloquer Compte</button>
+                          </td>
+                          <td>
+                            <button *ngIf="!med.blocked"(click)="activateMedecin(med)" type="button" class="btn btn-success" >Start Compte </button>
+                            <button *ngIf="med.blocked"  class="btn btn-danger">Compte Start</button>
                           </td>
                           <td>
                             <!-- <button (click)="supprimeMedecin(med)" type="button" class="btn btn-danger" >Supprimer</button> -->

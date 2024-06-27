@@ -71,7 +71,7 @@ export class AjouterPatientComponent implements OnInit {
   pincement23 = new FormControl();
   pincement24 = new FormControl();
   pincement27= new FormControl();
-  spondylolisthesis= new FormControl();
+  
   pincement_discal= new FormControl();
   tDM_hernie_discale= new FormControl();
   sPDL= new FormControl();
