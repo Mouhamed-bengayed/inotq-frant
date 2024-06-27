@@ -1,5 +1,42 @@
-@media (max-width: 600px) {
-  .navbar {
-    background-color: red;
-  }
+
+/* Base styles for the navbar toggler */
+.navbar-toggler {
+  position: relative;
+  border: none;
+  background: transparent;
+}
+
+.navbar-toggler-icon {
+  display: none; /* Hide the default icon */
+}
+
+/* Styles for the lines */
+.navbar-toggler .line {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s;
+  background-color: #000; /* Adjust color as needed */
+}
+
+/* Transform the lines into an 'X' */
+.navbar-toggler.collapsed .line1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggler.collapsed .line2 {
+  opacity: 0;
+}
+
+.navbar-toggler.collapsed .line3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Ensure the button looks good in all states */
+.navbar-toggler:not(.collapsed) .line1,
+.navbar-toggler:not(.collapsed) .line2,
+.navbar-toggler:not(.collapsed) .line3 {
+  transform: none;
+  opacity: 1;
 }

@@ -9,16 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SideBarComponent implements OnInit {
+  isSidebarOpen = false;
+
+  open(){
+
+    this.isSidebarOpen = !this.isSidebarOpen;
+
+  }
  isadmi:Boolean=false;
  ismedecin:Boolean=false;
+  username: any;
   constructor() {
     // Retrieve the user string from localStorage
     const userStr = localStorage.getItem("user");
-
     // Check if userStr is null
     if (userStr) {
       // Parse the user string to an object
       const user = JSON.parse(userStr);
+      this.username=user.username;
 
       // Check if authorities is defined and is an array
       if (user.authorities && Array.isArray(user.authorities) && user.authorities.length > 0) {

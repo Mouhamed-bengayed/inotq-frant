@@ -1,0 +1,50 @@
+.image-container .avatar {
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: white;
+  padding: 4px;
+  border: 1px solid #dddddd;
+}
+.sidenavbar-toggler {
+  position: relative;
+  border: none;
+  background: transparent;
+}
+
+.sidenavbar-toggler-icon {
+  display: none; /* Hide the default icon */
+}
+
+/* Styles for the lines */
+.sidenavbar-toggler .line {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s;
+  background-color: #000; /* Adjust color as needed */
+}
+
+/* Transform the lines into an 'X' */
+.sidenavbar-toggler.collapsed .line1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.sidenavbar-toggler.collapsed .line2 {
+  opacity: 0;
+}
+
+.sidenavbar-toggler.collapsed .line3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Ensure the button looks good in all states */
+.sidenavbar-toggler:not(.collapsed) .line1,
+.sidenavbar-toggler:not(.collapsed) .line2,
+.sidenavbar-toggler:not(.collapsed) .line3 {
+  transform: none;
+  opacity: 1;
+}

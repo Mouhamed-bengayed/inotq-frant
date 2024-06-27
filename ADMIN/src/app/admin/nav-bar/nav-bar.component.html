@@ -1,15 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
+    <span class="line line1"></span>
+    <span class="line line2"></span>
+    <span class="line line3"></span>
   </button>
+  <script>
+    document.querySelector('.navbar-toggler').addEventListener('click', function () {
+      this.classList.toggle('collapsed');
+    });
+  </script>
+
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/admin/profile"><i class="fas fa-user text-white"></i><span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/admin/profile"><i class="fas fa-user text-white">  Profile</i><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-bell text-white"></i>
+          <i  class="  fas fa-bell text-white">     Notifs</i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Notification 1</a>
