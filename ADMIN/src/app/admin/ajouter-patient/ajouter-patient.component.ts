@@ -52,7 +52,7 @@ export class AjouterPatientComponent implements OnInit {
   checkboxControl15 = new FormControl(false);
   checkboxControl16 = new FormControl(false);
   checkboxControl17 = new FormControl(false);
-
+  treatmentControl88= new FormControl('');
  pondylolisthesis = new FormControl();
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
@@ -429,9 +429,9 @@ export class AjouterPatientComponent implements OnInit {
    }
   saveFirstForm() {
     const FirstFormData = this.firstFormGroup.value;
-    if (this.firstFormGroup.valid) {
+    
       localStorage.setItem('FirstFormData', JSON.stringify(FirstFormData));
-    }
+    
   }
    saveodiForm() {
     const odiFormGroupData1 = this.odiFormGroup.value;
