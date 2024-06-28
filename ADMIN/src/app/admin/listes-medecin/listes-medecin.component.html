@@ -50,12 +50,12 @@
                           
 
                           <td>
-                            <button *ngIf="!med.blockedByAdmin"(click)="activateMedecin(med)" type="button" class="btn btn-success" >Activer Compte </button>
-                            <button *ngIf="med.blockedByAdmin"(click)="bloqueMedecin(med)" type="button" class="btn btn-danger">Bloquer Compte</button>
+                            <button *ngIf="med.blockedByAdmin"(click)="ActiveMedecinByAdmin(med)" type="button" class="btn btn-success" >Activer Compte </button>
+                            <button *ngIf="!med.blockedByAdmin"(click)="bloqueMedecinByAdmin(med)" type="button" class="btn btn-danger">Bloquer Compte</button>
                           </td>
                           <td>
-                            <button *ngIf="!med.blocked"(click)="activateMedecin(med)" type="button" class="btn btn-success" >Start Compte </button>
-                            <button *ngIf="med.blocked"  class="btn btn-danger">Compte Start</button>
+                            <button *ngIf="!med.Status"(click)="activateMedecin(med)" type="button" class="btn btn-success" >Start Compte </button>
+                            <button *ngIf="med.Status"  class="btn btn-danger">Compte Start</button>
                           </td>
                           <td>
                             <!-- <button (click)="supprimeMedecin(med)" type="button" class="btn btn-danger" >Supprimer</button> -->

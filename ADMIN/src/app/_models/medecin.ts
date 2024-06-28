@@ -9,6 +9,7 @@
     blockedByAdmin: boolean;
     Role: string;
     token: string;
+    Status:boolean;
     refreshToken :string;
     addresse: string;
     date: string;
