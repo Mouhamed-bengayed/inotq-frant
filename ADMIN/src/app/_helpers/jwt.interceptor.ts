@@ -3,32 +3,33 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
-import { AccountService } from '../admin/Services/account.service';
+import {AccountService} from "../Service/account.service";
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
     constructor(private accountService: AccountService) { }
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // add auth header with jwt if user is logged in and request is to the api url
-        const user = this.accountService.userValue;
-        //const token=this.accountService.getAuthToken;
-        const isLoggedIn = user && user.token;
-        const isApiUrl = request.url.startsWith(environment.apiUrl);
-        
-            
-        if (isLoggedIn && isApiUrl  ) {
-            request = request.clone({
-                setHeaders: {
-                    'Content-Type': 'application/json',
-                    Authorization: `access ${user.token}`,
-                    'RefreshToken': user.refreshToken
-                }
-            });
-        }
 
-        return next.handle(request);
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // add auth header with jwt if user is logged in and request is to the api url
+    const user = this.accountService.userValue;
+    const isLoggedIn = user && user.token;
+    const isApiUrl = request.url.startsWith(environment.apiUrl);
+
+    if (isLoggedIn && isApiUrl) {
+      // @ts-ignore
+      request = request.clone({
+        setHeaders: {
+          'Content-Type': 'application/json',
+          Authorization: `access ${user.token}`,
+          'RefreshToken': user.refreshToken?user.refreshToken:''
+        }
+      });
     }
-    
+
+    return next.handle(request);
+
+  }
+
 }
 

@@ -17,12 +17,12 @@ export class AccountService {
     constructor(
         private router: Router,
         private http: HttpClient
-    ) 
+    )
     {
         this.medecinSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('medecin') || sessionStorage.getItem('medecin')!));
         this.medecin = this.medecinSubject.asObservable();
     }
- 
+
     public get medecinValue() {
         return this.medecinSubject.value;
     }
@@ -33,7 +33,7 @@ export class AccountService {
     login(email: string, password: string) {
         return this.http.post<any>(`${environment.apiUrl}/api/auth/signIn`, { email, password })
             .pipe(map(medecin => {
-                // const token = response.accessToken; 
+                // const token = response.accessToken;
                 //        if (rememberMe) {
                 // localStorage.setItem('access_token', token);
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -50,7 +50,7 @@ export class AccountService {
     }
     logout() {
         // remove medecin from local storage and set current medecin to null
-        localStorage.removeItem('medecin');
+        localStorage.removeItem('user');
         sessionStorage.removeItem('medecin');
         sessionStorage.removeItem('accessToken');
         sessionStorage.removeItem('refreshToken');
@@ -110,7 +110,7 @@ export class AccountService {
 
         return token || 'EMPTY';
     }
-   
+
     forgetPassword(username: String, resetPass: any) {
         return this.http.put(`${environment.apiUrl}/api/user/forgetpass/${username}`, resetPass);
     }
@@ -120,7 +120,7 @@ export class AccountService {
     forgetPasswordbyemail(email: String, resetPass: any) {
         return this.http.put(`${environment.apiUrl}/api/user/forgetpassbyemail/${email}`, resetPass);
     }
-    
+
     // getAccessToken(): string {
     //     return localStorage.getItem('accessToken');
     //   }

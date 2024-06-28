@@ -1,9 +1,14 @@
 body{margin-top:20px;
   background:#eee;
 }
+.section {
 
+  position: relative;
+
+}
 .profile-widget {
   position: relative;
+
 }
 .profile-widget .image-container {
   background-size: cover;

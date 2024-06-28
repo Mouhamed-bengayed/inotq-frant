@@ -38,11 +38,11 @@ export class AccountService {
     public get userValue() {
         return this.userSubject.value;
     }
-   
+
     login(email: string, password: string) {
         return this.http.post<any>(`${environment.apiUrl}/api/auth/signIn`, { email, password })
             .pipe(map(user => {
-                // const token = response.accessToken; 
+                // const token = response.accessToken;
                 //        if (rememberMe) {
                 // localStorage.setItem('access_token', token);
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -51,11 +51,11 @@ export class AccountService {
                 console.info(user);
                 this.userSubject.next(user);
                 this.isconn=true;
-                // this.getuserById(user.id).subscribe((data: User) => {
-                //     localStorage.setItem('myuserinfo', JSON.stringify(data));
-                //     this.CurrentUserInfoSubject.next(data);
+                this.getuserById(user.id).subscribe((data: User) => {
+                    localStorage.setItem('myuserinfo', JSON.stringify(data));
+                    this.CurrentUserInfoSubject.next(data);
 
-                // });
+                 });
                 // this.GroupChatservice.getGroupChatByUser(user.id).subscribe((data: GroupChat) => {
                 //     localStorage.setItem('currentGroupChat', JSON.stringify(data));
                 //     this.CurrentgroupchatSubject.next(data);
@@ -91,7 +91,7 @@ export class AccountService {
     //2)est3mlouha bach tgetiw user info koll
     public getCurrentUserInfoValue() {
         return this.CurrentUserInfoSubject.value;
-    }//emchiw li servicetkom w asn3ou  currentuser:user; mb3d fi constructor a3mlou 
+    }//emchiw li servicetkom w asn3ou  currentuser:user; mb3d fi constructor a3mlou
     //this.currentuser=this.accountservice.getCurrentUserInfoValue() as User;
     //3)e5dmou byh tw yjikom info kol 3lé user
     // public getCurrentGroupChatValue() {
@@ -107,25 +107,12 @@ export class AccountService {
 
     logout() {
         // remove user from local storage and set current user to null
-        localStorage.removeItem('socialuser');
-        localStorage.removeItem('currentGroupChat');
         localStorage.removeItem('myuserinfo');
         localStorage.removeItem('email');
-        const userId = JSON.parse(localStorage.getItem('user')||sessionStorage.getItem("user")!).id;
-        this.updateUserAvailability(userId).subscribe((response: any) => {
-          console.log('User availability updated successfully:', response);
-        });
-
         localStorage.removeItem('user');
-        sessionStorage.removeItem('user');
-        sessionStorage.removeItem('SocialAuthToken');
-        sessionStorage.removeItem('accessToken');
-        sessionStorage.removeItem('refreshToken');
-        // Alternatively, you can use localStorage:
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
         this.userSubject.next(null);
-        this.router.navigate(['/account/login']);
+        this.CurrentUserInfoSubject.next(null);
+        this.router.navigate(['/signin']);
     }
 
     register(user: User) {
