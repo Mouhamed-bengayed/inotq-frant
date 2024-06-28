@@ -8,14 +8,14 @@ type EditableField = 'username' | 'name' | 'adresse' | 'about' | 'introduction' 
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  // user:any;
-  // constructor(private accountservice:AccountService ) { }
-  //
-  // ngOnInit(): void {
-  //    this.user=this.accountservice.CurrentUserInfoSubject.getValue();
-  // }
+  user:any;
+  constructor(private accountservice:AccountService ) { }
 
-  user = {
+  ngOnInit(): void {
+     this.user=this.accountservice.CurrentUserInfoSubject.getValue();
+  }
+
+ /* user = {
     username: 'Username',
     name: 'John Doe',
     adresse: 'Some Hospital',
@@ -27,7 +27,7 @@ export class ProfileComponent {
     phone: '(123) 456 - 7890',
     email: 'spam@ztapps.com',
     website: 'ztapps.com'
-  };
+  };*/
 
   editMode: Record<EditableField, boolean> = {
     username: false,
