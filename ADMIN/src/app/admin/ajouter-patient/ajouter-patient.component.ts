@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {  FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PatientService } from '../Services/patient.service';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { telephoneValidator } from '../Services/CustomDateAdapter';
@@ -102,6 +102,9 @@ export class AjouterPatientComponent implements OnInit {
     });
   }
 
+
+
+
   get telephone() {
     return this.form.get('telephone');
   }
@@ -167,6 +170,11 @@ export class AjouterPatientComponent implements OnInit {
     this.showOtherCheckboxes = event.checked;
   }
 
+  onAutresChange(event: any) {
+    this.treatmentCont = event.checked ? 'autres' : '';
+  }
+  
+ 
   firstFormGroup = new FormGroup({
     date_de_consultation: new FormControl(new Date()),
     dossierMedical: new FormControl(''),
@@ -187,7 +195,7 @@ export class AjouterPatientComponent implements OnInit {
     adresse_par: new FormControl(''),
     statut_social: new FormControl(''),
     entourage_actuel: new FormControl(''),
-    atcd: new FormControl(''),
+    atcd: this.fb.array([]),
     Tabac: new FormControl(''),
     Motif_de_consultation: new FormControl(''),
     Motif_de_consultation_l: new FormControl(''),
@@ -219,6 +227,23 @@ export class AjouterPatientComponent implements OnInit {
     voyage: new FormControl(''),
   });
   scorefinale:number=0;
+
+  onCheckboxChange(e: any, arrayName: string) {
+    const checkArray: FormArray = this.firstFormGroup.get(arrayName) as FormArray;
+
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }}
+
   calculateScore(): number {
     const odiFormGroupData = this.odiFormGroup.value as { [key: string]: string | null };
     let score = 0;
@@ -237,6 +262,7 @@ export class AjouterPatientComponent implements OnInit {
     Swal.fire('ODI SCORE', `VOTRE SCORE EST : ${score}`, 'success');
 
   }
+ 
 
   secondFormGroup = new FormGroup({
     date_debut_maladie: new FormControl(''),
@@ -458,8 +484,9 @@ export class AjouterPatientComponent implements OnInit {
    }
 
 
+ 
 
-
+ 
  // Enregistrer le patient
  savePatient() {
 

@@ -180,23 +180,23 @@
                                 <mat-radio-button style="padding-right: 30px;" value="2">Mal entouré(e)      </mat-radio-button>
                               </mat-radio-group>
                               <br>
-                              <label  class="custom-label" style="padding-right: 30px;"   style="padding-right: 30px;">ATCD</label>
+                              <label class="custom-label" style="padding-right: 30px;">ATCD</label>
+                              <div formArrayName="atcd">
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" (change)="onCheckboxChange($event, 'atcd')">HTA</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2" (change)="onCheckboxChange($event, 'atcd')">Chirurgie abdominale</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3" (change)="onCheckboxChange($event, 'atcd')">Diabéte</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="4" (change)="onCheckboxChange($event, 'atcd')">Scoliose</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" value="autres" (change)="onCheckboxChange($event, 'atcd'); onAutresChange($event)">Autres</mat-checkbox>
+                              </div>
+                            
+                              <mat-form-field *ngIf="treatmentCont === 'autres'">
+                                <mat-label>Description</mat-label>
+                                <input matInput formControlName="description_autres" placeholder="Description" type="text">
+                              </mat-form-field>
 
-                              <mat-radio-group aria-label="Select an option" formControlName="atcd">
-                                <mat-checkbox style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin"  value="1">HTA  </mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;"  style="padding-right: 30px;"class="example-margin" value="2">Chirurgie abdominale     </mat-checkbox>
 
-                                <mat-checkbox style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin" value="3">Diabéte    </mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin" value="4">Scoliose      </mat-checkbox>
-
-                                <mat-checkbox style="padding-right: 30px;"  [value]="'autres'">Autres</mat-checkbox>
-                                <mat-form-field *ngIf="treatmentCont==='autres'">
-                                  <mat-label>Description</mat-label>
-                                  <input matInput formControlName="description_autres" placeholder="Description" type="text">
-                                </mat-form-field>
-
-                              </mat-radio-group>
 <br>
+
                               <label  class="custom-label" style="padding-right: 30px;"   style="padding-right: 30px;">Tabac</label>
 
                               <mat-radio-group [formControl]="pincement22" (change)="onChange()">
@@ -230,21 +230,20 @@
                               <label  class="custom-label" style="padding-right: 30px;"   style="padding-right: 30px;">Localisation</label>
 
                               <mat-radio-group aria-label="Select an option" formControlName="Motif_de_consultation_l">
-                                <mat-checkbox style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin"  value="1">L3  </mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;"  style="padding-right: 30px;"class="example-margin" value="2">L4     </mat-checkbox>
-
-                                <mat-checkbox style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin" value="3">L5    </mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin" value="4">S1      </mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" value="9">Autres</mat-checkbox>
+                                <mat-radio-button style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin"  value="1">L3  </mat-radio-button>
+                                <mat-radio-button style="padding-right: 30px;"  style="padding-right: 30px;"class="example-margin" value="2">L4     </mat-radio-button>
+                                <mat-radio-button style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin" value="3">L5    </mat-radio-button>
+                                <mat-radio-button style="padding-right: 30px;" style="padding-right: 30px;" class="example-margin" value="4">S1      </mat-radio-button>
+                                <mat-radio-button style="padding-right: 30px;" value="9">Autres</mat-radio-button>
                                 <mat-form-field *ngIf="treatmentControl.value === 'autres'">
                                   <mat-label>Description</mat-label>
                                   <input matInput formControlName="description_autres" placeholder="Description" type="text">
                                 </mat-form-field>
 
                               </mat-radio-group>
-                              <br>
+                             
                               <div>
-                                <button style="padding-right: 30px;"  class="button" mat-flat-button color="primary" mat-button matStepperNext  >Suivant</button>
+                                <button style="padding-right: 30px;"  class="button" mat-flat-button color="primary" mat-button matStepperNext (click)="saveFirstForm() " >Suivant</button>
                               </div>
                             </form>
                           </mat-step>
