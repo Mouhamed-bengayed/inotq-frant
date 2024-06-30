@@ -181,12 +181,13 @@
                               </mat-radio-group>
                               <br>
                               <label class="custom-label" style="padding-right: 30px;">ATCD</label>
+                              
                               <div formArrayName="atcd">
                                 <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" (change)="onCheckboxChange($event, 'atcd')">HTA</mat-checkbox>
                                 <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2" (change)="onCheckboxChange($event, 'atcd')">Chirurgie abdominale</mat-checkbox>
                                 <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3" (change)="onCheckboxChange($event, 'atcd')">Diabéte</mat-checkbox>
                                 <mat-checkbox style="padding-right: 30px;" class="example-margin" value="4" (change)="onCheckboxChange($event, 'atcd')">Scoliose</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" value="autres" (change)="onCheckboxChange($event, 'atcd'); onAutresChange($event)">Autres</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" value="autres" >Autres</mat-checkbox>
                               </div>
                             
                               <mat-form-field *ngIf="treatmentCont === 'autres'">
@@ -194,7 +195,9 @@
                                 <input matInput formControlName="description_autres" placeholder="Description" type="text">
                               </mat-form-field>
 
-
+                             
+                              
+                             
 <br>
 
                               <label  class="custom-label" style="padding-right: 30px;"   style="padding-right: 30px;">Tabac</label>
@@ -218,15 +221,25 @@
                               <br>
                               <label  class="custom-label"   style="padding-right: 30px;">Motif de consultation </label>
 
-                              <mat-radio-group aria-label="Select an option" formControlName="Motif_de_consultation">
-                                <mat-checkbox   style="padding-right: 30px;" class="example-margin" value="1">Lombalgie   </mat-checkbox>
-                                <mat-checkbox   style="padding-right: 30px;" class="example-margin" value="2">Sciatique   </mat-checkbox>
+                              <!-- <mat-radio-group aria-label="Select an option" formControlName="Motif_de_consultation">
+                                <mat-radio-button   style="padding-right: 30px;" class="example-margin" value="1">Lombalgie   </mat-radio-button>
+                                <mat-radio-button   style="padding-right: 30px;" class="example-margin" value="2">Sciatique   </mat-radio-button>
 
-                                <mat-checkbox   style="padding-right: 30px;" class="example-margin" value="3">Radiculalgie</mat-checkbox>
-                                <mat-checkbox   style="padding-right: 30px;" class="example-margin" value="4">Cruralgie</mat-checkbox>
-                                <mat-checkbox   style="padding-right: 30px;" class="example-margin"value="5">Claudication</mat-checkbox>
-                              </mat-radio-group>
+                                <mat-radio-button   style="padding-right: 30px;" class="example-margin" value="3">Radiculalgie</mat-radio-button>
+                                <mat-radio-button   style="padding-right: 30px;" class="example-margin" value="4">Cruralgie</mat-radio-button>
+                                <mat-radio-button   style="padding-right: 30px;" class="example-margin"value="5">Claudication</mat-radio-button>
+                              </mat-radio-group> -->
                               <br>
+
+                              <div formArrayName="Motif_de_consultation">
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" (change)="onCheckboxChange($event, 'Motif_de_consultation')">Lombalgie</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2" (change)="onCheckboxChange($event, 'Motif_de_consultation')">Sciatique</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3" (change)="onCheckboxChange($event, 'Motif_de_consultation')">Radiculalgie</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="4" (change)="onCheckboxChange($event, 'Motif_de_consultation')">Cruralgie</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="5" (change)="onCheckboxChange($event, 'Motif_de_consultation')">Claudication</mat-checkbox>
+                              </div>
+                              <br>
+
                               <label  class="custom-label" style="padding-right: 30px;"   style="padding-right: 30px;">Localisation</label>
 
                               <mat-radio-group aria-label="Select an option" formControlName="Motif_de_consultation_l">

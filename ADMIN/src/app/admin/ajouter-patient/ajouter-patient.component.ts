@@ -170,9 +170,17 @@ export class AjouterPatientComponent implements OnInit {
     this.showOtherCheckboxes = event.checked;
   }
 
-  onAutresChange(event: any) {
-    this.treatmentCont = event.checked ? 'autres' : '';
+  onCheckboxChange(event: any, formArrayName: string) {
+    const formArray: FormArray = this.firstFormGroup.get(formArrayName) as FormArray;
+
+    if (event.checked) {
+      formArray.push(this.fb.control(event.source.value));
+    } else {
+      const index = formArray.controls.findIndex(x => x.value === event.source.value);
+      formArray.removeAt(index);
+    }
   }
+
   
  
   firstFormGroup = new FormGroup({
@@ -197,7 +205,7 @@ export class AjouterPatientComponent implements OnInit {
     entourage_actuel: new FormControl(''),
     atcd: this.fb.array([]),
     Tabac: new FormControl(''),
-    Motif_de_consultation: new FormControl(''),
+    Motif_de_consultation:this.fb.array([]),
     Motif_de_consultation_l: new FormControl(''),
   });
 
@@ -228,21 +236,7 @@ export class AjouterPatientComponent implements OnInit {
   });
   scorefinale:number=0;
 
-  onCheckboxChange(e: any, arrayName: string) {
-    const checkArray: FormArray = this.firstFormGroup.get(arrayName) as FormArray;
-
-    if (e.target.checked) {
-      checkArray.push(new FormControl(e.target.value));
-    } else {
-      let i: number = 0;
-      checkArray.controls.forEach((item: any) => {
-        if (item.value == e.target.value) {
-          checkArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
-    }}
+ 
 
   calculateScore(): number {
     const odiFormGroupData = this.odiFormGroup.value as { [key: string]: string | null };
@@ -412,7 +406,7 @@ export class AjouterPatientComponent implements OnInit {
     iRM_etat_disques_sus_jacent: new FormControl(''),
 });
 
-
+isAutresChecked = false;
 
 
 
@@ -450,6 +444,8 @@ export class AjouterPatientComponent implements OnInit {
       );
     }
   }*/
+
+  
 
   saveSecondForm() {
     const SecondFormGroupData1 = this.secondFormGroup.value;
