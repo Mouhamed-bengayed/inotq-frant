@@ -6,14 +6,20 @@ export class User {
     email?: string;
     username?: string;
     password?: string;
-    blocked?: boolean;
-    Role?: string;
+  blockedByAdmin?: boolean;
+  mailvalid?: boolean;
+  Status?: string;
     token?: string;
     refreshToken?: string;
-    address?: string;
+  addresse?: string;
     valid?: boolean;
     number?: string;
     image?: string;
     roles?:Role[]=[];
-    
+  date_de_naissance?:Date;
+  sexe?:string;
+  diplome?:string;
+  descreption_Personelle?:string;
+  annee_dexperience?:number;
+  lieu_deducation?:string;
 }

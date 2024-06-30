@@ -1,0 +1,74 @@
+.image-container .avatar {
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: white;
+  padding: 4px;
+  border: 1px solid #dddddd;
+}
+/* Basic styles for the sidebar */
+#sidenavbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.97);
+  z-index: 1050;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+}
+
+/* When sidebar is open */
+#sidenavbar.show {
+  transform: translateX(0);
+}
+
+/* Styles for the sidebar toggle button */
+.sidenavbar-toggler {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1100; /* Make sure the toggle button is above the sidebar */
+  border: none;
+  background: transparent;
+}
+
+/* Hide the default icon */
+.sidenavbar-toggler-icon {
+  display: none;
+}
+
+/* Styles for the lines */
+.sidenavbar-toggler .line {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s;
+  background-color: #000;
+}
+
+/* Transform the lines into an 'X' */
+.sidenavbar-toggler.collapsed .line1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.sidenavbar-toggler.collapsed .line2 {
+  opacity: 0;
+}
+
+.sidenavbar-toggler.collapsed .line3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+.cardo {
+  width: 100%; /* Make the card fit the space */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Add shadow effect */
+ border: #0A9EC1;
+  border-radius: 10px; /* Add rounded corners */
+  margin: auto; /* Add some margin */
+  padding: 15px; /* Add some padding */
+  background-color: rgba(255, 255, 255, 0.93); /* Add a white background */
+}

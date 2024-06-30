@@ -1,71 +1,62 @@
- <!-- Sidebar -->
- <body id="page-top">
-    <div id="wrapper">
- <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-      <div class="sidebar-brand-icon">
-        <img src="img/logo/logo2.png">
+<button class="sidenavbar-toggler" type="button" data-toggle="collapse" data-target="#sidenavbar" aria-controls="sidenavbar" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="sidenavbar-toggler-icon"></span>
+  <span class="line line1"></span>
+  <span class="line line2"></span>
+  <span class="line line3"></span>
+</button>
+
+<div style="padding-top: 50px;" id="sidenavbar">
+  <ul class="navbar-nav sidebar-light">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/admin/profile">
+      <div class="image-container bg2">
+        <img [src]="profileImageUrl" class="avatar" alt="avatar">
       </div>
-      <div class="sidebar-brand-text mx-3">Bienvenue</div>
+      <div class="sidebar-brand-text" style="font-size: small;">Bienvenue Docteur {{username}}</div>
     </a>
     <hr class="sidebar-divider my-0">
-    <li class="nav-item">
-      <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Services</span></a>
-    </li>
     <hr class="sidebar-divider">
-    <div class="sidebar-heading">
-
-    </div>
+    <div class="sidebar-heading"></div>
     <li class="nav-item active">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
-        aria-expanded="true" aria-controls="collapseBootstrap">
+         aria-expanded="true" aria-controls="collapseBootstrap">
         <i class="far fa-fw fa-window-maximize"></i>
-        <span>Gestion des patients </span>
+        <span>Gestion des patients ></span>
       </a>
-      <div id="collapseBootstrap" class="collapse show" aria-labelledby="headingBootstrap"
-        data-parent="#accordionSidebar">
+      <div id="collapseBootstrap" class="cardo collapse show" aria-labelledby="headingBootstrap">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Gestion des patients</h6>
-          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/ajouter/patient']">Ajouter un patient</a>
-          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/liste/patient']">Liste des patients</a>
-
+          <h6 class="collapse-header">Consulter la gestion des patients :</h6>
+          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/ajouter/patient']">Ajouter un patient ></a><br>
+          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/liste/patient']">Liste des patients ></a>
         </div>
       </div>
     </li>
-    <li class="nav-item" *ngIf="isadmi">
+    <li class="nav-item" *ngIf="isAdmin">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
-        aria-controls="collapseForm">
+         aria-controls="collapseForm">
         <i class="fab fa-fw fa-wpforms"></i>
-        <span>Gestion des médecins</span>
+        <span>Gestion des médecins ></span>
       </a>
-      <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+      <div id="collapseForm" class="cardo collapse" aria-labelledby="headingForm">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Gestion des médecins</h6>
-          <!-- <a class="collapse-item" >Ajouter un médecin</a> -->
-          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/liste/Medecin']">Liste des médecins</a>
+          <h6 class="collapse-header">Consulter la gestion des médecins :</h6>
+          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/liste/Medecin']">Liste des médecins ></a>
         </div>
       </div>
     </li>
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
-        aria-controls="collapseTable">
+         aria-controls="collapseTable">
         <i class="fas fa-fw fa-table"></i>
-        <span>Notifications</span>
+        <span>Notifications ></span>
       </a>
-      <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+      <div id="collapseTable" class="cardo collapse" aria-labelledby="headingTable">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Notifications</h6>
-          <a class="collapse-item" href="simple-tables.html">Notifications</a>
-          <!-- <a class="collapse-item" href="datatables.html">DataTables</a> -->
+          <h6 class="collapse-header">Ouvrir les notifications :</h6>
+          <a class="collapse-item" href="simple-tables.html">Notifications ></a>
         </div>
       </div>
     </li>
-
-
     <hr class="sidebar-divider">
     <div class="version" id="version-ruangadmin"></div>
   </ul>
-    </div>
- </body>
+</div>
