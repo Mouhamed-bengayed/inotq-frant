@@ -32,6 +32,7 @@ import { SuiviTttDissectComponent } from './suivi-ttt-dissect/suivi-ttt-dissect.
 import { SuiviArthrodeseComponent } from './suivi-arthrodese/suivi-arthrodese.component';
 import { StaffComponent } from './staff/staff.component';
 import { CustomDateAdapter, CUSTOM_DATE_FORMATS } from './Services/CustomDateAdapter';
+import {HttpClientModule} from "@angular/common/http";
 
 
 const AdminLayoutRoutes: Routes = [
@@ -74,7 +75,9 @@ const AdminLayoutRoutes: Routes = [
     MatNativeDateModule,
     MatDatepickerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
+
   ],
   declarations: [
     ListesMedecinComponent,

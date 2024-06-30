@@ -1,41 +1,50 @@
 import { Component, OnInit } from '@angular/core';
-
-
+import { AccountService } from "../../Service/account.service";
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.css']
 })
-
 export class SideBarComponent implements OnInit {
+  isAdmin: boolean = false;
   isSidebarOpen = false;
 
-  open(){
+  isMedecin: boolean = false;
+  username: string = '';
+  profileImageUrl: any = 'https://bootdey.com/img/Content/avatar/avatar1.png';
 
-    this.isSidebarOpen = !this.isSidebarOpen;
-
-  }
- isadmi:Boolean=false;
- ismedecin:Boolean=false;
-  username: any;
-  constructor() {
-    // Retrieve the user string from localStorage
+  constructor(private accountService: AccountService, private http: HttpClient, private sanitizer: DomSanitizer) {
     const userStr = localStorage.getItem("user");
-    // Check if userStr is null
-    if (userStr) {
-      // Parse the user string to an object
-      const user = JSON.parse(userStr);
-      this.username=user.username;
 
-      // Check if authorities is defined and is an array
+    if (userStr) {
+      const user = JSON.parse(userStr);
+      this.username = user.username;
+      const url = `http://localhost:8082/candidats/${user.id}/photo`;
+      this.http.get(url, { responseType: 'blob' }).subscribe(
+        response => {
+          const objectURL = URL.createObjectURL(response);
+          this.profileImageUrl = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+        },
+        error => {
+          console.error('Error loading profile image', error);
+        }
+      );
+      // this.accountService.getuserById(user.id).subscribe((data: any) => {
+      //   if (data.image) {
+      //     this.profileImageUrl = this.sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,${data.image}`);
+      //   }
+      // });
+
       if (user.authorities && Array.isArray(user.authorities) && user.authorities.length > 0) {
         const userAuthority = user.authorities[0].authority;
 
         if (userAuthority === "ROLE_ADMIN") {
-          this.isadmi = true;
+          this.isAdmin = true;
         } else if (userAuthority === "ROLE_MEDECIN") {
-          this.ismedecin = true;
+          this.isMedecin = true;
         }
       } else {
         console.error("User authorities are not defined or not an array");
@@ -44,8 +53,13 @@ export class SideBarComponent implements OnInit {
       console.error("User is not defined in localStorage");
     }
   }
+  loadProfileImage() {
 
-  ngOnInit(): void {
   }
+  open() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+  ngOnInit(): void {}
+
 
 }

@@ -11,7 +11,7 @@ export class User {
   Status?: string;
     token?: string;
     refreshToken?: string;
-  address?: string;
+  addresse?: string;
     valid?: boolean;
     number?: string;
     image?: string;

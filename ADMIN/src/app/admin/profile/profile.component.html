@@ -7,17 +7,21 @@
           <div class="row">
             <div class="col-12">
               <div class="image-container bg2">
-                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="avatar" alt="avatar">
+                <img [src]="profileImageUrl" class="avatar" alt="avatar" (click)="triggerFileInput()">
+                <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
               </div>
             </div>
             <div class="col-12">
               <div class="details">
-                <h4>Docteur <span (dblclick)="enableEdit('username')" *ngIf="!editMode.username">{{user.username}}</span><input *ngIf="editMode.username" [(ngModel)]="user.username" (blur)="disableEdit('username')" />
-                  <i style="margin-left: 5px" class="fa fa-shield"></i></h4>
-                <div>Travaillé à l'hopitale <span (dblclick)="enableEdit('adresse')" *ngIf="!editMode.adresse">{{user.adresse}}</span><input *ngIf="editMode.adresse" [(ngModel)]="user.adresse" (blur)="disableEdit('adresse')" /></div>
+                <h4>Docteur <span (dblclick)="enableEdit('username')" *ngIf="!editMode.username">{{user.username}}</span>
+                  <input *ngIf="editMode.username" [(ngModel)]="user.username" (blur)="disableEdit('username')" />
+                  <i style="margin-left: 5px" class="fa fa-shield"></i>
+                </h4>
+                <div>Travaillé à l'hopitale <span (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse">{{user.addresse}}</span>
+                  <input *ngIf="editMode.addresse" [(ngModel)]="user.addresse" (blur)="disableEdit('addresse')" />
+                </div>
                 <div class="mg-top-30" style="margin:20px;margin-outside: 10px">
-                  <a href="#" class="btn btn-blue">Consulter la liste des patients</a>
-                  <a href="#" style="margin-left:5px;" class="btn btn-red">Se déconnecter</a>
+                  <a routerLinkActive="active" [routerLink]="['/admin/liste/patient']" class="btn btn-blue">Consulter la liste des patients</a>
                 </div>
               </div>
             </div>
@@ -37,15 +41,23 @@
               <div class="panel-body">
                 <div class="body-section">
                   <h5 class="section-heading">À propos</h5>
-                  <p (dblclick)="enableEdit('about')" *ngIf="!editMode.about">{{user.descreption_Personelle}}</p><input *ngIf="editMode.about" [(ngModel)]="user.about" (blur)="disableEdit('about')" />
+                  <p (dblclick)="enableEdit('descreption_Personelle')" *ngIf="!editMode.descreption_Personelle">{{user.descreption_Personelle}}</p>
+                  <input *ngIf="editMode.descreption_Personelle" [(ngModel)]="user.descreption_Personelle" (blur)="disableEdit('descreption_Personelle')" />
+                </div>
+                <div class="body-section">
+                  <h5 class="section-heading">Spécialité</h5>
+                  <p (dblclick)="enableEdit('specialite')" *ngIf="!editMode.specialite">{{user.specialite}}</p>
+                  <input *ngIf="editMode.specialite" [(ngModel)]="user.specialite" (blur)="disableEdit('specialite')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Historique Educative</h5>
-                  <p (dblclick)="enableEdit('introduction')" *ngIf="!editMode.introduction">{{user.lieu_deducation}}</p><input *ngIf="editMode.introduction" [(ngModel)]="user.introduction" (blur)="disableEdit('introduction')" />
+                  <p (dblclick)="enableEdit('lieu_deducation')" *ngIf="!editMode.lieu_deducation">{{user.lieu_deducation}}</p>
+                  <input *ngIf="editMode.lieu_deducation" [(ngModel)]="user.lieu_deducation" (blur)="disableEdit('lieu_deducation')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">L'experience</h5>
-                  <p (dblclick)="enableEdit('achievements')" *ngIf="!editMode.achievements">{{user.annee_dexperience}}</p><input *ngIf="editMode.achievements" [(ngModel)]="user.achievements" (blur)="disableEdit('achievements')" />
+                  <p (dblclick)="enableEdit('annee_dexperience')" *ngIf="!editMode.annee_dexperience">{{user.annee_dexperience}}</p>
+                  <input *ngIf="editMode.annee_dexperience" [(ngModel)]="user.annee_dexperience" (blur)="disableEdit('annee_dexperience')" />
                 </div>
                 <div class="body-section">
                   <button class="btn btn-purple btn-sm" (click)="saveChanges()">Enregistrer les changements</button>
@@ -66,23 +78,28 @@
               <div class="panel-body">
                 <div class="body-section">
                   <h5 class="section-heading">Nom</h5>
-                  <p (dblclick)="enableEdit('full_name')" *ngIf="!editMode.full_name">{{user.name}}</p><input *ngIf="editMode.full_name" [(ngModel)]="user.full_name" (blur)="disableEdit('full_name')" />
+                  <p (dblclick)="enableEdit('name')" *ngIf="!editMode.name">{{user.name}}</p>
+                  <input *ngIf="editMode.name" [(ngModel)]="user.name" (blur)="disableEdit('name')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Adresse</h5>
-                  <p (dblclick)="enableEdit('address')" *ngIf="!editMode.address">{{user.addresse}}</p><input *ngIf="editMode.address" [(ngModel)]="user.address" (blur)="disableEdit('address')" />
+                  <p (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse">{{user.addresse}}</p>
+                  <input *ngIf="editMode.addresse" [(ngModel)]="user.addresse" (blur)="disableEdit('addresse')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Téléphone</h5>
-                  <p (dblclick)="enableEdit('phone')" *ngIf="!editMode.phone">{{user.number}}</p><input *ngIf="editMode.phone" [(ngModel)]="user.phone" (blur)="disableEdit('phone')" />
+                  <p (dblclick)="enableEdit('phone')" *ngIf="!editMode.phone">{{user.phone}}</p>
+                  <input *ngIf="editMode.phone" [(ngModel)]="user.phone" (blur)="disableEdit('phone')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Email</h5>
-                  <p (dblclick)="enableEdit('email')" *ngIf="!editMode.email">{{user.email}}</p><input *ngIf="editMode.email" [(ngModel)]="user.email" (blur)="disableEdit('email')" />
+                  <p (dblclick)="enableEdit('email')" *ngIf="!editMode.email">{{user.email}}</p>
+                  <input *ngIf="editMode.email" [(ngModel)]="user.email" (blur)="disableEdit('email')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Genre</h5>
-                  <p (dblclick)="enableEdit('website')" *ngIf="!editMode.website">{{user.sexe}}</p><input *ngIf="editMode.website" [(ngModel)]="user.website" (blur)="disableEdit('website')" />
+                  <p (dblclick)="enableEdit('sexe')" *ngIf="!editMode.sexe">{{user.sexe}}</p>
+                  <input *ngIf="editMode.sexe" [(ngModel)]="user.sexe" (blur)="disableEdit('sexe')" />
                 </div>
                 <div class="body-section">
                   <button class="btn btn-green btn-sm" (click)="saveChanges()">Enregistrer les changements</button>
