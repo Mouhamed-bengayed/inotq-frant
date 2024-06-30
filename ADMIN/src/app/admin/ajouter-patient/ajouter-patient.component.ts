@@ -180,6 +180,16 @@ export class AjouterPatientComponent implements OnInit {
       formArray.removeAt(index);
     }
   }
+  onCheckboxChange2(event: any, formArrayName: string) {
+    const formArray: FormArray = this.secondFormGroup.get(formArrayName) as FormArray;
+
+    if (event.checked) {
+      formArray.push(this.fb.control(event.source.value));
+    } else {
+      const index = formArray.controls.findIndex(x => x.value === event.source.value);
+      formArray.removeAt(index);
+    }
+  }
 
   
  
@@ -263,7 +273,7 @@ export class AjouterPatientComponent implements OnInit {
     facture_declanchants: new FormControl(''),
     Date_1consultation_medicale: new FormControl(''),
     Date_1consultation_specialisee: new FormControl(''),
-    medecin_traitants: new FormControl(''),
+    medecin_traitants: this.fb.array([]),
     traitants_anterieur: new FormControl(''),
     Nbre_infiltration: new FormControl(''),
     Nbre_seances: new FormControl(''),
@@ -448,10 +458,10 @@ isAutresChecked = false;
   
 
   saveSecondForm() {
-    const SecondFormGroupData1 = this.secondFormGroup.value;
-    if (this.secondFormGroup.valid) {
-      localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData1));
-    }
+    const SecondFormGroupData = this.secondFormGroup.value;
+    
+      localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData));
+    
    }
   saveFirstForm() {
     const FirstFormData = this.firstFormGroup.value;

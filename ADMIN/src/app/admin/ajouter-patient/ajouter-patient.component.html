@@ -221,15 +221,7 @@
                               <br>
                               <label  class="custom-label"   style="padding-right: 30px;">Motif de consultation </label>
 
-                              <!-- <mat-radio-group aria-label="Select an option" formControlName="Motif_de_consultation">
-                                <mat-radio-button   style="padding-right: 30px;" class="example-margin" value="1">Lombalgie   </mat-radio-button>
-                                <mat-radio-button   style="padding-right: 30px;" class="example-margin" value="2">Sciatique   </mat-radio-button>
-
-                                <mat-radio-button   style="padding-right: 30px;" class="example-margin" value="3">Radiculalgie</mat-radio-button>
-                                <mat-radio-button   style="padding-right: 30px;" class="example-margin" value="4">Cruralgie</mat-radio-button>
-                                <mat-radio-button   style="padding-right: 30px;" class="example-margin"value="5">Claudication</mat-radio-button>
-                              </mat-radio-group> -->
-                              <br>
+                             
 
                               <div formArrayName="Motif_de_consultation">
                                 <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" (change)="onCheckboxChange($event, 'Motif_de_consultation')">Lombalgie</mat-checkbox>
@@ -318,30 +310,16 @@
                                 <br>
                                 <label  class="custom-label" style="padding-right: 30px;" >Les médecins traitants</label>
 
-                                <mat-radio-group aria-label="Select an option" [formControl]="treatmentC"formControlName="medecin_traitants" (change)="onChange()">
-                                  <mat-checkbox style="padding-right: 30px;" class="example-margin"value="1">Rhumatologue</mat-checkbox>
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin"value="2">Médecin de famille</mat-checkbox>
-
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin"value="3">Neurochirurgien</mat-checkbox>
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin"value="4">Orthopédiste</mat-checkbox>
-
-                                    <mat-checkbox style="padding-right: 30px;" value="autr">Autres</mat-checkbox>
-                                    <mat-form-field *ngIf="treatmentC.value === 'autr'">
-                                      <mat-label>Description</mat-label>
-                                      <input matInput formControlName="description_autres" placeholder="Description" type="text">
-                                    </mat-form-field>
-
-                                  </mat-radio-group>
-
+                                  <div formArrayName="medecin_traitants">
+                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" (change)="onCheckboxChange2($event, 'medecin_traitants')">Rhumatologue</mat-checkbox>
+                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2" (change)="onCheckboxChange2($event, 'medecin_traitants')">Médecin de famille</mat-checkbox>
+                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3" (change)="onCheckboxChange2($event, 'medecin_traitants')">Neurochirurgien</mat-checkbox>
+                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="4" (change)="onCheckboxChange2($event, 'medecin_traitants')">Orthopédiste</mat-checkbox>
+                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="5" (change)="onCheckboxChange2($event, 'medecin_traitants')">Autres</mat-checkbox>
+                                  </div>
                                   <br>
-                              <br>
-
-
-
                                       <label  class="custom-label" style="padding-right: 30px;" >Traitement antérieur</label>
                                       <br>
-
-
                                         <mat-radio-group [formControl]="treatmentControl" (change)="onChange()">
                                           <mat-radio-button style="padding-right: 30px;" value="antalgique">Antalgique</mat-radio-button>
                                           <br>
