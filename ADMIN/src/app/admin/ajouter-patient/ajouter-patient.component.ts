@@ -4,6 +4,7 @@ import { PatientService } from '../Services/patient.service';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { telephoneValidator } from '../Services/CustomDateAdapter';
 import Swal from 'sweetalert2';
+import { AccountService } from 'src/app/Service/account.service';
 
 @Component({
   selector: 'app-ajouter-patient',
@@ -89,8 +90,10 @@ export class AjouterPatientComponent implements OnInit {
   form!: FormGroup;
   formS!: FormGroup ;
   treatmentCont!: string ;
-
-  constructor( private patientService: PatientService,private fb: FormBuilder) {
+user:any;
+  constructor( private patientService: PatientService,private fb: FormBuilder,private accountservice:AccountService) {
+    this.user = this.accountservice.CurrentUserInfoSubject.getValue();
+console.error("user id",this.user.id);
     this.form = this.fb.group({
       telephone: [
         '',
@@ -207,15 +210,15 @@ export class AjouterPatientComponent implements OnInit {
     addresse: new FormControl(''),
     country: new FormControl(this.countries[0].code),  // Default to the first country
     telephone: new FormControl('', [Validators.required, this.telephoneValidator()]),
-     profession: new FormControl([]),
+     profession: new FormControl(''),
      
 
     adresse_par: new FormControl(''),
     statut_social: new FormControl(''),
     entourage_actuel: new FormControl(''),
-    atcd: this.fb.array([]),
+    atcd: new FormControl(''),
     Tabac: new FormControl(''),
-    Motif_de_consultation:this.fb.array([]),
+    Motif_de_consultation:new FormControl(''),
     Motif_de_consultation_l: new FormControl(''),
   });
 
@@ -273,7 +276,7 @@ export class AjouterPatientComponent implements OnInit {
     facture_declanchants: new FormControl(''),
     Date_1consultation_medicale: new FormControl(''),
     Date_1consultation_specialisee: new FormControl(''),
-    medecin_traitants: this.fb.array([]),
+    medecin_traitants: new FormControl(''),
     traitants_anterieur: new FormControl(''),
     Nbre_infiltration: new FormControl(''),
     Nbre_seances: new FormControl(''),
@@ -516,9 +519,9 @@ isAutresChecked = false;
 
 
   };
-   const user:any=localStorage.getItem("user")!
+   //const user:any=localStorage.getItem("user")!
 
-  this.patientService.createPatient(patientData,user.id).subscribe(
+  this.patientService.createPatient(patientData,this.user.id).subscribe(
     (response) => {
 
       console.log("Patient enregistré avec succès : ", response);
