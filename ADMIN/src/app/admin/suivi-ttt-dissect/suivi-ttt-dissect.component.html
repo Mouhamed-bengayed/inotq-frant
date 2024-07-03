@@ -41,35 +41,29 @@
   
                               
                                
+                                  <label class="custom-label">Profession</label>
+                                  <br>
+                                  <mat-radio-group aria-label="Select an option" formControlName="profession"class="profession-grid">
+                                    <mat-radio-button value="1">FAF</mat-radio-button>
+    
+                                    <mat-radio-button value="2">Station debout prolongée</mat-radio-button>
+                                    <mat-radio-button value="3">Chauffeur long parcours</mat-radio-button>
+    
+                                    <mat-radio-button value="4">Travailleur de force</mat-radio-button>
+                                    <mat-radio-button value="5">Agriculteur</mat-radio-button>
+    
+                                    <mat-radio-button value="6">Station assise prolongée</mat-radio-button>
+                                    <mat-radio-button value="7">Chauffeur engin et poids lourds</mat-radio-button>
+    
+                                    <mat-radio-button value="8">El Sportif professionnel</mat-radio-button>
+                                    <mat-radio-button style="padding-right: 30px;" value="autr">Autres</mat-radio-button>
+                                      <mat-form-field *ngIf="treatmentControl.value === 'autr'">
+                                        <mat-label>Description</mat-label>
+                                        <input matInput formControlName="description_autres" placeholder="Description" type="text">
+                                      </mat-form-field>
+                                  </mat-radio-group>
+                                  <br>
                                 
-                                <label  class="custom-label">Profession</label>
-                                <br>
-                                <mat-radio-group aria-label="Select an option" formControlName="profession">
-                                  <mat-radio-button value="1">FAF</mat-radio-button>
-                                  <br>
-  
-                                  <mat-radio-button value="2">Station debout prolongée</mat-radio-button>
-                                  <br>
-                                  <mat-radio-button value="3">Chauffeur long parcours</mat-radio-button>
-                                  <br>
-  
-                                  <mat-radio-button value="4">Travailleur de force</mat-radio-button>
-                                  <br>
-                                  <mat-radio-button value="5">Agriculteur</mat-radio-button>
-                                  <br>
-  
-                                  <mat-radio-button value="6">Station assise prolongée</mat-radio-button>
-                                  <br>
-                                  <mat-radio-button value="7">Chauffeur engin et poids lourds</mat-radio-button>
-                                  <br>
-  
-                                  <mat-radio-button value="8">El Sportif professionnel</mat-radio-button>
-                                  <br>
-                                  <mat-radio-button value="9">Autres</mat-radio-button>
-                                </mat-radio-group>
-                                <br>
-                                
-                                <br>
   
   
                                 <label class="custom-label" >Statut social </label>

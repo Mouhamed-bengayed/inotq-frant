@@ -33,7 +33,7 @@ export class ListesMedecinComponent implements OnInit {
         () => {
           console.log('Utilisateur activé avec succès.');
           window.location.reload();
-          medecin.valid=true;
+          medecin.Status=true;
         },
         (error) => {
           console.error('Une erreur s\'est produite lors de l\'activation :', error);
@@ -41,12 +41,24 @@ export class ListesMedecinComponent implements OnInit {
       );
     }
        
-    bloqueMedecin(medecin: Medecin): void {
+    bloqueMedecinByAdmin(medecin: Medecin): void {
       this.medecinService.bloquerMedecin(medecin.id).subscribe(
         () => {
         console.log('Utilisateur activé avec succès.');
           window.location.reload();
-          medecin.valid=false;
+          medecin.blockedByAdmin=false;
+        },
+        (error) => {
+          console.error('Une erreur s\'est produite lors de l\'activation :', error);
+        }
+      );
+    }
+    ActiveMedecinByAdmin(medecin: Medecin): void {
+      this.medecinService.bloquerMedecin(medecin.id).subscribe(
+        () => {
+        console.log('Utilisateur activé avec succès.');
+          window.location.reload();
+          medecin.blockedByAdmin=true;
         },
         (error) => {
           console.error('Une erreur s\'est produite lors de l\'activation :', error);

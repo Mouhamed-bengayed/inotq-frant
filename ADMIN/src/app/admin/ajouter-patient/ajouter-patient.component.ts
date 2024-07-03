@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {  FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PatientService } from '../Services/patient.service';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { telephoneValidator } from '../Services/CustomDateAdapter';
 import Swal from 'sweetalert2';
+import { AccountService } from 'src/app/Service/account.service';
 
 @Component({
   selector: 'app-ajouter-patient',
@@ -54,6 +55,8 @@ export class AjouterPatientComponent implements OnInit {
   checkboxControl17 = new FormControl(false);
 
  spondylolisthesis = new FormControl();
+  treatmentControl88= new FormControl('');
+ pondylolisthesis = new FormControl();
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
   incontinenceControl = new FormControl('');
@@ -69,6 +72,7 @@ export class AjouterPatientComponent implements OnInit {
   pincement23 = new FormControl();
   pincement24 = new FormControl();
   pincement27= new FormControl();
+  
   pincement_discal= new FormControl();
   tDM_hernie_discale= new FormControl();
   sPDL= new FormControl();
@@ -86,8 +90,10 @@ export class AjouterPatientComponent implements OnInit {
   form!: FormGroup;
   formS!: FormGroup ;
   treatmentCont!: string ;
-
-  constructor( private patientService: PatientService,private fb: FormBuilder) {
+user:any;
+  constructor( private patientService: PatientService,private fb: FormBuilder,private accountservice:AccountService) {
+    this.user = this.accountservice.CurrentUserInfoSubject.getValue();
+console.error("user id",this.user.id);
     this.form = this.fb.group({
       telephone: [
         '',
@@ -98,6 +104,9 @@ export class AjouterPatientComponent implements OnInit {
       ]
     });
   }
+
+
+
 
   get telephone() {
     return this.form.get('telephone');
@@ -164,6 +173,29 @@ export class AjouterPatientComponent implements OnInit {
     this.showOtherCheckboxes = event.checked;
   }
 
+  onCheckboxChange(event: any, formArrayName: string) {
+    const formArray: FormArray = this.firstFormGroup.get(formArrayName) as FormArray;
+
+    if (event.checked) {
+      formArray.push(this.fb.control(event.source.value));
+    } else {
+      const index = formArray.controls.findIndex(x => x.value === event.source.value);
+      formArray.removeAt(index);
+    }
+  }
+  onCheckboxChange2(event: any, formArrayName: string) {
+    const formArray: FormArray = this.secondFormGroup.get(formArrayName) as FormArray;
+
+    if (event.checked) {
+      formArray.push(this.fb.control(event.source.value));
+    } else {
+      const index = formArray.controls.findIndex(x => x.value === event.source.value);
+      formArray.removeAt(index);
+    }
+  }
+
+  
+ 
   firstFormGroup = new FormGroup({
     date_de_consultation: new FormControl(new Date()),
     dossierMedical: new FormControl(''),
@@ -178,13 +210,15 @@ export class AjouterPatientComponent implements OnInit {
     addresse: new FormControl(''),
     country: new FormControl(this.countries[0].code),  // Default to the first country
     telephone: new FormControl('', [Validators.required, this.telephoneValidator()]),
-        profession: new FormControl(''),
+     profession: new FormControl(''),
+     
+
     adresse_par: new FormControl(''),
     statut_social: new FormControl(''),
     entourage_actuel: new FormControl(''),
     atcd: new FormControl(''),
     Tabac: new FormControl(''),
-    Motif_de_consultation: new FormControl(''),
+    Motif_de_consultation:new FormControl(''),
     Motif_de_consultation_l: new FormControl(''),
   });
 
@@ -214,6 +248,9 @@ export class AjouterPatientComponent implements OnInit {
     voyage: new FormControl(''),
   });
   scorefinale:number=0;
+
+ 
+
   calculateScore(): number {
     const odiFormGroupData = this.odiFormGroup.value as { [key: string]: string | null };
     let score = 0;
@@ -232,6 +269,7 @@ export class AjouterPatientComponent implements OnInit {
     Swal.fire('ODI SCORE', `VOTRE SCORE EST : ${score}`, 'success');
 
   }
+ 
 
   secondFormGroup = new FormGroup({
     date_debut_maladie: new FormControl(''),
@@ -381,7 +419,7 @@ export class AjouterPatientComponent implements OnInit {
     iRM_etat_disques_sus_jacent: new FormControl(''),
 });
 
-
+isAutresChecked = false;
 
 
 
@@ -420,17 +458,19 @@ export class AjouterPatientComponent implements OnInit {
     }
   }*/
 
+  
+
   saveSecondForm() {
-    const SecondFormGroupData1 = this.secondFormGroup.value;
-    if (this.secondFormGroup.valid) {
-      localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData1));
-    }
+    const SecondFormGroupData = this.secondFormGroup.value;
+    
+      localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData));
+    
    }
   saveFirstForm() {
     const FirstFormData = this.firstFormGroup.value;
-    if (this.firstFormGroup.valid) {
+    
       localStorage.setItem('FirstFormData', JSON.stringify(FirstFormData));
-    }
+    
   }
    saveodiForm() {
     const odiFormGroupData1 = this.odiFormGroup.value;
@@ -453,8 +493,9 @@ export class AjouterPatientComponent implements OnInit {
    }
 
 
+ 
 
-
+ 
  // Enregistrer le patient
  savePatient() {
 
@@ -478,9 +519,9 @@ export class AjouterPatientComponent implements OnInit {
 
 
   };
-   const user:any=localStorage.getItem("user")!
+   //const user:any=localStorage.getItem("user")!
 
-  this.patientService.createPatient(patientData,user.id).subscribe(
+  this.patientService.createPatient(patientData,this.user.id).subscribe(
     (response) => {
 
       console.log("Patient enregistré avec succès : ", response);
