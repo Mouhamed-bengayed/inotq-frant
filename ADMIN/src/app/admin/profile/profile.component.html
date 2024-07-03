@@ -111,6 +111,12 @@
                   <input *ngIf="editMode.sexe" [(ngModel)]="user.sexe" (blur)="disableEdit('sexe')" />
                 </div>
                 <div class="body-section">
+                  <h5 class="section-heading">Date De naissance</h5>
+                  <p (dblclick)="enableEdit('date_de_naissance')" *ngIf="!editMode.date_de_naissance && user.date_de_naissance">{{ formatDate(user.date_de_naissance) }}</p>
+                  <i class="fa fa-plus" *ngIf="!user.date_de_naissance && !editMode.date_de_naissance" (click)="enableEdit('date_de_naissance')"></i>
+                  <input *ngIf="editMode.date_de_naissance"  type="date" [(ngModel)]="user.date_de_naissance" (blur)="disableEdit('date_de_naissance')" />
+                </div>
+                <div class="body-section">
                   <button class="btn btn-green btn-sm" (click)="saveChanges()">Enregistrer les changements</button>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import { AccountService } from "../../Service/account.service";
 import { DomSanitizer } from '@angular/platform-browser';
 import swal from 'sweetalert2';
 
-type EditableField = 'username' | 'name' | 'addresse' | 'descreption_Personelle' | 'lieu_deducation' | 'annee_dexperience' | 'number' | 'email' | 'sexe' | 'specialite';
+type EditableField = 'username' | 'name' | 'addresse' | 'descreption_Personelle' | 'lieu_deducation' | 'annee_dexperience' | 'number' | 'email' | 'sexe' | 'specialite'| 'date_de_naissance';
 
 @Component({
   selector: 'app-profile',
@@ -23,7 +23,8 @@ export class ProfileComponent implements OnInit {
     annee_dexperience: false,
     number: false,
     email: false,
-    sexe: false
+    sexe: false,
+    date_de_naissance: false
   };
 
   selectedFile: File | null = null;
@@ -45,13 +46,18 @@ export class ProfileComponent implements OnInit {
   disableEdit(field: EditableField) {
     this.editMode[field] = false;
   }
-
+  formatDate(timestamp: number): string {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
   saveChanges() {
     const url = 'http://localhost:8082/api/user/update-user/';
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http.put(url, this.user, { headers }).subscribe(
       response => {
         console.log('Changes saved:', response);
+        localStorage.setItem('myuserinfo', JSON.stringify(response));
+        //this.accountService.CurrentUserInfoSubject.next(response);
         swal.fire(
           'Succès!',
           'Vos informations ont été mises à jour avec succès!',

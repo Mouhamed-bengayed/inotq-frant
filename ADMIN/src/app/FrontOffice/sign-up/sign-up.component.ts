@@ -20,8 +20,8 @@ export class SignUpComponent {
   signupForm: FormGroup=new FormGroup({});
 
   signupError: string = '';
-  
-  
+
+
   constructor(private authService: AccountService, private router: Router,private fb: FormBuilder) { }
   ngOnInit() {
     this.signupForm = this.fb.group({
@@ -29,7 +29,7 @@ export class SignUpComponent {
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d).+$')]],
-      address: ['', Validators.required],
+      addresse: ['', Validators.required],
       number: ['', Validators.required]
     });
   }
@@ -45,7 +45,7 @@ export class SignUpComponent {
           console.log('User registered successfully!');
           Swal.fire({
             title: "Ouvrir votre mail!",
-           
+
             icon: "success"
           });
         },
@@ -63,5 +63,5 @@ export class SignUpComponent {
       console.log('Form is invalid or Privacy Policy not agreed.');
     }
   }
-    
+
 }
