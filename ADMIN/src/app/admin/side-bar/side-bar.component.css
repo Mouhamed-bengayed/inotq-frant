@@ -64,11 +64,11 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 .cardo {
-  width: 100%; /* Make the card fit the space */
+  width: 80%; /* Make the card fit the space */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Add shadow effect */
  border: #0A9EC1;
-  border-radius: 10px; /* Add rounded corners */
+  border-radius: 3px; /* Add rounded corners */
   margin: auto; /* Add some margin */
   padding: 15px; /* Add some padding */
-  background-color: rgba(255, 255, 255, 0.93); /* Add a white background */
+  background-color: rgba(255, 255, 255, 0.55); /* Add a white background */
 }

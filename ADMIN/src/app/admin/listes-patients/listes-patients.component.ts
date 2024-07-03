@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MedecinService } from '../Services/medecin.service';
 import { Patient } from 'src/app/_models/patient';
 import { PatientService } from '../Services/patient.service';
+import {AccountService} from "../../Service/account.service";
 
 @Component({
   selector: 'app-listes-patients',
@@ -10,8 +11,10 @@ import { PatientService } from '../Services/patient.service';
 })
 export class ListesPatientsComponent implements OnInit {
   patients: Patient[] = [];
-
-  constructor(private patientService:PatientService) { }
+user:any;
+  constructor(private patientService:PatientService,private accounntservice:AccountService) {
+    this.user= this.accounntservice.CurrentUserInfoSubject.getValue();
+  }
 
   ngOnInit(): void {
     this.getAllPatients();
@@ -31,9 +34,9 @@ export class ListesPatientsComponent implements OnInit {
       console.error('ID du patient non défini');
     }
   }
-  
+
   private getAllPatients(){
-    this.patientService.getListePatient().subscribe((data) => {
+    this.patientService.getListePatient(this.user.id).subscribe((data) => {
     this.patients = data
   console.info(data);
   },(err)=>console.error("lhnaa",err)

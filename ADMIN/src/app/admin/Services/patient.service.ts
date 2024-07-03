@@ -36,8 +36,8 @@ export class PatientService {
       createSuiviStafff(patient: any): Observable<any> {
         return this.httpClient.post("http://localhost:8082/api/staff/register/staff/", patient);
       }
-      getListePatient():Observable<any>{
-        return this.httpClient.get<any>("http://localhost:8082/api/patient/list-patient/");
+      getListePatient(id:any):Observable<any>{
+        return this.httpClient.get<any>(`http://localhost:8082/api/patient/list-patient/${id}`);
       }
 
       supprimerPatient(id:Number):Observable<any>{

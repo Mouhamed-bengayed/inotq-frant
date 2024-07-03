@@ -72,7 +72,7 @@ export class AjouterPatientComponent implements OnInit {
   pincement23 = new FormControl();
   pincement24 = new FormControl();
   pincement27= new FormControl();
-  
+
   pincement_discal= new FormControl();
   tDM_hernie_discale= new FormControl();
   sPDL= new FormControl();
@@ -194,8 +194,8 @@ console.error("user id",this.user.id);
     }
   }
 
-  
- 
+
+
   firstFormGroup = new FormGroup({
     date_de_consultation: new FormControl(new Date()),
     dossierMedical: new FormControl(''),
@@ -211,7 +211,7 @@ console.error("user id",this.user.id);
     country: new FormControl(this.countries[0].code),  // Default to the first country
     telephone: new FormControl('', [Validators.required, this.telephoneValidator()]),
      profession: new FormControl(''),
-     
+
 
     adresse_par: new FormControl(''),
     statut_social: new FormControl(''),
@@ -249,7 +249,7 @@ console.error("user id",this.user.id);
   });
   scorefinale:number=0;
 
- 
+
 
   calculateScore(): number {
     const odiFormGroupData = this.odiFormGroup.value as { [key: string]: string | null };
@@ -266,10 +266,49 @@ console.error("user id",this.user.id);
     this.saveodiForm();
 
     const score = this.calculateScore();
-    Swal.fire('ODI SCORE', `VOTRE SCORE EST : ${score}`, 'success');
+    let message = '';
+    let color = '';
 
+    // Determine the message and color based on the score range
+    if (score >= 0 && score <= 20) {
+      message = 'Légère incapacité';
+      color = 'green'; // Green for mild disability
+    } else if (score > 20 && score <= 40) {
+      message = 'Incapacité modérée';
+      color = 'orange'; // Orange for moderate disability
+    } else if (score > 40 && score <= 60) {
+      message = 'Incapacité sévère';
+      color = 'red'; // Red for severe disability
+    } else if (score > 60 && score <= 80) {
+      message = 'Incapacité majeure';
+      color = 'red'; // Red for major disability
+    } else if (score > 80 && score <= 100) {
+      message = 'Altération fonctionnelle';
+      color = 'red'; // Red for functional impairment
+    } else {
+      message = 'Score invalide';
+      color = 'black'; // Default color for invalid score
+    }
+
+    // Calculate the width of the color bar based on the score
+    const barWidth = `${score}%`;
+
+    // SweetAlert2 configuration with HTML and custom styling
+    Swal.fire({
+      title: 'ODI SCORE',
+      html: `
+      <div>Votre score est : ${score}</div>
+      <div style="margin-top: 10px; color: ${color};">${message}</div>
+      <div style="height: 10px; background-color: ${color}; width: ${barWidth}; margin-top: 10px;"></div>
+    `,
+      // icon: 'info',
+      showCancelButton: false,
+      showConfirmButton: true,
+      confirmButtonText: 'OK'
+    });
   }
- 
+
+
 
   secondFormGroup = new FormGroup({
     date_debut_maladie: new FormControl(''),
@@ -458,19 +497,19 @@ isAutresChecked = false;
     }
   }*/
 
-  
+
 
   saveSecondForm() {
     const SecondFormGroupData = this.secondFormGroup.value;
-    
+
       localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData));
-    
+
    }
   saveFirstForm() {
     const FirstFormData = this.firstFormGroup.value;
-    
+
       localStorage.setItem('FirstFormData', JSON.stringify(FirstFormData));
-    
+
   }
    saveodiForm() {
     const odiFormGroupData1 = this.odiFormGroup.value;
@@ -493,9 +532,9 @@ isAutresChecked = false;
    }
 
 
- 
 
- 
+
+
  // Enregistrer le patient
  savePatient() {
 
