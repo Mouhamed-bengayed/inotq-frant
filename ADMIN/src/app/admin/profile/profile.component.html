@@ -41,22 +41,26 @@
               <div class="panel-body">
                 <div class="body-section">
                   <h5 class="section-heading">À propos</h5>
-                  <p (dblclick)="enableEdit('descreption_Personelle')" *ngIf="!editMode.descreption_Personelle">{{user.descreption_Personelle}}</p>
+                  <p (dblclick)="enableEdit('descreption_Personelle')" *ngIf="!editMode.descreption_Personelle && user.descreption_Personelle">{{user.descreption_Personelle}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.descreption_Personelle && !editMode.descreption_Personelle" (click)="enableEdit('descreption_Personelle')"></i>
                   <input *ngIf="editMode.descreption_Personelle" [(ngModel)]="user.descreption_Personelle" (blur)="disableEdit('descreption_Personelle')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Spécialité</h5>
-                  <p (dblclick)="enableEdit('specialite')" *ngIf="!editMode.specialite">{{user.specialite}}</p>
+                  <p (dblclick)="enableEdit('specialite')" *ngIf="!editMode.specialite && user.specialite">{{user.specialite}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.specialite && !editMode.specialite" (click)="enableEdit('specialite')"></i>
                   <input *ngIf="editMode.specialite" [(ngModel)]="user.specialite" (blur)="disableEdit('specialite')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Historique Educative</h5>
-                  <p (dblclick)="enableEdit('lieu_deducation')" *ngIf="!editMode.lieu_deducation">{{user.lieu_deducation}}</p>
+                  <p (dblclick)="enableEdit('lieu_deducation')" *ngIf="!editMode.lieu_deducation && user.lieu_deducation">{{user.lieu_deducation}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.lieu_deducation && !editMode.lieu_deducation" (click)="enableEdit('lieu_deducation')"></i>
                   <input *ngIf="editMode.lieu_deducation" [(ngModel)]="user.lieu_deducation" (blur)="disableEdit('lieu_deducation')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">L'experience</h5>
-                  <p (dblclick)="enableEdit('annee_dexperience')" *ngIf="!editMode.annee_dexperience">{{user.annee_dexperience}}</p>
+                  <p (dblclick)="enableEdit('annee_dexperience')" *ngIf="!editMode.annee_dexperience && user.annee_dexperience">{{user.annee_dexperience}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.annee_dexperience && !editMode.annee_dexperience" (click)="enableEdit('annee_dexperience')"></i>
                   <input *ngIf="editMode.annee_dexperience" [(ngModel)]="user.annee_dexperience" (blur)="disableEdit('annee_dexperience')" />
                 </div>
                 <div class="body-section">
@@ -78,27 +82,32 @@
               <div class="panel-body">
                 <div class="body-section">
                   <h5 class="section-heading">Nom</h5>
-                  <p (dblclick)="enableEdit('name')" *ngIf="!editMode.name">{{user.name}}</p>
+                  <p (dblclick)="enableEdit('name')" *ngIf="!editMode.name && user.name">{{user.name}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.name && !editMode.name" (click)="enableEdit('name')"></i>
                   <input *ngIf="editMode.name" [(ngModel)]="user.name" (blur)="disableEdit('name')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Adresse</h5>
-                  <p (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse">{{user.addresse}}</p>
+                  <p (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse && user.addresse">{{user.addresse}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.addresse && !editMode.addresse" (click)="enableEdit('addresse')"></i>
                   <input *ngIf="editMode.addresse" [(ngModel)]="user.addresse" (blur)="disableEdit('addresse')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Téléphone</h5>
-                  <p (dblclick)="enableEdit('phone')" *ngIf="!editMode.phone">{{user.phone}}</p>
-                  <input *ngIf="editMode.phone" [(ngModel)]="user.phone" (blur)="disableEdit('phone')" />
+                  <p (dblclick)="enableEdit('number')" *ngIf="!editMode.number && user.number">{{user.number}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.number && !editMode.number" (click)="enableEdit('number')"></i>
+                  <input *ngIf="editMode.number" [(ngModel)]="user.number" (blur)="disableEdit('number')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Email</h5>
-                  <p (dblclick)="enableEdit('email')" *ngIf="!editMode.email">{{user.email}}</p>
+                  <p (dblclick)="enableEdit('email')" *ngIf="!editMode.email && user.email">{{user.email}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.email && !editMode.email" (click)="enableEdit('email')"></i>
                   <input *ngIf="editMode.email" [(ngModel)]="user.email" (blur)="disableEdit('email')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Genre</h5>
-                  <p (dblclick)="enableEdit('sexe')" *ngIf="!editMode.sexe">{{user.sexe}}</p>
+                  <p (dblclick)="enableEdit('sexe')" *ngIf="!editMode.sexe && user.sexe">{{user.sexe}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.sexe && !editMode.sexe" (click)="enableEdit('sexe')"></i>
                   <input *ngIf="editMode.sexe" [(ngModel)]="user.sexe" (blur)="disableEdit('sexe')" />
                 </div>
                 <div class="body-section">

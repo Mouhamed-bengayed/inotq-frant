@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AccountService } from "../../Service/account.service";
 import { DomSanitizer } from '@angular/platform-browser';
 import swal from 'sweetalert2';
-type EditableField = 'username' | 'name' | 'addresse' | 'descreption_Personelle' | 'lieu_deducation' | 'annee_dexperience' | 'phone' | 'email' | 'sexe' | 'specialite';
+
+type EditableField = 'username' | 'name' | 'addresse' | 'descreption_Personelle' | 'lieu_deducation' | 'annee_dexperience' | 'number' | 'email' | 'sexe' | 'specialite';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +21,7 @@ export class ProfileComponent implements OnInit {
     specialite: false,
     lieu_deducation: false,
     annee_dexperience: false,
-    phone: false,
+    number: false,
     email: false,
     sexe: false
   };
