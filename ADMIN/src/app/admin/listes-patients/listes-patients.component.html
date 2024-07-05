@@ -20,50 +20,50 @@
                     <thead class="thead-light">
                       <tr>
                         <th>Id</th>
-                        <th>date_de_consultation </th>
+                        <th>Date de consultation </th>
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Sexe</th>
                         <th>Addresse</th>
-                        <th>annee_de_naissance</th>
-                        <th>telephone</th>
-                        <th>consulter </th>
-                        <th>Modefier </th>
-                        <th>supprime</th>
+                        <th>Date de naissance</th>
+                        <th>téléphone</th>
+                        <th>Consulter </th>
+<!--                        <th>Modefier </th>-->
+<!--                        <th>supprime</th>-->
 
 
                       </tr>
                     </thead>
-                  
+
                     <tbody  >
-                      <tr *ngFor="let med of patients">
-                        <td>{{med.id}}</td>
-                        <td>{{med.date_de_consultation}}</td>
-                        <td>{{med.name}}</td>
-                        <td>{{med.username}}</td>
-                        <td>{{med.sexe}}</td>
-                        <td>{{med.addresse}}</td>
-                        <td>{{med.annee_de_naissance}}</td>
-                        <td>{{med.telephone}}</td>
+                      <tr *ngFor="let p of patients">
+                        <td>{{p.id}}</td>
+                        <td>{{ formatDate(p.date_de_consultation)}}</td>
+                        <td>{{p.name}}</td>
+                        <td>{{p.username}}</td>
+                        <td>{{p.sexe}}</td>
+                        <td>{{p.addresse}}</td>
+                        <td>{{formatDate(p.annee_de_naissance)}}</td>
+                        <td>{{p.telephone}}</td>
                         <td>
-                          <button  type="button" class="btn btn-secondary">consulter</button>
+                          <button  type="button" class="btn btn-success " (click)=" consulter(p.id)" >consulter</button>
+<!--                          (click)=" cosulter(p.fichePatient)"-->
                         </td>
-                        <td>
-                          <button  type="button" class="btn btn-success">Modifier</button>
-                        </td>
-                        <td>
-                          <button (click)="suprimerPatient(med)" type="button" class="btn btn-danger" >supprimer</button>
-                        </td>
+<!--                        <td>-->
+<!--                          <button  type="button" class="btn btn-success">Modifier</button>-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                          <button (click)="suprimerPatient(med)" type="button" class="btn btn-danger" >supprimer</button>-->
+<!--                        </td>-->
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
-           
+
           </div>
-         
+
 
         </div>
-       

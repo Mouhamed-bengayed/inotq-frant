@@ -1,20 +1,20 @@
 export class Patient {
     id?:Number;
-    date_de_consultation?: string;   
+    date_de_consultation?: Date;
     dossierMedical?: string;
     n_Dossier_medical?: string;
     Dossier_medical_num?:string;
     name?: string;
     username?: string;
     sexe?: string;
-    annee_de_naissance?: string;
+    annee_de_naissance?: Date;
     origine?: boolean;
     idPatient?:boolean;
     addresse?: string;
     telephone?: string;
     profession ?:string;
     adresse_par?: string;
-    statut_social?: string;  
+    statut_social?: string;
     entourage_actuel?: string;
     ATCD?: string;
     Tabac?: string;
@@ -129,8 +129,8 @@ export class Patient {
      iRM_etat_disques_sous_jacent?:string;
      iRM_etat_disques_sus_jacent?:string;
 
- 
- 
+
+
 
 
 

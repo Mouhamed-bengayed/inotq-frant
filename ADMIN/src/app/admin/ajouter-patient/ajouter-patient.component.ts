@@ -298,8 +298,9 @@ console.error("user id",this.user.id);
       title: 'ODI SCORE',
       html: `
       <div>Votre score est : ${score}</div>
-      <div style="margin-top: 10px; color: ${color};">${message}</div>
       <div style="height: 10px; background-color: ${color}; width: ${barWidth}; margin-top: 10px;"></div>
+   <div style="margin-top: 10px; color: ${color};">${message}</div>
+
     `,
       // icon: 'info',
       showCancelButton: false,

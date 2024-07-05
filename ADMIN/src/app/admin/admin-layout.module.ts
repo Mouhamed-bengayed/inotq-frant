@@ -33,6 +33,7 @@ import { SuiviArthrodeseComponent } from './suivi-arthrodese/suivi-arthrodese.co
 import { StaffComponent } from './staff/staff.component';
 import { CustomDateAdapter, CUSTOM_DATE_FORMATS } from './Services/CustomDateAdapter';
 import {HttpClientModule} from "@angular/common/http";
+import { ProfilePatientComponent } from './profile-patient/profile-patient.component';
 
 
 const AdminLayoutRoutes: Routes = [
@@ -51,6 +52,7 @@ const AdminLayoutRoutes: Routes = [
      { path: 'SuivitttDissect',  component: SuiviTttDissectComponent },
      { path: 'suiviArhrodese',  component: SuiviArthrodeseComponent },
      { path: 'stafff',  component: StaffComponent },
+     {path: 'FichePatient/:id', component: ProfilePatientComponent}
 
   ]},
 ];
@@ -91,7 +93,8 @@ const AdminLayoutRoutes: Routes = [
     AjouterPatientComponent,
     SuiviTttDissectComponent,
     SuiviArthrodeseComponent,
-    StaffComponent ,
+    StaffComponent,
+    ProfilePatientComponent ,
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
