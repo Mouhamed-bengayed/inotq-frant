@@ -670,7 +670,7 @@
 
                                 <div>
                                   <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
-                                  <button style="padding-right: 30px;" class="button" mat-button matStepperNext>Suivant</button>
+                                  <button style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="savesymptomatologieFormGroup()">Suivant</button>
                                 </div>
                               </form>
                             </mat-step>
@@ -998,23 +998,9 @@
                                                         </mat-radio-group>
                                                         <br>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 <div>
                                   <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
-                                  <button style="padding-right: 30px;" class="button" mat-button matStepperNext >Suivant</button>
+                                  <button style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="savethridForm() "  >Suivant</button>
                                 </div>
                               </form>
                             </mat-step>
@@ -1156,10 +1142,10 @@
                                    <br>
                                 <div style="display:flex; place-items: center; ">
                                   <button style="padding-right: 30px; place-items: left; " class="button" mat-button matStepperPrevious>Précédant</button>
-                                  <button style="padding-right: 30px; display: grid;
-                                  place-items: center;" class="button" mat-button (click)="saveODIAndShowScore()">Enregistrer</button>
+<!--                                  <button style="padding-right: 30px; display: grid;-->
+<!--                                  place-items: center;" class="button" mat-button (click)="saveODIAndShowScore()">Enregistrer</button>-->
 
-                                  <button style="padding-right: 30px;" class="button" mat-button matStepperNext>Suivant</button>
+                                  <button style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="saveODIAndShowScore()">Suivant</button>
                                 </div>
                               </form>
                             </mat-step>
@@ -1809,9 +1795,9 @@
   </div>
                             <div style=" padding-top:200px">
                               <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
-                              <button style="padding-right: 30px; " class="button" mat-button (click)="saveFourthFormGroup()">Enregistrer</button>
+                              <button style="padding-right: 30px; " class="button" mat-button (click)="savePatient()">Enregistrer</button>
                             </div>
-                            <div style=" padding-top:200px"><button style="padding-right: 30px; " mat-button (click)="savePatient()">Enregistrer</button></div>
+<!--                            <div style=" padding-top:200px"><button style="padding-right: 30px; " mat-button (click)="savePatient()">Enregistrer</button></div>-->
                         </form>
                           </mat-step>
                         </mat-stepper>

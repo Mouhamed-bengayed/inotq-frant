@@ -530,13 +530,20 @@ isAutresChecked = false;
       localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
     }
    }
+  savesymptomatologieFormGroup(){
+    const symptomatologieFormGroupData = this.symptomatologieFormGroup.value;
+    if (this.thridFormGroup.valid) {
+      localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData));
+    }
 
+  }
 
 
 
 
  // Enregistrer le patient
  savePatient() {
+    this.saveFourthFormGroup();
 
     // Récupérer les données des formulaires depuis le localStorage
  const FirstFormData = JSON.parse(localStorage.getItem('FirstFormData') || '{}');
