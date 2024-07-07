@@ -53,7 +53,6 @@ export class AjouterPatientComponent implements OnInit {
   checkboxControl15 = new FormControl(false);
   checkboxControl16 = new FormControl(false);
   checkboxControl17 = new FormControl(false);
-
  spondylolisthesis = new FormControl();
   treatmentControl88= new FormControl('');
  pondylolisthesis = new FormControl();
@@ -511,30 +510,33 @@ isAutresChecked = false;
       localStorage.setItem('FirstFormData', JSON.stringify(FirstFormData));
 
   }
+  savehypoteseForm() {
+    const hypotheseFormGroup = this.hypotheseFormGroup.value;
+
+      localStorage.setItem('hypotheseFormGroup', JSON.stringify(hypotheseFormGroup));
+
+  }
+
    saveodiForm() {
     const odiFormGroupData1 = this.odiFormGroup.value;
-    if (this.odiFormGroup.valid) {
       localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
-    }
+    
    }
   savethridForm() {
     const thridFormGroupData1 = this.thridFormGroup.value;
-    if (this.thridFormGroup.valid) {
       localStorage.setItem('thridFormGroupData', JSON.stringify(thridFormGroupData1));
 
-    }
+  
    }
    saveFourthFormGroup() {
     const fourthFormGroupData1 = this.fourthFormGroup.value;
-    if (this.thridFormGroup.valid) {
       localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
-    }
+    
    }
   savesymptomatologieFormGroup(){
     const symptomatologieFormGroupData = this.symptomatologieFormGroup.value;
-    if (this.thridFormGroup.valid) {
       localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData));
-    }
+    
 
   }
 
@@ -552,6 +554,7 @@ isAutresChecked = false;
   const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
   const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
   const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
+  const hypotheseFormGroup = JSON.parse(localStorage.getItem('hypotheseFormGroup') || '{}');
 
    // Fusionner les données des formulaires avec les données du patient
 
@@ -561,9 +564,8 @@ isAutresChecked = false;
     ...symptomatologieFormGroupData,
     ...thridFormGroupData,
     ...odiFormGroupData,
+    ...hypotheseFormGroup,
     ...fourthFormGroupData,
-
-
   };
    //const user:any=localStorage.getItem("user")!
 
@@ -576,7 +578,9 @@ isAutresChecked = false;
       localStorage.removeItem('symptomatologieFormGroupData');
       localStorage.removeItem('thridFormGroupData');
       localStorage.removeItem('odiFormGroupData');
+      localStorage.removeItem('hypotheseFormGroup');
       localStorage.removeItem('fourthFormGroupData');
+
 
     },
     (error) => {
