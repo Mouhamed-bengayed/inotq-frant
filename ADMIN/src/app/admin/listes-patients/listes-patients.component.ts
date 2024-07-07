@@ -3,6 +3,7 @@ import { MedecinService } from '../Services/medecin.service';
 import { Patient } from 'src/app/_models/patient';
 import { PatientService } from '../Services/patient.service';
 import {AccountService} from "../../Service/account.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-listes-patients',
@@ -12,7 +13,7 @@ import {AccountService} from "../../Service/account.service";
 export class ListesPatientsComponent implements OnInit {
   patients: Patient[] = [];
 user:any;
-  constructor(private patientService:PatientService,private accounntservice:AccountService) {
+  constructor(private patientService:PatientService,private accounntservice:AccountService,private router:Router) {
     this.user= this.accounntservice.CurrentUserInfoSubject.getValue();
   }
 
@@ -42,5 +43,12 @@ user:any;
   },(err)=>console.error("lhnaa",err)
     );
     }
+  formatDate(timestamp: any): string {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
 
+  consulter(id: Number | undefined) {
+    this.router.navigate(['/admin/FichePatient', id]);
+  }
 }
