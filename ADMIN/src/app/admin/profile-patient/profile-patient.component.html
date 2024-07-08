@@ -2,20 +2,23 @@
 <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 <div style="padding-top:50px;" class="containero container bootstrap snippets bootdey">
   <div class="header d-flex justify-content-between align-items-center">
-    <h3>Nom du patient: <b>Foulen BenFlen</b></h3>
-    <h3>Sexe: <b>Homme</b></h3>
-    <h3>Age: <b>55 ans</b></h3>
-    <h3>Numéro de téléphone: <b>12345678</b></h3>
-    <h3>Status Sociale <b>Marié</b></h3>
+    <h3>Nom: <b>{{ fichepatient.name }}</b></h3>
+      <h3>Prénom: <b>{{ fichepatient.username }}</b></h3>
 
-    <h3>Adresse: <b>12 rue de la paix</b></h3>
+      <h3>Sexe: <b>{{ fichepatient.sexe }}</b></h3>
+    <h3>Age: <b>55 ans</b></h3>
+    <h3>Numéro de téléphone: <b>{{ fichepatient.telephone }}</b></h3>
+
+<!--    <h3>Adresse: <b>{{ fichepatient.addresse }}</b></h3>-->
+      <h3>Supervisé par le Doc: <b>{{ fichepatient.medecin.username }}</b></h3>
+
   </div>
 </div>
 
 <div style="padding-top:50px;" class="container bootstrap snippets bootdey">
   <div class="row">
     <div class="col-sm-8 col-md-9 col-lg-9 text-center">
-      <h1 class="text-primary"><b>Les Informations relatives à le patient <b>Foulen BenFlen</b> </b></h1>
+      <h1 class="text-primary"><b>Une vision sur les Informations relatives à le patient <b>{{ fichepatient.username }} : </b> </b></h1>
     </div>
   </div>
   <div class="row">
@@ -23,9 +26,9 @@
       <div class="row">
         <div class="media-img col-sm-4 col-md-3 col-lg-3">
           <div class="img-overlay">
-            <a href="#" class="btn btn-primary">Details</a>
+            <a href="#" class="btn btn-primary">Voir plus de détails</a>
           </div>
-          <img class="port-image" src="https://www.bootdey.com/image/400x400/87CEEB/000000">
+          <img class="port-image" src="../../../assets/img/suivit.png">
         </div>
         <div class="col-sm-8 col-md-9 col-lg-9">
           <h3>
@@ -34,9 +37,12 @@
             </a>
           </h3>
 
-          <p>
-            A complete description for this work y para no utilizar lorem ipsum escribire mucho texto por ejemplo Bootdey es una galería de fragmentos de bootstrap gratis Códigos html Css Js
-          </p>
+            <div class="container my-4">
+                <p class="text-justify">
+                    <strong>Informations Médicales :</strong> Le patient est actuellement suivi pour <span class="text-primary">[Diagnostique(s) Principal(aux)]</span>. Les traitements en cours incluent <span class="text-primary">[Traitements]</span>, avec des résultats d'examens récents indiquant <span class="text-primary">[Résultats Pertinents]</span>.<br>
+                    <strong>Suivi Médical :</strong> La dernière consultation a eu lieu le <span class="text-primary">[Dernière Date de Consultation]</span>, où il a été recommandé de <span class="text-primary">[Recommandations Médicales]</span>. La prochaine étape du traitement consiste en <span class="text-primary">[Prochaines Étapes]</span>.<br>
+                </p>
+            </div>
         </div>
       </div>
     </div>
@@ -45,9 +51,9 @@
       <div class="row">
         <div class="media-img col-sm-4 col-md-3 col-lg-3">
           <div class="img-overlay">
-            <a href="#" class="btn btn-primary">Details</a>
+            <a href="#" class="btn btn-primary">Voir plus de détails</a>
           </div>
-          <img class="port-image" src="https://www.bootdey.com/image/400x400/6A5ACD/000000">
+          <img class="port-image" src="../../../assets/img/sui1.jpg">
         </div>
         <div class="col-sm-8 col-md-9 col-lg-9">
           <h3>
@@ -56,9 +62,12 @@
             </a>
           </h3>
 
-          <p>
-            A complete description for this work y para no utilizar lorem ipsum escribire mucho texto por ejemplo Bootdey es una galería de fragmentos de bootstrap gratis Códigos html Css Js
-          </p>
+            <div class="container my-4">
+                <p class="text-justify">
+                    <strong>Informations Médicales :</strong> Le patient est actuellement suivi pour <span class="text-primary">[Diagnostique(s) Principal(aux)]</span>. Les traitements en cours incluent <span class="text-primary">[Traitements]</span>, avec des résultats d'examens récents indiquant <span class="text-primary">[Résultats Pertinents]</span>.<br>
+                    <strong>Suivi Médical :</strong> La dernière consultation a eu lieu le <span class="text-primary">[Dernière Date de Consultation]</span>, où il a été recommandé de <span class="text-primary">[Recommandations Médicales]</span>. La prochaine étape du traitement consiste en <span class="text-primary">[Prochaines Étapes]</span>.<br>
+                </p>
+            </div>
         </div>
       </div>
     </div>
@@ -67,9 +76,9 @@
       <div class="row">
         <div class="media-img col-sm-4 col-md-3 col-lg-3">
           <div class="img-overlay">
-            <a href="#" class="btn btn-primary">Details</a>
+            <a href="#" class="btn btn-primary">Voir plus de détails</a>
           </div>
-          <img class="port-image" src="https://www.bootdey.com/image/400x400/FF4500/000000">
+          <img class="port-image" src="../../../assets/img/staff.jpg">
         </div>
         <div class="col-sm-8 col-md-9 col-lg-9">
           <h3>
@@ -78,9 +87,12 @@
             </a>
           </h3>
 
-          <p>
-            A complete description for this work y para no utilizar lorem ipsum escribire mucho texto por ejemplo Bootdey es una galería de fragmentos de bootstrap gratis Códigos html Css Js
-          </p>
+            <div class="container my-4">
+                <p class="text-justify">
+                    <strong>Informations Médicales :</strong> Le patient est actuellement suivi pour <span class="text-primary">[Diagnostique(s) Principal(aux)]</span>. Les traitements en cours incluent <span class="text-primary">[Traitements]</span>, avec des résultats d'examens récents indiquant <span class="text-primary">[Résultats Pertinents]</span>.<br>
+                    <strong>Suivi Médical :</strong> La dernière consultation a eu lieu le <span class="text-primary">[Dernière Date de Consultation]</span>, où il a été recommandé de <span class="text-primary">[Recommandations Médicales]</span>. La prochaine étape du traitement consiste en <span class="text-primary">[Prochaines Étapes]</span>.<br>
+                </p>
+            </div>
         </div>
       </div>
     </div>

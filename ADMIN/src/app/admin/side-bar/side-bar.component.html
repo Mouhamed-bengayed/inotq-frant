@@ -24,7 +24,6 @@
       </a>
       <div id="collapseBootstrap" class="cardo collapse show" aria-labelledby="headingBootstrap">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Consulter la gestion des patients :</h6>
           <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/ajouter/patient']">Ajouter un patient ></a><br>
           <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/liste/patient']">Liste des patients ></a>
         </div>
@@ -38,8 +37,9 @@
       </a>
       <div id="collapseForm" class="cardo collapse" aria-labelledby="headingForm">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Consulter la gestion des médecins :</h6>
-          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/liste/Medecin']">Liste des médecins ></a>
+          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/liste/Medecin']">Liste des médecins ></a><br>
+          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/notification']">Créer des groupes ></a>
+
         </div>
       </div>
     </li>
@@ -51,8 +51,9 @@
       </a>
       <div id="collapseTable" class="cardo collapse" aria-labelledby="headingTable">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Ouvrir les notifications :</h6>
-          <a class="collapse-item" href="simple-tables.html">Notifications ></a>
+          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/notification']">Créer des Notifications ></a> <br>
+          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/admin/notification']">liste des  Notifications ></a>
+
         </div>
       </div>
     </li>

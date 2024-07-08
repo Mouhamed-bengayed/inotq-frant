@@ -17,12 +17,15 @@
                   <input *ngIf="editMode.username" [(ngModel)]="user.username" (blur)="disableEdit('username')" />
                   <i style="margin-left: 5px" class="fa fa-shield"></i>
                 </h4>
-                <div>Travaillé à l'hopitale <span (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse">{{user.addresse}}</span>
+                <div>Docteur à l'hôpital  <span (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse">{{user.addresse}}</span>
                   <input *ngIf="editMode.addresse" [(ngModel)]="user.addresse" (blur)="disableEdit('addresse')" />
                 </div>
                 <div class="mg-top-30" style="margin:20px;margin-outside: 10px">
-                  <a routerLinkActive="active" [routerLink]="['/admin/liste/patient']" class="btn btn-blue">Consulter la liste des patients</a>
+                  <a routerLinkActive="active" [routerLink]="['/admin/liste/patient']" class="btn btn-blue mb-4">Consulter la liste des patients</a><br>
+                  <a  routerLinkActive="active" routerLink="#"  ><i  class=" fas fa-sign-out-alt text-blue" (click)="logout()"> Se déconnecter</i></a>
+
                 </div>
+
               </div>
             </div>
           </div>

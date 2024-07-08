@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {fichPatientService} from "../../Service/fichepatient.service";
 
 @Component({
   selector: 'app-profile-patient',
@@ -7,13 +8,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./profile-patient.component.css']
 })
 export class ProfilePatientComponent implements OnInit {
-  patientId: string | null = null;
+  patientId: any;
+  fichepatient: any;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,private fichPatientService:fichPatientService ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.patientId = params.get('id');
+
+      console.log(this.patientId);
       this.loadPatientProfile();
     });
   }
@@ -21,13 +25,16 @@ export class ProfilePatientComponent implements OnInit {
   loadPatientProfile(): void {
     if (this.patientId) {
       // Call your service to get the patient data using the patientId
-      // Example: this.patientService.getPatientById(this.patientId).subscribe(...);
+      this.fichPatientService.getfichepatientById(this.patientId).subscribe(
+        response => {
+          this.fichepatient = response;
+          console.log(response);
+        },
+        error => {
+          console.error(error);
+        }
+      );
     }
   }
-  patient = {
-    name: 'Louay Sghaier',
-    sexe: 'Homme',
-    age: '25 ans',
-    adresse: '12 rue de la paix'
-  };
+
 }
