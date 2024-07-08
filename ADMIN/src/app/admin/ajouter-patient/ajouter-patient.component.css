@@ -25,14 +25,15 @@
     color: #fff;
 }
 .custom-label {
-    font-size: 16px; /* Adjust the font size */
+    font-size: 15px; /* Adjust the font size */
     color: #272727; /* Text color */
     font-weight: bold; /* Bold text */
-    margin-bottom: 15px; /* Space below the label */
+    margin-bottom: auto; /* Space below the label */
 margin-right: auto;
+margin-left: auto;
     padding: 5px; /* Padding around the text */
     display: inline-block; /* Ensures margin and padding behave as expected */
-    background-color: #f0f0f0; /* Background color */
+    background-color: #f7f5f5; /* Background color */
     border-radius: 4px; /* Rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }

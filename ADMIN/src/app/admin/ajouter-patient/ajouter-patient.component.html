@@ -6,7 +6,7 @@
                   <div class="card-header card-header-danger">
 
                   </div>
-                  <div class="formbold-main-wrapper  bg-body "  >
+                  <div class="formbold-main-wrapper  bg-body ">
 
                         <mat-stepper [linear]="isLinear" #stepper >
                           <mat-step  [stepControl]="firstFormGroup">
@@ -611,32 +611,24 @@
                                     <br>
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl15" (change)="onChange()">Trouble vésico sphinctériens</mat-checkbox>
 
-                                    <mat-radio-group [formControl]="treatmentControl">
-                                      <div *ngIf="checkboxControl15.value">
-                                        <mat-radio-button style="padding-right: 30px;" value="incontinenceUrinaire">Incontinence urinaire</mat-radio-button>
-
-                                        <div *ngIf="treatmentControl.value === 'incontinenceUrinaire'">
-
-
-                                            <mat-radio-group aria-label="Select an option" [formControl]="typeControl">
-                                              <mat-radio-button style="padding-right: 30px;" value="1">Au repos</mat-radio-button>
-                                              <mat-radio-button style="padding-right: 30px;" value="2">A l'effort</mat-radio-button>
-
-                                            </mat-radio-group>
-
-                                            <br>
-
-
-                                        </div>
-
-                                        <br>
-                                        <mat-radio-button style="padding-right: 30px;" value="constipation">Constipation</mat-radio-button>
-                                        <br>
-                                        <mat-radio-button style="padding-right: 30px;" value="incontinenceAnale">Incontinence anale</mat-radio-button>
-                                        <br>
-                                        <mat-radio-button style="padding-right: 30px;" value="imperiositeUrinaire">Impériosité urinaire</mat-radio-button>
+                                    <div *ngIf="checkboxControl15.value">
+                                      <mat-checkbox style="padding-right: 30px;" [formControl]="checkboxControl7">Incontinence urinaire</mat-checkbox>
+                                    
+                                      <div *ngIf="checkboxControl7.value">
+                                        <mat-radio-group aria-label="Select an option" [formControl]="typeControl">
+                                          <mat-radio-button style="padding-right: 30px;" value="1">Au repos</mat-radio-button>
+                                          <mat-radio-button style="padding-right: 30px;" value="2">A l'effort</mat-radio-button>
+                                        </mat-radio-group>
+                                      
                                       </div>
-                                    </mat-radio-group>
+                                    
+                                      <br>
+                                      <mat-checkbox style="padding-right: 30px;" value="1">Constipation</mat-checkbox>
+                                      <br>
+                                      <mat-checkbox style="padding-right: 30px;" value="1">Incontinence anale</mat-checkbox>
+                                      <br>
+                                      <mat-checkbox style="padding-right: 30px;" value="1">Impériosité urinaire</mat-checkbox>
+                                    </div>
                                     <br>
 
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl17" (change)="onChange()">Périmètre de marche</mat-checkbox>
