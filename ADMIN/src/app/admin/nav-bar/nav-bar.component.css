@@ -1,74 +1,37 @@
-/*.navbar-toggler {*/
-/*  position: absolute;*/
-/*  right: 10px; !* Position the toggle button to the right *!*/
-/*  top: 10px;   !* Adjust the top position as needed *!*/
-/*  z-index: 1100; !* Ensure the toggle button is above the navbar *!*/
-/*  border: none;*/
-/*  background: transparent;*/
-/*}*/
-
-/*.navbar-toggler-icon {*/
-/*  display: none; !* Hide the default icon *!*/
-/*}*/
-
-/*!* Styles for the lines *!*/
-/*.navbar-toggler .line {*/
-/*  display: block;*/
-/*  width: 25px;*/
-/*  height: 3px;*/
-/*  margin: 5px auto;*/
-/*  transition: all 0.3s;*/
-/*  background-color: #000; !* Adjust color as needed *!*/
-/*}*/
-
-/*!* Transform the lines into an 'X' *!*/
-/*.navbar-toggler.collapsed .line1 {*/
-/*  transform: rotate(45deg) translate(5px, 5px);*/
-/*}*/
-
-/*.navbar-toggler.collapsed .line2 {*/
-/*  opacity: 0;*/
-/*}*/
-
-/*.navbar-toggler.collapsed .line3 {*/
-/*  transform: rotate(-45deg) translate(5px, -5px);*/
-/*}*/
-
-/*!* Ensure the button looks good in all states *!*/
-/*.navbar-toggler:not(.collapsed) .line1,*/
-/*.navbar-toggler:not(.collapsed) .line2,*/
-/*.navbar-toggler:not(.collapsed) .line3 {*/
-/*  transform: none;*/
-/*  opacity: 1;*/
-/*}*/
-/*!* Ensure the navbar content is aligned to the right *!*/
-
-
-
-
-/*!* Ensure the navbar content is aligned to the right *!*/
-/*.navbar-nav {*/
-/*  margin-left: auto;*/
-/*}*/
-
-
-/*.navbar-collapse {*/
-/*  justify-content: flex-end; !* Align the content to the right *!*/
-/*  align-items: center;*/
-/*}*/
-
-/*!* Ensure the navbar content is aligned to the right when collapsed *!*/
-/*.disp{*/
-/*  display: flex !important;*/
-/*  justify-content: flex-end !important;*/
-/*  align-items: center !important;*/
-
-/*}*/
-/* Example for custom styling, if needed */
-.navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.1);
+/* Ensure the navbar background is primary */
+.navbar-primary {
+  background-color: #007bff;
 }
 
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+/* Align items to the right on small screens */
+@media (max-width: 767.98px) {
+  .navbar-nav {
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .form-inline {
+    width: 100%;
+  }
+
+  .form-inline .form-control {
+    width: calc(100% - 100px); /* Adjust width to fit the search input and button */
+  }
+
+  .form-inline .btn {
+    width: 80px;
+    margin-left: 10px;
+  }
+}
+
+/* Default behavior for larger screens */
+@media (min-width: 768px) {
+  .navbar-nav {
+    flex-direction: row;
+  }
+
+  .form-inline .form-control {
+    width: auto;
+  }
 }
