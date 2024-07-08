@@ -181,19 +181,12 @@
                               </mat-radio-group>
                               <br>
                               <label class="custom-label" style="padding-right: 30px;">ATCD</label>
-
-                              <!-- <div formArrayName="atcd">
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" (change)="onCheckboxChange($event, 'atcd')">HTA</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2" (change)="onCheckboxChange($event, 'atcd')">Chirurgie abdominale</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3" (change)="onCheckboxChange($event, 'atcd')">Diabéte</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="4" (change)="onCheckboxChange($event, 'atcd')">Scoliose</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" value="autres" >Autres</mat-checkbox>
-                              </div> -->
-                              <div >
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1">HTA</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2">Chirurgie abdominale</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3">Diabéte</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="4">Scoliose</mat-checkbox>
+                           
+                              <div formArrayName="atcd">
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin"(change)="onCheckboxChange($event, 'atcd')" value="1">HTA</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin"(change)="onCheckboxChange($event, 'atcd')" value="2">Chirurgie abdominale</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin"(change)="onCheckboxChange($event, 'atcd')" value="3">Diabéte</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin"(change)="onCheckboxChange($event, 'atcd')" value="4">Scoliose</mat-checkbox>
                                 <mat-checkbox style="padding-right: 30px;" value="autres" >Autres</mat-checkbox>
                               </div>
 
@@ -226,17 +219,10 @@
                                 </mat-form-field>
                               </div>
                               <br>
-                              <label  class="custom-label"   style="padding-right: 30px;">Motif de consultation </label>
 
 
 <!--
-                              <div formArrayName="Motif_de_consultation">
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" (change)="onCheckboxChange($event, 'Motif_de_consultation')">Lombalgie</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2" (change)="onCheckboxChange($event, 'Motif_de_consultation')">Sciatique</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3" (change)="onCheckboxChange($event, 'Motif_de_consultation')">Radiculalgie</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="4" (change)="onCheckboxChange($event, 'Motif_de_consultation')">Cruralgie</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="5" (change)="onCheckboxChange($event, 'Motif_de_consultation')">Claudication</mat-checkbox>
-                              </div> -->
+                            
 
                               <div >
                                 <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" >Lombalgie</mat-checkbox>
@@ -322,23 +308,18 @@
 
 
 
-                                <br>
-                                <label  class="custom-label" style="padding-right: 30px;" >Les médecins traitants</label>
+                                <br>-->
 
-                                  <!-- <div formArrayName="medecin_traitants">
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" (change)="onCheckboxChange2($event, 'medecin_traitants')">Rhumatologue</mat-checkbox>
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2" (change)="onCheckboxChange2($event, 'medecin_traitants')">Médecin de famille</mat-checkbox>
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3" (change)="onCheckboxChange2($event, 'medecin_traitants')">Neurochirurgien</mat-checkbox>
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="4" (change)="onCheckboxChange2($event, 'medecin_traitants')">Orthopédiste</mat-checkbox>
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="5" (change)="onCheckboxChange2($event, 'medecin_traitants')">Autres</mat-checkbox>
-                                  </div> -->
-                                  <div>
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" >Rhumatologue</mat-checkbox>
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2" >Médecin de famille</mat-checkbox>
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3" >Neurochirurgien</mat-checkbox>
-                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="4" >Orthopédiste</mat-checkbox>
+                                <label  class="custom-label"  >Motif de consultation </label>
+
+                                  <div formArrayName="motif_de_consultation">
+                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" (change)="onCheckboxChange($event, 'motif_de_consultation')">Rhumatologue</mat-checkbox>
+                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2" (change)="onCheckboxChange($event, 'motif_de_consultation')">Médecin de famille</mat-checkbox>
+                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3" (change)="onCheckboxChange($event, 'motif_de_consultation')">Neurochirurgien</mat-checkbox>
+                                    <mat-checkbox style="padding-right: 30px;" class="example-margin" value="4" (change)="onCheckboxChange($event, 'motif_de_consultation')">Orthopédiste</mat-checkbox>
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" value="5" >Autres</mat-checkbox>
                                   </div>
+
                                   <br>
                                       <label  class="custom-label" style="padding-right: 30px;" >Traitement antérieur</label>
                                       <br>
@@ -421,7 +402,7 @@
 
                               <div>
                                 <button style="padding-right: 30px;" class="button" mat-flat-button color="primary" mat-button matStepperNext  >Précédant</button>
-                                <button style="padding-right: 30px;" class="button" mat-flat-button color="primary" mat-button matStepperNext  (click)="saveSecondForm()">Suivant</button>
+                                <button style="padding-right: 30px;" class="button" mat-flat-button color="primary" mat-button matStepperNext  (click)="saveFirstForm()">Suivant</button>
                               </div>
                               <br>
 
@@ -770,9 +751,9 @@
                                          <label  class="custom-label" style="padding-right: 30px;" >Laségue  </label>
 
                                         <mat-radio-group aria-label="Select an option" formControlName="lasegue">
-                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="1">& &lt;30° </mat-radio-button>
-                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="2">30°&lt; & &lt;60° </mat-radio-button>
-                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="3">& &gt;60° </mat-radio-button>
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="1">α &lt;30° </mat-radio-button>
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="2">30°&lt; α  &lt;60° </mat-radio-button>
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="3">α  &gt;60° </mat-radio-button>
 
                                           </mat-radio-group>
                                           <br> <label  class="custom-label" style="padding-right: 30px;" >Laségue controlatéral
