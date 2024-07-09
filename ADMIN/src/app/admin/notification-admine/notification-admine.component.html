@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="card">
+    <p class="h-1">Créer une Notification</p>
+    <div class="bar mb-3"></div>
+    <div class="row">
+      <div class="col-12">
+        <p class="mb-2">Titre</p>
+        <div class="box mb-3">
+          <input type="text" class="form-control" placeholder="Titre de la notification">
+          <div class="btn btn-outline-secondary" type="button">
+            <span class="fas fa-plus pe-2"></span>Ajouter un fichier
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <p class="mb-2">Type de Notification</p>
+        <div class="box mb-3">
+          <select class="form-control">
+            <option value="alert">Alerte</option>
+            <option value="reminder">Rappel</option>
+            <option value="update">Mise à jour</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-12">
+        <p class="mb-2">Heure</p>
+        <div class="box">
+          <input class="form-control" type="text" placeholder="14:00">
+        </div>
+      </div>
+      <div class="col-12">
+        <p class="mb-2">Ajouter des destinataires</p>
+        <div class="box mb-3">
+          <input class="form-control" type="text" placeholder="Email du destinataire">
+          <div class="add btn btn-outline-secondary">Ajouter</div>
+        </div>
+      </div>
+      <div class="col-12">
+        <p class="mb-2">Sélectionner les Médecins</p>
+        <div class="box mb-3">
+          <select class="form-control">
+            <option value="medic1">Dr. John Doe</option>
+            <option value="medic2">Dr. Jane Smith</option>
+            <option value="medic3">Dr. Emily Johnson</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="d-md-flex align-items-center mt-4">
+          <div class="d-flex flex-md-column align-sm-items-center justify-content-between me-md-4 me-0">
+            <p class="mb-2">Méthode de Notification</p>
+            <div class="Radio form-control">
+              <label class="radio">
+                <input type="radio" name="send" value="Email" checked>
+                <span>Email</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="send" value="Stack">
+                <span>Stack</span>
+              </label>
+            </div>
+          </div>
+          <div style="margin-left: 10px;">
+            <p class="mb-2">Définir un Rappel</p>
+            <input style="width: 230px" class="form-control" type="number" placeholder="1 heure avant la notification">
+          </div>
+        </div>
+      </div>
+      <div class="col-12 text-center mt-4">
+        <button type="submit" class="btn btn-primary">Soumettre cette notification</button>
+      </div>
+    </div>
+  </div>
+</div>
