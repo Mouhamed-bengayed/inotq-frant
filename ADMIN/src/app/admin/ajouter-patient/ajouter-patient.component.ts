@@ -209,9 +209,7 @@ console.error("user id",this.user.id);
     addresse: new FormControl(''),
     country: new FormControl(this.countries[0].code),  // Default to the first country
     telephone: new FormControl('', [Validators.required, this.telephoneValidator()]),
-     profession: new FormControl(''),
-
-
+    profession: new FormControl(''),
     adresse_par: new FormControl(''),
     statut_social: new FormControl(''),
     entourage_actuel: new FormControl(''),

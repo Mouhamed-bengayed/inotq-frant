@@ -180,9 +180,10 @@
                                 <mat-radio-button style="padding-right: 30px;" value="2">Mal entouré(e)      </mat-radio-button>
                               </mat-radio-group>
                               <br>
-                              <label class="custom-label" style="padding-right: 30px;">ATCD</label>
                            
                               <div formArrayName="atcd">
+                                <label class="custom-label" >ATCD</label>
+
                                 <mat-checkbox style="padding-right: 30px;" class="example-margin"(change)="onCheckboxChange($event, 'atcd')" value="1">HTA</mat-checkbox>
                                 <mat-checkbox style="padding-right: 30px;" class="example-margin"(change)="onCheckboxChange($event, 'atcd')" value="2">Chirurgie abdominale</mat-checkbox>
                                 <mat-checkbox style="padding-right: 30px;" class="example-margin"(change)="onCheckboxChange($event, 'atcd')" value="3">Diabéte</mat-checkbox>
@@ -218,7 +219,7 @@
                                   <input matInput formControlName="adresse_par" placeholder="Packet/j">
                                 </mat-form-field>
                               </div>
-                              <br>
+                              
 
 
 <!--
@@ -310,9 +311,10 @@
 
                                 <br>-->
 
-                                <label  class="custom-label"  >Motif de consultation </label>
 
                                   <div formArrayName="motif_de_consultation">
+                                    <label  class="custom-label"  >Motif de consultation </label>
+
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" (change)="onCheckboxChange($event, 'motif_de_consultation')">Rhumatologue</mat-checkbox>
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2" (change)="onCheckboxChange($event, 'motif_de_consultation')">Médecin de famille</mat-checkbox>
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3" (change)="onCheckboxChange($event, 'motif_de_consultation')">Neurochirurgien</mat-checkbox>
@@ -320,7 +322,6 @@
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" value="5" >Autres</mat-checkbox>
                                   </div>
 
-                                  <br>
                                       <label  class="custom-label" style="padding-right: 30px;" >Traitement antérieur</label>
                                       <br>
                                         <mat-radio-group [formControl]="treatmentControl" (change)="onChange()">
@@ -370,14 +371,16 @@
                             <div *ngIf="pincementN.value === '3'">
                               <br>
                               <label class="custom-label" style="padding-right: 30px;">Nouvelles symptomatologies</label>
-                              <div formGroupName="n_symptomatologies">
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" formControlName="hyperalgique">Hyperalgique</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" formControlName="deficititaire">Déficitaire</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" formControlName="claudication">Apparition d'une claudication</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;" class="example-margin" formControlName="pluriradiculaire">Pluriradiculaire</mat-checkbox>
+                              <div formArrayName="n_symptomatologies">
+
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" (change)="onCheckboxChange($event, 'motif_de_consultation')">Hyperalgique</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="2" (change)="onCheckboxChange($event, 'motif_de_consultation')">Déficitaire</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="3" (change)="onCheckboxChange($event, 'motif_de_consultation')">Apparition d'une claudication</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="4" (change)="onCheckboxChange($event, 'motif_de_consultation')">Pluriradiculaire</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;" class="example-margin" value="5" >Autres</mat-checkbox>
                               </div>
                             </div>
-
+                            
                               <br>
                               <label  class="custom-label" style="padding-right: 30px;" >Indication chirurgicale</label>
 
@@ -401,8 +404,8 @@
 
 
                               <div>
-                                <button style="padding-right: 30px;" class="button" mat-flat-button color="primary" mat-button matStepperNext  >Précédant</button>
-                                <button style="padding-right: 30px;" class="button" mat-flat-button color="primary" mat-button matStepperNext  (click)="saveFirstForm()">Suivant</button>
+                                <button style="padding-right: 30px;" class="button" mat-flat-button color="primary" mat-button matStepperNext>Précédant</button>
+                                <button style="padding-right: 30px;" class="button" mat-flat-button color="primary" mat-button matStepperNext (click)="saveFirstForm()">Suivant</button>
                               </div>
                               <br>
 
