@@ -19,7 +19,7 @@ export class SuiviPostImmediatComponent implements OnInit {
   checkboxControl6 = new FormControl(false);
   checkboxControl7 = new FormControl(false);
   checkboxControl8 = new FormControl(false);
-
+  checkboxControl15 = new FormControl(false);
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
   picker2!: MatDatepicker<any>;
   picker4!: MatDatepicker<any>;
@@ -72,7 +72,60 @@ export class SuiviPostImmediatComponent implements OnInit {
     Traitement_propose_Type_chirurgie: new FormControl(''),
     Traitement_propose_Auter: new FormControl(''),
   });
+  symptomatologieFormGroup = new FormGroup({
+    date_debut_maladie: new FormControl(''),
+    facture_declanchants: new FormControl(''),
+    Date_1consultation_medicale: new FormControl(''),
+    Date_1consultation_specialisee: new FormControl(''),
+    medecin_traitants: new FormControl(''),
+    traitants_anterieur: new FormControl(''),
+    Nbre_infiltration: new FormControl(''),
+    Nbre_seances: new FormControl(''),
+    evalution: new FormControl(''),
+    n_symptomatologies: new FormControl(''),
+    indication_chirurgicale: new FormControl(''),
+    date: new FormControl(''),
+    Motif_de_consultation: new FormControl(''),
+    Motif_de_consultation_l: new FormControl(''),
+
+
+
+   
+   
+    marche_talons: new FormControl(''),
+    marche_pointes_pieds: new FormControl(''),
+    testing_musculaire_L2: new FormControl(''),
+    testing_musculaire_L3: new FormControl(''),
+    testing_musculaire_L4: new FormControl(''),
+    testing_musculaire_L5: new FormControl(''),
+    testing_musculaire_S1: new FormControl(''),
+    sensibilte_L2: new FormControl(''),
+    sensibilte_L3: new FormControl(''),
+    sensibilte_L4: new FormControl(''),
+    sensibilte_L5: new FormControl(''),
+    sensibilte_S1: new FormControl(''),
+    examen_perinee_sensibilite: new FormControl(''),
+    examen_perinee_Tonus_anal: new FormControl(''),
+    examen_perinee_Reflexe_anal : new FormControl(''),
+    intensite_douleur: new FormControl(''),
+    soins_personnels: new FormControl(''),
+    levee: new FormControl(''),
+    marche: new FormControl(''),
+    assis: new FormControl(''),
+    debout: new FormControl(''),
+    sommeil: new FormControl(''),
+    vie_sexuelle: new FormControl(''),
+    vie_sociale: new FormControl(''),
+    voyage: new FormControl(''),
+  });
+
   ngOnInit(): void {
+  }
+  savesymptomatologieFormGroup(){
+    const symptomatologieFormGroupData = this.symptomatologieFormGroup.value;
+      localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData));
+    
+
   }
   addsuiviImed() {
     if (this.firstFormGroup.valid) {
