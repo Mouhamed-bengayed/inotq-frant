@@ -1,6 +1,6 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { PatientService } from '../Services/patient.service';
 import Swal from 'sweetalert2';
@@ -32,7 +32,7 @@ export class SuiviArthrodeseComponent implements OnInit {
   checkboxControl15 = new FormControl(false);
   checkboxControl16 = new FormControl(false);
   checkboxControl17 = new FormControl(false);
-
+  pincementN = new FormControl();
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
   etageControl = new FormControl('');
@@ -47,7 +47,7 @@ export class SuiviArthrodeseComponent implements OnInit {
   pincement24 = new FormControl();
 
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
-  constructor( private patientService: PatientService) { }
+  constructor( private patientService: PatientService,private fb: FormBuilder) { }
   pincement27= new FormControl();
   pincement_discal= new FormControl();
   tDM_hernie_discale= new FormControl();
@@ -66,7 +66,7 @@ export class SuiviArthrodeseComponent implements OnInit {
     atcd: new FormControl(''),
     tabac: new FormControl(''),
     evolution: new FormControl(''),
-    evolution_nouvelles_symptomatologies: new FormControl(''),
+    evolution_nouvelles_symptomatologies: this.fb.array([]),
  });
  symptomatologieFormGroup = new FormGroup({
   date_debut_maladie: new FormControl(''),
@@ -225,7 +225,16 @@ hypotheseFormGroup = new FormGroup({
     iRM_etat_disques_sous_jacent: new FormControl(''),
     iRM_etat_disques_sus_jacent: new FormControl(''),
 });
+onCheckboxChange(event: any, formArrayName: string) {
+  const formArray: FormArray = this.firstFormGroup.get(formArrayName) as FormArray;
 
+  if (event.checked) {
+    formArray.push(this.fb.control(event.source.value));
+  } else {
+    const index = formArray.controls.findIndex(x => x.value === event.source.value);
+    formArray.removeAt(index);
+  }
+}
 scorefinale:number=0;
 
 
