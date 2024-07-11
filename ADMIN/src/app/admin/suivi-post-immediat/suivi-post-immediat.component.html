@@ -84,9 +84,12 @@
                                  
                                                
                                 <div>
+
                                   <button style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="savesymptomatologieFormGroup()">Suivant</button>
                                 </div>
-                                
+                                <div>
+
+                                </div>
                               </form>
                             </mat-step> 
                             <mat-step [stepControl]="symptomatologieFormGroup" label="Symptomatologie">
@@ -146,6 +149,16 @@
                                       <mat-checkbox style="padding-right: 30px;" value="1">Impériosité urinaire</mat-checkbox>
                                     </div>
                                     <br>
+                                    <div>
+                                      <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
+    
+                                      <button style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="savesymptomatologieFormGroup()">Suivant</button>
+                                    </div>
+                                  </form>
+                                </mat-step>
+                                    <mat-step [stepControl]="thridFormGroup"label="ExamenPOST">
+                              
+                                      <form [formGroup]="thridFormGroup">
                                     <br>
                                     <label  class="custom-label" style="padding-right: 30px;" >Testing musculaire  </label>
 
@@ -297,7 +310,7 @@
                                                <div>
                                                 <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
 
-                                                <button  style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="addsuiviImed()">Enregistrer Suivi Post Immediat </button>
+                                                <button  style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="saveExamen_op()">Enregistrer Suivi Post Immediat </button>
                                               </div>
                                
                               </form>

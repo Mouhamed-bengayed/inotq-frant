@@ -59,19 +59,7 @@ export class SuiviPostImmediatComponent implements OnInit {
      examen_Post_Examen_perinee_Reflexe_anal: new FormControl(''),
   });
   
-  hypotheseFormGroup = new FormGroup({
-    Nbre_infiltration: new FormControl(''),
-    Nbre_seances: new FormControl(''),
-    description_autres: new FormControl(''),
-    Hypothese_diagnostic_HD: new FormControl(''),
-    Hypothese_diagnostic_type: new FormControl(''),
-    Hypothese_diagnostic_Localisation: new FormControl(''),
-    Traitement_propose : new FormControl(''),
-    Traitement_propose_Nbre_infiltrations : new FormControl(''),
-    Traitement_propose_Nbre_seances: new FormControl(''),
-    Traitement_propose_Type_chirurgie: new FormControl(''),
-    Traitement_propose_Auter: new FormControl(''),
-  });
+ 
   symptomatologieFormGroup = new FormGroup({
     date_debut_maladie: new FormControl(''),
     facture_declanchants: new FormControl(''),
@@ -119,9 +107,50 @@ export class SuiviPostImmediatComponent implements OnInit {
     voyage: new FormControl(''),
   });
 
+thridFormGroup = new FormGroup({
+    
+   
+    testing_musculaire_L2: new FormControl(''),
+    testing_musculaire_L3: new FormControl(''),
+    testing_musculaire_L4: new FormControl(''),
+    testing_musculaire_L5: new FormControl(''),
+    testing_musculaire_S1: new FormControl(''),
+    sensibilte_L2: new FormControl(''),
+    sensibilte_L3: new FormControl(''),
+    sensibilte_L4: new FormControl(''),
+    sensibilte_L5: new FormControl(''),
+    sensibilte_S1: new FormControl(''),
+    examen_perinee_sensibilite: new FormControl(''),
+    examen_perinee_Tonus_anal: new FormControl(''),
+    examen_perinee_Reflexe_anal : new FormControl(''),
+    intensite_douleur: new FormControl(''),
+    soins_personnels: new FormControl(''),
+    levee: new FormControl(''),
+    marche: new FormControl(''),
+    assis: new FormControl(''),
+    debout: new FormControl(''),
+    sommeil: new FormControl(''),
+    vie_sexuelle: new FormControl(''),
+    vie_sociale: new FormControl(''),
+    voyage: new FormControl(''),
+   
+
+  });
   ngOnInit(): void {
   }
   savesymptomatologieFormGroup(){
+    const symptomatologieFormGroupData = this.symptomatologieFormGroup.value;
+      localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData));
+    
+
+  }
+  savethridForm() {
+    const thridFormGroupData1 = this.thridFormGroup.value;
+      localStorage.setItem('thridFormGroupData', JSON.stringify(thridFormGroupData1));
+
+  
+   }
+  savesyFormGroup(){
     const symptomatologieFormGroupData = this.symptomatologieFormGroup.value;
       localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData));
     
@@ -142,6 +171,42 @@ export class SuiviPostImmediatComponent implements OnInit {
       );
     }
   }
+  user:any;
+
+  // Enregistrer le patient
+ saveExamen_op() {
+  this.savethridForm();
+
+  // Récupérer les données des formulaires depuis le localStorage
+const FirstFormData = JSON.parse(localStorage.getItem('FirstFormData') || '{}');
+const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
+const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
+
+ // Fusionner les données des formulaires avec les données du patient
+
+const patientData = {
+  ...FirstFormData,
+  ...symptomatologieFormGroupData,
+  ...thridFormGroupData,
+};
+ //const user:any=localStorage.getItem("user")!
+
+this.patientService.createPatient(patientData,this.user.id).subscribe(
+  (response) => {
+
+    console.log("Patient enregistré avec succès : ", response);
+    localStorage.removeItem('FirstFormData');
+    localStorage.removeItem('symptomatologieFormGroupData');
+    localStorage.removeItem('thridFormGroupData');
+
+
+  },
+  (error) => {
+    console.error("Erreur lors de l'enregistrement du patient : ", error);
+  }
+);
+}
+
 
   onChange() {
     if (this.checkboxControl.value) {
