@@ -1,66 +1,37 @@
-.navbar-toggler {
-  position: absolute;
-  right: 10px; /* Position the toggle button to the right */
-  top: 10px;   /* Adjust the top position as needed */
-  z-index: 1100; /* Ensure the toggle button is above the navbar */
-  border: none;
-  background: transparent;
+/* Ensure the navbar background is primary */
+.navbar-primary {
+  background-color: #007bff;
 }
 
-.navbar-toggler-icon {
-  display: none; /* Hide the default icon */
+/* Align items to the right on small screens */
+@media (max-width: 767.98px) {
+  .navbar-nav {
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .form-inline {
+    width: 100%;
+  }
+
+  .form-inline .form-control {
+    width: calc(100% - 100px); /* Adjust width to fit the search input and button */
+  }
+
+  .form-inline .btn {
+    width: 80px;
+    margin-left: 10px;
+  }
 }
 
-/* Styles for the lines */
-.navbar-toggler .line {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  transition: all 0.3s;
-  background-color: #000; /* Adjust color as needed */
-}
+/* Default behavior for larger screens */
+@media (min-width: 768px) {
+  .navbar-nav {
+    flex-direction: row;
+  }
 
-/* Transform the lines into an 'X' */
-.navbar-toggler.collapsed .line1 {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.navbar-toggler.collapsed .line2 {
-  opacity: 0;
-}
-
-.navbar-toggler.collapsed .line3 {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Ensure the button looks good in all states */
-.navbar-toggler:not(.collapsed) .line1,
-.navbar-toggler:not(.collapsed) .line2,
-.navbar-toggler:not(.collapsed) .line3 {
-  transform: none;
-  opacity: 1;
-}
-/* Ensure the navbar content is aligned to the right */
-
-
-
-
-/* Ensure the navbar content is aligned to the right */
-.navbar-nav {
-  margin-left: auto;
-}
-
-
-.navbar-collapse {
-  justify-content: flex-end; /* Align the content to the right */
-  align-items: center;
-}
-
-/* Ensure the navbar content is aligned to the right when collapsed */
-.disp{
-  display: flex !important;
-  justify-content: flex-end !important;
-  align-items: center !important;
-
+  .form-inline .form-control {
+    width: auto;
+  }
 }

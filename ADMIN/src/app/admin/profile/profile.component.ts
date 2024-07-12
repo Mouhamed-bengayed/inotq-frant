@@ -50,6 +50,9 @@ export class ProfileComponent implements OnInit {
     const date = new Date(timestamp);
     return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
   }
+  logout() {
+    this.accountService.logout();
+  }
   saveChanges() {
     const url = 'http://localhost:8082/api/user/update-user/';
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

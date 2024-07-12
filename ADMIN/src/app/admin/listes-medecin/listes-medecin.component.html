@@ -1,75 +1,61 @@
- <!-- Topbar -->
-        <!-- Container Fluid-->
-        <div class="container-fluid" id="container-wrapper">
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h3 mb-0 text-gray-800">DataTables</h1>
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="./">Home</a></li>
-                <li class="breadcrumb-item">Tables</li>
-                <li class="breadcrumb-item active" aria-current="page">DataTables</li>
-              </ol>
-            </div>
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="card mb-4">
-                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
-                  </div>
-                  <div class="table-responsive p-3">
-                    <table class="table align-items-center table-flush" id="dataTable">
-                      <thead class="thead-light">
-                        <tr>
-                          <th>Id</th>
-                          <th>Nom</th>
-                          <th>Prénom</th>
-                          <th>Email</th>
-                          <th>Addresse</th>                
-                          <th>Numéro Telephone</th> 
-                          <th>Date de creation</th>                  
-                          <th>Bloque par admin</th>
-                          <th>Activer/bloquer par adminstrateur</th>
-                          <th>Statut </th>
-
-
-
-                        </tr>
-                      </thead>
-                    
-                      <tbody  >
-                        <tr *ngFor="let med of medecins">
-                          <td>{{med.id}}</td>
-                          <td>{{med.name}}</td>
-                          <td>{{med.username}}</td>
-                          <td>{{med.email}}</td>
-                          <td>{{med.addresse}}</td>
-                          <td>{{med.number}}</td>
-                          <td>{{med.date}}</td>
-                          <td>{{med.blockedByAdmin}}</td>
-
-
-                          
-
-                          <td>
-                            <button *ngIf="med.blockedByAdmin"(click)="ActiveMedecinByAdmin(med)" type="button" class="btn btn-success" >Activer Compte </button>
-                            <button *ngIf="!med.blockedByAdmin"(click)="bloqueMedecinByAdmin(med)" type="button" class="btn btn-danger">Bloquer Compte</button>
-                          </td>
-                          <td>
-                            <button *ngIf="!med.Status"(click)="activateMedecin(med)" type="button" class="btn btn-success" >Start Compte </button>
-                            <button *ngIf="med.Status"  class="btn btn-danger">Compte Start</button>
-                          </td>
-                          <td>
-                            <!-- <button (click)="supprimeMedecin(med)" type="button" class="btn btn-danger" >Supprimer</button> -->
-                          </td>
-                        </tr>
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-             
-            </div>
-           
-  
-          </div>
-         
+<!-- Container Fluid-->
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">DataTables</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="./">Home</a></li>
+      <li class="breadcrumb-item">Tables</li>
+      <li class="breadcrumb-item active" aria-current="page">DataTables</li>
+    </ol>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+        </div>
+        <div class="table-responsive p-3">
+          <table class="table align-items-center table-flush" id="dataTable">
+            <thead class="thead-light">
+            <tr>
+              <th>Id</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Email</th>
+              <th>Adresse</th>
+              <th>Numéro Telephone</th>
+              <th>Date de création</th>
+              <th>Status du compte</th>
+              <th>Bloquer/Débloquer</th>
+              <th>Valider ce compte </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let med of medecins">
+              <td>{{med.id}}</td>
+              <td>{{med.name}}</td>
+              <td>{{med.username}}</td>
+              <td>{{med.email}}</td>
+              <td>{{med.addresse}}</td>
+              <td>{{med.number}}</td>
+              <td>{{med.date}}</td>
+              <td>{{med.status}}</td>
+              <td>
+                <button *ngIf="med.blockedByAdmin" (click)="ActiveMedecinByAdmin(med)" type="button" class="btn btn-success">Activer Compte</button>
+                <button *ngIf="!med.blockedByAdmin" (click)="bloqueMedecinByAdmin(med)" type="button" class="btn btn-danger">Bloquer Compte</button>
+              </td>
+              <td>
+                <button *ngIf="!med.Status" (click)="activateMedecin(med)" type="button" class="btn btn-success">Valider</button>
+                <button *ngIf="med.Status" class="btn btn-danger">Compte est valide</button>
+              </td>
+              <td>
+                <!-- <button (click)="supprimeMedecin(med)" type="button" class="btn btn-danger">Supprimer</button> -->
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

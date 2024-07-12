@@ -1,14 +1,41 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<section class="section full-screen-section">
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-lg-6 col-md-8 col-sm-10">
-        <div class="panel panel-white profile-widget">
-          <div class="row">
-            <div class="col-12">
-              <div class="image-container bg2">
-                <img [src]="profileImageUrl" class="avatar" alt="avatar" (click)="triggerFileInput()">
-                <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="panel panel-white profile-widget">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="image-container bg2">
+              <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="avatar" alt="avatar">
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="details">
+              <h4>John Doe <i class="fa fa-sheild"></i></h4>
+              <div>Works at Bootdey.com</div>
+              <div>Attended University of Bootdey.com</div>
+              <div>Bootdey Land</div>
+              <div class="mg-top-10">
+                <a href="#" class="btn btn-blue">Followers</a>
+                <a href="#" class="btn btn-green">Following</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+
+          <div class="panel panel-white border-top-purple">
+            <div class="panel-heading">
+              <h3 class="panel-title">My Story</h3>
+              <div class="controls pull-right">
+                            <span class="pull-right clickable">
+                                <i class="fa fa-chevron-up"></i>
+                            </span>
               </div>
             </div>
             <div class="col-12">
@@ -17,12 +44,15 @@
                   <input *ngIf="editMode.username" [(ngModel)]="user.username" (blur)="disableEdit('username')" />
                   <i style="margin-left: 5px" class="fa fa-shield"></i>
                 </h4>
-                <div>Travaillé à l'hopitale <span (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse">{{user.addresse}}</span>
+                <div>Docteur à l'hôpital  <span (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse">{{user.addresse}}</span>
                   <input *ngIf="editMode.addresse" [(ngModel)]="user.addresse" (blur)="disableEdit('addresse')" />
                 </div>
-                <div class="mg-top-30" style="margin:20px">
-                  <a routerLinkActive="active" [routerLink]="['/admin/liste/patient']" class="btn btn-blue">Consulter la liste des patients</a>
+                <div class="mg-top-30" style="margin:20px;margin-outside: 10px">
+                  <a routerLinkActive="active" [routerLink]="['/admin/liste/patient']" class="btn btn-blue mb-4">Consulter la liste des patients</a><br>
+                  <a  routerLinkActive="active" routerLink="#"  ><i  class=" fas fa-sign-out-alt text-blue" (click)="logout()"> Se déconnecter</i></a>
+
                 </div>
+
               </div>
             </div>
           </div>
@@ -41,26 +71,22 @@
               <div class="panel-body">
                 <div class="body-section">
                   <h5 class="section-heading">À propos</h5>
-                  <p (dblclick)="enableEdit('descreption_Personelle')" *ngIf="!editMode.descreption_Personelle && user.descreption_Personelle">{{user.descreption_Personelle}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.descreption_Personelle && !editMode.descreption_Personelle" (click)="enableEdit('descreption_Personelle')"></i>
+                  <p (dblclick)="enableEdit('descreption_Personelle')" *ngIf="!editMode.descreption_Personelle">{{user.descreption_Personelle}}</p>
                   <input *ngIf="editMode.descreption_Personelle" [(ngModel)]="user.descreption_Personelle" (blur)="disableEdit('descreption_Personelle')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Spécialité</h5>
-                  <p (dblclick)="enableEdit('specialite')" *ngIf="!editMode.specialite && user.specialite">{{user.specialite}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.specialite && !editMode.specialite" (click)="enableEdit('specialite')"></i>
+                  <p (dblclick)="enableEdit('specialite')" *ngIf="!editMode.specialite">{{user.specialite}}</p>
                   <input *ngIf="editMode.specialite" [(ngModel)]="user.specialite" (blur)="disableEdit('specialite')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Historique Educative</h5>
-                  <p (dblclick)="enableEdit('lieu_deducation')" *ngIf="!editMode.lieu_deducation && user.lieu_deducation">{{user.lieu_deducation}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.lieu_deducation && !editMode.lieu_deducation" (click)="enableEdit('lieu_deducation')"></i>
+                  <p (dblclick)="enableEdit('lieu_deducation')" *ngIf="!editMode.lieu_deducation">{{user.lieu_deducation}}</p>
                   <input *ngIf="editMode.lieu_deducation" [(ngModel)]="user.lieu_deducation" (blur)="disableEdit('lieu_deducation')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">L'experience</h5>
-                  <p (dblclick)="enableEdit('annee_dexperience')" *ngIf="!editMode.annee_dexperience && user.annee_dexperience">{{user.annee_dexperience}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.annee_dexperience && !editMode.annee_dexperience" (click)="enableEdit('annee_dexperience')"></i>
+                  <p (dblclick)="enableEdit('annee_dexperience')" *ngIf="!editMode.annee_dexperience">{{user.annee_dexperience}}</p>
                   <input *ngIf="editMode.annee_dexperience" [(ngModel)]="user.annee_dexperience" (blur)="disableEdit('annee_dexperience')" />
                 </div>
                 <div class="body-section">
@@ -82,39 +108,28 @@
               <div class="panel-body">
                 <div class="body-section">
                   <h5 class="section-heading">Nom</h5>
-                  <p (dblclick)="enableEdit('name')" *ngIf="!editMode.name && user.name">{{user.name}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.name && !editMode.name" (click)="enableEdit('name')"></i>
+                  <p (dblclick)="enableEdit('name')" *ngIf="!editMode.name">{{user.name}}</p>
                   <input *ngIf="editMode.name" [(ngModel)]="user.name" (blur)="disableEdit('name')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Adresse</h5>
-                  <p (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse && user.addresse">{{user.addresse}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.addresse && !editMode.addresse" (click)="enableEdit('addresse')"></i>
+                  <p (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse">{{user.addresse}}</p>
                   <input *ngIf="editMode.addresse" [(ngModel)]="user.addresse" (blur)="disableEdit('addresse')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Téléphone</h5>
-                  <p (dblclick)="enableEdit('number')" *ngIf="!editMode.number && user.number">{{user.number}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.number && !editMode.number" (click)="enableEdit('number')"></i>
-                  <input *ngIf="editMode.number" [(ngModel)]="user.number" (blur)="disableEdit('number')" />
+                  <p (dblclick)="enableEdit('phone')" *ngIf="!editMode.phone">{{user.phone}}</p>
+                  <input *ngIf="editMode.phone" [(ngModel)]="user.phone" (blur)="disableEdit('phone')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Email</h5>
-                  <p (dblclick)="enableEdit('email')" *ngIf="!editMode.email && user.email">{{user.email}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.email && !editMode.email" (click)="enableEdit('email')"></i>
+                  <p (dblclick)="enableEdit('email')" *ngIf="!editMode.email">{{user.email}}</p>
                   <input *ngIf="editMode.email" [(ngModel)]="user.email" (blur)="disableEdit('email')" />
                 </div>
                 <div class="body-section">
                   <h5 class="section-heading">Genre</h5>
-                  <p (dblclick)="enableEdit('sexe')" *ngIf="!editMode.sexe && user.sexe">{{user.sexe}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.sexe && !editMode.sexe" (click)="enableEdit('sexe')"></i>
+                  <p (dblclick)="enableEdit('sexe')" *ngIf="!editMode.sexe">{{user.sexe}}</p>
                   <input *ngIf="editMode.sexe" [(ngModel)]="user.sexe" (blur)="disableEdit('sexe')" />
-                </div>
-                <div class="body-section">
-                  <h5 class="section-heading">Date De naissance</h5>
-                  <p (dblclick)="enableEdit('date_de_naissance')" *ngIf="!editMode.date_de_naissance && user.date_de_naissance">{{ formatDate(user.date_de_naissance) }}</p>
-                  <i class="fa fa-plus" *ngIf="!user.date_de_naissance && !editMode.date_de_naissance" (click)="enableEdit('date_de_naissance')"></i>
-                  <input *ngIf="editMode.date_de_naissance"  type="date" [(ngModel)]="user.date_de_naissance" (blur)="disableEdit('date_de_naissance')" />
                 </div>
                 <div class="body-section">
                   <button class="btn btn-green btn-sm" (click)="saveChanges()">Enregistrer les changements</button>

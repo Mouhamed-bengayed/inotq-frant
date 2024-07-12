@@ -34,6 +34,7 @@ import { StaffComponent } from './staff/staff.component';
 import { CustomDateAdapter, CUSTOM_DATE_FORMATS } from './Services/CustomDateAdapter';
 import {HttpClientModule} from "@angular/common/http";
 import { ProfilePatientComponent } from './profile-patient/profile-patient.component';
+import { NotificationAdmineComponent } from './notification-admine/notification-admine.component';
 
 
 const AdminLayoutRoutes: Routes = [
@@ -52,7 +53,8 @@ const AdminLayoutRoutes: Routes = [
      { path: 'SuivitttDissect',  component: SuiviTttDissectComponent },
      { path: 'suiviArhrodese',  component: SuiviArthrodeseComponent },
      { path: 'stafff',  component: StaffComponent },
-     {path: 'FichePatient/:id', component: ProfilePatientComponent}
+     {path: 'FichePatient/:id', component: ProfilePatientComponent},
+    {path: 'notification', component: NotificationAdmineComponent}
 
   ]},
 ];
@@ -94,7 +96,8 @@ const AdminLayoutRoutes: Routes = [
     SuiviTttDissectComponent,
     SuiviArthrodeseComponent,
     StaffComponent,
-    ProfilePatientComponent ,
+    ProfilePatientComponent,
+    NotificationAdmineComponent ,
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],

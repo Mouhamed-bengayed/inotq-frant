@@ -73,8 +73,8 @@
                               <mat-form-field>
                                 <mat-label  class="custom-label" style="padding-right: 30px;">Sexe</mat-label>
                                 <mat-select  class="sexe" matInput formControlName="sexe" placeholder="Sexe">
-                                  <mat-option value="1">Homme</mat-option>
-                                  <mat-option value="2">Femme</mat-option>
+                                  <mat-option value="Homme">Homme</mat-option>
+                                  <mat-option value="Femme">Femme</mat-option>
                                 </mat-select>
                               </mat-form-field>
                               <br>
@@ -421,7 +421,7 @@
 
                                   <div *ngIf="checkboxControl11.value">
                                     <br>
-                                  
+
                                     <mat-radio-group aria-label="Select an option" [formControl]="typeControl">
                                       <mat-radio-button style="padding-right: 30px;" value="1">Mécanique</mat-radio-button>
                                       <mat-radio-button style="padding-right: 30px;" value="2">Inflammatoire</mat-radio-button>
@@ -753,9 +753,9 @@
                                          <label  class="custom-label" style="padding-right: 30px;" >Laségue  </label>
 
                                         <mat-radio-group aria-label="Select an option" formControlName="lasegue">
-                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="1">α &lt;30° </mat-radio-button>
-                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="2">30°&lt; α  &lt;60° </mat-radio-button>
-                                          <mat-radio-button style="padding-right: 30px;" class="example-margin" value="3">α  &gt;60° </mat-radio-button>
+                                          <mat-radio-button style="font-size:20px; font-family: 'Times New Roman', Times, serif; padding-right: 30px;" class="example-margin" value="1">&#945; &lt;30° </mat-radio-button>
+                                          <mat-radio-button style="font-size:20px; font-family: 'Times New Roman', Times, serif;padding-right: 30px;" class="example-margin" value="2">30°&lt; &alpha; &lt;60° </mat-radio-button>
+                                          <mat-radio-button style="font-size:20px; font-family: 'Times New Roman', Times, serif;padding-right: 30px;" class="example-margin" value="3">&alpha; &gt;60° </mat-radio-button>
 
                                           </mat-radio-group>
                                           <br> <label  class="custom-label" style="padding-right: 30px;" >Laségue controlatéral
@@ -1652,7 +1652,7 @@
     <mat-radio-button style="padding-right: 30px;" value="1">&lt;50%</mat-radio-button>
     <mat-radio-button style="padding-right: 30px;" value="2">&gt;50%</mat-radio-button>
   </mat-radio-group>
-</div>
+</div><br>
 
 
 

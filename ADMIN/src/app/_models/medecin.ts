@@ -10,6 +10,7 @@
     Role: string;
     token: string;
     Status:boolean;
+    status: string;
     refreshToken :string;
     addresse: string;
     date: string;

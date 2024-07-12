@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./admin/admin-layout.module').then(m => m.AdminLayoutModule)
   },
   { path: '**', redirectTo: 'signIn' },
-
+  {path: '', redirectTo: 'signIn', pathMatch: 'full'}
 ];
 
 @NgModule({

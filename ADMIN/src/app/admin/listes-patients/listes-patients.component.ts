@@ -18,6 +18,7 @@ user:any;
   }
 
   ngOnInit(): void {
+
     this.getAllPatients();
   }
 
