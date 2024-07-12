@@ -59,7 +59,7 @@ export class AjouterPatientComponent implements OnInit {
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
   incontinenceControl = new FormControl('');
-
+  treatmentCont11= new FormControl('');
   etageControl = new FormControl('');
   typeControl = new FormControl('');
   intensityControl = new FormControl('');
@@ -90,6 +90,7 @@ export class AjouterPatientComponent implements OnInit {
   formS!: FormGroup ;
   treatmentCont!: string ;
 user:any;
+treatmentCont1: any;
   constructor( private patientService: PatientService,private fb: FormBuilder,private accountservice:AccountService) {
     this.user = this.accountservice.CurrentUserInfoSubject.getValue();
 console.error("user id",this.user.id);
