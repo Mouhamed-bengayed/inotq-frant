@@ -85,7 +85,7 @@
                                                
                                 <div>
 
-                                  <button style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="savesymptomatologieFormGroup()">Suivant</button>
+                                  <button style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="savesFirstFormGroup()">Suivant</button>
                                 </div>
                                 <div>
 
@@ -99,7 +99,7 @@
                                 <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl1" (change)="onChange()">Dissectomi</mat-checkbox>
                                 <br>
                               
-                                <mat-radio-group aria-label="Select an option" formControlName="dissectomie_etage" *ngIf="checkboxControl1.value">
+                                <mat-radio-group aria-label="Select an option" formControlName="dissectomi" *ngIf="checkboxControl1.value">
                                    <mat-radio-button style="padding-right: 30px;"  value="1">Diminution</mat-radio-button>
                                    <mat-radio-button style="padding-right: 30px;"  value="2">persistence</mat-radio-button>
                                    <mat-radio-button style="padding-right: 30px;"  value="3">Aggravation</mat-radio-button>
@@ -108,7 +108,7 @@
                               <br>
                               <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl2" (change)="onChange()">liberation_post</mat-checkbox>
                                 <br>
-                                <mat-radio-group aria-label="Select an option" formControlName="liberation_post_etage" *ngIf="checkboxControl2.value">
+                                <mat-radio-group aria-label="Select an option" formControlName="liberation_post" *ngIf="checkboxControl2.value">
 
                                   <mat-radio-button style="padding-right: 30px;"  value="1">Diminution</mat-radio-button>
                                   <mat-radio-button style="padding-right: 30px;"  value="2">persistence</mat-radio-button>
@@ -119,7 +119,7 @@
                             <br>
                             <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl3" (change)="onChange()">arthrodese</mat-checkbox>
 
-                            <mat-radio-group aria-label="Select an option" formControlName="arthrodese_etage" *ngIf="checkboxControl3.value">
+                            <mat-radio-group aria-label="Select an option" formControlName="arthrodese" *ngIf="checkboxControl3.value">
 
                               <mat-radio-button style="padding-right: 30px;"  value="1">Diminution</mat-radio-button>
                                    <mat-radio-button style="padding-right: 30px;"  value="2">persistence</mat-radio-button>
@@ -134,7 +134,7 @@
                                       <mat-checkbox style="padding-right: 30px;" [formControl]="checkboxControl7">Incontinence urinaire</mat-checkbox>
                                     
                                       <div *ngIf="checkboxControl7.value">
-                                        <mat-radio-group aria-label="Select an option" formControlName="n_symptomatologies">
+                                        <mat-radio-group aria-label="Select an option" formControlName="trouble_vesico_sphincteriens_Incontinence_urinaire">
                                           <mat-radio-button style="padding-right: 30px;" value="1">Au repos</mat-radio-button>
                                           <mat-radio-button style="padding-right: 30px;" value="2">A l'effort</mat-radio-button>
                                         </mat-radio-group>

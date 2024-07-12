@@ -40,71 +40,22 @@ export class SuiviPostImmediatComponent implements OnInit {
       arthrodese_etage: new FormControl(''),
       complications_per_operatoire: new FormControl(''),
       complications_per_operatoire_auter: new FormControl(''),
-      symptomatologie_Lombalgie : new FormControl(''),
-      symptomatologie_Sciatique : new FormControl(''),
-      symptomatologie_Cruralgie : new FormControl(''),
-      symptomatologie_sphinctériens: new FormControl(''),
-     examen_Post_Testing_musculaire_l2: new FormControl(''),
-     examen_Post_Testing_musculaire_l3: new FormControl(''),
-     examen_Post_Testing_musculaire_l4: new FormControl(''),
-     examen_Post_Testing_musculaire_l5: new FormControl(''),
-     examen_Post_Testing_musculaire_s1: new FormControl(''),
-     examen_Post_Sensibilte_musculaire_l2: new FormControl(''),
-     examen_Post_Sensibilte_musculaire_l3: new FormControl(''),
-     examen_Post_Sensibilte_musculaire_l4: new FormControl(''),
-     examen_Post_Sensibilte_musculaire_l5: new FormControl(''),
-     examen_Post_Sensibilte_musculaire_s1: new FormControl(''),
-     examen_Post_Examen_perinee_sensibilite: new FormControl(''),
-     examen_Post_Examen_perinee_Tonus_anal: new FormControl(''),
-     examen_Post_Examen_perinee_Reflexe_anal: new FormControl(''),
+    
   });
   
  
   symptomatologieFormGroup = new FormGroup({
-    date_debut_maladie: new FormControl(''),
-    facture_declanchants: new FormControl(''),
-    Date_1consultation_medicale: new FormControl(''),
-    Date_1consultation_specialisee: new FormControl(''),
-    medecin_traitants: new FormControl(''),
-    traitants_anterieur: new FormControl(''),
-    Nbre_infiltration: new FormControl(''),
-    Nbre_seances: new FormControl(''),
-    evalution: new FormControl(''),
-    n_symptomatologies: new FormControl(''),
-    indication_chirurgicale: new FormControl(''),
-    date: new FormControl(''),
-    Motif_de_consultation: new FormControl(''),
-    Motif_de_consultation_l: new FormControl(''),
+    dissectomi: new FormControl(''),
+    liberation_post: new FormControl(''),
+    arthrodese: new FormControl(''),
+    trouble_vesico_sphincteriens: new FormControl(''),
+    trouble_vesico_sphincteriens_Incontinence_urinaire: new FormControl(''),
 
 
 
    
    
-    marche_talons: new FormControl(''),
-    marche_pointes_pieds: new FormControl(''),
-    testing_musculaire_L2: new FormControl(''),
-    testing_musculaire_L3: new FormControl(''),
-    testing_musculaire_L4: new FormControl(''),
-    testing_musculaire_L5: new FormControl(''),
-    testing_musculaire_S1: new FormControl(''),
-    sensibilte_L2: new FormControl(''),
-    sensibilte_L3: new FormControl(''),
-    sensibilte_L4: new FormControl(''),
-    sensibilte_L5: new FormControl(''),
-    sensibilte_S1: new FormControl(''),
-    examen_perinee_sensibilite: new FormControl(''),
-    examen_perinee_Tonus_anal: new FormControl(''),
-    examen_perinee_Reflexe_anal : new FormControl(''),
-    intensite_douleur: new FormControl(''),
-    soins_personnels: new FormControl(''),
-    levee: new FormControl(''),
-    marche: new FormControl(''),
-    assis: new FormControl(''),
-    debout: new FormControl(''),
-    sommeil: new FormControl(''),
-    vie_sexuelle: new FormControl(''),
-    vie_sociale: new FormControl(''),
-    voyage: new FormControl(''),
+   
   });
 
 thridFormGroup = new FormGroup({
@@ -150,9 +101,9 @@ thridFormGroup = new FormGroup({
 
   
    }
-  savesyFormGroup(){
-    const symptomatologieFormGroupData = this.symptomatologieFormGroup.value;
-      localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData));
+  savesFirstFormGroup(){
+    const firstFormGroupData = this.firstFormGroup.value;
+      localStorage.setItem('firstFormGroup', JSON.stringify(firstFormGroupData));
     
 
   }
