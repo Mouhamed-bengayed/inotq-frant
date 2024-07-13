@@ -1,8 +1,9 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { PatientService } from '../Services/patient.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class SuiviArthrodeseComponent implements OnInit {
   checkboxControl15 = new FormControl(false);
   checkboxControl16 = new FormControl(false);
   checkboxControl17 = new FormControl(false);
-
+  pincementN = new FormControl();
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
   etageControl = new FormControl('');
@@ -46,7 +47,7 @@ export class SuiviArthrodeseComponent implements OnInit {
   pincement24 = new FormControl();
 
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
-  constructor( private patientService: PatientService) { }
+  constructor( private patientService: PatientService,private fb: FormBuilder) { }
   pincement27= new FormControl();
   pincement_discal= new FormControl();
   tDM_hernie_discale= new FormControl();
@@ -65,7 +66,7 @@ export class SuiviArthrodeseComponent implements OnInit {
     atcd: new FormControl(''),
     tabac: new FormControl(''),
     evolution: new FormControl(''),
-    evolution_nouvelles_symptomatologies: new FormControl(''),
+    evolution_nouvelles_symptomatologies: this.fb.array([]),
  });
  symptomatologieFormGroup = new FormGroup({
   date_debut_maladie: new FormControl(''),
@@ -224,42 +225,113 @@ hypotheseFormGroup = new FormGroup({
     iRM_etat_disques_sous_jacent: new FormControl(''),
     iRM_etat_disques_sus_jacent: new FormControl(''),
 });
+onCheckboxChange(event: any, formArrayName: string) {
+  const formArray: FormArray = this.firstFormGroup.get(formArrayName) as FormArray;
+
+  if (event.checked) {
+    formArray.push(this.fb.control(event.source.value));
+  } else {
+    const index = formArray.controls.findIndex(x => x.value === event.source.value);
+    formArray.removeAt(index);
+  }
+}
+scorefinale:number=0;
+
+
+calculateScore(): number {
+  const odiFormGroupData = this.odiFormGroup.value as { [key: string]: string | null };
+  let score = 0;
+  for (const key in odiFormGroupData) {
+    if (odiFormGroupData.hasOwnProperty(key) && odiFormGroupData[key]) {
+      score += parseInt(odiFormGroupData[key]!, 10);
+    }
+  }
+  this.scorefinale = score;
+  return score;
+}
+saveODIAndShowScore() {
+  this.saveodiForm();
+
+  const score = this.calculateScore();
+  let message = '';
+  let color = '';
+
+  // Determine the message and color based on the score range
+  if (score >= 0 && score <= 20) {
+    message = 'Légère incapacité';
+    color = 'green'; // Green for mild disability
+  } else if (score > 20 && score <= 40) {
+    message = 'Incapacité modérée';
+    color = 'orange'; // Orange for moderate disability
+  } else if (score > 40 && score <= 60) {
+    message = 'Incapacité sévère';
+    color = 'red'; // Red for severe disability
+  } else if (score > 60 && score <= 80) {
+    message = 'Incapacité majeure';
+    color = 'red'; // Red for major disability
+  } else if (score > 80 && score <= 100) {
+    message = 'Altération fonctionnelle';
+    color = 'red'; // Red for functional impairment
+  } else {
+    message = 'Score invalide';
+    color = 'black'; // Default color for invalid score
+  }
+
+  // Calculate the width of the color bar based on the score
+  const barWidth = `${score}%`;
+
+  // SweetAlert2 configuration with HTML and custom styling
+  Swal.fire({
+    title: 'ODI SCORE',
+    html: `
+    <div>Votre score est : ${score}</div>
+    <div style="height: 10px; background-color: ${color}; width: ${barWidth}; margin-top: 10px;"></div>
+ <div style="margin-top: 10px; color: ${color};">${message}</div>
+
+  `,
+    // icon: 'info',
+    showCancelButton: false,
+    showConfirmButton: true,
+    confirmButtonText: 'OK'
+  });
+}
+
 
 saveFirstForm() {
   const FirstFormGroupData1 = this.firstFormGroup.value;
-  if (this.firstFormGroup.valid) {
     localStorage.setItem('firstFormGroupData', JSON.stringify(FirstFormGroupData1));
-  }
+  
  }
  savesympFormGroup() {
   const symptomatologieFormGroupData1 = this.fourthFormGroup.value;
-  if (this.symptomatologieFormGroup.valid) {
     localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData1));
-  }
+  
  }
 
 savesecondForm() {
   const secondFormGroupData1 = this.secondFormGroup.value;
-  if (this.secondFormGroup.valid) {
+ 
     localStorage.setItem('secondFormGroupData', JSON.stringify(secondFormGroupData1));
-  }
+  
  }
  saveodiForm() {
   const odiFormGroupData1 = this.odiFormGroup.value;
-  if (this.odiFormGroup.valid) {
+  
     localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
-  }
+  
  }
  saveFourthFormGroup() {
   const fourthFormGroupData1 = this.fourthFormGroup.value;
-  if (this.fourthFormGroup.valid) {
+ 
     localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
-  }
+  
  }
  
 
 
  savesuivi() {
+  this.saveFourthFormGroup();
+
   // Récupérer les données des formulaires depuis le localStorage
 const firstFormGroupData = JSON.parse(localStorage.getItem('firstFormGroupData') || '{}');
 const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
@@ -274,7 +346,9 @@ const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData
   ...symptomatologieFormGroupData,
   ...secondFormGroupData,
   ...odiFormGroupData,
-  ...fourthFormGroupData
+  ...fourthFormGroupData,
+  resultatodi: this.scorefinale
+
 };
 
 this.patientService.createSuiviArthrodese(patientData).subscribe(

@@ -59,7 +59,7 @@ export class AjouterPatientComponent implements OnInit {
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
   incontinenceControl = new FormControl('');
-
+  treatmentCont11= new FormControl('');
   etageControl = new FormControl('');
   typeControl = new FormControl('');
   intensityControl = new FormControl('');
@@ -90,6 +90,7 @@ export class AjouterPatientComponent implements OnInit {
   formS!: FormGroup ;
   treatmentCont!: string ;
 user:any;
+treatmentCont1: any;
   constructor( private patientService: PatientService,private fb: FormBuilder,private accountservice:AccountService) {
     this.user = this.accountservice.CurrentUserInfoSubject.getValue();
 console.error("user id",this.user.id);
@@ -209,16 +210,14 @@ console.error("user id",this.user.id);
     addresse: new FormControl(''),
     country: new FormControl(this.countries[0].code),  // Default to the first country
     telephone: new FormControl('', [Validators.required, this.telephoneValidator()]),
-     profession: new FormControl(''),
-
-
+    profession: new FormControl(''),
     adresse_par: new FormControl(''),
     statut_social: new FormControl(''),
     entourage_actuel: new FormControl(''),
-    atcd: new FormControl(''),
+    atcd: this.fb.array([]),
     Tabac: new FormControl(''),
-    Motif_de_consultation:new FormControl(''),
-    Motif_de_consultation_l: new FormControl(''),
+    motif_de_consultation:this.fb.array([]),
+    motif_de_consultation_l: this.fb.array([]),
   });
 
   hypotheseFormGroup = new FormGroup({
@@ -245,9 +244,10 @@ console.error("user id",this.user.id);
     vie_sexuelle: new FormControl(''),
     vie_sociale: new FormControl(''),
     voyage: new FormControl(''),
+    resultatcalculateScore: new FormControl(''),
   });
-  scorefinale:number=0;
 
+  scorefinale:number=0;
 
 
   calculateScore(): number {
@@ -518,8 +518,10 @@ isAutresChecked = false;
 
   }
 
+
    saveodiForm() {
     const odiFormGroupData1 = this.odiFormGroup.value;
+
       localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
     
    }
@@ -567,6 +569,7 @@ isAutresChecked = false;
     ...odiFormGroupData,
     ...hypotheseFormGroup,
     ...fourthFormGroupData,
+    resultatodi: this.scorefinale
   };
    //const user:any=localStorage.getItem("user")!
 

@@ -4,7 +4,7 @@
             <div class="col-md-12 bg-body text-dark" >
                 <div class="cardo">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Ajouter Suivi Post Op immédiat</h4>
+                        <h4 class="card-title ">Saisir les information</h4>
                     </div>
                     <div class="formbold-main-wrapper">
         
@@ -81,174 +81,237 @@
                                     <input matInput  placeholder="Auters">
                                   </mat-form-field>  
                                 <br>
-                                <label class="custom-label">Symptomatologie</label>
-                                <br>
-                                <label    class="custom-label"  >Lombalgie</label >
-                                    <mat-radio-group aria-label="Select an option" formControlName="symptomatologie_Lombalgie" >
-                                     
-                                   <mat-radio-button style="padding-right: 30px;"  value="1">Diminution   </mat-radio-button>
-                                   <mat-radio-button style="padding-right: 30px;"  value="2">Persistence  </mat-radio-button>
-                                   <mat-radio-button style="padding-right: 30px;"  value="3">Aggravation  </mat-radio-button>
-  
-                                </mat-radio-group>
-                                <br>
-                               
-                                <label    class="custom-label"  > Sciatique</label >
-                                <mat-radio-group aria-label="Select an option" formControlName="symptomatologie_Sciatique" >
-                                   
-                                   <mat-radio-button  style="padding-right: 30px;"  value="1">Diminution   </mat-radio-button>
-                                   <mat-radio-button style="padding-right: 30px;"  value="2">Persistence   </mat-radio-button>
-                                   <mat-radio-button style="padding-right: 30px;"  value="3">Aggravation   </mat-radio-button>
-  
-                                </mat-radio-group>
-                                <br>
-                               
-                                <label    class="custom-label"  > Cruralgie</label >
-                                    <mat-radio-group aria-label="Select an option" formControlName="symptomatologie_Cruralgie">
-                                        
-                                   <mat-radio-button style="padding-right: 30px;"  value="1">Diminution</mat-radio-button>
-                                   <mat-radio-button style="padding-right: 30px;"  value="2">Persistence</mat-radio-button>
-                                   <mat-radio-button style="padding-right: 30px;"  value="3">Aggravation</mat-radio-button>
-  
-                                </mat-radio-group>
-                                <br>
-                                <label    class="custom-label"  >Trouble vésico sphinctériens</label >
-                                <mat-radio-group aria-label="Select an option" formControlName="symptomatologie_sphinctériens" >
                                  
-                                <mat-radio-button style="padding-right: 30px;"  value="1">Incontinence urinaire</mat-radio-button>
-                                   <mat-radio-button style="padding-right: 30px;"  value="2">Constipation</mat-radio-button>
-                                   <mat-radio-button style="padding-right: 30px;"  value="3">Incontinence anale</mat-radio-button>
-                                <mat-radio-button style="padding-right: 30px;"  value="3">Impériosité urinaire</mat-radio-button>
-                                </mat-radio-group>
-                                <br>
-                                <label  class="custom-label">Testing musculaire (motricité)</label>
-                                <br>
-                                             <label  class="custom-label">L2  </label>
-                                         
-                                            <mat-radio-group aria-label="Select an option" formControlName="examen_Post_Testing_musculaire_l2">
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1" >0</mat-radio-button>
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">1</mat-radio-button>
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">2</mat-radio-button>  
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="4">3</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="5">4</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="6">5</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="7">NT</mat-radio-button>   
-
-                                        
-                                              </mat-radio-group>
-                                              <br>
-                                              <label  class="custom-label">L3  </label>
-                                          
-                                            <mat-radio-group aria-label="Select an option" formControlName="examen_Post_Testing_musculaire_l3">
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">0</mat-radio-button>
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">1</mat-radio-button>
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">2</mat-radio-button>  
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="4">3</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="5">4</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="6">5</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="7">NT</mat-radio-button>   
-
-                                        
-                                              </mat-radio-group>
-                                              <br><label  class="custom-label">L4  </label>
-                                            
-                                             <mat-radio-group aria-label="Select an option" formControlName="examen_Post_Testing_musculaire_l4">
-                                                 <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">0</mat-radio-button>
-                                                 <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">1</mat-radio-button>
-                                                 <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">2</mat-radio-button>  
-                                                 <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="4">3</mat-radio-button>   
-                                                 <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="5">4</mat-radio-button>   
-                                                 <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="6">5</mat-radio-button>   
-                                                 <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="7">NT</mat-radio-button>   
-
-                                         
-                                               </mat-radio-group>
-                                               <br><label  class="custom-label">S1  </label>
-                                           
-                                              <mat-radio-group aria-label="Select an option" formControlName="examen_Post_Testing_musculaire_s1">
-                                                  <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">0</mat-radio-button>
-                                                  <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">1</mat-radio-button>
-                                                  <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">2</mat-radio-button>  
-                                                  <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="4">3</mat-radio-button>   
-                                                  <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="5">4</mat-radio-button>   
-                                                  <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="6">5</mat-radio-button>   
-                                                  <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="7">NT</mat-radio-button>   
-                                                </mat-radio-group>
-                                                
-                                                 <br>
-                                                 <br>
-                                                 <label  class="custom-label">Examen Post-Op Sensibilté </label>
-                                                 <br>
-                                                 <label  class="custom-label"> L2 </label>
                                                
-                                                <mat-radio-group aria-label="Select an option" formControlName="examen_Post_Sensibilte_musculaire_l2">
-                                                    <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
-                                                    <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                    <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">Anesthésie</mat-radio-button>  
-                                                      
-   
-                                            
-                                                  </mat-radio-group>
-                                                  <br>
-                                                  <label  class="custom-label">L3  </label>
-                                              
-                                                <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Sensibilte_musculaire_l3">
-                                                    <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
-                                                    <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                    <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">Anesthésie</mat-radio-button>  
-              </mat-radio-group>
-                                                  <br><label  class="custom-label">L4  </label>
-                                                 
-                                                 <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Sensibilte_musculaire_l4">
-                                                     <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
-                                                     <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                     <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">Anesthésie</mat-radio-button>  
-                                                   
-                                                   </mat-radio-group>
-                                                   <br><label  class="custom-label">L5  </label>
-                                                 
-                                                  <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Sensibilte_musculaire_l5">
-                                                      <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
-                                                      <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                      <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">Anesthésie</mat-radio-button>  
-
-                                                    </mat-radio-group>
-                                                    <br><label  class="custom-label">S1  </label>
-                                                   <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Sensibilte_musculaire_s1">
-                                                       <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
-                                                       <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                       <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">Anesthésie</mat-radio-button>  
-                                              
-                                                     </mat-radio-group>
-                                                     <br>
-                                                     <br><label  class="titer-label">Examen périnée sensibilité </label>
-                                                     <br>
-                                                     <label  class="custom-label">sensibilité </label>
-                                                   
-                                                    <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Examen_perinee_sensibilite">
-                                                        <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
-                                                        <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                        <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">Anesthésie</mat-radio-button>  
-                                                      </mat-radio-group>
-                                                      <br>
-                                                     <label  class="custom-label">Tonus anal </label>
-                                                  
-                                                    <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Examen_perinee_Tonus_anal">
-                                                        <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
-                                                        <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Diminué</mat-radio-button>
-                                                        <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">Pas de tonus</mat-radio-button>  
-                                                      </mat-radio-group>
-                                                      <br>
-                                                      <label  class="custom-label">Refléxe anal </label>
-                                                     
-                                                     <mat-radio-group aria-label="Select an option"formControlName="examen_Post_Examen_perinee_Reflexe_anal">
-                                                         <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="1">Normale</mat-radio-button>
-                                                         <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="2">Diminué</mat-radio-button>
-                                                         <mat-radio-button style="padding-right: 30px;"  class="example-margin"value="3">Pas de tonus</mat-radio-button>  
-                                                       </mat-radio-group>
-
                                 <div>
-                                  <button  style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="addsuiviImed()">Enregistrer Suivi Post Immediat </button>
+
+                                  <button style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="savesFirstFormGroup()">Suivant</button>
+                                </div>
+                                <div>
+
                                 </div>
                               </form>
                             </mat-step> 
+                            <mat-step [stepControl]="symptomatologieFormGroup" label="Symptomatologie">
+                              <form [formGroup]="symptomatologieFormGroup">
+                                <br>
+
+                                <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl1" (change)="onChange()">Dissectomi</mat-checkbox>
+                                <br>
+                              
+                                <mat-radio-group aria-label="Select an option" formControlName="dissectomi" *ngIf="checkboxControl1.value">
+                                   <mat-radio-button style="padding-right: 30px;"  value="1">Diminution</mat-radio-button>
+                                   <mat-radio-button style="padding-right: 30px;"  value="2">persistence</mat-radio-button>
+                                   <mat-radio-button style="padding-right: 30px;"  value="3">Aggravation</mat-radio-button>
+
+                                </mat-radio-group>
+                              <br>
+                              <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl2" (change)="onChange()">liberation_post</mat-checkbox>
+                                <br>
+                                <mat-radio-group aria-label="Select an option" formControlName="liberation_post" *ngIf="checkboxControl2.value">
+
+                                  <mat-radio-button style="padding-right: 30px;"  value="1">Diminution</mat-radio-button>
+                                  <mat-radio-button style="padding-right: 30px;"  value="2">persistence</mat-radio-button>
+                                  <mat-radio-button style="padding-right: 30px;"  value="3">Aggravation</mat-radio-button>
+
+
+                              </mat-radio-group>
+                            <br>
+                            <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl3" (change)="onChange()">arthrodese</mat-checkbox>
+
+                            <mat-radio-group aria-label="Select an option" formControlName="arthrodese" *ngIf="checkboxControl3.value">
+
+                              <mat-radio-button style="padding-right: 30px;"  value="1">Diminution</mat-radio-button>
+                                   <mat-radio-button style="padding-right: 30px;"  value="2">persistence</mat-radio-button>
+                                   <mat-radio-button style="padding-right: 30px;"  value="3">Aggravation</mat-radio-button>
+
+
+                            </mat-radio-group>
+                            <br>
+                            <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl15" (change)="onChange()">Trouble vésico sphinctériens</mat-checkbox>
+
+                                    <div *ngIf="checkboxControl15.value">
+                                      <mat-checkbox style="padding-right: 30px;" [formControl]="checkboxControl7">Incontinence urinaire</mat-checkbox>
+                                    
+                                      <div *ngIf="checkboxControl7.value">
+                                        <mat-radio-group aria-label="Select an option" formControlName="trouble_vesico_sphincteriens_Incontinence_urinaire">
+                                          <mat-radio-button style="padding-right: 30px;" value="1">Au repos</mat-radio-button>
+                                          <mat-radio-button style="padding-right: 30px;" value="2">A l'effort</mat-radio-button>
+                                        </mat-radio-group>
+                                      
+                                      </div>
+                                    
+                                      <br>
+                                      <mat-checkbox style="padding-right: 30px;" value="1">Constipation</mat-checkbox>
+                                      <br>
+                                      <mat-checkbox style="padding-right: 30px;" value="1">Incontinence anale</mat-checkbox>
+                                      <br>
+                                      <mat-checkbox style="padding-right: 30px;" value="1">Impériosité urinaire</mat-checkbox>
+                                    </div>
+                                    <br>
+                                    <div>
+                                      <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
+    
+                                      <button style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="savesymptomatologieFormGroup()">Suivant</button>
+                                    </div>
+                                  </form>
+                                </mat-step>
+                                    <mat-step [stepControl]="thridFormGroup"label="ExamenPOST">
+                              
+                                      <form [formGroup]="thridFormGroup">
+                                    <br>
+                                    <label  class="custom-label" style="padding-right: 30px;" >Testing musculaire  </label>
+
+                                    <br>
+                                    <label  class="custom-label" style="padding-right: 30px;" >L2  </label>
+
+                                   <mat-radio-group aria-label="Select an option" formControlName="testing_musculaire_L2">
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">0</mat-radio-button>
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">1</mat-radio-button>
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>  
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>   
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>   
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>   
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>   
+
+                               
+                                     </mat-radio-group>
+                                     <br>
+                                     <label  class="custom-label" style="padding-right: 30px;" >L3  </label>
+                                   
+                                   <mat-radio-group aria-label="Select an option" formControlName="testing_musculaire_L3">
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">0</mat-radio-button>
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">1</mat-radio-button>
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>  
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>   
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>   
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>   
+                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>   
+
+                               
+                                     </mat-radio-group>
+                                     <br><label class="custom-label"style="padding-right: 30px;" >L4  </label>
+                                     
+                                    <mat-radio-group aria-label="Select an option" formControlName="testing_musculaire_L4">
+                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">0</mat-radio-button>
+                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">1</mat-radio-button>
+                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>  
+                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>   
+                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>   
+                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>   
+                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>   
+
+                                
+                                      </mat-radio-group>
+                                      <br>
+                                      <label class="custom-label" style="padding-right: 30px;" >L5  </label>
+                                    
+                                     <mat-radio-group aria-label="Select an option" formControlName="testing_musculaire_L5">
+                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">0</mat-radio-button>
+                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">1</mat-radio-button>
+                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>  
+                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>   
+                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>   
+                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>   
+                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>   
+
+                                 
+                                       </mat-radio-group>
+                                       <br>
+                                       <label  class="custom-label" style="padding-right: 30px;" >S1  </label>
+                                    
+                                      <mat-radio-group aria-label="Select an option" formControlName="testing_musculaire_S1">
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">0</mat-radio-button>
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">1</mat-radio-button>
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>  
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>   
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>   
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>   
+                                          <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>   
+
+                                  
+                                        </mat-radio-group>
+                                        <br>
+
+                                        <label  class="custom-label" style="padding-right: 30px;" >Sensibilté  </label>
+<br>
+                                        <label  class="custom-label" style="padding-right: 30px;" >L2  </label>
+                                       
+                                       <mat-radio-group aria-label="Select an option" formControlName="sensibilte_L2">
+                                           <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
+                                           <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
+                                           <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>  
+                                             
+
+                                   
+                                         </mat-radio-group>
+                                         <br>
+                                         <label  class="custom-label" style="padding-right: 30px;" >L3  </label>
+                                      
+                                       <mat-radio-group aria-label="Select an option"formControlName="sensibilte_L3">
+                                           <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
+                                           <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
+                                           <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>  
+                                       </mat-radio-group>
+                                         <br>
+                                         <label  class="custom-label"  style="padding-right: 30px;" >L4  </label>
+                                        
+                                        <mat-radio-group aria-label="Select an option"formControlName="sensibilte_L4">
+                                            <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
+                                            <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
+                                            <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>  
+                                          
+                                          </mat-radio-group>
+                                          <br><label class="custom-label"  style="padding-right: 30px;" >L5  </label>
+                                        
+                                         <mat-radio-group aria-label="Select an option"formControlName="sensibilte_L5">
+                                             <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
+                                             <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
+                                             <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>  
+                                             
+
+                                     
+                                           </mat-radio-group>
+                                           <br><label class="custom-label" style="padding-right: 30px;" >S1  </label>
+                                        
+                                          <mat-radio-group aria-label="Select an option"formControlName="sensibilte_S1">
+                                              <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
+                                              <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
+                                              <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>  
+                                            </mat-radio-group>
+                                            <br>
+                                            <br><label class="custom-label" style="padding-right: 30px;" >Examen périnée   </label><br>
+                                            <br><label class="custom-label" style="padding-right: 30px;" >Sensibilité  </label>
+
+                                            
+                                           <mat-radio-group aria-label="Select an option"formControlName="examen_perinee_sensibilite">
+                                               <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
+                                               <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
+                                               <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button> 
+                                             </mat-radio-group>
+                                             <br>
+                                             <br><label class="custom-label" style="padding-right: 30px;" >Tonus anal</label>
+                                            
+                                            <mat-radio-group aria-label="Select an option"formControlName="examen_perinee_Tonus_anal">
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normal</mat-radio-button>
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Diminué</mat-radio-button>
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Pas de tonus</mat-radio-button> 
+                                              </mat-radio-group>
+                                              <br>
+                                              <br>
+                                              <label class="custom-label" style="padding-right: 30px;" >Refléxe anal  </label>
+                                             
+                                              <mat-radio-group aria-label="Select an option"formControlName="examen_perinee_Reflexe_anal">
+                                               <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Présent</mat-radio-button>
+                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Faible</mat-radio-button>
+                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Aboli</mat-radio-button> 
+                                               </mat-radio-group>
+                                               <br>
+                                               <div>
+                                                <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
+
+                                                <button  style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="saveExamen_op()">Enregistrer Suivi Post Immediat </button>
+                                              </div>
+                               
+                              </form>
+                            </mat-step>

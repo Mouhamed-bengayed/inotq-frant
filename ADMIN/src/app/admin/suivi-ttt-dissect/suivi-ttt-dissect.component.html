@@ -4,7 +4,7 @@
             <div class="col-md-12  " >
                 <div class="cardo">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Ajouter Suivi  Suivi (ttt-dissect)</h4>
+                        <h4 class="card-title ">Saisir les information</h4>
 
                     </div>
                     <div class="formbold-main-wrapper white-text bg-body" >
@@ -66,26 +66,26 @@
                                 
   
   
-                                <label class="custom-label" >Statut social </label>
-                                
-                                   <mat-radio-group aria-label="Select an option" formControlName="statut_social" >
+                                  <label  class="custom-label"   style="padding-right: 30px;">Statut social </label>
+
+          
+                                  <mat-radio-group aria-label="Select an option" formControlName="statut_social">
                                     <mat-radio-button style="padding-right: 30px;" value="1">Marié(e)</mat-radio-button>
                                     <mat-radio-button style="padding-right: 30px;" value="2">Célibataire</mat-radio-button>
                                     <mat-radio-button style="padding-right: 30px;" value="3">Veuf(ve)</mat-radio-button>
                                     <mat-radio-button style="padding-right: 30px;" value="4">Divorcé(e)</mat-radio-button>
-                                </mat-radio-group>
-  
+                                  </mat-radio-group>
   
                               
                                 <br>
-                                <label  class="custom-label">Entourage actuel</label>
+                                <label  class="custom-label"style="padding-right: 30px;">Entourage actuel</label>
                              
                                 <mat-radio-group aria-label="Select an option" formControlName="entourage_actuel">
                                   <mat-radio-button style="padding-right: 30px;" value="1">Bien entouré(e)     </mat-radio-button>
                                   <mat-radio-button style="padding-right: 30px;" value="2">Mal entouré(e)      </mat-radio-button>
                                 </mat-radio-group>
                                 <br>
-                                <label  class="custom-label">Tabac</label>
+                                <label  class="custom-label"style="padding-right: 30px;">Tabac</label>
                               
                                 <mat-radio-group aria-label="Select an option" formControlName="tabac"  [formControl]="pincement22" (change)="onChange()">
                                   <mat-radio-button style="padding-right: 30px;" value="tess">oui   </mat-radio-button>
@@ -130,18 +130,17 @@
                                     <div *ngIf="treatmentControl.value === 'Aggravation'">
                                       <br>
                                       <label class="custom-label" style="padding-right: 30px;">Nouvelles symptomatologies</label>
-                                      <div formGroupName="evolution_nouvelles_symptomatologies">
-                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" formControlName="hyperalgique">Hyperalgique</mat-checkbox>
-                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" formControlName="deficititaire">Déficitaire</mat-checkbox>
-                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" formControlName="claudication">Apparition d'une claudication</mat-checkbox>
-                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" formControlName="pluriradiculaire">Pluriradiculaire</mat-checkbox>
+                                      <div formArrayName="evolution_nouvelles_symptomatologies">
+                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" (change)="onCheckboxChange($event, 'atcd')" value="1">Hyperalgique</mat-checkbox>
+                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" (change)="onCheckboxChange($event, 'atcd')" value="2">Déficitaire</mat-checkbox>
+                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" (change)="onCheckboxChange($event, 'atcd')" value="3">Apparition d'une claudication</mat-checkbox>
+                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" (change)="onCheckboxChange($event, 'atcd')" value="4">Pluriradiculaire</mat-checkbox>
                                       </div>
                                     </div>
                                    
                                   </mat-radio-group>
                                   <br>
-                                <br>
-                                
+                               
                                 <div>
                                   <button  style="padding-right: 30px;" class="button" mat-button matStepperNext  (click)="saveFirstForm()">Next</button>
                                   
@@ -814,7 +813,6 @@
                             </mat-step>  
                              
 
-                           
                             <mat-step  [stepControl]="odiFormGroup" label="ODI">
                               <form [formGroup]="odiFormGroup">
 
@@ -835,9 +833,9 @@
                               <br>
 
                                <mat-radio-group aria-label="Select an option"formControlName="soins_personnels">
-                                   <mat-radio-button style="padding-right: 30px;" value="1">Je peux m'occuper de moi—même normalement sans causer de douleur.                                                             </mat-radio-button>
-                                   <mat-radio-button style="padding-right: 30px;" value="2">Je peux m'occuper de moi-même normalement, mais cela provoque une douleur. </mat-radio-button>
-                                   <mat-radio-button style="padding-right: 30px;" value="3">ll est douloureux de m'occuper de moi-même, et je suis lent et prudent.                                                                . </mat-radio-button>
+                                   <mat-radio-button style="padding-right: 30px;" value="1">Je peux m'occuper de moi—même normalement sans causer de douleur.                                                             </mat-radio-button><br>
+                                   <mat-radio-button style="padding-right: 30px;" value="2">Je peux m'occuper de moi-même normalement, mais cela provoque une douleur. </mat-radio-button><br>
+                                   <mat-radio-button style="padding-right: 30px;" value="3">ll est douloureux de m'occuper de moi-même, et je suis lent et prudent.                                                                . </mat-radio-button><br>
                                    <mat-radio-button style="padding-right: 30px;" value="4">J'ai besoin d'aide, mais je gére Ia plupart de mes soins personnels.                                                              </mat-radio-button><br>
                                    <mat-radio-button style="padding-right: 30px;" value="5">J'ai besoin d'aide tous les jours pour la plupart des aspects des soins.                                                               .</mat-radio-button><br>
                                    <mat-radio-button style="padding-right: 30px;" value="6">Je ne m'habille pas, me lave avec difficulté et reste au lit.</mat-radio-button>
@@ -849,9 +847,9 @@
                                  <br>
 
                                   <mat-radio-group aria-label="Select an option"formControlName="levee">
-                                      <mat-radio-button style="padding-right: 30px;" value="1">Je peux soulever des poids lourds sans douleur supplémentaire.                                                                  </mat-radio-button>
-                                      <mat-radio-button style="padding-right: 30px;" value="2">Je peux soulever des poids lourds, mais cela provoque une douleur supplémentaire.                                                                  </mat-radio-button>
-                                      <mat-radio-button style="padding-right: 30px;" value="3">La douleur m'empêche de soulever des poids lourds du sol, mais je peux le faire s'ils sont commodément placés, par exemple, sur une table.                                                                . </mat-radio-button>
+                                      <mat-radio-button style="padding-right: 30px;" value="1">Je peux soulever des poids lourds sans douleur supplémentaire.                                                                  </mat-radio-button><br>
+                                      <mat-radio-button style="padding-right: 30px;" value="2">Je peux soulever des poids lourds, mais cela provoque une douleur supplémentaire.                                                                  </mat-radio-button><br>
+                                      <mat-radio-button style="padding-right: 30px;" value="3">La douleur m'empêche de soulever des poids lourds du sol, mais je peux le faire s'ils sont commodément placés, par exemple, sur une table.                                                                . </mat-radio-button><br>
                                       <mat-radio-button style="padding-right: 30px;" value="4">La douleur m'empêche de soulever des poids lourds, mais je peux gérer des poids légers a moyens s'ils sont commodément                                                              </mat-radio-button><br>
                                       <mat-radio-button style="padding-right: 30px;" value="5">Je ne peux soulever que des poids trés légers.</mat-radio-button><br>
                                       <mat-radio-button style="padding-right: 30px;" value="6">Je ne peux rien soulever du tout.</mat-radio-button>
@@ -875,9 +873,9 @@
                                     <br>
 
                                      <mat-radio-group aria-label="Select an option"formControlName="assis">
-                                         <mat-radio-button style="padding-right: 30px;" value="1">Je peux m'asseoir sur n'importe quelle chaise aussi longtemps que je veux.                                                                    </mat-radio-button>
-                                         <mat-radio-button style="padding-right: 30px;" value="2">Je peux m'asseoir dans ma chaise préférée aussi longtemps que je veux.                                                                    </mat-radio-button>
-                                         <mat-radio-button style="padding-right: 30px;" value="3">La douleur m'empêche de m'asseoir pendant plus d'une heure.                                                                    </mat-radio-button>
+                                         <mat-radio-button style="padding-right: 30px;" value="1">Je peux m'asseoir sur n'importe quelle chaise aussi longtemps que je veux.                                                                    </mat-radio-button><br>
+                                         <mat-radio-button style="padding-right: 30px;" value="2">Je peux m'asseoir dans ma chaise préférée aussi longtemps que je veux.                                                                    </mat-radio-button><br>
+                                         <mat-radio-button style="padding-right: 30px;" value="3">La douleur m'empêche de m'asseoir pendant plus d'une heure.                                                                    </mat-radio-button><br>
                                          <mat-radio-button style="padding-right: 30px;" value="4">La douleur m'empêche de m'asseoir pendant plus d'une demi-heure.                                                                    </mat-radio-button><br>
                                          <mat-radio-button style="padding-right: 30px;" value="5">La douleur m'empêche de m'asseoir pendant plus de 10 minutes.                                                                    </mat-radio-button><br>
                                          <mat-radio-button style="padding-right: 30px;" value="6">La douleur m'empêche de m'asseoir tout court .</mat-radio-button>
@@ -889,9 +887,9 @@
                                 <label  class="custom-label" style="padding-right: 30px;" >Debout </label>
                                 <br>
                                 <mat-radio-group aria-label="Select an option"formControlName="debout">
-                                    <mat-radio-button style="padding-right: 30px;" value="1">Je peux rester debout aussi longtemps que je veux sans douleur</mat-radio-button>
-                                    <mat-radio-button style="padding-right: 30px;" value="2">Je peux rester debout aussi longtemps que je veux, mais cela me donne une douleur supplémentaire. </mat-radio-button>
-                                    <mat-radio-button style="padding-right: 30px;" value="3">La douleur m'empêche de rester debout pendant plus d'une heure. </mat-radio-button>
+                                    <mat-radio-button style="padding-right: 30px;" value="1">Je peux rester debout aussi longtemps que je veux sans douleur</mat-radio-button><br>
+                                    <mat-radio-button style="padding-right: 30px;" value="2">Je peux rester debout aussi longtemps que je veux, mais cela me donne une douleur supplémentaire. </mat-radio-button><br>
+                                    <mat-radio-button style="padding-right: 30px;" value="3">La douleur m'empêche de rester debout pendant plus d'une heure. </mat-radio-button><br>
                                     <mat-radio-button style="padding-right: 30px;" value="4">La douleur m'empêche de rester debout pendant plus d'une demi-heure.</mat-radio-button><br>
                                     <mat-radio-button style="padding-right: 30px;" value="5">La douleur m'empêche de rester debout pendant plus de 10 minutes.</mat-radio-button><br>
                                     <mat-radio-button style="padding-right: 30px;" value="6">La douleur m'empêche de rester debout tout court.</mat-radio-button>
@@ -952,13 +950,14 @@
                                    <br>
                                 <div style="display:flex; place-items: center; ">
                                   <button style="padding-right: 30px; place-items: left; " class="button" mat-button matStepperPrevious>Précédant</button>
-                                  <button style="padding-right: 30px; display: grid;
-                                  place-items: center;" class="button" mat-button (click)="saveODIAndShowScore()">Enregistrer</button>
+<!--                                  <button style="padding-right: 30px; display: grid;-->
+<!--                                  place-items: center;" class="button" mat-button (click)="saveODIAndShowScore()">Enregistrer</button>-->
 
-                                  <button style="padding-right: 30px;" class="button" mat-button matStepperNext>Suivant</button>
+                                  <button style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="saveODIAndShowScore()">Suivant</button>
                                 </div>
                               </form>
                             </mat-step>
+                           
                             <mat-step [stepControl]="hypotheseFormGroup" label="Hypothése diagnostic ">
                               <form [formGroup]="hypotheseFormGroup">
 
@@ -1551,7 +1550,7 @@
       
       
            <br>
-           <label  class="custom-label" style="padding-right: 30px;" >Canal lombaire étroit</label>
+           <label  class="custom-label" style="padding-right: 30px;"  >Canal lombaire étroit</label>
       
            <mat-radio-group aria-label="Select an option"formControlName="iRM_Canal_lombaire_etroit">
             <mat-radio-button style="padding-right: 30px;" value="1">Constitutionnel </mat-radio-button>
@@ -1560,7 +1559,7 @@
            </mat-radio-group>
       
          <br>
-         <label  class="custom-label" style="padding-right: 30px;" >Volume du disque hernié</label>
+         <label  class="custom-label" style="padding-right: 30px;"  >Volume du disque hernié</label>
          <mat-form-field>
           <input   matInput placeholder="Volume du disque hernié" formControlName="iRM_Volume_disque_hernie">
         </mat-form-field>
@@ -1583,7 +1582,6 @@
         </div>
         <div>  
           <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
-      <button style="padding-right: 30px;" class="button" mat-button (click)="savethridForm()">Enregistrer</button>
       <button style="padding-right: 30px;" class="button" mat-button (click)="savesuivi()">Enregistrer suivi-ttt</button>
       </div>
                                   
