@@ -35,6 +35,8 @@ import { CustomDateAdapter, CUSTOM_DATE_FORMATS } from './Services/CustomDateAda
 import {HttpClientModule} from "@angular/common/http";
 import { ProfilePatientComponent } from './profile-patient/profile-patient.component';
 import { NotificationAdmineComponent } from './notification-admine/notification-admine.component';
+import { ListesNotificationAdmineComponent } from './listes-notification-admine/listes-notification-admine.component';
+import { AjouterGroupeAdmineComponent } from './ajouter-groupe-admine/ajouter-groupe-admine.component';
 
 
 const AdminLayoutRoutes: Routes = [
@@ -54,7 +56,9 @@ const AdminLayoutRoutes: Routes = [
      { path: 'suiviArhrodese',  component: SuiviArthrodeseComponent },
      { path: 'stafff',  component: StaffComponent },
      {path: 'FichePatient/:id', component: ProfilePatientComponent},
-    {path: 'notification', component: NotificationAdmineComponent}
+    {path: 'notification', component: NotificationAdmineComponent},
+    {path: 'listeNotification', component: ListesNotificationAdmineComponent},
+    {path: 'ajouterGroupe', component: AjouterGroupeAdmineComponent}
 
   ]},
 ];
@@ -97,7 +101,9 @@ const AdminLayoutRoutes: Routes = [
     SuiviArthrodeseComponent,
     StaffComponent,
     ProfilePatientComponent,
-    NotificationAdmineComponent ,
+    NotificationAdmineComponent,
+    ListesNotificationAdmineComponent,
+    AjouterGroupeAdmineComponent ,
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
