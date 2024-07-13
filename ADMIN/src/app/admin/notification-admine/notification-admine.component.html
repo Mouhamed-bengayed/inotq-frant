@@ -7,59 +7,42 @@
         <p class="mb-2">Titre</p>
         <div class="box mb-3">
           <input type="text" class="form-control" placeholder="Titre de la notification">
-          <div class="btn btn-outline-secondary" type="button">
-            <span class="fas fa-plus pe-2"></span>Ajouter un fichier
-          </div>
+
         </div>
-      </div>
-      <div class="col-12">
-        <p class="mb-2">Type de Notification</p>
+        <p class="mb-2">Description</p>
+
         <div class="box mb-3">
-          <select class="form-control">
-            <option value="alert">Alerte</option>
-            <option value="reminder">Rappel</option>
-            <option value="update">Mise à jour</option>
-          </select>
+          <input type="text" class="form-control" placeholder="Description de la notification">
+
+        </div>
+
+      </div>
+      <div class="col-12">
+        <div class="box mb-3">
+          <button class="btn-facebook">
+            <i class="fas fa-plus"></i> Ajouter un fichier
+          </button>
         </div>
       </div>
       <div class="col-12">
-        <p class="mb-2">Heure</p>
+        <p class="mb-2">Date </p>
         <div class="box">
-          <input class="form-control" type="text" placeholder="14:00">
+          <input class="form-control" type="datetime-local">
         </div>
       </div>
+
       <div class="col-12">
-        <p class="mb-2">Ajouter des destinataires</p>
+        <p class="mb-2">Sélectionner les destinataires</p>
         <div class="box mb-3">
-          <input class="form-control" type="text" placeholder="Email du destinataire">
-          <div class="add btn btn-outline-secondary">Ajouter</div>
-        </div>
-      </div>
-      <div class="col-12">
-        <p class="mb-2">Sélectionner les Médecins</p>
-        <div class="box mb-3">
-          <select class="form-control">
-            <option value="medic1">Dr. John Doe</option>
-            <option value="medic2">Dr. Jane Smith</option>
-            <option value="medic3">Dr. Emily Johnson</option>
+          <select class="form-control" *ngFor="let l of listofuser">
+            <option value="medic1">{{ l.username }}</option>
+
           </select>
         </div>
       </div>
       <div class="col-12">
         <div class="d-md-flex align-items-center mt-4">
-          <div class="d-flex flex-md-column align-sm-items-center justify-content-between me-md-4 me-0">
-            <p class="mb-2">Méthode de Notification</p>
-            <div class="Radio form-control">
-              <label class="radio">
-                <input type="radio" name="send" value="Email" checked>
-                <span>Email</span>
-              </label>
-              <label class="radio">
-                <input type="radio" name="send" value="Stack">
-                <span>Stack</span>
-              </label>
-            </div>
-          </div>
+
           <div style="margin-left: 10px;">
             <p class="mb-2">Définir un Rappel</p>
             <input style="width: 230px" class="form-control" type="number" placeholder="1 heure avant la notification">
@@ -67,7 +50,7 @@
         </div>
       </div>
       <div class="col-12 text-center mt-4">
-        <button type="submit" class="btn btn-primary">Soumettre cette notification</button>
+        <button type="submit" class="btn btn-primary">Evoyer cette notification</button>
       </div>
     </div>
   </div>

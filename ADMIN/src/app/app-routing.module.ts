@@ -4,6 +4,7 @@ import {ValidationComponent} from "./FrontOffice/validation/validation.component
 import {VerificationComponent} from "./FrontOffice/ForgetPass/verification.component";
 import {SignInComponent} from "./FrontOffice/sign-in/sign-in.component";
 import {SignUpComponent} from "./FrontOffice/sign-up/sign-up.component";
+import {ReactiveAccountComponent} from "./FrontOffice/reactive-account/reactive-account.component";
 
 const routes: Routes = [
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'signIn', component: SignInComponent },
   { path: 'ForgetPassword', component: VerificationComponent },
   { path: 'verification', component: ValidationComponent },
+  {path:'reactivation',component:ReactiveAccountComponent},
   //{ path: '', redirectTo: 'signIn', pathMatch: 'full' },
   {path: '',
     loadChildren: () => import('./admin/admin-layout.module').then(m => m.AdminLayoutModule)

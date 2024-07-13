@@ -7,7 +7,7 @@
             <div class="form">
                 <div class="input-group">
                     <label for="username" class="input-label">Nom/Email</label>
-                    
+
                     <input type="text" name="username" id="username" class="input-box" placeholder="email or username" formControlName="username">
                     <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="text-danger">
                         <div *ngIf="username?.errors?.['required']">Nom/Email est requis.</div>
@@ -22,14 +22,16 @@
                         <div *ngIf="password?.errors?.['minlength']">Mot de passe doit être composé au moins de 6 caractères.</div>
                     </div>
                 </div>
-                
+
             </div>
             <p class="text-center">
                 <button class="btn" type="submit" [disabled]="signInForm.invalid">S'authentifier</button>
             </p>
         </form>
     </div>
-    <a routerLink="/ForgetPassword" style="text-decoration: blue; text-shadow: 0cap;"> mot de passe oublié ? </a>
+    <a routerLink="/ForgetPassword" style="text-decoration: blue; text-shadow: 0cap;"> Mot de passe oublié ? </a>
+  <a routerLink="/reactivation" style="text-decoration: blue; text-shadow: 0cap;"> Réactiver votre ancien compte ? </a>
+
 </div>
 
 

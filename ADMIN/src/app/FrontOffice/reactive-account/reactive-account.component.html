@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<section class="section section-shaped section-lg">
+  <div class="shape shape-style-1 bg-gradient-default">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="fg" (ngSubmit)="submitfg()">
+              <h5 class="card-title text-center"> Réactivatio Du Votre Compte</h5>
+              <input type="text" class="form-control mb-3" placeholder="Email" id="email" formControlName="email">
+              <div class="form-group">
+                <re-captcha id="recaptcha" name="recaptcha" [(ngModel)]="token" formControlName="recaptcha" required></re-captcha>
+                <div *ngIf="fg.get('recaptcha')?.invalid && (fg.get('recaptcha')?.dirty || fg.get('recaptcha')?.touched)" class="invalid-feedback">
+                  <div *ngIf="fg.get('recaptcha')?.errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-block mt-2">Vérifier</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

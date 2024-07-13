@@ -30,16 +30,19 @@ import {NavbarComponent} from "./FrontOffice/navbar/navbar.component";
 import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
 import { NgOtpInputModule } from 'ng-otp-input';
 import {environment} from "../environments/environment";
+import { ReactiveAccountComponent } from './FrontOffice/reactive-account/reactive-account.component';
 
 @NgModule({
   declarations: [
+    ReactiveAccountComponent,
     AppComponent,
     NavbarComponent,
     SignInComponent,
     SignUpComponent,
     VerificationComponent,
     ValidationComponent,
-    SuiviPostImmediatComponent
+    SuiviPostImmediatComponent,
+
   ],
   imports: [RouterModule,
     NgOtpInputModule,

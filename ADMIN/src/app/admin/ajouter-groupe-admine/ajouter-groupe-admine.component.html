@@ -1,1 +1,87 @@
-<p>ajouter-groupe-admine works!</p>
+<div class="container">
+  <div class="card">
+    <p class="h-1">Créer un Groupe </p>
+    <div class="bar mb-3"></div>
+    <div class="row">
+      <div class="col-12">
+        <p class="mb-2">Titre</p>
+        <div class="box mb-3">
+          <input type="text" class="form-control" placeholder="Titre du groupe">
+
+        </div>
+        <p class="mb-2">Description</p>
+
+        <div class="box mb-3">
+          <input type="text" class="form-control" placeholder="Description du groupe">
+
+        </div>
+
+      </div>
+      <div class="col-12">
+        <p class="mb-2">Sélectionner les medecins</p>
+        <div class="box mb-3">
+          <select class="form-control">
+            <chec value="medic1">Dr. John Doe</chec>
+            <option value="medic2">Dr. Jane Smith</option>
+            <option value="medic3">Dr. Emily Johnson</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-12">
+        <p class="mb-2">Date </p>
+        <div class="box">
+          <input class="form-control" type="datetime-local">
+        </div>
+      </div>
+      <div class="col-12 text-center mt-4">
+        <button type="submit" class="btn btn-primary">Créer ce groupe</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card mb-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h3 class="m-0 font-weight-bold text-primary">Ci dessous la liste des groupes existants:</h3>
+        <button class="  btn-primary"> rafraîchir la liste!</button>
+
+      </div>
+      <div class="table-responsive p-3">
+        <table class="table align-items-center table-flush" id="dataTable">
+          <thead class="thead-light">
+          <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Date de création</th>
+            <th>Supprimer</th>
+            <!--              <th>Date de création</th>-->
+
+          </tr>
+          </thead>
+          <tbody>
+          <!--            <tr *ngFor="let med of notifications">-->
+          <!--              <td>{{med.id}}</td>-->
+          <!--              <td>{{med.name}}</td>-->
+          <!--              <td>{{med.username}}</td>-->
+          <!--              <td>{{med.email}}</td>-->
+          <!--              <td>{{med.addresse}}</td>-->
+          <!--              <td>{{med.number}}</td>-->
+          <!--              <td>{{med.date}}</td>-->
+          <!--              <td>{{med.status}}</td>-->
+          <!--              <td>-->
+          <!--                <button *ngIf="med.blockedByAdmin" (click)="modifier(med)" type="button" class="btn btn-success">Activer Compte</button>-->
+          <!--              </td>-->
+          <!--              <td>-->
+          <!--                <button *ngIf="!med.Status" (click)="supprimer(med)" type="button" class="btn btn-success">Valider</button>-->
+          <!--              </td>-->
+          <!--              <td>-->
+          <!--                &lt;!&ndash; <button (click)="supprimeMedecin(med)" type="button" class="btn btn-danger">Supprimer</button> &ndash;&gt;-->
+          <!--              </td>-->
+          <!--            </tr>-->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -180,4 +180,9 @@ export class AccountService {
         // Implement logic to call the token refresh API
         return this.http.post<any>(`${environment.apiUrl}/api/auth/refreshToken`, { refreshToken: localStorage.getItem('refreshToken') });
       }
+
+
+  userExists(email: string): Observable<boolean> {
+    return this.http.post<boolean>(`${environment.apiUrl}/api/users/userexists/${email}`, {});
+  }
 }
