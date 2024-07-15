@@ -28,6 +28,8 @@
               <th>Status du compte</th>
               <th>Bloquer/Débloquer</th>
               <th>Valider ce compte </th>
+              <th>Réactiver ce compte </th>
+
             </tr>
             </thead>
             <tbody>
@@ -41,15 +43,16 @@
               <td>{{med.date}}</td>
               <td>{{med.status}}</td>
               <td>
-                <button *ngIf="med.blockedByAdmin" (click)="ActiveMedecinByAdmin(med)" type="button" class="btn btn-success">Activer Compte</button>
-                <button *ngIf="!med.blockedByAdmin" (click)="bloqueMedecinByAdmin(med)" type="button" class="btn btn-danger">Bloquer Compte</button>
+                <button *ngIf="med.blockedByAdmin" (click)="DebloquerMedecin(med)" type="button" class="btn btn-success">Débloquer le compte</button>
+                <button *ngIf="!med.blockedByAdmin" (click)="bloqueMedecinByAdmin(med)" type="button" class="btn btn-danger">Bloquer le compte</button>
               </td>
               <td>
-                <button *ngIf="!med.Status" (click)="activateMedecin(med)" type="button" class="btn btn-success">Valider</button>
-                <button *ngIf="med.Status" class="btn btn-danger">Compte est valide</button>
+                <button *ngIf="!med.validtologin" (click)="activateMedecin(med)" type="button" class="btn btn-primary">Valider le compte</button>
+                <button *ngIf="med.validtologin" class="btn btn-success">Ce compte est valide</button>
               </td>
               <td>
-                <!-- <button (click)="supprimeMedecin(med)" type="button" class="btn btn-danger">Supprimer</button> -->
+                <button *ngIf="med.status === 'demande de réactivation'" (click)="ReactivateCeMedecin(med)" type="button" class="btn btn-primary">Réactiver le compte</button>
+                <button *ngIf="med.status === 'compte réactivé'" type="button" class="btn btn-success">Ce compte est activé</button>
               </td>
             </tr>
             </tbody>

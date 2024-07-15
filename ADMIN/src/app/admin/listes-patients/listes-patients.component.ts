@@ -13,6 +13,8 @@ import {Router} from "@angular/router";
 export class ListesPatientsComponent implements OnInit {
   patients: Patient[] = [];
 user:any;
+  // activationStatus: string = "demande d'activation";
+
   constructor(private patientService:PatientService,private accounntservice:AccountService,private router:Router) {
     this.user= this.accounntservice.CurrentUserInfoSubject.getValue();
   }

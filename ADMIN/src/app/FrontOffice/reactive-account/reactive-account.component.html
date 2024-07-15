@@ -21,7 +21,7 @@
         <div class="card">
           <div class="card-body">
             <form [formGroup]="fg" (ngSubmit)="submitfg()">
-              <h5 class="card-title text-center"> Réactivatio Du Votre Compte</h5>
+              <h5 class="card-title text-center"> Réactivation Du Votre Compte</h5>
               <input type="text" class="form-control mb-3" placeholder="Email" id="email" formControlName="email">
               <div class="form-group">
                 <re-captcha id="recaptcha" name="recaptcha" [(ngModel)]="token" formControlName="recaptcha" required></re-captcha>

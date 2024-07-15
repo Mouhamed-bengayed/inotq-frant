@@ -37,6 +37,7 @@ import { ProfilePatientComponent } from './profile-patient/profile-patient.compo
 import { NotificationAdmineComponent } from './notification-admine/notification-admine.component';
 import { ListesNotificationAdmineComponent } from './listes-notification-admine/listes-notification-admine.component';
 import { AjouterGroupeAdmineComponent } from './ajouter-groupe-admine/ajouter-groupe-admine.component';
+import {MultiSelectDropdownDirective} from "./ajouter-groupe-admine/MultiSelectDropdownDirective";
 
 
 const AdminLayoutRoutes: Routes = [
@@ -84,7 +85,8 @@ const AdminLayoutRoutes: Routes = [
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MultiSelectDropdownDirective
 
   ],
   declarations: [

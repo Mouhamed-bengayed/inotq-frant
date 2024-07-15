@@ -183,6 +183,6 @@ export class AccountService {
 
 
   userExists(email: string): Observable<boolean> {
-    return this.http.post<boolean>(`${environment.apiUrl}/api/users/userexists/${email}`, {});
+    return this.http.post<boolean>(`${environment.apiUrl}/api/user/userexists/${email}`, {});
   }
 }
