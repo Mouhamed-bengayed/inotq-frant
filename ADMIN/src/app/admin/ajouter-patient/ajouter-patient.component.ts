@@ -59,7 +59,7 @@ export class AjouterPatientComponent implements OnInit {
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
   incontinenceControl = new FormControl('');
-  treatmentCont11= new FormControl('');
+
   etageControl = new FormControl('');
   typeControl = new FormControl('');
   intensityControl = new FormControl('');
@@ -71,7 +71,7 @@ export class AjouterPatientComponent implements OnInit {
   pincement23 = new FormControl();
   pincement24 = new FormControl();
   pincement27= new FormControl();
-
+  treatmentCont1= new FormControl('');
   pincement_discal= new FormControl();
   tDM_hernie_discale= new FormControl();
   sPDL= new FormControl();
@@ -90,7 +90,6 @@ export class AjouterPatientComponent implements OnInit {
   formS!: FormGroup ;
   treatmentCont!: string ;
 user:any;
-treatmentCont1: any;
   constructor( private patientService: PatientService,private fb: FormBuilder,private accountservice:AccountService) {
     this.user = this.accountservice.CurrentUserInfoSubject.getValue();
 console.error("user id",this.user.id);
@@ -210,7 +209,7 @@ console.error("user id",this.user.id);
     addresse: new FormControl(''),
     country: new FormControl(this.countries[0].code),  // Default to the first country
     telephone: new FormControl('', [Validators.required, this.telephoneValidator()]),
-    profession: new FormControl(''),
+     profession: new FormControl(''),
     adresse_par: new FormControl(''),
     statut_social: new FormControl(''),
     entourage_actuel: new FormControl(''),
@@ -584,8 +583,6 @@ isAutresChecked = false;
       localStorage.removeItem('odiFormGroupData');
       localStorage.removeItem('hypotheseFormGroup');
       localStorage.removeItem('fourthFormGroupData');
-
-
     },
     (error) => {
       console.error("Erreur lors de l'enregistrement du patient : ", error);

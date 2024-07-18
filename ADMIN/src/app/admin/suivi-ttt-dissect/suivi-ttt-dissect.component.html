@@ -5,7 +5,7 @@
                 <div class="cardo">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title ">Saisir les information</h4>
-
+                       
                     </div>
                     <div class="formbold-main-wrapper white-text bg-body" >
         
@@ -17,8 +17,9 @@
                       
                               
                                 <mat-form-field>
-                                  <mat-label  class="custom-label">Date de consultation</mat-label>
+                                  <mat-label class="custom-label">Date de consultation</mat-label>
                                   <input matInput [matDatepicker]="picker" formControlName="date_de_consultation" placeholder="Date de consultation">
+  
                                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                   <mat-datepicker #picker></mat-datepicker>
                                 </mat-form-field>
@@ -29,12 +30,22 @@
                                     <input matInput formControlName="age" placeholder=" age" type="number">
                                   </mat-form-field>
                                 
+                                 
                                   <br>
-                                  <mat-form-field>
-                                    <mat-label  class="custom-label">Adresse</mat-label>
-                                    <input matInput formControlName="addresse" placeholder="Adresse">
-                                  </mat-form-field>
-                                  <br>
+                                 
+
+                                  <div class="panel-body">
+                          
+                                    <div class="body-section">
+                                      <h5 class="custom-label"style="padding-right: 30px;">Adresse</h5>
+                                      <p (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse && user.addresse">{{user.addresse}}</p>
+                                      <i class="fa fa-plus" *ngIf="!user.addresse && !editMode.addresse" (click)="enableEdit('addresse')"></i>
+                                      <input *ngIf="editMode.addresse" [(ngModel)]="user.addresse" (blur)="disableEdit('addresse')" />
+                                    </div>
+                                   
+                                    
+                                  </div>
+                                  
                                 
   
   
@@ -496,9 +507,9 @@
                                          <label  class="custom-label" style="padding-right: 30px;" >Laségue  </label>
 
                                          <mat-radio-group aria-label="Select an option" formControlName="lasegue">
-                                           <mat-radio-button style="padding-right: 30px;" class="example-margin" value="1">& &lt;30° </mat-radio-button>
-                                           <mat-radio-button style="padding-right: 30px;" class="example-margin" value="2">30°&lt; & &lt;60° </mat-radio-button>
-                                           <mat-radio-button style="padding-right: 30px;" class="example-margin" value="3">& &gt;60° </mat-radio-button>
+                                           <mat-radio-button style="padding-right: 30px;" class="example-margin" value="1"> α &lt;30° </mat-radio-button>
+                                           <mat-radio-button style="padding-right: 30px;" class="example-margin" value="2">30°&lt;  α &lt;60° </mat-radio-button>
+                                           <mat-radio-button style="padding-right: 30px;" class="example-margin" value="3"> α &gt;60° </mat-radio-button>
  
                                            </mat-radio-group>
                                        

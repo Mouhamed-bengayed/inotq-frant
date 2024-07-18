@@ -20,10 +20,9 @@
                 <div>Docteur à l'hôpital  <span (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse">{{user.addresse}}</span>
                   <input *ngIf="editMode.addresse" [(ngModel)]="user.addresse" (blur)="disableEdit('addresse')" />
                 </div>
-                <div class="mg-top-30" style="margin:20px;margin-outside: 10px">
+                <div class="mg-top-30" style="margin:20px;">
                   <a routerLinkActive="active" [routerLink]="['/admin/liste/patient']" class="btn btn-blue mb-4">Consulter la liste des patients</a><br>
                   <a  routerLinkActive="active" routerLink="#"  ><i  class=" fas fa-sign-out-alt text-blue" (click)="logout()"> Se déconnecter</i></a>
-
                 </div>
 
               </div>
