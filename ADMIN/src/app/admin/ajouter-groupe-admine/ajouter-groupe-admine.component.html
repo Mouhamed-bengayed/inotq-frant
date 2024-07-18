@@ -50,6 +50,10 @@
               <th>Description</th>
               <th>Date de création</th>
               <th>Supprimer</th>
+              <th>Voir la liste des médécins</th>
+              <th>Modifier</th>
+
+
             </tr>
             </thead>
             <tbody>
@@ -59,6 +63,12 @@
               <td style="color:white" >{{ convertDate(groupe.date) }}</td>
               <td>
                 <button (click)="supprimerGroupe(groupe.id)" type="button" class=" btn-danger">Supprimer</button>
+              </td>
+              <td>
+                <button (click)="showmeds(groupe.id)" type="button" style="white-space: nowrap; padding: 10px 15px; font-size: 14px; width: 100%" class="btn-outline-success btn-success">Voir la liste des médécins</button>
+              </td>
+              <td>
+                <button (click)="modifierGroupe(groupe.id)" type="button" class=" btn-black ">Modifier</button>
               </td>
             </tr>
             </tbody>

@@ -163,7 +163,7 @@
                               <br>
                               <label  class="custom-label"   style="padding-right: 30px;">Statut social </label>
 
-          
+
                               <mat-radio-group aria-label="Select an option" formControlName="statut_social">
                                 <mat-radio-button style="padding-right: 30px;" value="1">Marié(e)</mat-radio-button>
                                 <mat-radio-button style="padding-right: 30px;" value="2">Célibataire</mat-radio-button>
@@ -172,6 +172,7 @@
                               </mat-radio-group>
 
                               <br>
+                              <br>
                               <label  class="custom-label"    style="padding-right: 30px;">Entourage actuel</label>
 
                               <mat-radio-group aria-label="Select an option" formControlName="entourage_actuel">
@@ -179,7 +180,7 @@
                                 <mat-radio-button style="padding-right: 30px;" value="2">Mal entouré(e)      </mat-radio-button>
                               </mat-radio-group>
                               <br>
-                           
+
                               <div formArrayName="atcd">
                                 <label class="custom-label" style="padding-right: 30px;">ATCD</label>
 
@@ -218,11 +219,11 @@
                                   <input matInput formControlName="adresse_par" placeholder="Packet/j">
                                 </mat-form-field>
                               </div>
-                              
+
 
 
 <!--
-                            
+
 
                               <div >
                                 <mat-checkbox style="padding-right: 30px;" class="example-margin" value="1" >Lombalgie</mat-checkbox>
@@ -379,7 +380,7 @@
                                 <mat-checkbox style="padding-right: 30px;" class="example-margin" value="5" >Autres</mat-checkbox>
                               </div>
                             </div>
-                            
+
                               <br>
                               <label  class="custom-label" style="padding-right: 30px;" >Indication chirurgicale</label>
 
@@ -596,15 +597,15 @@
 
                                     <div *ngIf="checkboxControl15.value">
                                       <mat-checkbox style="padding-right: 30px;" [formControl]="checkboxControl7">Incontinence urinaire</mat-checkbox>
-                                    
+
                                       <div *ngIf="checkboxControl7.value">
                                         <mat-radio-group aria-label="Select an option" [formControl]="typeControl">
                                           <mat-radio-button style="padding-right: 30px;" value="1">Au repos</mat-radio-button>
                                           <mat-radio-button style="padding-right: 30px;" value="2">A l'effort</mat-radio-button>
                                         </mat-radio-group>
-                                      
+
                                       </div>
-                                    
+
                                       <br>
                                       <mat-checkbox style="padding-right: 30px;" value="1">Constipation</mat-checkbox>
                                       <br>

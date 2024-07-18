@@ -2,56 +2,54 @@
   <div class="card">
     <p class="h-1">Créer une Notification</p>
     <div class="bar mb-3"></div>
-    <div class="row">
-      <div class="col-12">
-        <p class="mb-2">Titre</p>
-        <div class="box mb-3">
-          <input type="text" class="form-control" placeholder="Titre de la notification">
-
-        </div>
-        <p class="mb-2">Description</p>
-
-        <div class="box mb-3">
-          <input type="text" class="form-control" placeholder="Description de la notification">
-
-        </div>
-
-      </div>
-      <div class="col-12">
-        <div class="box mb-3">
-          <button class="btn-facebook">
-            <i class="fas fa-plus"></i> Ajouter un fichier
-          </button>
-        </div>
-      </div>
-      <div class="col-12">
-        <p class="mb-2">Date </p>
-        <div class="box">
-          <input class="form-control" type="datetime-local">
-        </div>
-      </div>
-
-      <div class="col-12">
-        <p class="mb-2">Sélectionner les destinataires</p>
-        <div class="box mb-3">
-          <select class="form-control" *ngFor="let l of listofuser">
-            <option value="medic1">{{ l.username }}</option>
-
-          </select>
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="d-md-flex align-items-center mt-4">
-
-          <div style="margin-left: 10px;">
-            <p class="mb-2">Définir un Rappel</p>
-            <input style="width: 230px" class="form-control" type="number" placeholder="1 heure avant la notification">
+    <form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-12">
+          <p class="mb-2">Titre</p>
+          <div class="box mb-3">
+            <input type="text" class="form-control" formControlName="title" placeholder="Titre de la notification">
+          </div>
+          <p class="mb-2">Description</p>
+          <div class="box mb-3">
+            <input type="text" class="form-control" formControlName="description" placeholder="Description de la notification">
           </div>
         </div>
+        <div class="mt-3 col-12">
+          <div  class="box mb-3">
+            <label style="width:20%;height: 50%" class=" btn-success">
+              <i class="fas fa-plus"></i> Ajouter un fichier
+              <input type="file" style="display: none;" (change)="onFileSelected($event)">
+            </label>
+            <span>{{ selectedFile?.name }}</span> <!-- Display selected file name -->
+          </div>
+        </div>
+        <div class="col-12">
+          <p class="mb-2">Date </p>
+          <div class="box">
+            <input class="form-control" type="datetime-local" formControlName="date">
+          </div>
+        </div>
+        <div class="mt-4 col-12">
+          <div class="dropdown multi-select-dropdown">
+            <button class=" btn-success dropdown-toggle" type="button" (click)="toggleDropdown()">Sélectionner les groupes  déstinataires </button>
+            <div class="dropdown-menu" [class.show]="isDropdownVisible()">
+              <div class="form-check" *ngFor="let med of medecins; let i = index">
+                <input class="form-check-input" type="checkbox" [id]="'medecin-' + i" [formControl]="getMedecinControl(med)" />
+                <label class="form-check-label" [for]="'medecin-' + i">{{ med.titre }}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 col-12">
+          <div style="margin-left: 10px;">
+            <p class="mb-2">Définir un Rappel</p>
+            <input style="width: 230px" class="form-control" type="number" formControlName="reminder" placeholder="1 heure avant la notification">
+          </div>
+        </div>
+        <div class="col-12 text-center mt-4">
+          <button type="submit" class="btn btn-primary">Envoyer cette notification</button>
+        </div>
       </div>
-      <div class="col-12 text-center mt-4">
-        <button type="submit" class="btn btn-primary">Evoyer cette notification</button>
-      </div>
-    </div>
+    </form>
   </div>
 </div>

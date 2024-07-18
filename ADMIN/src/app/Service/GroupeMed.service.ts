@@ -27,4 +27,12 @@ export class GroupeMedService  {
   getAllGroupeMed(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/list-groupeMed`);
   }
+  showMeds(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/show-list-meds/${id}`);
+  }
+
+  modifiergroup(id: any, formValue: any) {
+    return this.http.put<any>(`${this.apiUrl}/modifmed/${id}`,formValue);
+
+  }
 }

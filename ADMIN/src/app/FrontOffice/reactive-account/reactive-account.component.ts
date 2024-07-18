@@ -27,6 +27,7 @@ export class ReactiveAccountComponent {
 
 
   }
+
   submitfg(): void {
     if (this.fg.valid) {
       const email = this.fg.value.email;
@@ -35,20 +36,20 @@ export class ReactiveAccountComponent {
           if (response) {
             Swal.fire({
               title: "Tentative de réactivation",
-              text: "Une alerte a été envoyée aux administrateurs pour réactiver votre compte." +
-                "La réponse séra envoyez sur ce  e-mail",
+              text: "Une alerte a été envoyée aux administrateurs pour réactiver votre compte. " +
+                "La réponse sera envoyée par cette adresse-mail.",
               icon: "success"
             });
           } else {
             Swal.fire({
               icon: "error",
               title: "Oops...",
-              text: "L'e-mail n'existe pas!",
+              text: "Ce compte n'existe pas. Veuillez vérifier votre e-mail."
             });
           }
         },
         (error) => {
-          console.error("Error:", error);
+          console.error("Erreur :", error);
           Swal.fire({
             icon: "error",
             title: "Oops...",
@@ -56,12 +57,28 @@ export class ReactiveAccountComponent {
           });
         }
       );
-    } else {
+    }
+    else if(this.fg.value.email==null || this.fg.value.email=="")
+    {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Veuillez remplir le champ e-mail correctement.",
+        text: "Veuillez remplir correctement le champ e-mail.",
       });
     }
+    else if(this.fg.value.recaptcha == null){
+
+
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Veuillez cliquer sur le recaptcha.",
+        });
+
+
+    }
+
+
+
   }
 }
