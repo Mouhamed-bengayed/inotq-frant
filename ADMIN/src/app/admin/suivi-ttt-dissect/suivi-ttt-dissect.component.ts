@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { PatientService } from '../Services/patient.service';
-import { telephoneValidator } from '../Services/CustomDateAdapter';
 import Swal from 'sweetalert2';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AccountService } from '../Services/account.service';
+type EditableField = 'addresse' | 'descreption_Personelle' | 'lieu_deducation' | 'annee_dexperience' | 'number' | 'email' | 'sexe' | 'specialite'| 'date_de_naissance';
 
 @Component({
   selector: 'app-suivi-ttt-dissect',
@@ -11,6 +13,19 @@ import Swal from 'sweetalert2';
   styleUrls: ['./suivi-ttt-dissect.component.css']
 })
 export class SuiviTttDissectComponent implements OnInit {
+  user: any = {};  
+  editMode: Record<EditableField, boolean> = {
+    addresse: false,
+    descreption_Personelle: false,
+    specialite: false,
+    lieu_deducation: false,
+    annee_dexperience: false,
+    number: false,
+    email: false,
+    sexe: false,
+    date_de_naissance: false
+  };
+
   countries = [
     { name: 'Tunisia', code: '+216' },
     { name: 'United States', code: '+1' },
@@ -51,13 +66,9 @@ export class SuiviTttDissectComponent implements OnInit {
   checkboxControl15 = new FormControl(false);
   checkboxControl16 = new FormControl(false);
   checkboxControl17 = new FormControl(false);
-
-
-
   distanceControl = new FormControl('');
   causeControl = new FormControl('');
   incontinenceControl = new FormControl('');
-
   etageControl = new FormControl('');
   typeControl = new FormControl('');
   intensityControl = new FormControl('');
@@ -73,10 +84,8 @@ export class SuiviTttDissectComponent implements OnInit {
   pincement24= new FormControl();
   treatmentControl = new FormControl();
   spondylolisthesis = new FormControl();
-  
   radioControl = new FormControl();
-
-  @ViewChild('picker1') picker1!: MatDatepicker<any>;
+  @ViewChild('picker') picker!: MatDatepicker<any>;
   picker2!: MatDatepicker<any>;
   showOtherCheckboxes = false;
   antalgiqueControl = new FormControl(false);
@@ -84,29 +93,49 @@ export class SuiviTttDissectComponent implements OnInit {
   formA!: FormGroup;
   form!: FormGroup;
   thridFormGroup: any;
-  constructor( private patientService: PatientService,private fb: FormBuilder) {
+  patientId: any;
+  fichepatient: any;
+  constructor( private accountService: AccountService,private http: HttpClient,private patientService: PatientService,private fb: FormBuilder) {
    
 
   }
-  hypotheseFormGroup = new FormGroup({
-    Nbre_infiltration: new FormControl(''),
-    Nbre_seances: new FormControl(''),
-    description_autres: new FormControl(''),
-    Hypothese_diagnostic_HD: new FormControl(''),
-    Hypothese_diagnostic_type: new FormControl(''),
-    Hypothese_diagnostic_Localisation: new FormControl(''),
-    Traitement_propose : new FormControl(''),
-    Traitement_propose_Nbre_infiltrations : new FormControl(''),
-    Traitement_propose_Nbre_seances: new FormControl(''),
-    Traitement_propose_Type_chirurgie: new FormControl(''),
-    Traitement_propose_Auter: new FormControl(''),
-  });
+ 
   ngOnInit() {     
-  
     this.setupBmiCalculation();
-   
   }
 
+
+  formatDate(timestamp: number): string {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+  logout() {
+    this.accountService.logout();
+  }
+
+  saveChanges() {
+    const url = 'http://localhost:8082/api/user/update-user/';
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.http.put(url, this.user, { headers }).subscribe(
+      response => {
+        console.log('Changes saved:', response);
+        localStorage.setItem('myuserinfo', JSON.stringify(response));
+        Swal.fire('Succès!', 'Vos informations ont été mises à jour avec succès!', 'success');
+      },
+      error => {
+        console.error('Error saving changes', error);
+        alert('An error occurred while saving changes.');
+      }
+    );
+  }
+
+  enableEdit(field: EditableField) {
+    this.editMode[field] = true;
+  }
+
+  disableEdit(field: EditableField) {
+    this.editMode[field] = false;
+  }
   setupBmiCalculation() {
     this.examFormGroup.get('poids')?.valueChanges.subscribe(() => this.calculateBmi());
     this.examFormGroup.get('taille')?.valueChanges.subscribe(() => this.calculateBmi());
@@ -134,9 +163,8 @@ export class SuiviTttDissectComponent implements OnInit {
       formArray.removeAt(index);
     }
   }
-  scorefinale:number=0;
 
-
+scorefinale:number=0;
 
 
   calculateScore(): number {
@@ -196,7 +224,6 @@ export class SuiviTttDissectComponent implements OnInit {
       confirmButtonText: 'OK'
     });
   }
-
 
   onAntalgiqueChange(event: any) {
     this.showOtherCheckboxes = event.checked;
@@ -304,7 +331,19 @@ symptomatologieFormGroup = new FormGroup({
   Motif_de_consultation_l: new FormControl(''),
   
 });
-
+hypotheseFormGroup = new FormGroup({
+  Nbre_infiltration: new FormControl(''),
+  Nbre_seances: new FormControl(''),
+  description_autres: new FormControl(''),
+  Hypothese_diagnostic_HD: new FormControl(''),
+  Hypothese_diagnostic_type: new FormControl(''),
+  Hypothese_diagnostic_Localisation: new FormControl(''),
+  Traitement_propose : new FormControl(''),
+  Traitement_propose_Nbre_infiltrations : new FormControl(''),
+  Traitement_propose_Nbre_seances: new FormControl(''),
+  Traitement_propose_Type_chirurgie: new FormControl(''),
+  Traitement_propose_Auter: new FormControl(''),
+});
 fourthFormGroup = new FormGroup({
   rx_standard: new FormControl(''),
   rx_standard_qualite: new FormControl(''),
@@ -364,11 +403,13 @@ fourthFormGroup = new FormGroup({
 
 
 saveFirstForm() {
+  this.saveChanges();
   const thridFormGroupData1 = this.firstFormGroup.value;
     localStorage.setItem('firstFormGroupData', JSON.stringify(thridFormGroupData1));
 
   
  }
+
  savesympFormGroup() {
   const symptomatologieFormGroupData1 = this.symptomatologieFormGroup.value;
     localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData1));
@@ -388,12 +429,12 @@ saveexamForm() {
   
  }
 
-
  savethridForm() {
   const thridFormGroupData1 = this.thridFormGroup.value;
     localStorage.setItem('thridFormGroupData', JSON.stringify(thridFormGroupData1));
 
  }
+
  savefourthFormGroup() {
   const fourthFormGroupData1 = this.fourthFormGroup.value;
     localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
