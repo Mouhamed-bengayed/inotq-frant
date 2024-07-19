@@ -252,18 +252,21 @@ console.error("user id",this.user.id);
   calculateScore(): number {
     const odiFormGroupData = this.odiFormGroup.value as { [key: string]: string | null };
     let score = 0;
+    let scoreReal=0;
+
     for (const key in odiFormGroupData) {
       if (odiFormGroupData.hasOwnProperty(key) && odiFormGroupData[key]) {
         score += parseInt(odiFormGroupData[key]!, 10);
       }
     }
-    this.scorefinale = score;
-    return score;
+    scoreReal=score*2;
+    this.scorefinale = scoreReal;
+    return scoreReal;
   }
   saveODIAndShowScore() {
     this.saveodiForm();
 
-    const score = this.calculateScore();
+    let score = this.calculateScore();
     let message = '';
     let color = '';
 
@@ -283,7 +286,14 @@ console.error("user id",this.user.id);
     } else if (score > 80 && score <= 100) {
       message = 'Altération fonctionnelle';
       color = 'red'; // Red for functional impairment
-    } else {
+
+    }
+    else if(score>100){
+      score=100;
+      message = 'Altération fonctionnelle';
+      color = 'red'; // Red for functional impairment
+    }
+    else {
       message = 'Score invalide';
       color = 'black'; // Default color for invalid score
     }
@@ -522,23 +532,23 @@ isAutresChecked = false;
     const odiFormGroupData1 = this.odiFormGroup.value;
 
       localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
-    
+
    }
   savethridForm() {
     const thridFormGroupData1 = this.thridFormGroup.value;
       localStorage.setItem('thridFormGroupData', JSON.stringify(thridFormGroupData1));
 
-  
+
    }
    saveFourthFormGroup() {
     const fourthFormGroupData1 = this.fourthFormGroup.value;
       localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
-    
+
    }
   savesymptomatologieFormGroup(){
     const symptomatologieFormGroupData = this.symptomatologieFormGroup.value;
       localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData));
-    
+
 
   }
 

@@ -17,6 +17,9 @@ export class SideBarComponent implements OnInit {
   profileImageUrl: any = 'https://bootdey.com/img/Content/avatar/avatar1.png';
 
   constructor(private accountService: AccountService, private http: HttpClient, private sanitizer: DomSanitizer) {
+
+
+
     const userStr = localStorage.getItem("user");
 
     if (userStr) {

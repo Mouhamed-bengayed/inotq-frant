@@ -33,9 +33,9 @@
           <div class="dropdown multi-select-dropdown">
             <button class=" btn-success dropdown-toggle" type="button" (click)="toggleDropdown()">Sélectionner les groupes  déstinataires </button>
             <div class="dropdown-menu" [class.show]="isDropdownVisible()">
-              <div class="form-check" *ngFor="let med of medecins; let i = index">
-                <input class="form-check-input" type="checkbox" [id]="'medecin-' + i" [formControl]="getMedecinControl(med)" />
-                <label class="form-check-label" [for]="'medecin-' + i">{{ med.titre }}</label>
+              <div class="form-check" *ngFor="let med of medecins; ">
+                <input class="form-check-input" type="checkbox" [id]="'medecin-' + med.id" [formControl]="getMedecinControl(med)" />
+                <label class="form-check-label" [for]="'medecin-' + med.id">{{ med.titre }}</label>
               </div>
             </div>
           </div>

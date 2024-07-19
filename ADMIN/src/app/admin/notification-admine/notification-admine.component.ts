@@ -55,7 +55,7 @@ export class NotificationAdmineComponent implements OnInit {
       formArray.push(new FormControl(false)); // Initialize each medecin with unchecked state
     });
   }
-  getMedecinControl(medecin: Medecin): FormControl {
+  getMedecinControl(medecin: any): FormControl {
     const formArray = this.groupForm.get('medecins') as FormArray;
     return formArray.at(this.medecins.findIndex(m => m.id === medecin.id)) as FormControl;
   }
@@ -82,23 +82,30 @@ export class NotificationAdmineComponent implements OnInit {
 
   // Submit form
   onSubmit(): void {
-    const formData:any = new FormData();
-    formData.append('title', this.groupForm.get('title')!.value);
-    formData.append('message', this.groupForm.get('description')!.value);
-    formData.append('date', this.groupForm.get('date')!.value);
-    formData.append('rappel', this.groupForm.get('reminder')!.value);
-    // formData.append('file', this.selectedFile!); // Append selected file to form data
+    // const formData:FormGroup = new FormGroup();
+    // formData.append('title', this.groupForm.get('title')!.value);
+    // formData.append('message', this.groupForm.get('description')!.value);
+    // formData.append('date', this.groupForm.get('date')!.value);
+    // formData.append('rappel', this.groupForm.get('reminder')!.value);
+    // // formData.append('file', this.selectedFile!); // Append selected file to form data
 
     // Append selected doctors (medecins)
-    const medecinsFormArray = this.groupForm.get('medecins') as FormArray;
-    for (let i = 0; i < medecinsFormArray.length; i++) {
-      if (medecinsFormArray.at(i).value) {
-        formData.append('medecins', this.medecins[i].id.toString());
-      }
-    }
+    // const medecinsFormArray = this.groupForm.get('medecins') as FormArray;
+    // for (let i = 0; i < medecinsFormArray.length; i++) {
+    //   if (medecinsFormArray.at(i).value) {
+    //     formData.append('medecins', this.medecins[i].id.toString());
+    //   }
+    // }
+    const selectedMedecinIds = this.groupForm.value.medecins
+      .map((checked: boolean, i: number) => checked ? this.medecins[i].id : null)
+      .filter((id: number | null) => id !== null);
 
+    const payload = {
+      ...this.groupForm.value,
+      medecins: selectedMedecinIds
+    };
     // Example: Submit formData to backend API using HttpClient
-    this.NotificationService.createNotification(this.groupForm.value).subscribe(
+    this.NotificationService.createNotification(payload).subscribe(
       (response) => {
         console.log('Notification submitted successfully:', response);
         Swal.fire({

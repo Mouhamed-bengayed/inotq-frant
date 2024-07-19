@@ -27,8 +27,8 @@
               <th>Date de création</th>
               <th>Status du compte</th>
               <th>Bloquer/Débloquer</th>
-              <th>Valider ce compte </th>
-              <th>Réactiver ce compte </th>
+              <th>Valider  </th>
+              <th>Réactiver </th>
 
             </tr>
             </thead>
@@ -43,16 +43,16 @@
               <td>{{med.date}}</td>
               <td>{{med.status}}</td>
               <td>
-                <button *ngIf="med.blockedByAdmin" (click)="DebloquerMedecin(med)" type="button" class="btn btn-success">Débloquer le compte</button>
-                <button *ngIf="!med.blockedByAdmin" (click)="bloqueMedecinByAdmin(med)" type="button" class="btn btn-danger">Bloquer le compte</button>
+                <button *ngIf="med.blockedByAdmin" (click)="DebloquerMedecin(med)" type="button" class="btn btn-success">Débloquer </button>
+                <button *ngIf="!med.blockedByAdmin" (click)="bloqueMedecinByAdmin(med)" type="button" class="btn btn-danger">Bloquer </button>
               </td>
               <td>
-                <button *ngIf="!med.validtologin" (click)="activateMedecin(med)" type="button" class="btn btn-primary">Valider le compte</button>
-                <button *ngIf="med.validtologin" class="btn btn-success">Ce compte est valide</button>
+                <button *ngIf="!med.validtologin" (click)="activateMedecin(med)" type="button" class="btn btn-primary">Valider </button>
+                <p *ngIf="med.validtologin" class="text-white bg-success">Ce compte est valide</p>
               </td>
               <td>
-                <button *ngIf="med.status === 'demande de réactivation'" (click)="ReactivateCeMedecin(med)" type="button" class="btn btn-primary">Réactiver le compte</button>
-                <button *ngIf="med.status === 'compte réactivé'" type="button" class="btn btn-success">Ce compte est activé</button>
+                <button *ngIf="med.status === 'En attente de réactivation'" (click)="ReactivateCeMedecin(med)" type="button" class="btn btn-primary">Réactiver </button>
+                <p *ngIf="med.status === 'compte réactivé'" type="button" class="bg-success">Ce compte est activé</p>
               </td>
             </tr>
             </tbody>
