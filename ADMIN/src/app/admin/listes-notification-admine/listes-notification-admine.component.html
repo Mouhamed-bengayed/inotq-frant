@@ -18,24 +18,22 @@
           <table class="table align-items-center table-flush" id="dataTable">
             <thead class="thead-light">
             <tr>
-              <th>Titre</th>
-              <th>Destinataire</th>
-              <th>Date de création</th>
-<!--              <th>Modifier</th>-->
+              <th style="color: #0da8ee">Titre</th>
+              <th style="color: #0da8ee">Message envoyé</th>
+              <th style="color: #0da8ee">Date de création</th>
+              <th style="color: #0da8ee">Rappel en heures</th>
 <!--              <th>Date de création</th>-->
 
             </tr>
             </thead>
             <tbody>
-<!--            <tr *ngFor="let med of notifications">-->
-<!--              <td>{{med.id}}</td>-->
-<!--              <td>{{med.name}}</td>-->
-<!--              <td>{{med.username}}</td>-->
-<!--              <td>{{med.email}}</td>-->
-<!--              <td>{{med.addresse}}</td>-->
-<!--              <td>{{med.number}}</td>-->
-<!--              <td>{{med.date}}</td>-->
-<!--              <td>{{med.status}}</td>-->
+            <tr *ngFor="let notif of notifications">
+              <td>{{notif.title}}</td>
+              <td>{{notif.message}}</td>
+
+              <td>{{convertDate(notif.date)}}</td>
+              <td>{{notif.rappel}}</td>
+<!--              <td>{{notif.groupeMeds.}}</td>-->
 <!--              <td>-->
 <!--                <button *ngIf="med.blockedByAdmin" (click)="modifier(med)" type="button" class="btn btn-success">Activer Compte</button>-->
 <!--              </td>-->

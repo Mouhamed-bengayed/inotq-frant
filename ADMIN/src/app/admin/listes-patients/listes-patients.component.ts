@@ -39,7 +39,7 @@ user:any;
     }
   }
 
-  private getAllPatients(){
+   getAllPatients(){
     this.patientService.getListePatient(this.user.id).subscribe((data) => {
     this.patients = data
   console.info(data);
