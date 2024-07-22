@@ -4,11 +4,14 @@
           <div class="col-md-12  " >
               <div class="cardo">
                   <div class="card-header card-header-danger">
-
+                    <!-- Fixed button -->
+                    <button  class="fixed-button" (click)="yourButtonAction()">Quitter X
+                    </button>
                   </div>
                   <div class="formbold-main-wrapper  bg-body ">
 
                         <mat-stepper [linear]="isLinear" #stepper >
+
                           <mat-step  [stepControl]="firstFormGroup">
 
                             <form [formGroup]="firstFormGroup">
@@ -403,7 +406,7 @@
 
 
 
-                              <div>
+                              <div class="fixe-buttons">
                                 <button style="padding-right: 30px;" class="button" mat-flat-button color="primary" mat-button matStepperNext>Précédant</button>
                                 <button style="padding-right: 30px;" class="button" mat-flat-button color="primary" mat-button matStepperNext (click)="saveFirstForm()">Suivant</button>
                               </div>
@@ -1221,6 +1224,8 @@
                                 <div>
                                   <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
                                   <button style="padding-right: 30px;" class="button" mat-button matStepperNext   (click)="savehypoteseForm()">Suivant</button>
+                                  <button style="padding-right: 30px; " class="button" mat-button (click)="savePatientandQuit()">Enregistrer?</button>
+
                                 </div>
                               </form>
                             </mat-step>

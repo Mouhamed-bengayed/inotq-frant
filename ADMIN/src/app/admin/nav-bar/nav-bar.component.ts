@@ -25,7 +25,7 @@ export class NavBarComponent implements OnInit {
 
   loadNotificationsByUser(id: any): void {
     this.notificationService.getNotificationByUser(id).subscribe((data) => {
-      this.Notifications = data;
+      this.Notifications = data.reverse();
       console.log(data);
     });
   }

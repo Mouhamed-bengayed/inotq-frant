@@ -37,7 +37,7 @@ export class ReactiveAccountComponent {
             Swal.fire({
               title: "Tentative de réactivation",
               text: "Une alerte a été envoyée aux administrateurs pour réactiver votre compte. " +
-                "La réponse sera envoyée par cette adresse-mail.",
+                "La réponse sera envoyée sur cette adresse-mail.",
               icon: "success"
             });
           } else {

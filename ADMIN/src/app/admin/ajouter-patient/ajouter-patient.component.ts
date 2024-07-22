@@ -5,6 +5,8 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { telephoneValidator } from '../Services/CustomDateAdapter';
 import Swal from 'sweetalert2';
 import { AccountService } from 'src/app/Service/account.service';
+import swal from "sweetalert2";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ajouter-patient',
@@ -90,7 +92,8 @@ export class AjouterPatientComponent implements OnInit {
   formS!: FormGroup ;
   treatmentCont!: string ;
 user:any;
-  constructor( private patientService: PatientService,private fb: FormBuilder,private accountservice:AccountService) {
+
+  constructor( private patientService: PatientService,private fb: FormBuilder,private accountservice:AccountService,private Router:Router) {
     this.user = this.accountservice.CurrentUserInfoSubject.getValue();
 console.error("user id",this.user.id);
     this.form = this.fb.group({
@@ -600,6 +603,30 @@ isAutresChecked = false;
   );
 }
 
+  savePatientandQuit() {
+    //this.savePatient();
+    Swal.fire({
+      title: "Voulez-vous enregistrer cette fiche ?",
+      showDenyButton: true,
+      //showCancelButton: true,
+      confirmButtonText: "enregistrer",
+      denyButtonText: `Annuler`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire(
+          "Fiche Patient est enregistrée avec succéss!",
+          "", "success");
+        this.Router.navigate(['admin/liste/patient']);
+      } else if (result.isDenied) {
+        Swal.fire("Continuez votre modification", "", "info");
+      }
+    });
+  }
+
+  yourButtonAction() {
+
+  }
 }
 
 

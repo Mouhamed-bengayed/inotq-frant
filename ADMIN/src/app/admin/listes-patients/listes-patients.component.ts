@@ -54,4 +54,8 @@ user:any;
   consulter(id: Number | undefined) {
     this.router.navigate(['/admin/FichePatient', id]);
   }
+
+  reload() {
+    window.location.reload();
+  }
 }

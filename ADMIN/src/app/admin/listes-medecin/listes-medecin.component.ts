@@ -47,7 +47,7 @@ export class ListesMedecinComponent implements OnInit {
         () => {
         console.log('Utilisateur activé avec succès.');
           window.location.reload();
-          // medecin.blockedByAdmin=false;
+          //  medecin.blockedByAdmin=false;
         },
         (error) => {
           console.error('Une erreur s\'est produite lors de l\'activation :', error);
