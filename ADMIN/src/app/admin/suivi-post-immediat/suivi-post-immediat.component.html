@@ -12,7 +12,7 @@
                             <mat-step [stepControl]="firstFormGroup">
                               
                               <form [formGroup]="firstFormGroup">
-                                <ng-template matStepLabel>Suivi Post Op immédiat</ng-template>  
+                                <ng-template matStepLabel>Suivi Post Opératoire immédiat</ng-template>  
                       
                               
                                 <mat-form-field>
@@ -43,7 +43,7 @@
 
                                   </mat-radio-group>
                                 <br>
-                                <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl2" (change)="onChange()">liberation_post</mat-checkbox>
+                                <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl2" (change)="onChange()">Liberation post</mat-checkbox>
                                   <br>
                                   <mat-radio-group aria-label="Select an option" formControlName="liberation_post_etage" *ngIf="checkboxControl2.value">
                                     <label  class="custom-label">Etage  </label>
@@ -54,17 +54,16 @@
 
                                 </mat-radio-group>
                               <br>
-                              <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl3" (change)="onChange()">arthrodese</mat-checkbox>
+                              <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl3" (change)="onChange()">Arthrodése</mat-checkbox>
                               <br>
 
                               <mat-radio-group aria-label="Select an option" formControlName="arthrodese_etage" *ngIf="checkboxControl3.value">
-                                <label  class="custom-label">Etage    </label>
 
-                                <mat-radio-button  style="padding-right: 30px;"  value="1">PLlF</mat-radio-button>
-                                <mat-radio-button  style="padding-right: 30px;"  value="2">postérieure</mat-radio-button>
-                                <mat-radio-button  style="padding-right: 30px;"  value="3">postéro-Iatérale</mat-radio-button>
-                                <mat-radio-button style="padding-right: 30px;"  value="3">OLIF</mat-radio-button>
-                                <mat-radio-button style="padding-right: 30px;"  value="3">ALlF</mat-radio-button>
+                                <mat-checkbox  style="padding-right: 30px;"  value="1">PLlF</mat-checkbox>
+                                <mat-checkbox  style="padding-right: 30px;"  value="2">postérieure</mat-checkbox>
+                                <mat-checkbox  style="padding-right: 30px;"  value="3">postéro-Iatérale</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;"  value="3">OLIF</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;"  value="3">ALlF</mat-checkbox>
 
                               </mat-radio-group>
                               
@@ -72,12 +71,12 @@
                                 <label  class="custom-label">Complications per opératoire  </label>
                                
                                 <mat-radio-group aria-label="Select an option" formControlName="complications_per_operatoire">
-                                  <mat-radio-button style="padding-right: 30px;"  value="1">NON  </mat-radio-button>
+                                  <mat-radio-button style="padding-right: 30px;"  value="1">Non  </mat-radio-button>
                                   <mat-radio-button style="padding-right: 30px;"  value="2">Bréche méningée  </mat-radio-button>                                  
                                 </mat-radio-group>
                                 
                                 <mat-form-field>
-                                    <mat-label  class="custom-label">Auters</mat-label>
+                                    <mat-label  class="custom-label">Autres</mat-label>
                                     <input matInput  placeholder="Auters">
                                   </mat-form-field>  
                                 <br>
@@ -96,7 +95,7 @@
                               <form [formGroup]="symptomatologieFormGroup">
                                 <br>
 
-                                <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl1" (change)="onChange()">Dissectomi</mat-checkbox>
+                                <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl1" (change)="onChange()">Lombalgie</mat-checkbox>
                                 <br>
                               
                                 <mat-radio-group aria-label="Select an option" formControlName="dissectomi" *ngIf="checkboxControl1.value">
@@ -106,7 +105,8 @@
 
                                 </mat-radio-group>
                               <br>
-                              <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl2" (change)="onChange()">Liberation_post</mat-checkbox>
+                              <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl2" (change)="onChange()">Sciatique
+                              </mat-checkbox>
                                 <br>
                                 <mat-radio-group aria-label="Select an option" formControlName="liberation_post" *ngIf="checkboxControl2.value">
 
@@ -117,19 +117,20 @@
 
                               </mat-radio-group>
                             <br>
-                            <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl3" (change)="onChange()">Arthrodese</mat-checkbox>
+                            <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl3" (change)="onChange()">Cruralgie</mat-checkbox>
 
                             <mat-radio-group aria-label="Select an option" formControlName="arthrodese" *ngIf="checkboxControl3.value">
-
+<br>
                               <mat-radio-button style="padding-right: 30px;"  value="1">Diminution</mat-radio-button>
-                                   <mat-radio-button style="padding-right: 30px;"  value="2">persistence</mat-radio-button>
+                                   <mat-radio-button style="padding-right: 30px;"  value="2">Persistence</mat-radio-button>
                                    <mat-radio-button style="padding-right: 30px;"  value="3">Aggravation</mat-radio-button>
 
 
                             </mat-radio-group>
                             <br>
+                            <br>
                             <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl15" (change)="onChange()">Trouble vésico sphinctériens</mat-checkbox>
-
+<br>
                                     <div *ngIf="checkboxControl15.value">
                                       <mat-checkbox style="padding-right: 30px;" [formControl]="checkboxControl7">Incontinence urinaire</mat-checkbox>
                                     
@@ -242,8 +243,6 @@
                                            <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
                                            <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>  
                                              
-
-                                   
                                          </mat-radio-group>
                                          <br>
                                          <label  class="custom-label" style="padding-right: 30px;" >L3  </label>
@@ -310,7 +309,7 @@
                                                <div>
                                                 <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
 
-                                                <button  style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="saveExamen_op()">Enregistrer Suivi Post Immediat </button>
+                                                <button  style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="saveExamen_op()">Enregistrer  </button>
                                               </div>
                                
                               </form>

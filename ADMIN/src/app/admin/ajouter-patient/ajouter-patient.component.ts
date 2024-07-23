@@ -5,6 +5,7 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { telephoneValidator } from '../Services/CustomDateAdapter';
 import Swal from 'sweetalert2';
 import { AccountService } from 'src/app/Service/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ajouter-patient',
@@ -90,6 +91,7 @@ export class AjouterPatientComponent implements OnInit {
   formS!: FormGroup ;
   treatmentCont!: string ;
 user:any;
+  router: any;
   constructor( private patientService: PatientService,private fb: FormBuilder,private accountservice:AccountService) {
     this.user = this.accountservice.CurrentUserInfoSubject.getValue();
 console.error("user id",this.user.id);
@@ -589,7 +591,51 @@ isAutresChecked = false;
     }
   );
 }
+savePatientEtQuitter() {
+  this.saveFourthFormGroup();
 
+  // Récupérer les données des formulaires depuis le localStorage
+const FirstFormData = JSON.parse(localStorage.getItem('FirstFormData') || '{}');
+const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
+const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
+const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
+const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
+const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
+const hypotheseFormGroup = JSON.parse(localStorage.getItem('hypotheseFormGroup') || '{}');
+
+ // Fusionner les données des formulaires avec les données du patient
+
+const patientData = {
+  ...FirstFormData,
+  ...secondFormGroupData,
+  ...symptomatologieFormGroupData,
+  ...thridFormGroupData,
+  ...odiFormGroupData,
+  ...hypotheseFormGroup,
+  ...fourthFormGroupData,
+  resultatodi: this.scorefinale
+};
+ //const user:any=localStorage.getItem("user")!
+
+this.patientService.createPatient(patientData,this.user.id).subscribe(
+  (response) => {
+
+    console.log("Patient enregistré avec succès : ", response);
+    localStorage.removeItem('FirstFormData');
+    localStorage.removeItem('secondFormGroupData');
+    localStorage.removeItem('symptomatologieFormGroupData');
+    localStorage.removeItem('thridFormGroupData');
+    localStorage.removeItem('odiFormGroupData');
+    localStorage.removeItem('hypotheseFormGroup');
+    localStorage.removeItem('fourthFormGroupData');
+
+
+  },
+  (error) => {
+    console.error("Erreur lors de l'enregistrement du patient : ", error);
+  }
+);
+}
 }
 
 

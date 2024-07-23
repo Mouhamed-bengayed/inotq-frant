@@ -102,10 +102,32 @@ margin-right: auto;
 }
 .profession-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Two columns */
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
     gap: 10px; /* Space between items */
   }
-
+  
   .profession-grid mat-radio-button {
     padding-right: 20px;
   }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    .profession-grid {
+      grid-template-columns: repeat(2, 1fr); /* Two columns */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .profession-grid {
+      grid-template-columns: 1fr; /* One column */
+    }
+    .description-field {
+      grid-column: span 1; /* Ensures the description field spans across the single column */
+    }
+  }
+
+ 
+
+ 
+  
+  
