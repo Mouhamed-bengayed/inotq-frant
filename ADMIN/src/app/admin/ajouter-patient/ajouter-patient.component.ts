@@ -1,11 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {  FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PatientService } from '../Services/patient.service';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { telephoneValidator } from '../Services/CustomDateAdapter';
 import Swal from 'sweetalert2';
 import { AccountService } from 'src/app/Service/account.service';
+import swal from "sweetalert2";
 import { Router } from '@angular/router';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-ajouter-patient',
@@ -13,7 +15,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./ajouter-patient.component.css']
 })
 
-export class AjouterPatientComponent implements OnInit {
+export class AjouterPatientComponent implements OnInit, OnDestroy, AfterViewInit {
+
+  // @ViewChild('stepper') private myStepper!: MatStepper  ;
+  // private scrollHandler: () => void;
+
   countries = [
     { name: 'Tunisia', code: '+216' },
     { name: 'United States', code: '+1' },
@@ -91,8 +97,8 @@ export class AjouterPatientComponent implements OnInit {
   formS!: FormGroup ;
   treatmentCont!: string ;
 user:any;
-  router: any;
-  constructor( private patientService: PatientService,private fb: FormBuilder,private accountservice:AccountService) {
+
+  constructor( private patientService: PatientService,private fb: FormBuilder,private accountservice:AccountService,private Router:Router) {
     this.user = this.accountservice.CurrentUserInfoSubject.getValue();
 console.error("user id",this.user.id);
     this.form = this.fb.group({
@@ -104,6 +110,10 @@ console.error("user id",this.user.id);
         ]
       ]
     });
+
+    /**buttons**/
+    // this.scrollHandler = this.onScroll.bind(this);
+
   }
 
 
@@ -155,8 +165,68 @@ console.error("user id",this.user.id);
     this.formA = this.fb.group({
       telephone: ['', [Validators.required, telephoneValidator(),Validators.minLength(12)]]
     });
+    window.addEventListener('scroll', this.onScroll);
+
+  }
+  ngAfterViewInit(): void {
+    // // Initialize or interact with view child properties here
+    // if (this.myStepper) {
+    //   console.log('Stepper initialized:', this.myStepper);
+    //   // Example: Go to the next step programmatically
+    //   this.myStepper.next();
+    // }
+    // else       console.error('Stepper notfound:');
+    //
+    // window.addEventListener('scroll', this.scrollHandler);
   }
 
+  ngOnDestroy(): void {
+    // window.removeEventListener('scroll', this.scrollHandler);
+  }
+
+  onScroll(): void {
+    const fixedButtons = document.querySelector('.fixe-buttons') as HTMLElement;
+
+    if (!fixedButtons) {
+      console.warn('Element with class "fixed-buttons" not found');
+      return;
+    }
+
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const GOLDEN_SCROLL_RATIO = 0.95; // Adjust this ratio as needed
+
+    if (window.scrollY / scrollableHeight > GOLDEN_SCROLL_RATIO) {
+      fixedButtons.style.display = 'flex';
+    } else {
+      fixedButtons.style.display = 'none';
+    }
+  }
+
+  // onNextButtonClick(): void {
+  //   switch (this.myStepper.selectedIndex) {
+  //     case 0:
+  //       this.saveFirstForm();
+  //       break;
+  //     case 1:
+  //       this.savesymptomatologieFormGroup();
+  //       break;
+  //     case 2:
+  //       this.savethridForm();
+  //       break;
+  //     case 3:
+  //       this.saveODIAndShowScore();
+  //       break;
+  //     case 4:
+  //       this.savehypoteseForm();
+  //       break;
+  //     case 5:
+  //       this.savePatient();
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   this.myStepper.next();
+  // }
   getTelephoneErrorMessage() {
     const telephoneControl = this.formA.get('telephone');
     if (!telephoneControl) {
@@ -254,18 +324,21 @@ console.error("user id",this.user.id);
   calculateScore(): number {
     const odiFormGroupData = this.odiFormGroup.value as { [key: string]: string | null };
     let score = 0;
+    let scoreReal=0;
+
     for (const key in odiFormGroupData) {
       if (odiFormGroupData.hasOwnProperty(key) && odiFormGroupData[key]) {
         score += parseInt(odiFormGroupData[key]!, 10);
       }
     }
-    this.scorefinale = score;
-    return score;
+    scoreReal=score*2;
+    this.scorefinale = scoreReal;
+    return scoreReal;
   }
   saveODIAndShowScore() {
     this.saveodiForm();
 
-    const score = this.calculateScore();
+    let score = this.calculateScore();
     let message = '';
     let color = '';
 
@@ -285,7 +358,14 @@ console.error("user id",this.user.id);
     } else if (score > 80 && score <= 100) {
       message = 'Altération fonctionnelle';
       color = 'red'; // Red for functional impairment
-    } else {
+
+    }
+    else if(score>100){
+      score=100;
+      message = 'Altération fonctionnelle';
+      color = 'red'; // Red for functional impairment
+    }
+    else {
       message = 'Score invalide';
       color = 'black'; // Default color for invalid score
     }
@@ -524,23 +604,23 @@ isAutresChecked = false;
     const odiFormGroupData1 = this.odiFormGroup.value;
 
       localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
-    
+
    }
   savethridForm() {
     const thridFormGroupData1 = this.thridFormGroup.value;
       localStorage.setItem('thridFormGroupData', JSON.stringify(thridFormGroupData1));
 
-  
+
    }
    saveFourthFormGroup() {
     const fourthFormGroupData1 = this.fourthFormGroup.value;
       localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
-    
+
    }
   savesymptomatologieFormGroup(){
     const symptomatologieFormGroupData = this.symptomatologieFormGroup.value;
       localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData));
-    
+
 
   }
 
@@ -591,51 +671,50 @@ isAutresChecked = false;
     }
   );
 }
-savePatientEtQuitter() {
-  this.saveFourthFormGroup();
 
-  // Récupérer les données des formulaires depuis le localStorage
-const FirstFormData = JSON.parse(localStorage.getItem('FirstFormData') || '{}');
-const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
-const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
-const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
-const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
-const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
-const hypotheseFormGroup = JSON.parse(localStorage.getItem('hypotheseFormGroup') || '{}');
-
- // Fusionner les données des formulaires avec les données du patient
-
-const patientData = {
-  ...FirstFormData,
-  ...secondFormGroupData,
-  ...symptomatologieFormGroupData,
-  ...thridFormGroupData,
-  ...odiFormGroupData,
-  ...hypotheseFormGroup,
-  ...fourthFormGroupData,
-  resultatodi: this.scorefinale
-};
- //const user:any=localStorage.getItem("user")!
-
-this.patientService.createPatient(patientData,this.user.id).subscribe(
-  (response) => {
-
-    console.log("Patient enregistré avec succès : ", response);
-    localStorage.removeItem('FirstFormData');
-    localStorage.removeItem('secondFormGroupData');
-    localStorage.removeItem('symptomatologieFormGroupData');
-    localStorage.removeItem('thridFormGroupData');
-    localStorage.removeItem('odiFormGroupData');
-    localStorage.removeItem('hypotheseFormGroup');
-    localStorage.removeItem('fourthFormGroupData');
-
-
-  },
-  (error) => {
-    console.error("Erreur lors de l'enregistrement du patient : ", error);
+  savePatientandQuit() {
+    this.savePatient();
+    Swal.fire({
+      icon:'warning',
+      title: "Voulez-vous enregistrer cette fiche ?",
+      html:'Si vous avez terminé et que vous n'+'\''+'avez pas besoin de vous occuper de la partie imagerie, cliquez sur Enregistrer',
+      showDenyButton: true,
+      //showCancelButton: true,
+      confirmButtonText: "enregistrer",
+      denyButtonText: `Annuler`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire(
+          "Fiche Patient est enregistrée avec succéss!",
+          "", "success");
+        this.Router.navigate(['admin/liste/patient']);
+      } else if (result.isDenied) {
+        Swal.fire("Continuez votre modification", "", "info");
+      }
+    });
   }
-);
-}
+
+  yourButtonAction() {
+    Swal.fire({
+      title: "Etes-vous sûr ?",
+      html: " Si vous quittez, toutes les modifications seront écrasées!",
+      showDenyButton: true,
+      //showCancelButton: true,
+      confirmButtonText: "Quiter",
+      denyButtonText: `Annuler`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        // Swal.fire(
+        //   "Fiche Patient est enregistrée avec succéss!",
+        //   "", "success");
+        this.Router.navigate(['admin/liste/patient']);
+      } else if (result.isDenied) {
+        Swal.fire("Continuez votre modification ", "", "info");
+      }
+    });
+  }
 }
 
 

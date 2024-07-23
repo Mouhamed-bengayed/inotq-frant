@@ -52,17 +52,18 @@
 }
 
 /* Transform the lines into an 'X' */
-.sidenavbar-toggler.collapsed .line1 {
+.sidenavbar-toggler.active .line1 {
   transform: rotate(45deg) translate(5px, 5px);
 }
 
-.sidenavbar-toggler.collapsed .line2 {
+.sidenavbar-toggler.active .line2 {
   opacity: 0;
 }
 
-.sidenavbar-toggler.collapsed .line3 {
+.sidenavbar-toggler.active .line3 {
   transform: rotate(-45deg) translate(5px, -5px);
 }
+
 .cardo {
   width: 80%; /* Make the card fit the space */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Add shadow effect */

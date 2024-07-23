@@ -1,37 +1,152 @@
-/* Ensure the navbar background is primary */
-.navbar-primary {
-  background-color: #007bff;
+@import 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans';
+.navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase
 }
 
-/* Align items to the right on small screens */
-@media (max-width: 767.98px) {
-  .navbar-nav {
-    flex-direction: row;
-    justify-content: flex-end;
-    width: 100%;
-  }
+.navbar .nav {
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1.2rem
+}
 
+.navbar-inverse {
+  background-color: #003300
+}
+
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>li>a:hover,
+.navbar-inverse .navbar-nav>li>a:focus {
+  background-color: #002200
+}
+
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a:focus {
+  background-color: #003300
+}
+
+.dropdown-menu {
+  background-color: #FFFFFF
+}
+
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+  background-color: #002200
+}
+
+.navbar-inverse {
+  background-image: none;
+}
+
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+  background-image: none;
+}
+
+.navbar-inverse {
+  border-color: rgba(255, 255, 255, 0.93)
+}
+
+.navbar-inverse .navbar-brand {
+  color: #FFFFFF
+}
+
+.navbar-inverse .navbar-brand:hover {
+  color: #FFCC00
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #FFFFFF
+}
+
+.navbar-inverse .navbar-nav>li>a:hover,
+.navbar-inverse .navbar-nav>li>a:focus {
+  color: #FFCC00
+}
+
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a:focus {
+  color: #FFCC00
+}
+
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>.active>a:focus {
+  color: #FFCC00
+}
+
+.dropdown-menu>li>a {
+  color: #FFFFFF
+}
+
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+  color: #FFCC00
+}
+
+.navbar-inverse .navbar-nav>.dropdown>a .caret {
+  border-top-color: #FFFFFF
+}
+
+.navbar-inverse .navbar-nav>.dropdown>a:hover .caret {
+  border-top-color: #FFFFFF
+}
+
+.navbar-inverse .navbar-nav>.dropdown>a .caret {
+  border-bottom-color: #FFFFFF
+}
+
+.navbar-inverse .navbar-nav>.dropdown>a:hover .caret {
+  border-bottom-color: #FFFFFF
+}
+/* Ensure the navbar items align to the right */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+/* Make sure the notification bell is on the right side */
+@media (max-width: 992px) {
+  .navbar-nav {
+    margin-left: auto;
+  }
+}
+
+/* Ensure the form and notification bell are aligned properly */
+@media (max-width: 992px) {
   .form-inline {
-    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
   }
 
-  .form-inline .form-control {
-    width: calc(100% - 100px); /* Adjust width to fit the search input and button */
-  }
-
-  .form-inline .btn {
-    width: 80px;
-    margin-left: 10px;
+  .navbar-nav .nav-item.dropdown {
+    margin-left: 15px;
   }
 }
 
-/* Default behavior for larger screens */
-@media (min-width: 768px) {
-  .navbar-nav {
-    flex-direction: row;
+/* Align the dropdown menu to the right */
+@media (max-width: 992px) {
+  .dropdown-menu {
+    right: 0;
+    left: auto;
+  }
+}
+
+/* Adjust the spacing and alignment */
+@media (max-width: 576px) {
+  .navbar-nav .nav-item {
+    margin-right: 10px;
   }
 
   .form-inline .form-control {
-    width: auto;
+    width: 150px;
   }
 }

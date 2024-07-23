@@ -1,0 +1,80 @@
+<div class="container">
+  <form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
+    <div class="card">
+      <p class="h-1">Créer un Groupe</p>
+      <div class="bar mb-3"></div>
+      <div class="row">
+        <div class="col-12">
+          <p class="mb-2">Titre</p>
+          <div class="box mb-3">
+            <input type="text" formControlName="titre" class="form-control" placeholder="Titre du groupe">
+          </div>
+          <p class="mb-2">Description</p>
+          <div class="box mb-3">
+            <input type="text" formControlName="description" class="form-control" placeholder="Description du groupe">
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group mb-3">
+            <label class="mb-2">Sélectionner les médecins</label>
+            <div class="dropdown multi-select-dropdown">
+              <button class=" btn-success dropdown-toggle" type="button" (click)="toggleDropdown()">Sélectionner</button>
+              <div class="dropdown-menu" [class.show]="isDropdownVisible()">
+                <div class="form-check" *ngFor="let med of medecins">
+                  <input class="form-check-input" type="checkbox" [id]="'medecin-' + med.id" [formControl]="getMedecinControl(med)" />
+                  <label class="form-check-label" [for]="'medecin-' + med.id">{{ med.username }}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 text-center mt-4">
+          <button type="submit" class="btn btn-primary">Créer ce groupe</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="row mt-4">
+    <div class="col-lg-12">
+      <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h3 class="m-0 font-weight-bold text-primary">Ci-dessous la liste des groupes existants:</h3>
+          <button class=" btn-success" (click)="rafraichirListe()">Rafraîchir la liste!</button>
+        </div>
+        <div class="table-responsive p-3">
+          <table class="table align-items-center table-flush" id="dataTable">
+            <thead class="thead-light">
+            <tr>
+              <th>Titre</th>
+              <th>Description</th>
+              <th>Date de création</th>
+              <th>Supprimer</th>
+              <th>Voir la liste des médécins</th>
+              <th>Modifier</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let groupe of groupes">
+              <td style="color:white">{{ groupe.titre }}</td>
+              <td style="color:white">{{ groupe.description }}</td>
+              <td style="color:white" >{{ convertDate(groupe.date) }}</td>
+              <td>
+                <button (click)="supprimerGroupe(groupe.id)" type="button" class=" btn-danger">Supprimer</button>
+              </td>
+              <td>
+                <button (click)="showmeds(groupe.id)" type="button" style="white-space: nowrap; padding: 10px 15px; font-size: 14px; width: 100%" class="btn-outline-success btn-success">Voir la liste des médécins</button>
+              </td>
+              <td>
+                <button (click)="modifierGroupe(groupe.id)" type="button" class=" btn-black ">Modifier</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

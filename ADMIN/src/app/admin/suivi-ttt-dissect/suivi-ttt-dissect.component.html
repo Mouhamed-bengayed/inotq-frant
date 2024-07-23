@@ -5,67 +5,67 @@
                 <div class="cardo">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title ">Saisir les information</h4>
-                       
+
                     </div>
                     <div class="formbold-main-wrapper white-text bg-body" >
-        
+
                           <mat-stepper >
                             <mat-step [stepControl]="firstFormGroup">
-                              
+
                               <form [formGroup]="firstFormGroup">
-                                <ng-template matStepLabel>Informations personnelles</ng-template>  
-                      
-                              
+                                <ng-template matStepLabel>Informations personnelles</ng-template>
+
+
                                 <mat-form-field>
                                   <mat-label class="custom-label">Date de consultation</mat-label>
                                   <input matInput [matDatepicker]="picker" formControlName="date_de_consultation" placeholder="Date de consultation">
-  
+
                                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                   <mat-datepicker #picker></mat-datepicker>
                                 </mat-form-field>
                                 <br><br>
-                                
+
                                 <mat-form-field>
                                     <mat-label  class="custom-label">age</mat-label>
                                     <input matInput formControlName="age" placeholder=" age" type="number">
                                   </mat-form-field>
-                                
-                                 
+
+
                                   <br><br><br><br>
-                                 
+
 
                                   <div class="panel-body">
-                          
+
                                     <div class="body-section">
                                       <h5 class="custom-label"style="padding-right: 30px;">Adresse</h5>
                                       <p (dblclick)="enableEdit('addresse')" *ngIf="!editMode.addresse && user.addresse">{{user.addresse}}</p>
                                       <i class="fa fa-plus" *ngIf="!user.addresse && !editMode.addresse" (click)="enableEdit('addresse')"></i>
                                       <input *ngIf="editMode.addresse" [(ngModel)]="user.addresse" (blur)="disableEdit('addresse')" />
                                     </div>
-                                   
-                                    
+
+
                                   </div>
-                                  
-                                
-  
+
+
+
                                   <br><br>
-  
+
                                   <br><br>
-                               
+
                                   <label class="custom-label">Profession</label>
                                   <br><br>
                                   <mat-radio-group aria-label="Select an option" formControlName="profession"class="profession-grid">
                                     <mat-radio-button value="1">FAF</mat-radio-button>
-    
+
                                     <mat-radio-button value="2">Station debout prolongée</mat-radio-button>
                                     <mat-radio-button value="3">Chauffeur long parcours</mat-radio-button>
-    
+
                                     <mat-radio-button value="4">Travailleur de force</mat-radio-button>
                                     <mat-radio-button value="5">Agriculteur</mat-radio-button>
-    
+
                                     <mat-radio-button value="6">Station assise prolongée</mat-radio-button>
                                     <mat-radio-button value="7">Chauffeur engin et poids lourds</mat-radio-button>
-    
+
                                     <mat-radio-button value="8">El Sportif professionnel</mat-radio-button>
                                     <mat-radio-button style="padding-right: 30px;" value="autr">Autres</mat-radio-button>
                                       <mat-form-field *ngIf="treatmentControl.value === 'autr'">
@@ -74,30 +74,30 @@
                                       </mat-form-field>
                                   </mat-radio-group>
                                   <br><br><br><br>
-                                
-  
-  
+
+
+
                                   <label  class="custom-label"   style="padding-right: 30px;">Statut social </label>
 
-          
+
                                   <mat-radio-group aria-label="Select an option" formControlName="statut_social">
                                     <mat-radio-button style="padding-right: 30px;" value="1">Marié(e)</mat-radio-button>
                                     <mat-radio-button style="padding-right: 30px;" value="2">Célibataire</mat-radio-button>
                                     <mat-radio-button style="padding-right: 30px;" value="3">Veuf(ve)</mat-radio-button>
                                     <mat-radio-button style="padding-right: 30px;" value="4">Divorcé(e)</mat-radio-button>
                                   </mat-radio-group>
-  
-                              
+
+
                                 <br><br><br><br>
                                 <label  class="custom-label"style="padding-right: 30px;">Entourage actuel</label>
-                             
+
                                 <mat-radio-group aria-label="Select an option" formControlName="entourage_actuel">
                                   <mat-radio-button style="padding-right: 30px;" value="1">Bien entouré(e)     </mat-radio-button>
                                   <mat-radio-button style="padding-right: 30px;" value="2">Mal entouré(e)      </mat-radio-button>
                                 </mat-radio-group>
                                 <br><br><br><br>
                                 <label  class="custom-label"style="padding-right: 30px;">Tabac</label>
-                              
+
                                 <mat-radio-group aria-label="Select an option" formControlName="tabac"  [formControl]="pincement22" (change)="onChange()">
                                   <mat-radio-button style="padding-right: 30px;" value="tess">oui   </mat-radio-button>
                                   <mat-radio-button style="padding-right: 30px;" value="2">non</mat-radio-button>
@@ -117,10 +117,10 @@
                                     </mat-form-field>
                                   </div>
                                 </mat-radio-group>
-                               
+
                                 <br><br>
-                              
-                                
+
+
                                 <label  class="custom-label" style="padding-right: 30px;" >évolution</label>
                                 <br><br>
 
@@ -136,7 +136,7 @@
                                     <br><br>
 
                                     <mat-radio-button style="padding-right: 30px;" value="Aggravation">Aggravation</mat-radio-button>
-                                    
+
                                     <br><br>
                                     <div *ngIf="treatmentControl.value === 'Aggravation'">
                                       <br><br>
@@ -148,21 +148,21 @@
                                         <mat-checkbox style="padding-right: 30px;" class="example-margin" (change)="onCheckboxChange($event, 'atcd')" value="4">Pluriradiculaire</mat-checkbox>
                                       </div>
                                     </div>
-                                   
+
                                   </mat-radio-group>
                                   <br><br>
-                               
+
                                 <div>
                                   <button  style="padding-right: 30px;" class="button" mat-button matStepperNext  (click)="saveFirstForm()">Next</button>
-                                  
+
                                 <div>
-                                 
+
                                 </div>
                                 </div>
                               </form>
-                            </mat-step> 
-                                                      
-  
+                            </mat-step>
+
+
                             <mat-step [stepControl]="symptomatologieFormGroup" label="Symptomatologie">
                               <form [formGroup]="symptomatologieFormGroup">
                                 <br><br>
@@ -170,7 +170,7 @@
                                 <mat-radio-group aria-label="Select an option">
 
                                   <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl11" (change)="onChange()">Lombalgie</mat-checkbox>
-                                  
+
                                   <div *ngIf="checkboxControl11.value">
                                     <br><br>
                                     <label class="custom-label" style="padding-right: 30px;">Type</label>
@@ -178,7 +178,7 @@
                                       <mat-radio-button style="padding-right: 30px;" value="1">Mécanique</mat-radio-button>
                                       <mat-radio-button style="padding-right: 30px;" value="2">Inflammatoire</mat-radio-button>
                                     </mat-radio-group>
-                                    
+
                                     <br><br>
                                     <label class="custom-label" style="padding-right: 30px;">Intensité</label>
                                     <mat-radio-group aria-label="Select an option" [formControl]="intensityControl">
@@ -186,14 +186,14 @@
                                       <mat-radio-button style="padding-right: 30px;" value="2">Insomniante</mat-radio-button>
                                       <mat-radio-button style="padding-right: 30px;" value="3">Bien tolérée</mat-radio-button>
                                     </mat-radio-group>
-                                    
+
                                     <br><br>
                                     <label class="custom-label" style="padding-right: 30px;">Mode d'installation</label>
                                     <mat-radio-group aria-label="Select an option" [formControl]="modeControl">
                                       <mat-radio-button style="padding-right: 30px;" value="1">Brutale</mat-radio-button>
                                       <mat-radio-button style="padding-right: 30px;" value="2">Progressive</mat-radio-button>
                                     </mat-radio-group>
-                                    
+
                                     <br><br>
                                     <label class="custom-label" style="padding-right: 30px;">Évolution</label>
                                     <mat-radio-group aria-label="Select an option" [formControl]="evolutionControl">
@@ -201,7 +201,7 @@
                                       <mat-radio-button style="padding-right: 30px;" value="2">Intermittente</mat-radio-button>
                                       <mat-radio-button style="padding-right: 30px;" value="3">Brutale résolutive paralysante</mat-radio-button>
                                     </mat-radio-group>
-                                    
+
                                     <br><br>
                                     <label class="custom-label" style="padding-right: 30px;">Réponse au traitement</label>
                                     <mat-radio-group aria-label="Select an option" [formControl]="responseControl">
@@ -210,10 +210,10 @@
                                       <mat-radio-button style="padding-right: 30px;" value="3">Régression totale</mat-radio-button>
                                     </mat-radio-group>
                                   </div>
-                               
+
                                       <br><br>
                                       <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl12" (change)="onChange()">Sciatique</mat-checkbox>
-                                  
+
                                   <div *ngIf="checkboxControl12.value">
                                     <br><br>
                                     <label class="custom-label" style="padding-right: 30px;">Loalisation</label>
@@ -234,14 +234,14 @@
                                       <mat-radio-button style="padding-right: 30px;" value="2">Insomniante</mat-radio-button>
                                       <mat-radio-button style="padding-right: 30px;" value="3">Bien tolérée</mat-radio-button>
                                     </mat-radio-group>
-                                    
+
                                     <br><br>
                                     <label class="custom-label" style="padding-right: 30px;">Mode d'installation</label>
                                     <mat-radio-group aria-label="Select an option" [formControl]="modeControl">
                                       <mat-radio-button style="padding-right: 30px;" value="1">Brutale</mat-radio-button>
                                       <mat-radio-button style="padding-right: 30px;" value="2">Progressive</mat-radio-button>
                                     </mat-radio-group>
-                                    
+
                                     <br><br>
                                     <label class="custom-label" style="padding-right: 30px;">Évolution</label>
                                     <mat-radio-group aria-label="Select an option" [formControl]="evolutionControl">
@@ -249,7 +249,7 @@
                                       <mat-radio-button style="padding-right: 30px;" value="2">Intermittente</mat-radio-button>
                                       <mat-radio-button style="padding-right: 30px;" value="3">Brutale résolutive paralysante</mat-radio-button>
                                     </mat-radio-group>
-                                    
+
                                     <br><br>
                                     <label class="custom-label" style="padding-right: 30px;">Réponse au traitement</label>
                                     <mat-radio-group aria-label="Select an option" [formControl]="responseControl">
@@ -258,9 +258,9 @@
                                       <mat-radio-button style="padding-right: 30px;" value="3">Régression totale</mat-radio-button>
                                     </mat-radio-group>
                                   </div>
-                                      <br><br>    
+                                      <br><br>
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl13" (change)="onChange()">Cruralgie</mat-checkbox>
-                                  
+
                                     <div *ngIf="checkboxControl13.value">
                                       <br><br>
                                       <label class="custom-label" style="padding-right: 30px;">Loalisation</label>
@@ -281,14 +281,14 @@
                                         <mat-radio-button style="padding-right: 30px;" value="2">Insomniante</mat-radio-button>
                                         <mat-radio-button style="padding-right: 30px;" value="3">Bien tolérée</mat-radio-button>
                                       </mat-radio-group>
-                                      
+
                                       <br><br>
                                       <label class="custom-label" style="padding-right: 30px;">Mode d'installation</label>
                                       <mat-radio-group aria-label="Select an option" [formControl]="modeControl">
                                         <mat-radio-button style="padding-right: 30px;" value="1">Brutale</mat-radio-button>
                                         <mat-radio-button style="padding-right: 30px;" value="2">Progressive</mat-radio-button>
                                       </mat-radio-group>
-                                      
+
                                       <br><br>
                                       <label class="custom-label" style="padding-right: 30px;">Évolution</label>
                                       <mat-radio-group aria-label="Select an option" [formControl]="evolutionControl">
@@ -296,7 +296,7 @@
                                         <mat-radio-button style="padding-right: 30px;" value="2">Intermittente</mat-radio-button>
                                         <mat-radio-button style="padding-right: 30px;" value="3">Brutale résolutive paralysante</mat-radio-button>
                                       </mat-radio-group>
-                                      
+
                                       <br><br>
                                       <label class="custom-label" style="padding-right: 30px;">Réponse au traitement</label>
                                       <mat-radio-group aria-label="Select an option" [formControl]="responseControl">
@@ -306,9 +306,9 @@
                                       </mat-radio-group>
                                     </div>
                                     <br><br>
-                                    
+
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl16" (change)="onChange()">Claudication neurogéne</mat-checkbox>
-                                  
+
                                     <div *ngIf="checkboxControl16.value">
                                       <br><br>
                                       <label class="custom-label" style="padding-right: 30px;">Type</label>
@@ -323,11 +323,11 @@
                                         <mat-radio-button style="padding-right: 30px;" value="2">Gauche</mat-radio-button>
                                       </mat-radio-group>
                                       <br><br>
-                                      
+
                                     </div>
                                     <br><br>
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl14" (change)="onChange()">Dérobement</mat-checkbox>
-                                  
+
                                     <div *ngIf="checkboxControl14.value">
                                       <br><br>
                                       <label class="custom-label" style="padding-right: 30px;">Localisation</label>
@@ -342,7 +342,7 @@
                                         <mat-radio-button style="padding-right: 30px;" value="2">Gauche</mat-radio-button>
                                       </mat-radio-group>
                                       <br><br>
-                                      
+
                                     </div>
                                     <br><br>
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl15" (change)="onChange()">Trouble vésico sphinctériens</mat-checkbox>
@@ -350,7 +350,7 @@
                                     <mat-radio-group>
                                       <div *ngIf="checkboxControl15.value">
                                         <mat-checkbox style="padding-right: 30px;" [formControl]="typeControl" (change)="onChange()">Incontinence urinaire</mat-checkbox>
-                                        
+
                                           <mat-radio-group aria-label="Select an option"   >
                                             <div *ngIf="typeControl.value">
 
@@ -359,9 +359,9 @@
                                           </div>
                                           </mat-radio-group>
                                           <br><br>
-                                        
-                                        
-                                      
+
+
+
                                         <mat-checkbox style="padding-right: 30px;" value="constipation">Constipation</mat-checkbox>
                                         <br><br>
                                         <mat-checkbox style="padding-right: 30px;" value="incontinenceAnale">Incontinence anale</mat-checkbox>
@@ -369,7 +369,7 @@
                                         <mat-checkbox style="padding-right: 30px;" value="imperiositeUrinaire">Impériosité urinaire</mat-checkbox>
                                       </div>
                                     </mat-radio-group>
-                                    
+
                                   <br><br>
                                     <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl17" (change)="onChange()">Périmètre de marche</mat-checkbox>
 
@@ -398,7 +398,7 @@
   </mat-radio-group>
 </div>
                                   </mat-radio-group>
-                               
+
                                 <div>
                                   <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
                                   <button style="padding-right: 30px;" class="button" mat-button matStepperNext (click)="savesympFormGroup()">Suivant</button>
@@ -408,7 +408,7 @@
 
                             <mat-step [stepControl]="examFormGroup" label="Examen clinique">
                               <form [formGroup]="examFormGroup">
-                             
+
                                 <mat-form-field>
                                   <mat-label  >Poids </mat-label>
                                   <input style="padding-right: 30px;" matInput placeholder="Poids en Kg" type="number" formControlName="poids">
@@ -429,33 +429,33 @@
 
 
                                   <label  class="custom-label" style="padding-right: 30px;" >Déformation rachidienne  </label>
-                                  
+
                                   <mat-radio-group aria-label="Select an option" formControlName="deformation_rachidienne">
                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Attitude scoliotique</mat-radio-button>
                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Cyphose lombaire</mat-radio-button>
-                                      <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Aucune</mat-radio-button>                                       
+                                      <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Aucune</mat-radio-button>
                                     </mat-radio-group>
                                     <br><br>
                                     <label  class="custom-label" style="padding-right: 30px;" >Douleur à la pression lombaire en regard des épineuses                                    </label>
-                                   
+
                                     <mat-radio-group aria-label="Select an option" formControlName="douleur_pression_lombairer_epineuses">
                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">L3</mat-radio-button>
                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">L4</mat-radio-button>
                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">L5</mat-radio-button>
-                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">S1</mat-radio-button>                                       
-                                     
+                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">S1</mat-radio-button>
+
                                       </mat-radio-group>
                                    <br><br>
-                                      
+
                                       <label  class="custom-label" style="padding-right: 70px;" >Amélioration à la flexion du rachis  </label>
-                                  
+
                                     <mat-radio-group aria-label="Select an option" formControlName="amelioration_flexion_rachis">
                                                                             <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Oui</mat-radio-button>
                                                                             <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Non</mat-radio-button>
                                       </mat-radio-group>
                                       <br><br>
                                       <label  class="custom-label" style="padding-right: 30px;" >  Contracture des muscles paravertebraux  </label>
-                                    
+
                                       <mat-radio-group aria-label="Select an option" formControlName="contracture_muscles_paravertebraux">
                                           <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Oui</mat-radio-button>
                                           <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Non</mat-radio-button>
@@ -463,10 +463,10 @@
                                         <br><br>
                                         <mat-form-field>
                                           <mat-label class="custom-label">Distance main-sol </mat-label>
-                                          <input matInput placeholder="DMS" type="number" formControlName="dMS">                                
+                                          <input matInput placeholder="DMS" type="number" formControlName="dMS">
                                       </mat-form-field>
                                       <br><br>
-                                     
+
                                          <label class="custom-label" style="padding-right: 30px;">Sonnette</label>
 
                                          <mat-radio-group [formControl]="pincement22" (change)="onChange()">
@@ -475,7 +475,7 @@
                                            <mat-radio-button style="padding-right: 30px;" class="example-margin" value="3">Bilatérale</mat-radio-button>
                                            <mat-radio-button style="padding-right: 30px;" class="example-margin" value="4">Non</mat-radio-button>
                                          </mat-radio-group>
-   
+
                                          <div *ngIf="pincement22.value === '1'">
                                            <label class="custom-label" style="padding-right: 30px;">Niveau</label>
                                            <mat-radio-group aria-label="Select an option" formControlName="sonnette_Niveau">
@@ -510,73 +510,73 @@
                                            <mat-radio-button style="padding-right: 30px;" class="example-margin" value="1"> α &lt;30° </mat-radio-button>
                                            <mat-radio-button style="padding-right: 30px;" class="example-margin" value="2">30°&lt;  α &lt;60° </mat-radio-button>
                                            <mat-radio-button style="padding-right: 30px;" class="example-margin" value="3"> α &gt;60° </mat-radio-button>
- 
+
                                            </mat-radio-group>
-                                       
+
                                           <br><br> <label  class="custom-label" style="padding-right: 30px;" >Laségue controlatéral
                                           </label>
-                                        
-                                     
+
+
                                            <mat-radio-group aria-label="Select an option" formControlName="lasegue_controlateral">
                                             <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Oui</mat-radio-button>
                                             <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Non</mat-radio-button>
                                           </mat-radio-group>
                                            <br><br>
                                             <label  class="custom-label" style="padding-right: 30px;" >Léri  </label>
-                                          
+
                                           <mat-radio-group aria-label="Select an option" formControlName="leri">
                                             <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Oui</mat-radio-button>
-                                            <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Non</mat-radio-button>   
-                                      
+                                            <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Non</mat-radio-button>
+
                                             </mat-radio-group>
                                             <br><br>
                                             <mat-form-field>
                                               <mat-label class="custom-label">lndice de shober </mat-label>
-                                              <input matInput placeholder="lndice de shober" type="number" formControlName="indice_shober">                                
+                                              <input matInput placeholder="lndice de shober" type="number" formControlName="indice_shober">
                                           </mat-form-field>
                                           <br><br>
                                           <label  class="custom-label" style="padding-right: 30px;" >Rotulien </label>
-                                          
+
                                          <mat-radio-group aria-label="Select an option" formControlName="rOT_rotulien">
                                              <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Présent</mat-radio-button>
                                              <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Faible</mat-radio-button>
-                                             <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Aboli</mat-radio-button>   
-                                     
+                                             <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Aboli</mat-radio-button>
+
                                            </mat-radio-group>
                                            <br><br>
 
                                            <label  class="custom-label" style="padding-right: 30px;" >Achillien  </label>
-                                           
+
                                           <mat-radio-group aria-label="Select an option" formControlName="rOT_achillien">
                                               <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Présent</mat-radio-button>
                                               <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Faible</mat-radio-button>
-                                              <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Aboli</mat-radio-button>   
-                                      
+                                              <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Aboli</mat-radio-button>
+
                                             </mat-radio-group>
                                             <br><br>
                                             <label  class="custom-label" style="padding-right: 30px;" >Péfinée  </label>
-                                          
+
                                            <mat-radio-group aria-label="Select an option" formControlName="rOT_perinee">
                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Présent</mat-radio-button>
                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Faible</mat-radio-button>
-                                               <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Aboli</mat-radio-button>   
-                                       
+                                               <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Aboli</mat-radio-button>
+
                                              </mat-radio-group>
                                              <br><br>
                                              <label  class="custom-label" style="padding-right: 30px;" >Marche sur les talons </label>
-                                         
+
                                           <mat-radio-group aria-label="Select an option" formControlName="marche_talons">
                                               <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Oui</mat-radio-button>
                                               <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Non</mat-radio-button>
-                                      
+
                                             </mat-radio-group>
                                             <br><br>
                                             <label  class="custom-label" style="padding-right: 30px;" >Marche sur les pointes des pieds  </label>
-                                            
+
                                            <mat-radio-group aria-label="Select an option" formControlName="marche_pointes_pieds">
                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Oui</mat-radio-button>
                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Non</mat-radio-button>
-                                       
+
                                              </mat-radio-group>
                                              <br><br>
                                              <label  class="titer" style="padding-right: 30px;" >Testing musculaire  </label>
@@ -587,159 +587,159 @@
                                             <mat-radio-group aria-label="Select an option" formControlName="testing_musculaire_L2">
                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">0</mat-radio-button>
                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">1</mat-radio-button>
-                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>  
-                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>   
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>
 
-                                        
+
                                               </mat-radio-group>
                                               <br><br>
                                               <label  class="custom-label" style="padding-right: 30px;" >L3  </label>
-                                            
+
                                             <mat-radio-group aria-label="Select an option" formControlName="testing_musculaire_L3">
                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">0</mat-radio-button>
                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">1</mat-radio-button>
-                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>  
-                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>   
-                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>   
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>
+                                                <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>
 
-                                        
+
                                               </mat-radio-group>
                                               <br><br><label class="custom-label"style="padding-right: 30px;" >L4  </label>
-                                              
+
                                              <mat-radio-group aria-label="Select an option" formControlName="testing_musculaire_L4">
                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">0</mat-radio-button>
                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">1</mat-radio-button>
-                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>  
-                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>   
-                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>   
-                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>   
-                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>   
+                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>
+                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>
+                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>
+                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>
+                                                 <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>
 
-                                         
+
                                                </mat-radio-group>
                                                <br><br>
                                                <label class="custom-label" style="padding-right: 30px;" >L5  </label>
-                                             
+
                                               <mat-radio-group aria-label="Select an option" formControlName="testing_musculaire_L5">
                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">0</mat-radio-button>
                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">1</mat-radio-button>
-                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>  
-                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>   
-                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>   
-                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>   
-                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>   
- 
-                                          
+                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>
+                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>
+                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>
+                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>
+                                                  <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>
+
+
                                                 </mat-radio-group>
                                                 <br><br>
                                                 <label  class="custom-label" style="padding-right: 30px;" >S1  </label>
-                                             
+
                                                <mat-radio-group aria-label="Select an option" formControlName="testing_musculaire_S1">
                                                    <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">0</mat-radio-button>
                                                    <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">1</mat-radio-button>
-                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>  
-                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>   
-                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>   
-                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>   
-                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>   
-  
-                                           
+                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">2</mat-radio-button>
+                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="4">3</mat-radio-button>
+                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="5">4</mat-radio-button>
+                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="6">5</mat-radio-button>
+                                                   <mat-radio-button style="padding-right: 30px;" class="example-margin"value="7">NT</mat-radio-button>
+
+
                                                  </mat-radio-group>
                                                  <br><br>
 
                                                  <label  class="titer" style="padding-right: 30px;" >Sensibilté  </label>
 <br><br>
                                                  <label  class="custom-label" style="padding-right: 30px;" >L2  </label>
-                                                
+
                                                 <mat-radio-group aria-label="Select an option" formControlName="sensibilte_L2">
                                                     <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
                                                     <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                    <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>  
-                                                      
-   
-                                            
+                                                    <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>
+
+
+
                                                   </mat-radio-group>
                                                   <br><br>
                                                   <label  class="custom-label" style="padding-right: 30px;" >L3  </label>
-                                               
+
                                                 <mat-radio-group aria-label="Select an option"formControlName="sensibilte_L3">
                                                     <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
                                                     <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                    <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>  
+                                                    <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>
                                                 </mat-radio-group>
                                                   <br><br>
                                                   <label  class="custom-label"  style="padding-right: 30px;" >L4  </label>
-                                                 
+
                                                  <mat-radio-group aria-label="Select an option"formControlName="sensibilte_L4">
                                                      <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
                                                      <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                     <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>  
-                                                   
+                                                     <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>
+
                                                    </mat-radio-group>
                                                    <br><br><label class="custom-label"  style="padding-right: 30px;" >L5  </label>
-                                                 
+
                                                   <mat-radio-group aria-label="Select an option"formControlName="sensibilte_L5">
                                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
                                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                      <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>  
-                                                      
-     
-                                              
+                                                      <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>
+
+
+
                                                     </mat-radio-group>
                                                     <br><br><label class="custom-label" style="padding-right: 30px;" >S1  </label>
-                                                 
+
                                                    <mat-radio-group aria-label="Select an option"formControlName="sensibilte_S1">
                                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
                                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>  
+                                                       <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>
                                                      </mat-radio-group>
                                                      <br><br>
                                                      <br><br><label class="titer" style="padding-right: 30px;" >Examen périnée   </label><br><br>
 
                                                      <br><br><label class="custom-label" style="padding-right: 30px;" >Sensibilité  </label>
 
-                                                     
+
                                                     <mat-radio-group aria-label="Select an option"formControlName="examen_perinee_sensibilite">
                                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normale</mat-radio-button>
                                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Hypoaesthésie</mat-radio-button>
-                                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button> 
+                                                        <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Anesthésie</mat-radio-button>
                                                       </mat-radio-group>
                                                       <br><br>
                                                       <br><br><label class="custom-label" style="padding-right: 30px;" >Tonus anal</label>
-                                                     
+
                                                      <mat-radio-group aria-label="Select an option"formControlName="examen_perinee_Tonus_anal">
                                                          <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Normal</mat-radio-button>
                                                          <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Diminué</mat-radio-button>
-                                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Pas de tonus</mat-radio-button> 
+                                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Pas de tonus</mat-radio-button>
                                                        </mat-radio-group>
                                                        <br><br>
                                                        <br><br>
                                                        <label class="custom-label" style="padding-right: 30px;" >Refléxe anal  </label>
-                                                      
+
                                                        <mat-radio-group aria-label="Select an option"formControlName="examen_perinee_Reflexe_anal">
                                                         <mat-radio-button style="padding-right: 30px;" class="example-margin"value="1">Présent</mat-radio-button>
                                                           <mat-radio-button style="padding-right: 30px;" class="example-margin"value="2">Faible</mat-radio-button>
-                                                          <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Aboli</mat-radio-button> 
+                                                          <mat-radio-button style="padding-right: 30px;" class="example-margin"value="3">Aboli</mat-radio-button>
                                                         </mat-radio-group>
                                                         <br><br>
                                                         <br><br>
-                                                        
-                                                                 
-  
-  <br><br>
-                                                                 
-                                                                   
-                                                                 
 
-                                 
-                                 
-                                                                 
-                                   
+
+
+  <br><br>
+
+
+
+
+
+
+
+
 
 
                                 <div>
@@ -747,8 +747,8 @@
                                   <button style="padding-right: 30px;" class="button" mat-button matStepperNext   (click)="saveexamForm()">Suivant</button>
                                 </div>
                               </form>
-                            </mat-step>  
-                             
+                            </mat-step>
+
 
                             <mat-step  [stepControl]="odiFormGroup" label="ODI">
                               <form [formGroup]="odiFormGroup">
@@ -894,12 +894,12 @@
                                 </div>
                               </form>
                             </mat-step>
-                           
+
                             <mat-step [stepControl]="hypotheseFormGroup" label="Hypothése diagnostic ">
                               <form [formGroup]="hypotheseFormGroup">
 
-                         
-                                                       
+
+
 
                                                                  <h2 class="titer" style="padding-right: 30px;">Hypothése diagnostic clinique avant imagerie</h2>
                                                                  <br><br>
@@ -997,38 +997,38 @@
                                 </div>
                               </form>
                             </mat-step>
-                            
+
                             <mat-step [stepControl]="fourthFormGroup" label="lmagerie">
                               <form [formGroup]="fourthFormGroup">
-      
+
       <br><br>
                          <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl7" (change)="onChange()" >RX Standard rachis lombaire  </mat-checkbox>
-      
+
                           <div *ngIf="checkboxControl7.value">
-      
-      
+
+
                           <br><br>
                            <mat-radio-group aria-label="Select an option"formControlName="rx_Standard" style="width: 100%;">
-      
+
                            </mat-radio-group>
                             <br><br>
                             <mat-radio-group aria-label="Select an option"formControlName="rx_Standard_qualite">
-      
+
                             <mat-radio-button style="padding-right: 30px;" class="example-margin">Bonne qualité</mat-radio-button>
                              <mat-radio-button style="padding-right: 30px;" class="example-margin">Mauvaise qualité</mat-radio-button>
                             </mat-radio-group>
                              <br><br>
-      
-      
+
+
       <br><br>
-      
-      
+
+
       <label class="custom-label" style="padding-right: 30px;">Pincement discal</label>
       <mat-radio-group [formControl]="pincement22" (change)="onChange()">
         <mat-radio-button style="padding-right: 30px;" value="oui8">Oui</mat-radio-button>
         <mat-radio-button style="padding-right: 30px;" value="non">Non</mat-radio-button>
       </mat-radio-group>
-      
+
       <div *ngIf="pincement22.value === 'oui8'">
         <br><br>
         <label class="custom-label" style="padding-right: 30px;">Etage</label>
@@ -1037,23 +1037,23 @@
           <mat-radio-button style="padding-right: 30px;" value="2">L4L5</mat-radio-button>
           <mat-radio-button style="padding-right: 30px;" value="3">L5s1</mat-radio-button>
         </mat-radio-group>
-      
+
         <br><br>
         <label class="custom-label" style="padding-right: 30px;">Pourcentage</label>
         <mat-radio-group aria-label="Select an option" formControlName="pincement_discal_Pourcentage">
           <mat-radio-button style="padding-right: 30px;" value="1">&lt;50%</mat-radio-button>
           <mat-radio-button style="padding-right: 30px;" value="2">&gt;50%</mat-radio-button>
-      
+
         </mat-radio-group>
       </div>
-      
+
       <br><br>
                            <label class="custom-label" style="padding-right: 30px;">Vide discal</label>
       <mat-radio-group [formControl]="pincement23" (change)="onChange()">
         <mat-radio-button style="padding-right: 30px;" value="ouiA">Oui</mat-radio-button>
         <mat-radio-button style="padding-right: 30px;" value="non">Non</mat-radio-button>
       </mat-radio-group>
-      
+
       <div *ngIf="pincement23.value === 'ouiA'">
         <br><br>
         <label class="custom-label" style="padding-right: 30px;">Etage</label>
@@ -1063,7 +1063,7 @@
           <mat-radio-button style="padding-right: 30px;" value="3">L5s1</mat-radio-button>
         </mat-radio-group>
       </div>
-      
+
                              <br><br>
                              <label  class="custom-label" style="padding-right: 30px;" >Spondylolisthesis</label>
                              <mat-radio-group aria-label="Select an option"  [formControl]="sPDL" (change)="onChange()">
@@ -1071,7 +1071,7 @@
                               <mat-radio-button style="padding-right: 30px;" value="2">Par lyse isthmique</mat-radio-button>
                              </mat-radio-group>
                              <div *ngIf="sPDL.value === '1'">
-                              
+
                              <br><br>
                              <label  class="custom-label" style="padding-right: 30px;" >Etage</label>
                              <mat-radio-group aria-label="Select an option"formControlName="sPDL_etage">
@@ -1087,17 +1087,17 @@
       </div>
                            <br><br>
                            <label  class="custom-label" style="padding-right: 30px;" >Anomalie transitionnelle</label>
-      
+
                            <mat-radio-group aria-label="Select an option"formControlName="anomalie_transitionnelle">
                             <mat-radio-button style="padding-right: 30px;" value="1">Sacralisation de L5
                            </mat-radio-button>
                             <mat-radio-button style="padding-right: 30px;" value="2">Lombalisation de S1</mat-radio-button>
                             <mat-radio-button style="padding-right: 30px;" value="3">Aucune</mat-radio-button>
-      
+
                            </mat-radio-group>
                            <br><br>
                            <label  class="custom-label" style="padding-right: 30px;" >Canal lombaire étroit</label>
-      
+
                            <mat-radio-group aria-label="Select an option"formControlName="canal_lombaire_etroit">
                             <mat-radio-button style="padding-right: 30px;" value="1">Oui
                            </mat-radio-button>
@@ -1105,19 +1105,19 @@
                            </mat-radio-group>
                            <br><br>
                            <label  class="custom-label" style="padding-right: 30px;" >Lordose Lombaire</label>
-      
+
                            <mat-radio-group aria-label="Select an option"formControlName="Lordose_Lombaire">
                             <mat-radio-button style="padding-right: 30px;" value="1">Conservée
                            </mat-radio-button>
                             <mat-radio-button style="padding-right: 30px;" value="2">Inversée</mat-radio-button>
                            </mat-radio-group>
                            <br><br>
-                        
+
                            <mat-form-field>
                             <mat-label class="custom-label">Incidence pelvienne</mat-label>
                             <input matInput placeholder="Incidence pelvienne" formControlName="incidence_pelvienne">
                           </mat-form-field>
-                      
+
                           <br><br>
                           <mat-form-field>
                             <mat-label class="custom-label">Pente sacrée</mat-label>
@@ -1128,34 +1128,34 @@
                             <mat-label class="custom-label">Version pelvienne</mat-label>
                             <input matInput placeholder="Version pelvienne" formControlName="version_perlvienne">
                           </mat-form-field>
-      
-      
+
+
                          </div>
-      
+
       <br><br>
                          <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl8" (change)="onChange()">RX dynamique</mat-checkbox>
-      
+
                          <div *ngIf="checkboxControl8.value">
-                         
-      
-                      
-      
-                       
+
+
+
+
+
                              <mat-radio-group aria-label="Select an option" formControlName="rx_dynamique_qualite">
                                <mat-radio-button style="padding-right: 30px;" value="1">Bonne qualité</mat-radio-button>
                                <mat-radio-button style="padding-right: 30px;" value="2">Mauvaise qualité</mat-radio-button>
                              </mat-radio-group>
-                          
-      
+
+
                            <br><br>
-      
+
                            <h4 class="custom-label">Instabilité</h4>
-      
+
                            <mat-radio-group [formControl]="treatmentControl" (change)="onChange()">
                              <mat-radio-button style="padding-right: 30px;" value="ouik">Oui</mat-radio-button>
                              <mat-radio-button style="padding-right: 30px;" value="non">Non</mat-radio-button>
                            </mat-radio-group>
-      
+
                            <div *ngIf="treatmentControl.value === 'ouik'">
                              <mat-form-field>
                                <mat-label class="custom-label">Angle</mat-label>
@@ -1167,24 +1167,24 @@
                              </mat-form-field>
                            </div>
                          </div>
-      
-      
-      
-      
+
+
+
+
       <br><br>
                         <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl9" (change)="onChange()">TDM  </mat-checkbox>
                         <div *ngIf="checkboxControl9.value">
-      
+
                                    <br><br>
-                                 
-                              
+
+
                                    <!-- <label class="custom-label" style="padding-right: 30px;">Pincement discal</label>
                                    <mat-radio-group aria-label="Select an option" formControlName="tDM_Pincement_discal">
                                      <mat-radio-button style="padding-right: 30px;" value="1">oui</mat-radio-button>
                                      <mat-radio-button style="padding-right: 30px;" value="2">non</mat-radio-button>
                                    </mat-radio-group>
                                    <br><br><br><br>
-      
+
                                    <label class="custom-label" style="padding-right: 30px;">étage</label>
                                    <mat-radio-group aria-label="Select an option" formControlName="tDM_Pincement_discal_etage">
                                      <mat-radio-button style="padding-right: 30px;" value="1">L3L4</mat-radio-button>
@@ -1192,20 +1192,20 @@
                                      <mat-radio-button style="padding-right: 30px;" value="3">L5s1</mat-radio-button>
                                    </mat-radio-group>
                                    <br><br><br><br>
-      
+
                                    <label class="custom-label" style="padding-right: 30px;">Pourcentage</label>
                                    <mat-radio-group aria-label="Select an option" formControlName="tDM_Pincement_discal_pourcentage">
                                     <mat-radio-button style="padding-right: 30px;" value="1">&lt;50%</mat-radio-button>
           <mat-radio-button style="padding-right: 30px;" value="2">&gt;50%</mat-radio-button>
                                    </mat-radio-group> -->
-      
-      
+
+
                                    <label class="custom-label" style="padding-right: 30px;">Pincement discal</label>
                                    <mat-radio-group [formControl]="pincement24" (change)="onChange()">
                                      <mat-radio-button style="padding-right: 30px;" value="oui8">Oui</mat-radio-button>
                                      <mat-radio-button style="padding-right: 30px;" value="non">Non</mat-radio-button>
                                    </mat-radio-group>
-                                   
+
                                    <div *ngIf="pincement24.value === 'oui8'">
                                      <br><br>
                                      <label class="custom-label" style="padding-right: 30px;">Etage</label>
@@ -1214,49 +1214,49 @@
                                        <mat-radio-button style="padding-right: 30px;" value="2">L4L5</mat-radio-button>
                                        <mat-radio-button style="padding-right: 30px;" value="3">L5s1</mat-radio-button>
                                      </mat-radio-group>
-                                   
+
                                      <br><br>
                                      <label class="custom-label" style="padding-right: 30px;">Pourcentage</label>
                                      <mat-radio-group aria-label="Select an option" formControlName="tDM_Pincement_discal_pourcentage">
                                        <mat-radio-button style="padding-right: 30px;" value="1">&lt;50%</mat-radio-button>
                                        <mat-radio-button style="padding-right: 30px;" value="2">&gt;50%</mat-radio-button>
-                                   
+
                                      </mat-radio-group>
                                    </div>
-      
-      
+
+
       <br><br>
                                  <label  class="custom-label" style="padding-right: 30px;"  >Vide discal</label>
-      
+
                                  <mat-radio-group aria-label="Select an option" [formControl]="pincement27" (change)="onChange()">
                                   <mat-radio-button style="padding-right: 30px;" value="1">Oui
                                  </mat-radio-button>
                                   <mat-radio-button style="padding-right: 30px;" value="2">Non</mat-radio-button>
                                  </mat-radio-group>
                                  <br><br>
-                                 <div *ngIf="pincement27.value === '1'"> 
+                                 <div *ngIf="pincement27.value === '1'">
                                                           <label  class="custom-label" style="padding-right: 30px;" >Etage</label>
-      
+
                                <mat-radio-group aria-label="Select an option"formControlName="tDM_vide_discal_etage">
                                 <mat-radio-button style="padding-right: 30px;" value="1">L3L4
                                </mat-radio-button>
                                 <mat-radio-button style="padding-right: 30px;" value="2">L4L5</mat-radio-button>
                                 <mat-radio-button style="padding-right: 30px;" value="3">L5S1</mat-radio-button>
-      
+
                                </mat-radio-group>
                                </div>
                                <br><br>
-                       
+
                                <label  class="custom-label" style="padding-right: 30px;" >Hernie discale</label>
-      
+
                                <mat-radio-group aria-label="Select an option"[formControl]="tDM_hernie_discale" (change)="onChange()">
                                 <mat-radio-button style="padding-right: 30px;" value="1">Oui
                                </mat-radio-button>
                                 <mat-radio-button style="padding-right: 30px;" value="2">Non</mat-radio-button>
                                </mat-radio-group>
                                <br><br>
-                               <div *ngIf="tDM_hernie_discale.value === '1'"> 
-      
+                               <div *ngIf="tDM_hernie_discale.value === '1'">
+
                                <label class="custom-label" style="padding-right: 30px;">Type</label>
                    <mat-radio-group aria-label="Select an option" formControlName="iRM_Herniediscale_Type">
                      <mat-radio-button style="padding-right: 30px;" value="1">Médiane</mat-radio-button>
@@ -1267,25 +1267,25 @@
                      <mat-radio-button style="padding-right: 30px;" value="6">Paramédiane</mat-radio-button>
                    </mat-radio-group>
                    <br><br>
-                              
+
                              <label  class="custom-label" style="padding-right: 30px;" >Etage</label>
-      
+
                              <mat-radio-group aria-label="Select an option"formControlName="pincement_discal_etage">
                               <mat-radio-button style="padding-right: 30px;" value="1">L3L4
                              </mat-radio-button>
                               <mat-radio-button style="padding-right: 30px;" value="2">L4L5</mat-radio-button>
                               <mat-radio-button style="padding-right: 30px;" value="3">L5S1</mat-radio-button>
-      
+
                              </mat-radio-group>
                              <br><br>
                              <label  class="custom-label" style="padding-right: 30px;" >Coté</label>
-      
+
                              <mat-radio-group aria-label="Select an option"formControlName="pincement_discal_Pourcentage">
-                             
+
                               <mat-radio-button style="padding-right: 30px;" value="1">Droite</mat-radio-button>
                               <mat-radio-button style="padding-right: 30px;" value="2">Gauche</mat-radio-button>
-                          
-      
+
+
                              </mat-radio-group>
                              </div>
                              <br><br>
@@ -1295,38 +1295,38 @@
                             <mat-radio-button style="padding-right: 30px;" value="2">Par lyse isthmique</mat-radio-button>
                            </mat-radio-group>
                            <br><br>
-                           <div *ngIf="spondylolisthesis.value === '1'"> 
-      
+                           <div *ngIf="spondylolisthesis.value === '1'">
+
                            <label  class="custom-label" style="padding-right: 30px;" >Etage</label>
-      
+
                            <mat-radio-group aria-label="Select an option"formControlName="pincement_discal_etage">
                             <mat-radio-button style="padding-right: 30px;" value="1">L3L4 </mat-radio-button>
                             <mat-radio-button style="padding-right: 30px;" value="2">L4L5</mat-radio-button>
                             <mat-radio-button style="padding-right: 30px;" value="3">L5S1</mat-radio-button>
-      
+
                            </mat-radio-group>
-      
-      
-      
-      
+
+
+
+
                            <br><br>
                            <label  class="custom-label" style="padding-right: 30px;" >Grade</label>
-                          
+
                            <mat-form-field>
                             <input matInput placeholder="Grade" formControlName="pente_sacree">
                           </mat-form-field>
                           </div>
                           <br><br>
                           <label  class="custom-label" style="padding-right: 30px;" >Instabilité</label>
-      
-                          
-      
-      
+
+
+
+
                         <mat-radio-group [formControl]="pincement23" (change)="onChange()">
                           <mat-radio-button style="padding-right: 30px;" value="ouiA">Oui</mat-radio-button>
                           <mat-radio-button style="padding-right: 30px;" value="non">Non</mat-radio-button>
                         </mat-radio-group>
-                        
+
                         <div *ngIf="pincement23.value === 'ouiA'">
                           <br><br>
                           <label class="custom-label" style="padding-right: 30px;">Etage</label>
@@ -1336,16 +1336,16 @@
                             <mat-radio-button style="padding-right: 30px;" value="3">L5s1</mat-radio-button>
                           </mat-radio-group>
                         </div>
-      
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
+
                         <br><br>
                         <label  class="custom-label" style="padding-right: 30px;" >Arthrose inter apophysaire</label>
-      
+
                         <mat-radio-group aria-label="Select an option" [formControl]="pincement23" (change)="onChange()">
                          <mat-radio-button style="padding-right: 30px;" value="1">Oui
                         </mat-radio-button>
@@ -1353,20 +1353,20 @@
                         </mat-radio-group>
                         <br><br>
                         <div *ngIf="pincement23.value === '1'">
-      
+
                       <label  class="custom-label" style="padding-right: 30px;" >Etage</label>
-                 
+
                       <mat-radio-group aria-label="Select an option"formControlName="pincement_discal_etage">
                        <mat-radio-button style="padding-right: 30px;" value="1">L3L4
                       </mat-radio-button>
                        <mat-radio-button style="padding-right: 30px;" value="2">L4L5</mat-radio-button>
                        <mat-radio-button style="padding-right: 30px;" value="3">L5S1</mat-radio-button>
-      
+
                       </mat-radio-group>
                       <br><br>
                       </div>
                       <label  class="custom-label" style="padding-right: 30px;" >Anomalie transitionnelle</label>
-      
+
                       <mat-radio-group aria-label="Select an option"formControlName="pincement_discal">
                        <mat-radio-button style="padding-right: 30px;" value="1">Sacralisation de L5</mat-radio-button>
                        <mat-radio-button style="padding-right: 30px;" value="2">Lombalisation de S1</mat-radio-button>
@@ -1374,22 +1374,22 @@
                       </mat-radio-group>
                       <br><br>
                       <label  class="custom-label" style="padding-right: 30px;" >Canal lombaire étroit</label>
-      
+
                       <mat-radio-group aria-label="Select an option"formControlName="pincement_discal">
                        <mat-radio-button style="padding-right: 30px;" value="1">Constitutionnel</mat-radio-button>
                        <mat-radio-button style="padding-right: 30px;" value="2">Mixte</mat-radio-button>
                        <mat-radio-button style="padding-right: 30px;" value="3">Bipolaire</mat-radio-button>
                       </mat-radio-group>
                         <br><br>
-      
+
                     </div>
       <br><br>
               <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl10" (change)="onChange()">IRM  </mat-checkbox>
               <div *ngIf="checkboxControl10.value">
                 <br><br>
-      
+
                 <mat-radio-group aria-label="Select an option"formControlName="iRM">
-                
+
                   <mat-radio-button style="padding-right: 30px;" value="3">Mauvaise qualité</mat-radio-button>
                    <mat-radio-button style="padding-right: 30px;" value="4">Bonne qualité</mat-radio-button>
                  </mat-radio-group>
@@ -1399,7 +1399,7 @@
         <mat-radio-button style="padding-right: 30px;" value="oui3">Oui</mat-radio-button>
         <mat-radio-button style="padding-right: 30px;" value="non">Non</mat-radio-button>
       </mat-radio-group>
-      
+
       <div *ngIf="treatmentControl.value === 'oui3'">
         <br><br>
         <label class="custom-label" style="padding-right: 30px;">Etage</label>
@@ -1415,23 +1415,23 @@
           <mat-radio-button style="padding-right: 30px;" value="2">&gt;50%</mat-radio-button>
         </mat-radio-group>
       </div>
-      
-      
-      
-      
-      
-      
-      
-      
-                
-      
-      
+
+
+
+
+
+
+
+
+
+
+
                  <label class="custom-label" style="padding-right: 30px;">Hernie discale</label>
                  <mat-radio-group [formControl]="treatmentControl" (change)="onChange()">
                    <mat-radio-button style="padding-right: 30px;" value="oui5">Oui</mat-radio-button>
                    <mat-radio-button style="padding-right: 30px;" value="non">Non</mat-radio-button>
                  </mat-radio-group>
-      
+
                  <div *ngIf="treatmentControl.value === 'oui5'">
                    <br><br>
                    <label class="custom-label" style="padding-right: 30px;">Type</label>
@@ -1451,30 +1451,30 @@
                      <mat-radio-button style="padding-right: 30px;" value="3">L5s1</mat-radio-button>
                    </mat-radio-group>
                    <br><br>
-                
-                   
+
+
                  </div>
-      
-      
-      
+
+
+
       <br><br>
-      
-      
+
+
              <label  class="custom-label" style="padding-right: 30px;" >Hypertrophie de ligaments jaunes</label>
-      
+
              <mat-radio-group aria-label="Select an option"formControlName="iRM_Hypertrophie_jaunes">
               <mat-radio-button style="padding-right: 30px;" value="1">Oui
              </mat-radio-button>
               <mat-radio-button style="padding-right: 30px;" value="2">Non</mat-radio-button>
              </mat-radio-group>
              <br><br>
-      
+
              <label class="custom-label" style="padding-right: 30px;">Arthrose inter apophysaire</label>
              <mat-radio-group [formControl]="treatmentControl" (change)="onChange()">
                <mat-radio-button style="padding-right: 30px;" value="ouiz">Oui</mat-radio-button>
                <mat-radio-button style="padding-right: 30px;" value="non">Non</mat-radio-button>
              </mat-radio-group>
-      
+
              <div *ngIf="treatmentControl.value === 'ouiz'">
                <label class="custom-label" style="padding-right: 30px;">Etage</label>
                <br><br>
@@ -1484,19 +1484,19 @@
                  <mat-radio-button style="padding-right: 30px;" value="3">L5S1</mat-radio-button>
                </mat-radio-group>
              </div>
-      
-      
-      
-      
+
+
+
+
            <br><br>
            <label  class="custom-label" style="padding-right: 30px;"  >Canal lombaire étroit</label>
-      
+
            <mat-radio-group aria-label="Select an option"formControlName="iRM_Canal_lombaire_etroit">
             <mat-radio-button style="padding-right: 30px;" value="1">Constitutionnel </mat-radio-button>
             <mat-radio-button style="padding-right: 30px;" value="2">Mixte</mat-radio-button>
             <mat-radio-button style="padding-right: 30px;" value="3">Bipolaire</mat-radio-button>
            </mat-radio-group>
-      
+
          <br><br>
          <label  class="custom-label" style="padding-right: 30px;"  >Volume du disque hernié</label>
          <mat-form-field>
@@ -1506,40 +1506,39 @@
         <label  class="custom-label" style="padding-right: 30px;" > Etat des disques adjacents</label>
         <br><br>
         <label   class="custom-label"  style="padding-right: 30px;" > Disque sous jacent</label>
-      
+
         <mat-radio-group aria-label="Select an option"formControlName="iRM_Canal_lombaire_etroit"  >
           <mat-radio-button style="padding-right: 30px;" value="1">Normal </mat-radio-button>
           <mat-radio-button style="padding-right: 30px;" value="2">Discopathie</mat-radio-button>
          </mat-radio-group>
          <br><br>
          <label  class="custom-label"  style="padding-right: 30px;" > Disque sus jacent</label>
-      
+
          <mat-radio-group aria-label="Select an option"formControlName="iRM_Canal_lombaire_etroit"  >
            <mat-radio-button style="padding-right: 30px;" value="1">Normal </mat-radio-button>
            <mat-radio-button style="padding-right: 30px;" value="2">Discopathie</mat-radio-button>
           </mat-radio-group>
         </div>
-        <div>  
+        <div>
           <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious>Précédant</button>
       <button style="padding-right: 30px;" class="button" mat-button (click)="savesuivi()">Enregistrer </button>
       </div>
-                                  
+
                               </form>
                                 </mat-step>
-                 
+
                           </mat-stepper>
-  
-                          </div>    
+
+                          </div>
                 </div>
             </div>
-            
-           
-            
-         
+
+
+
+
         </div>
     </div>
   </div>
-  
 
-  
- 
+
+

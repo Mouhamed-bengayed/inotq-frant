@@ -16,6 +16,8 @@
     date: string;
     valid: boolean;
     bannedchatGP: boolean;
+  validtologin: boolean;
+  askForReactivation:boolean
     number: number;
     image: string;
     role:{ id: number; name: string; }[];
