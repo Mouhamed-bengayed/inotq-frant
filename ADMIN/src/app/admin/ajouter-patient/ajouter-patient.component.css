@@ -126,15 +126,41 @@ margin-right: auto;
 .fixed-button:hover {
   background-color: #0056b3; /* Change background color on hover */
 }
-/*.fixe-buttons{*/
-/*  position: fixed; !* Fixes the container to the screen *!*/
-/*  bottom: 0; !* Positions the container at the bottom *!*/
-/*  left: 0; !* Aligns the container to the left edge *!*/
-/*  width: 100%; !* Makes the container full width *!*/
-/*  !*background-color: #f8f9fa; !* Background color for better visibility *!*!*/
-/*  padding: 10px; !* Adds padding around the container *!*/
-/*  display: flex; !* Align buttons horizontally *!*/
-/*  justify-content: center; !* Center the buttons horizontally *!*/
-/*  gap: 10px; !* Space between buttons *!*/
-/*  !*z-index: 1000; !* Ensures the container is above other content *!*!*/
-/*}*/
+.fixe-buttons {
+  position: fixed; /* Fix the container */
+  bottom: 0; /* Position it at the bottom */
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f8f9fa; /* Background color for visibility */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none; /* Initially hidden */
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.left-button {
+  margin-left: 10px;
+}
+
+.right-button {
+  margin-right: 10px;
+}
+.main-content{
+  padding-bottom: 60px;
+}

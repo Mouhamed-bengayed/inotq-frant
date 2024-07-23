@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {  FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PatientService } from '../Services/patient.service';
 import { MatDatepicker } from '@angular/material/datepicker';
@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { AccountService } from 'src/app/Service/account.service';
 import swal from "sweetalert2";
 import { Router } from '@angular/router';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-ajouter-patient',
@@ -14,7 +15,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./ajouter-patient.component.css']
 })
 
-export class AjouterPatientComponent implements OnInit {
+export class AjouterPatientComponent implements OnInit, OnDestroy, AfterViewInit {
+
+  // @ViewChild('stepper') private myStepper!: MatStepper  ;
+  // private scrollHandler: () => void;
+
   countries = [
     { name: 'Tunisia', code: '+216' },
     { name: 'United States', code: '+1' },
@@ -105,6 +110,10 @@ console.error("user id",this.user.id);
         ]
       ]
     });
+
+    /**buttons**/
+    // this.scrollHandler = this.onScroll.bind(this);
+
   }
 
 
@@ -156,8 +165,68 @@ console.error("user id",this.user.id);
     this.formA = this.fb.group({
       telephone: ['', [Validators.required, telephoneValidator(),Validators.minLength(12)]]
     });
+    window.addEventListener('scroll', this.onScroll);
+
+  }
+  ngAfterViewInit(): void {
+    // // Initialize or interact with view child properties here
+    // if (this.myStepper) {
+    //   console.log('Stepper initialized:', this.myStepper);
+    //   // Example: Go to the next step programmatically
+    //   this.myStepper.next();
+    // }
+    // else       console.error('Stepper notfound:');
+    //
+    // window.addEventListener('scroll', this.scrollHandler);
   }
 
+  ngOnDestroy(): void {
+    // window.removeEventListener('scroll', this.scrollHandler);
+  }
+
+  onScroll(): void {
+    const fixedButtons = document.querySelector('.fixe-buttons') as HTMLElement;
+
+    if (!fixedButtons) {
+      console.warn('Element with class "fixed-buttons" not found');
+      return;
+    }
+
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const GOLDEN_SCROLL_RATIO = 0.95; // Adjust this ratio as needed
+
+    if (window.scrollY / scrollableHeight > GOLDEN_SCROLL_RATIO) {
+      fixedButtons.style.display = 'flex';
+    } else {
+      fixedButtons.style.display = 'none';
+    }
+  }
+
+  // onNextButtonClick(): void {
+  //   switch (this.myStepper.selectedIndex) {
+  //     case 0:
+  //       this.saveFirstForm();
+  //       break;
+  //     case 1:
+  //       this.savesymptomatologieFormGroup();
+  //       break;
+  //     case 2:
+  //       this.savethridForm();
+  //       break;
+  //     case 3:
+  //       this.saveODIAndShowScore();
+  //       break;
+  //     case 4:
+  //       this.savehypoteseForm();
+  //       break;
+  //     case 5:
+  //       this.savePatient();
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   this.myStepper.next();
+  // }
   getTelephoneErrorMessage() {
     const telephoneControl = this.formA.get('telephone');
     if (!telephoneControl) {
@@ -604,9 +673,11 @@ isAutresChecked = false;
 }
 
   savePatientandQuit() {
-    //this.savePatient();
+    this.savePatient();
     Swal.fire({
+      icon:'warning',
       title: "Voulez-vous enregistrer cette fiche ?",
+      html:'Si vous avez terminé et que vous n'+'\''+'avez pas besoin de vous occuper de la partie imagerie, cliquez sur Enregistrer',
       showDenyButton: true,
       //showCancelButton: true,
       confirmButtonText: "enregistrer",
@@ -625,7 +696,24 @@ isAutresChecked = false;
   }
 
   yourButtonAction() {
-
+    Swal.fire({
+      title: "Etes-vous sûr ?",
+      html: " Si vous quittez, toutes les modifications seront écrasées!",
+      showDenyButton: true,
+      //showCancelButton: true,
+      confirmButtonText: "Quiter",
+      denyButtonText: `Annuler`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        // Swal.fire(
+        //   "Fiche Patient est enregistrée avec succéss!",
+        //   "", "success");
+        this.Router.navigate(['admin/liste/patient']);
+      } else if (result.isDenied) {
+        Swal.fire("Continuez votre modification ", "", "info");
+      }
+    });
   }
 }
 
