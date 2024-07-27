@@ -11,15 +11,15 @@
 ::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-inner-circle {
     background-color: rgb(47, 155, 151) !important;
 }
-                         
+
 /* For checked state */
 ::ng-deep .mat-checkbox-checked .mat-checkbox-background,
 ::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background {
     background-color:rgb(47, 155, 151) !important;
     border-color:rgb(47, 155, 151)!important;
 }
-::ng-deep .mat-step-header .mat-step-icon-selected, 
-::ng-deep .mat-step-header .mat-step-icon-state-done, 
+::ng-deep .mat-step-header .mat-step-icon-selected,
+::ng-deep .mat-step-header .mat-step-icon-state-done,
 ::ng-deep .mat-step-header .mat-step-icon-state-edit {
     background-color: rgb(47, 155, 151);
     color: #fff;
@@ -30,7 +30,7 @@
     font-weight: bold; /* Bold text */
     margin-bottom: auto; /* Space below the label */
 margin-right: auto;
-margin-left: auto;
+/* margin-left: auto; */
     padding: 5px; /* Padding around the text */
     display: inline-block; /* Ensures margin and padding behave as expected */
     background-color: #f7f5f5; /* Background color */
@@ -54,21 +54,21 @@ width: 200px;
 }
 .button {
     /* Couleur de fond avec transparence */
-    background-color: rgb(47, 155, 151);
-    
+    background-color: rgb(38, 190, 183);
+
     /* Couleur du texte */
     color: #fff;
     margin-left: 180px;
 
     /* Ajout de bordure */
     border: none;
-    
+
     /* Arrondir les coins */
     border-radius: 5px;
-    
+
     /* Ajout de marge intérieure */
     padding: 10px 40px;
-    
+
     /* Style du curseur au survol */
     cursor: pointer;
     padding-right: 30px;
@@ -102,10 +102,123 @@ margin-right: auto;
 }
 .profession-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Two columns */
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
     gap: 10px; /* Space between items */
   }
 
   .profession-grid mat-radio-button {
     padding-right: 20px;
   }
+
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    .profession-grid {
+      grid-template-columns: repeat(2, 1fr); /* Two columns */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .profession-grid {
+      grid-template-columns: 1fr; /* One column */
+    }
+    .description-field {
+      grid-column: span 1; /* Ensures the description field spans across the single column */
+    }
+  }
+
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px; /* Adjust the gap between the grid items */
+    width: 100%;
+  }
+  .grid-item {
+    padding-right: 20px;
+    padding: 1px;
+    text-align: left;
+  }
+  .span-two-columns {
+    grid-column: span 2;
+  }
+  @media (max-width: 1200px) {
+    .grid-container {
+      grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
+    }
+    .custom-label {
+        grid-column: span 4;
+      }
+  }
+
+  @media (max-width: 800px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+    }
+    .custom-label {
+        grid-column: span 2;
+      }
+  }
+
+  @media (max-width: 500px) {
+    .grid-container {
+      grid-template-columns: 1fr; /* 1 column for small screens */
+    }
+  }
+
+
+
+.fixed-button {
+  position: fixed; /* Fixes the button to the screen */
+  bottom:20px; /* Distance from the bottom of the screen */
+  right: 20px; /* Distance from the right side of the screen */
+  background-color: #ff002f; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Button padding */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Button shadow */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  z-index: 1000; /* Ensure the button is above other content */
+}
+
+.fixed-button:hover {
+  background-color: #0056b3; /* Change background color on hover */
+}
+.fixe-buttons {
+  position: fixed; /* Fix the container */
+  bottom: 0; /* Position it at the bottom */
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f8f9fa; /* Background color for visibility */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none; /* Initially hidden */
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.left-button {
+  margin-left: 10px;
+}
+
+.right-button {
+  margin-right: 10px;
+}
+.main-content{
+  padding-bottom: 60px;
+}
