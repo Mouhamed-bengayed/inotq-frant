@@ -52,6 +52,9 @@ margin-right: auto;
 .sexe{
 width: 200px;
 }
+
+
+
 .button {
     /* Couleur de fond avec transparence */
     background-color: rgb(38, 190, 183);
@@ -165,6 +168,48 @@ margin-right: auto;
     }
   }
 
+
+
+
+/* cc */
+.grid-test {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5px; /* Adjust the gap between the grid items */
+    width: 100%;
+  }
+ 
+.test{
+    padding: 1px;
+    text-align: left;
+    padding-right: 10px
+  }
+  @media (max-width: 1200px) {
+    .test {
+      grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
+    }
+    .grid-test {
+        grid-column: span 4;
+      }
+  }
+
+  @media (max-width: 800px) {
+    .test {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+    }
+    .grid-test {
+        grid-column: span 2;
+      }
+  }
+
+  @media (max-width: 500px) {
+    .test {
+      grid-template-columns: 1fr; /* 1 column for small screens */
+    }
+  }
+
+/* cc */
+  
 
 
 .fixed-button {
