@@ -19,9 +19,20 @@ export class NavBarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user = this.accountService.CurrentUserInfoSubject.getValue();
-    this.loadNotificationsByUser(this.user.id);
-  }
+    //this.user = this.accountService.CurrentUserInfoSubject.getValue();
+    this.user = localStorage.getItem('user');
+    const user = JSON.parse(this.user);
+
+    if (user.authorities && Array.isArray(user.authorities) && user.authorities.length > 0) {
+      const userAuthority = user.authorities[0].authority;
+
+      if (userAuthority === "ROLE_ADMIN") {
+        this.loadAdminNotifications(this.user.id);
+      }
+      else{
+        this.loadNotificationsByUser(this.user.id);
+      }
+  }}
 
   loadNotificationsByUser(id: any): void {
     this.notificationService.getNotificationByUser(id).subscribe((data) => {
@@ -47,6 +58,13 @@ export class NavBarComponent implements OnInit {
       `,
       icon: 'info',
       confirmButtonText: 'OK'
+    });
+  }
+
+   loadAdminNotifications(id: any): void {
+    this.notificationService.getAdminNotifs(id).subscribe((data) => {
+      this.Notifications = data.reverse();
+      console.log(data);
     });
   }
 }

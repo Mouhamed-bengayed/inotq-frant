@@ -14,11 +14,12 @@ const routes: Routes = [
   { path: 'verification', component: ValidationComponent },
   {path:'reactivation',component:ReactiveAccountComponent},
   //{ path: '', redirectTo: 'signIn', pathMatch: 'full' },
+
+  { path: '**', redirectTo: 'signIn' },
+  {path: '', redirectTo: 'signIn', pathMatch: 'full'},
   {path: '',
     loadChildren: () => import('./admin/admin-layout.module').then(m => m.AdminLayoutModule)
   },
-  { path: '**', redirectTo: 'signIn' },
-  {path: '', redirectTo: 'signIn', pathMatch: 'full'}
 ];
 
 @NgModule({
