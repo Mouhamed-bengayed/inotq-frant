@@ -102,7 +102,7 @@
 
 .titer {
 
-    font-size: 20px;
+    font-size: 16px;
     /* Adjust the font size */
     color: #272727;
     /* Text color */
@@ -168,12 +168,43 @@
     /* Adjust the gap between the grid items */
     width: 100%;
 }
+.grid-container-hypothese{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1px;
+    /* Adjust the gap between the grid items */
+    width: 100%;
+}
+.custom-ATCD{
+    font-size: 13px;
+    /* Adjust the font size */
+    color: #272727;
+    /* Text color */
+    font-weight: bold;
+    /* Bold text */
+    margin-bottom: auto;
+    /* Space below the label */
+    margin-right: auto;
+    /* margin-left: auto; */
+    padding: 5px;
+    /* Padding around the text */
+    display: inline-block;
+    /* Ensures margin and padding behave as expected */
+    background-color: #f7f5f5;
+    /* Background color */
+    border-radius: 4px;
+    /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+}
 
 .grid-item {
     padding-right: 20px;
     padding: 1px;
     text-align: left;
+    align-self: center;
 }
+
 
 .span-two-columns {
     grid-column: span 2;
@@ -211,7 +242,7 @@
 
 .grid-testsens {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 1px;
     /* Adjust the gap between the grid items */
     width: 100%;
@@ -223,16 +254,21 @@
     text-align: left;
 }
 
+.custom-label-Testing{
+    grid-column: span 2;
+   
 
+}
 
 /* cc */
 
 .grid-test {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     gap: 1px;
     /* Adjust the gap between the grid items */
     width: 100%;
+
 }
 
 .test {
@@ -246,14 +282,11 @@
         grid-template-columns: repeat(4, 1fr);
         /* 4 colonnes pour les grands écrans */
     }
-
     .test {
         grid-column: span 1;
     }
-
     .com-test {
         grid-column: span 1;
-
     }
 }
 
@@ -262,18 +295,14 @@
         grid-template-columns: repeat(3, 1fr);
         /* 2 colonnes pour les écrans moyens */
     }
-
     .test {
         grid-column: span 1;
     }
-
     .com-test {
         grid-column: span 1;
-
     }
     .grid-testsens{
         grid-template-columns:  repeat(2, 1fr);
-
     }
 }
 

@@ -8,15 +8,16 @@ import {ReactiveAccountComponent} from "./FrontOffice/reactive-account/reactive-
 
 const routes: Routes = [
 
-  { path: 'signUp', component: SignUpComponent },
-  { path: 'signIn', component: SignInComponent },
-  { path: 'ForgetPassword', component: VerificationComponent },
-  { path: 'verification', component: ValidationComponent },
-  {path:'reactivation',component:ReactiveAccountComponent},
+  // { path: 'signUp', component: SignUpComponent },
+  // { path: 'signIn', component: SignInComponent },
+  // { path: 'ForgetPassword', component: VerificationComponent },
+  // { path: 'verification', component: ValidationComponent },
+  // {path:'reactivation',component:ReactiveAccountComponent},
+
   //{ path: '', redirectTo: 'signIn', pathMatch: 'full' },
 
-  { path: '**', redirectTo: 'signIn' },
-  {path: '', redirectTo: 'signIn', pathMatch: 'full'},
+  // { path: '**', redirectTo: 'signIn' },
+  // {path: '', redirectTo: 'signIn', pathMatch: 'full'},
   {path: '',
     loadChildren: () => import('./admin/admin-layout.module').then(m => m.AdminLayoutModule)
   },
