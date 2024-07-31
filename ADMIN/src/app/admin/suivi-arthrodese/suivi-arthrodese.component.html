@@ -450,7 +450,7 @@
                                     <br><br>
 
                                     <mat-radio-group class="grid-container" aria-label="Select an option" formControlName="douleur_pression_lombairer_epineuses">
-                                      <label  class="custom-label" >Douleur à la pression lombaire en regard des épineuses </label>
+                                      <label  class="custom-label"style="margin-right:15px" >Douleur à la pression lombaire en regard des épineuses </label>
 
                                         <mat-radio-button class="grid-item"value="1">L3</mat-radio-button>
                                         <mat-radio-button class="grid-item"value="2">L4</mat-radio-button>
@@ -462,7 +462,7 @@
 
 
                                     <mat-radio-group class="grid-container" aria-label="Select an option" formControlName="Amelioration_flexion_rachis">
-                                      <label  class="custom-label"  >Amélioration à la flexion du rachis  </label>
+                                      <label  class="custom-label"  style="margin-right:15px">Amélioration à la flexion du rachis  </label>
 
                                                                             <mat-radio-button class="grid-item" value="1">Oui</mat-radio-button>
                                                                             <mat-radio-button class="grid-item" value="2">Non</mat-radio-button>
@@ -470,7 +470,7 @@
                                       <br><br>
 
                                       <mat-radio-group class="grid-container" aria-label="Select an option" formControlName="Contracture_muscles_paravertebraux">
-                                        <label  class="custom-label"  >  Contracture des muscles paravertebraux  </label>
+                                        <label  class="custom-label" style="margin-right:15px" >  Contracture des muscles paravertebraux  </label>
 
                                           <mat-radio-button class="grid-item" value="1">Oui</mat-radio-button>
                                           <mat-radio-button class="grid-item" value="2">Non</mat-radio-button>
@@ -1030,7 +1030,7 @@
             
             <br>
                                <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl7" (change)="onChange()" >RX Standard rachis lombaire  </mat-checkbox>
-            
+            <br>
                                 <div *ngIf="checkboxControl7.value">
             
             
@@ -1170,7 +1170,7 @@
             
             <br><br>
                                <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl8" (change)="onChange()">RX dynamique</mat-checkbox>
-            
+            <br>
                                <div *ngIf="checkboxControl8.value">
             
             
@@ -1210,6 +1210,7 @@
             
             <br><br>
                               <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl9" (change)="onChange()">TDM  </mat-checkbox>
+                              <br>
                               <div *ngIf="checkboxControl9.value">
             
                                          <br><br>
@@ -1406,8 +1407,9 @@
                               <br><br>
                                  
                           </div>
-            <br><br>
+            <br>
                     <mat-checkbox style="padding-right: 30px;" class="example-margin" [formControl]="checkboxControl10" (change)="onChange()">IRM  </mat-checkbox>
+                    <br>
                     <div *ngIf="checkboxControl10.value">
                       <br><br>
             
