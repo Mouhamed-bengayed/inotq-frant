@@ -27,7 +27,7 @@
 }
 
 .custom-label {
-    font-size: 15px;
+    font-size: 12px;
     /* Adjust the font size */
     color: #272727;
     /* Text color */
@@ -67,38 +67,34 @@
 }
 
 
-
-.button {
-    /* Couleur de fond avec transparence */
-    background-color: rgb(38, 190, 183);
-
-    /* Couleur du texte */
-    color: #fff;
-    margin-left: 180px;
-
-    /* Ajout de bordure */
-    border: none;
-
-    /* Arrondir les coins */
-    border-radius: 5px;
-
-    /* Ajout de marge intérieure */
-    padding: 10px 40px;
-
-    /* Style du curseur au survol */
-    cursor: pointer;
-    padding-right: 30px;
-    /* Style du texte */
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* Style au survol */
-.button:hover {
-    background-color: rgb(8, 114, 43);
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Espace entre les boutons */
+    flex-wrap: wrap; /* Pour s'assurer que les boutons s'adaptent aux petits écrans */
+  }
+  
+  .button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: rgb(33, 160, 75);
+   
+  }
+  
+  /* Pour des tailles d'écran plus petites, ajuster la taille des boutons */
+  @media (max-width: 600px) {
+    .button {
+      width: 100%; /* Les boutons prennent toute la largeur de leur parent */
+      margin: 5px 0; /* Espace vertical entre les boutons */
+    }
+  }
+  /* Style au survol */
+  .button:hover {
+    background-color: rgb(7, 128, 107);
     /* Réduire légèrement l'opacité */
-}
+  }
+
 
 .titer {
 
@@ -268,6 +264,8 @@
     gap: 1px;
     /* Adjust the gap between the grid items */
     width: 100%;
+    align-self: center;
+
 
 }
 

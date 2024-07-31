@@ -8,8 +8,8 @@ import {ReactiveAccountComponent} from "./FrontOffice/reactive-account/reactive-
 
 const routes: Routes = [
 
-  // { path: 'signUp', component: SignUpComponent },
-  // { path: 'signIn', component: SignInComponent },
+  { path: 'signUp', component: SignUpComponent },
+  { path: 'signIn', component: SignInComponent },
   // { path: 'ForgetPassword', component: VerificationComponent },
   // { path: 'verification', component: ValidationComponent },
   // {path:'reactivation',component:ReactiveAccountComponent},

@@ -47,6 +47,7 @@
   /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /* Subtle shadow */
+
 }
 
 /*
@@ -66,37 +67,31 @@
   width: 200px;
 }
 
-
-
-.button {
-  /* Couleur de fond avec transparence */
-  background-color: rgb(38, 190, 183);
-
-  /* Couleur du texte */
-  color: #fff;
-  margin-left: 180px;
-
-  /* Ajout de bordure */
-  border: none;
-
-  /* Arrondir les coins */
-  border-radius: 5px;
-
-  /* Ajout de marge intérieure */
-  padding: 10px 40px;
-
-  /* Style du curseur au survol */
-  cursor: pointer;
-  padding-right: 30px;
-  /* Style du texte */
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: bold;
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Espace entre les boutons */
+  flex-wrap: wrap; /* Pour s'assurer que les boutons s'adaptent aux petits écrans */
 }
 
+.button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: rgb(33, 160, 75);
+ 
+}
+
+/* Pour des tailles d'écran plus petites, ajuster la taille des boutons */
+@media (max-width: 600px) {
+  .button {
+    width: 100%; /* Les boutons prennent toute la largeur de leur parent */
+    margin: 5px 0; /* Espace vertical entre les boutons */
+  }
+}
 /* Style au survol */
 .button:hover {
-  background-color: rgb(8, 114, 43);
+  background-color: rgb(7, 128, 107);
   /* Réduire légèrement l'opacité */
 }
 
@@ -308,75 +303,12 @@
 
 
 
-.fixed-button {
-  position: fixed;
-  /* Fixes the button to the screen */
-  bottom: 20px;
-  /* Distance from the bottom of the screen */
-  right: 20px;
-  /* Distance from the right side of the screen */
-  background-color: #ff002f;
-  /* Button background color */
-  color: white;
-  /* Button text color */
-  border: none;
-  /* Remove border */
-  padding: 10px 20px;
-  /* Button padding */
-  border-radius: 5px;
-  /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  /* Button shadow */
-  cursor: pointer;
-  /* Change cursor to pointer on hover */
-  z-index: 1000;
-  /* Ensure the button is above other content */
-}
 
-.fixed-button:hover {
-  background-color: #0056b3;
-  /* Change background color on hover */
-}
 
-.fixe-buttons {
-  position: fixed;
-  /* Fix the container */
-  bottom: 0;
-  /* Position it at the bottom */
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #f8f9fa;
-  /* Background color for visibility */
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  display: none;
-  /* Initially hidden */
-}
 
-.button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
 
-.button:hover {
-  background-color: #0056b3;
-}
 
-.left-button {
-  margin-left: 10px;
-}
 
-.right-button {
-  margin-right: 10px;
-}
 
 .main-content {
   padding-bottom: 60px;
