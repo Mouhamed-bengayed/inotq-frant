@@ -38,6 +38,8 @@ import { NotificationAdmineComponent } from './notification-admine/notification-
 import { ListesNotificationAdmineComponent } from './listes-notification-admine/listes-notification-admine.component';
 import { AjouterGroupeAdmineComponent } from './ajouter-groupe-admine/ajouter-groupe-admine.component';
 import {MultiSelectDropdownDirective} from "./ajouter-groupe-admine/MultiSelectDropdownDirective";
+import {StepHeaderComponent} from "./ajouter-patient/StepHeaderComponent";
+import {MatIconModule} from "@angular/material/icon";
 
 
 const AdminLayoutRoutes: Routes = [
@@ -86,10 +88,11 @@ const AdminLayoutRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
-    MultiSelectDropdownDirective
+    MultiSelectDropdownDirective,
+    MatIconModule
 
   ],
-  declarations: [
+  declarations: [StepHeaderComponent,
     ListesMedecinComponent,
     ProfileComponent,
     ListesPatientsComponent,

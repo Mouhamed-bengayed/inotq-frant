@@ -75,15 +75,24 @@
     gap: 20px; /* Espace entre les boutons */
     flex-wrap: wrap; /* Pour s'assurer que les boutons s'adaptent aux petits écrans */
   }
-  
-  .button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: rgb(33, 160, 75);
-   
-  }
-  
-  /* Pour des tailles d'écran plus petites, ajuster la taille des boutons */
+
+.button {
+  padding: 15px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  /* Set height for round shape */
+  border-radius: 50%;
+  /* Rounded corners to make it a circle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+}
+
+
+/* Pour des tailles d'écran plus petites, ajuster la taille des boutons */
   @media (max-width: 600px) {
     .button {
       width: 100%; /* Les boutons prennent toute la largeur de leur parent */
@@ -231,7 +240,7 @@
 
 .custom-label-Testing{
     grid-column: span 2;
-   
+
 
 }
 
@@ -352,15 +361,15 @@
     /* Initially hidden */
 }
 
-.button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
+/*.button {*/
+/*    padding: 10px 20px;*/
+/*    background-color: #007bff;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*    font-size: 16px;*/
+/*}*/
 
 .button:hover {
     background-color: #0056b3;

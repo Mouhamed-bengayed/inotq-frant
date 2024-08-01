@@ -6,14 +6,14 @@
                     <div class="card-header card-header-danger">
                     </div>
                     <div class="formbold-main-wrapper">
-        
+
                           <mat-stepper  #stepper>
                             <mat-step [stepControl]="firstFormGroup">
-                              
+
                               <form [formGroup]="firstFormGroup">
-                                <ng-template matStepLabel>Suivi Post Opératoire immédiat</ng-template>  
-                      
-                              
+                                <ng-template matStepLabel>Suivi Post Opératoire immédiat</ng-template>
+
+
                                 <mat-form-field>
                                   <mat-label  class="custom-label">Date de la chirurgie</mat-label>
                                   <input matInput [matDatepicker]="picker2" formControlName="date_chirurgie" placeholder="Date de chirurgie">
@@ -36,7 +36,7 @@
                                    <br>
                                   <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl1" (change)="onChange()">Dissectomie</mat-checkbox>
                                   <br>
-                                
+
                                   <mat-radio-group aria-label="Select an option" formControlName="dissectomie_etage" *ngIf="checkboxControl1.value">
                                     <br>
                                     <label style="margin-right:17px" class="custom-label">Etage  </label>
@@ -58,7 +58,7 @@
 
                                 </mat-radio-group>
                               <br>
-                              <br> 
+                              <br>
                               <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl3" (change)="onChange()">Arthrodése</mat-checkbox>
                               <br>
 
@@ -71,38 +71,38 @@
                                 <mat-checkbox style="padding-right: 30px;"  value="3">ALlF</mat-checkbox>
 
                               </mat-radio-group>
-                              
+
                             <br> <br>
                                 <label  class="custom-label"style="margin-right:19px">Complications per opératoire  </label>
-                               
+
                                 <mat-radio-group aria-label="Select an option" formControlName="complications_per_operatoire">
                                   <mat-radio-button style="padding-right: 30px;"  value="1">Non  </mat-radio-button>
-                                  <mat-radio-button style="padding-right: 30px;"  value="2">Bréche méningée  </mat-radio-button>                                  
+                                  <mat-radio-button style="padding-right: 30px;"  value="2">Bréche méningée  </mat-radio-button>
                                 </mat-radio-group>
-                                
+
                                 <mat-form-field>
                                     <mat-label  class="custom-label">Autres</mat-label>
                                     <input matInput  placeholder="Auters">
-                                  </mat-form-field>  
+                                  </mat-form-field>
                                 <br>
-                                 
-                                               
+
+
                                 <div class="button-container">
 
-                                  <button  class="button" mat-button matStepperNext (click)="savesFirstFormGroup()">Suivant</button>
+                                  <button  class="button" mat-button matStepperNext (click)="savesFirstFormGroup()"><i class="fas fa-arrow-right"></i></button>
                                 </div>
                                 <div>
 
                                 </div>
                               </form>
-                            </mat-step> 
+                            </mat-step>
                             <mat-step [stepControl]="symptomatologieFormGroup" label="Symptomatologie">
                               <form [formGroup]="symptomatologieFormGroup">
                                 <br>
 
                                 <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl1" (change)="onChange()">Lombalgie</mat-checkbox>
                                 <br>
-                              
+
                                 <mat-radio-group aria-label="Select an option" formControlName="dissectomi" *ngIf="checkboxControl1.value">
                                    <mat-radio-button style="padding-right: 30px;"  value="1">Diminution</mat-radio-button>
                                    <mat-radio-button style="padding-right: 30px;"  value="2">Persistence</mat-radio-button>
@@ -138,15 +138,15 @@
 <br>
                                     <div *ngIf="checkboxControl15.value">
                                       <mat-checkbox style="padding-right: 30px;" [formControl]="checkboxControl7">Incontinence urinaire</mat-checkbox>
-                                    
+
                                       <div *ngIf="checkboxControl7.value">
                                         <mat-radio-group aria-label="Select an option" formControlName="trouble_vesico_sphincteriens_Incontinence_urinaire">
                                           <mat-radio-button style="padding-right: 30px;" value="1">Au repos</mat-radio-button>
                                           <mat-radio-button style="padding-right: 30px;" value="2">A l'effort</mat-radio-button>
                                         </mat-radio-group>
-                                      
+
                                       </div>
-                                    
+
                                       <br>
                                       <mat-checkbox style="padding-right: 30px;" value="1">Constipation</mat-checkbox>
                                       <br>
@@ -157,14 +157,14 @@
                                     <br>
                                     <br>
                                     <div class="button-container">
-                                      <button  class="button" mat-button matStepperPrevious>Précédant</button>
-    
-                                      <button  class="button" mat-button matStepperNext (click)="savesymptomatologieFormGroup()">Suivant</button>
+                                      <button  class="button" mat-button matStepperPrevious><i class="fas fa-arrow-left"></i></button>
+
+                                      <button  class="button" mat-button matStepperNext (click)="savesymptomatologieFormGroup()"><i class="fas fa-arrow-right"></i></button>
                                     </div>
                                   </form>
                                 </mat-step>
                                     <mat-step [stepControl]="thridFormGroup"label="Examen Post Opératoire">
-                              
+
                                       <form [formGroup]="thridFormGroup">
                                         <label  class="custom-label" style="padding-right: 30px;" >Testing musculaire  </label>
 
@@ -247,7 +247,7 @@
                                             <label  class="custom-label" style="padding-right: 30px;" >Sensibilté  </label>
 <br>
 <br>
-                                           <mat-radio-group class="grid-container" aria-label="Select an option" formControlName="Sensibilte_L2">
+                                           <mat-radio-group class="grid-container" aria-label="Select an option" formControlName="sensibilte_L2">
                                              <label  class="custom-label" style="padding-right: 30px;" >L2  </label>
 
                                                <mat-radio-button style="padding-right: 40px;" class="test-testsens"value="1">Normale</mat-radio-button>
@@ -259,7 +259,7 @@
                                              </mat-radio-group>
                                              <br><br>
 
-                                           <mat-radio-group class="grid-container" aria-label="Select an option"formControlName="Sensibilte_L3">
+                                           <mat-radio-group class="grid-container" aria-label="Select an option" formControlName="sensibilte_L3">
                                              <label  class="custom-label" style="padding-right: 30px;" >L3  </label>
 
                                                <mat-radio-button style="padding-right: 40px;" class="test-testsens"value="1">Normale</mat-radio-button>
@@ -268,7 +268,7 @@
                                            </mat-radio-group>
                                              <br><br>
 
-                                            <mat-radio-group class="grid-container" aria-label="Select an option"formControlName="Sensibilte_L4">
+                                            <mat-radio-group class="grid-container" aria-label="Select an option"formControlName="sensibilte_L4">
                                              <label  class="custom-label"  style="padding-right: 30px;" >L4  </label>
 
                                                 <mat-radio-button style="padding-right: 40px;" class="test-testsens"value="1">Normale</mat-radio-button>
@@ -278,7 +278,7 @@
                                               </mat-radio-group>
                                               <br><br>
 
-                                             <mat-radio-group class="grid-container" aria-label="Select an option"formControlName="Sensibilte_L5">
+                                             <mat-radio-group class="grid-container" aria-label="Select an option"formControlName="sensibilte_L5">
                                                <label class="custom-label"  style="padding-right: 30px;" >L5  </label>
 
                                                  <mat-radio-button style="padding-right: 40px;" class="test-testsens"value="1">Normale</mat-radio-button>
@@ -289,7 +289,7 @@
 
                                                </mat-radio-group>
                                                <br><br>
-                                              <mat-radio-group class="grid-container" aria-label="Select an option"formControlName="Sensibilte_S1">
+                                              <mat-radio-group class="grid-container" aria-label="Select an option"formControlName="sensibilte_S1">
                                                <label class="custom-label"  style="padding-right: 30px;">S1  </label>
 
                                                   <mat-radio-button style="padding-right: 40px;" class="test-testsens"value="1">Normale</mat-radio-button>
@@ -308,7 +308,7 @@
                                                    <mat-radio-button style="padding-right: 40px;" class="test-testsens"value="3">Anesthésie</mat-radio-button>
                                                  </mat-radio-group>
                                                  <br><br>
-                                               
+
 
                                                 <mat-radio-group class="grid-container"  aria-label="Select an option"formControlName="examen_perinee_Tonus_anal">
                                                  <label class="custom-label" style="padding-right: 30px;" >Tonus anal</label>
@@ -317,7 +317,7 @@
                                                     <mat-radio-button style="padding-right: 40px;" class="test-testsens"value="3">Pas de tonus</mat-radio-button>
                                                   </mat-radio-group>
                                                   <br><br>
-                                                 
+
 
                                                   <mat-radio-group class="grid-container"  aria-label="Select an option"formControlName="examen_perinee_Reflexe_anal">
                                                    <label class="custom-label" style="padding-right: 30px;" >Refléxe anal  </label>
@@ -328,10 +328,10 @@
                                                    </mat-radio-group>
                                                    <br><br>
                                                <div class="button-container">
-                                                <button  class="button" mat-button matStepperPrevious>Précédant</button>
+                                                <button  class="button" mat-button matStepperPrevious><i class="fas fa-arrow-left"></i></button>
 
                                                 <button   class="button" mat-button matStepperNext (click)="saveExamen_op()">Enregistrer  </button>
                                               </div>
-                               
+
                               </form>
                             </mat-step>

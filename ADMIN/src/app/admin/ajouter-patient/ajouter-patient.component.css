@@ -73,15 +73,21 @@
     align-items: center;
     gap: 20px; /* Espace entre les boutons */
     flex-wrap: wrap; /* Pour s'assurer que les boutons s'adaptent aux petits écrans */
+
   }
-  
-  .button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: rgb(33, 160, 75);
-   
-  }
-  
+.but{
+  /* Set height for round shape */
+  border-radius: 50%;
+  /* Rounded corners to make it a circle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+  /*.button {*/
+  /*  padding: 10px 20px;*/
+  /*  font-size: 1rem;*/
+  /*  background-color: rgb(33, 160, 75);*/
+
+  /*}*/
+
   /* Pour des tailles d'écran plus petites, ajuster la taille des boutons */
   @media (max-width: 600px) {
     .button {
@@ -252,7 +258,7 @@
 
 .custom-label-Testing{
     grid-column: span 2;
-   
+
 
 }
 
@@ -328,29 +334,42 @@
 
 
 .fixed-button {
-    position: fixed;
-    /* Fixes the button to the screen */
-    bottom: 20px;
-    /* Distance from the bottom of the screen */
-    right: 20px;
-    /* Distance from the right side of the screen */
-    background-color: #ff002f;
-    /* Button background color */
-    color: white;
-    /* Button text color */
-    border: none;
-    /* Remove border */
-    padding: 10px 20px;
-    /* Button padding */
-    border-radius: 5px;
-    /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    /* Button shadow */
-    cursor: pointer;
-    /* Change cursor to pointer on hover */
-    z-index: 1000;
-    /* Ensure the button is above other content */
+  position: fixed;
+  /* Fixes the button to the screen */
+  top: 250px;
+  /* Distance from the bottom of the screen */
+  right: 20px;
+  /* Distance from the right side of the screen */
+  background-color: #ff002f;
+  /* Button background color */
+  color: white;
+  /* Button text color */
+  border: none;
+  /* Remove border */
+  padding: 10px;
+  /* Button padding, make it equal to ensure round shape */
+  width: 50px;
+  /* Set width for round shape */
+  height: 50px;
+  /* Set height for round shape */
+  border-radius: 50%;
+  /* Rounded corners to make it a circle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Button shadow */
+  cursor: pointer;
+  /* Change cursor to pointer on hover */
+  z-index: 1000;
+  /* Ensure the button is above other content */
+  display: flex;
+  /* Center align text */
+  align-items: center;
+  /* Center align text */
+  justify-content: center;
+  /* Center align text */
+  font-size: 16px;
+  /* Adjust text size */
 }
+
 
 .fixed-button:hover {
     background-color: #0056b3;
@@ -376,14 +395,17 @@
 }
 
 .button {
-    padding: 10px 20px;
+    padding: 15px 20px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     text-align: center;
+  /* Set height for round shape */
+  border-radius: 50%;
+  /* Rounded corners to make it a circle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .button:hover {
