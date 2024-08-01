@@ -238,40 +238,49 @@
                                   <br><br>
                                       <label  class="custom-label" style="padding-right: 30px;" >Traitement antérieur</label>
                                       <br><br>
-                                        <mat-radio-group [formControl]="treatmentControl" (change)="onChange()">
-                                          <mat-radio-button style="padding-right: 30px;" value="antalgique">Antalgique</mat-radio-button>
-                                          <br><br>
-
-                                          <mat-radio-button style="padding-right: 30px;" value="corticoide">Corticoide</mat-radio-button>
-                                          <br><br>
-
-                                          <mat-radio-button style="padding-right: 30px;" value="antiInflammatoire">Anti inflammatoire non stéroidien</mat-radio-button>
-                                          <br><br>
-
-                                          <mat-radio-button style="padding-right: 30px;" value="infiltrations">Infiltrations</mat-radio-button>
-                                          <mat-form-field *ngIf="treatmentControl.value === 'infiltrations'">
-                                            <mat-label  class="custom-label">Nombre d'infiltration</mat-label>
-                                            <input matInput formControlName="Nbre_infiltration" placeholder="Nombre d'infiltration" type="number">
+                                      <mat-radio-group [formControl]="treatmentControl" (change)="onChange()">
+                                        <mat-radio-button style="padding-right: 30px;" value="antalgique">Antalgique</mat-radio-button>
+                                        <br><br>
+                                      
+                                        <mat-radio-button style="padding-right: 30px;" value="corticoide">Corticoide</mat-radio-button>
+                                        <br><br>
+                                      
+                                        <mat-radio-button style="padding-right: 30px;" value="antiInflammatoire">Anti inflammatoire non stéroidien</mat-radio-button>
+                                        <br><br>
+                                      
+                                        <mat-radio-button style="padding-right: 30px;" value="infiltrations">Infiltrations</mat-radio-button>
+                                        <div *ngIf="treatmentControl.value === 'infiltrations'">
+                                          <mat-form-field>
+                                            <mat-label>Nombre d'infiltrations</mat-label>
+                                            <input matInput formControlName="Nbre_infiltration" placeholder="Nombre d'infiltrations" type="number">
                                           </mat-form-field>
-                                          <br><br>
-
-                                          <mat-radio-button style="padding-right: 30px;" value="reeducation">Rééducation</mat-radio-button>
-                                          <mat-form-field *ngIf="treatmentControl.value === 'reeducation'">
-                                            <mat-label  class="custom-label">Nombre de séances</mat-label>
+                                        </div>
+                                        <br><br>
+                                      
+                                        <mat-radio-button style="padding-right: 30px;" value="reeducation">Rééducation</mat-radio-button>
+                                        <div *ngIf="treatmentControl.value === 'reeducation'">
+                                          <mat-form-field>
+                                            <mat-label>Nombre de séances</mat-label>
                                             <input matInput formControlName="Nbre_seances" placeholder="Nombre de séances" type="number">
                                           </mat-form-field>
-                                          <br><br>
-
-                                          <mat-radio-button style="padding-right: 30px;" value="chirurgie">Chirurgie</mat-radio-button>
-                                          <br><br>
-
-                                          <mat-radio-button style="padding-right: 30px;" value="autres1">Autres</mat-radio-button>
-                                          <mat-form-field *ngIf="treatmentControl.value === 'autres1'">
+                                        </div>
+                                        <br><br>
+                                      
+                                        <mat-radio-button style="padding-right: 30px;" value="chirurgie">Chirurgie</mat-radio-button>
+                                        <br><br>
+                                      
+                                        <mat-radio-button style="padding-right: 30px;" value="autres1">Autres</mat-radio-button>
+                                        <div *ngIf="treatmentControl.value === 'autres1'">
+                                          <mat-form-field>
                                             <mat-label>Description</mat-label>
                                             <input matInput formControlName="description_autres" placeholder="Description" type="text">
                                           </mat-form-field>
-                                        </mat-radio-group>
-                                        <br><br>
+                                        </div>
+                                      </mat-radio-group>
+                                      
+                                     
+                                        
+                                        <br>
 
 
 
@@ -553,9 +562,9 @@
                                       <br><br>
                                       <mat-checkbox style="padding-right: 30px;" value="1">Constipation</mat-checkbox>
                                       <br><br>
-                                      <mat-checkbox style="padding-right: 30px;" value="1">Incontinence anale</mat-checkbox>
+                                      <mat-checkbox style="padding-right: 30px;" value="2">Incontinence anale</mat-checkbox>
                                       <br><br>
-                                      <mat-checkbox style="padding-right: 30px;" value="1">Impériosité urinaire</mat-checkbox>
+                                      <mat-checkbox style="padding-right: 30px;" value="3">Impériosité urinaire</mat-checkbox>
                                     </div>
                                     <br><br>
 
@@ -1175,6 +1184,15 @@
     <mat-radio-button style="padding-right: 30px;" value="chirurgie">Chirurgie</mat-radio-button>
 
     <br><br>
+    <div *ngIf="treatmentControl.value === 'chirurgie'">
+    
+      <div class="grid-container">
+        <mat-radio-button class="grid-item" value="1">Arthrodèse</mat-radio-button>
+        <mat-radio-button class="grid-item" value="2">Discectomie</mat-radio-button>
+      </div>
+    </div>
+    <br>
+    
 
     <mat-radio-button style="padding-right: 30px;" value="autres">Autres</mat-radio-button>
     <mat-form-field *ngIf="treatmentControl.value === 'autres'">
@@ -1185,7 +1203,8 @@
   <br><br>
 
 
-
+  
+  <br>
 
 
 
