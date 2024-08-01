@@ -56,7 +56,7 @@ export class SuiviArthrodeseComponent implements OnInit {
   }
   
   firstFormGroup = new FormGroup({
-    date_de_consultation: new FormControl(''),
+    date_de_consultation: new FormControl(new Date()),
     age: new FormControl(''),
     addresse: new FormControl(''),
     telephone: new FormControl(''),

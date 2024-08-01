@@ -11,7 +11,7 @@ export class MedecinService {
   private baseBlockedUser="http://localhost:8082/api/user/bloque-user/";
   private baseDébloquerUser="http://localhost:8082/api/user/Débloquer-user/";
   private deletedUser="http://localhost:8082/api/medecin/delete/";
-  private reactiverURL="http://localhost:8082/api/user/reactive-user/";
+  private reactiverURL="http://localhost:8082/api/user/reactiveMedAcoount/";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -37,4 +37,7 @@ export class MedecinService {
     return this.httpClient.put(this.reactiverURL+id, id);
 
   }
+  // reactiveMedAcoount(id: Number) {
+  //   return this.httpClient.put(this.reactiverURL+id, id);
+  // }
 }

@@ -32,10 +32,7 @@ export class NotificationService {
   }
 
 
-
-
-
-
-
-
+  getAdminNotifs(id:any) {
+    return this.http.get<any[]>(`${this.apiUrl}/getNotificationByAdmin/${id}`);
+  }
 }

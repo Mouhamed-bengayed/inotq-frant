@@ -87,8 +87,7 @@ export class AjouterPatientComponent implements OnInit, OnDestroy, AfterViewInit
   showNiveau = false;
   radioControl = new FormControl();
   showNiveauOptions = false;
-  @ViewChild('picker1') picker1!: MatDatepicker<any>;
-  picker2!: MatDatepicker<any>;
+ 
   showOtherCheckboxes = false;
   antalgiqueControl = new FormControl(false);
   isLinear = false;
