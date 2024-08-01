@@ -27,8 +27,7 @@
               <th style="color: #0da8ee">Date de création</th>
               <th style="color: #0da8ee">Statut Actuel </th>
               <th style="color: #0da8ee">Bloquer/Débloquer</th>
-              <th style="color: #0da8ee">Valider  </th>
-              <th style="color: #0da8ee">Réactiver </th>
+              <th style="color: #0da8ee">Valider/Réactiver  </th>
 
             </tr>
             </thead>
@@ -42,25 +41,34 @@
               <td>{{med.number}}</td>
               <td>{{med.date}}</td>
               <td>
-                <p style="color: whitesmoke" [ngClass]="{
-                    ' bg-danger ': med.status === 'compte est bloqué',
-                    'bg-primary ': med.status === 'compte est activé',
-                    'bg-warning ': med.status === 'En attente de réactivation',
-                     'bg-info ': med.status === 'En attente de validation',
-                    'bg-success ': med.status === 'compte réactivé'
-                }">{{med.status}}</p>
-              </td>              <td>
+              <b> <p [ngClass]="{
+              'text-danger': med.status === 'bloqué',
+              'text-success': med.status === 'activé' || med.status === 'réactivé',
+              'text-warning': med.status === 'en attente de réactivation',
+              'text-info': med.status === 'en attente de validation'
+              }">
+                  {{med.status}}
+                </p></b>
+
+
+              </td>
+              <td>
                 <button *ngIf="med.blockedByAdmin" (click)="DebloquerMedecin(med)" type="button" class="btn btn-success">Débloquer </button>
                 <button *ngIf="!med.blockedByAdmin" (click)="bloqueMedecinByAdmin(med)" type="button" class="btn btn-danger">Bloquer </button>
               </td>
               <td>
-                <button *ngIf="!med.validtologin" (click)="activateMedecin(med)" type="button" class="btn btn-primary">Valider </button>
-                <p *ngIf="med.validtologin" class="text-white bg-success">Ce compte est valide</p>
+                <ng-container *ngIf="!med.validtologin">
+                  <button (click)="activateMedecin(med)" type="button" class="btn btn-primary">Valider</button>
+                </ng-container>
+                <ng-container *ngIf="med.validtologin&&!med.askForReactivation">
+                 <b> <p class="text-success">valide</p></b>
+                </ng-container>
+
+                <ng-container *ngIf="med.askForReactivation">
+                  <button (click)="ReactivateCeMedecin(med)" type="button" class="btn btn-primary">Réactiver</button>
+                </ng-container>
               </td>
-              <td>
-                <button *ngIf="med.askForReactivation" (click)="ReactivateCeMedecin(med)" type="button" class="btn btn-primary">Réactiver </button>
-                <p *ngIf="!med.askForReactivation"  class="text-white bg-success"></p>
-              </td>
+
             </tr>
             </tbody>
           </table>
