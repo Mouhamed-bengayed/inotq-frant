@@ -203,7 +203,7 @@
 <br>
 
 <br>
-                              <mat-radio-group [formControl]="pincement22" (change)="onChange()"class="grid-container">
+                              <mat-radio-group [formControl]="pincement22" class="grid-container">
                                 <label  class="custom-label" >Tabac</label>
 
                                 <mat-radio-button class="grid-item" value="oui8">Oui</mat-radio-button>
@@ -329,7 +329,7 @@
 
                               <div  class="button-container">
                                 <button class="button  but left-button" mat-flat-button color="primary" mat-button matStepperNext><i class="fas fa-arrow-left"></i></button>
-                                <button  class="button but right-button" mat-flat-button color="primary" mat-button matStepperNext (click)="saveFirstForm()"><i class="fas fa-arrow-right"></i></button>
+                                <button  class=" bl-4 button but right-button" mat-flat-button color="primary" mat-button matStepperNext (click)="saveFirstForm()"><i class="fas fa-arrow-right"></i></button>
                               </div>
                               <br><br>
 
@@ -1198,7 +1198,7 @@
 
                                 <div class="button-container">
                                   <button  class="button" mat-button matStepperPrevious><i class="fas fa-arrow-left"></i></button>
-                                  <button  class="button" mat-button (click)="savePatientandQuit()">Enregistrer</button>
+                                  <button  class="button" mat-button (click)="savePatientandQuit()"><i class="fas fa-check"></i></button>
 
                                   <button  class="button" mat-button matStepperNext   (click)="savehypoteseForm()"><i class="fas fa-arrow-right"></i></button>
                                 </div>
@@ -1528,7 +1528,7 @@
                       <label class="custom-label">Etage</label>
                       <mat-radio-button  class="grid-item" value="1">L3L4</mat-radio-button>
                       <mat-radio-button  class="grid-item" value="2">L4L5</mat-radio-button>
-                      <mat-radio-button  class="grid-item" value="3">L5s1</mat-radio-button>
+                      <mat-radio-button  class="grid-item" value="3">L5S1</mat-radio-button>
                     </mat-radio-group>
                   </div>
 
@@ -1731,7 +1731,7 @@
   </div>
                             <div class="button-container">
                               <button  class="button" mat-button matStepperPrevious><i class="fas fa-arrow-left"></i></button>
-                              <button  class="button" mat-button (click)="savePatient()">Enregistrer</button>
+                              <button  class="button" mat-button (click)="savePatient()"><i class="fas fa-check"></i></button>
                             </div>
                         </form>
                           </mat-step>

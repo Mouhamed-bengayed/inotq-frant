@@ -18,16 +18,16 @@
           <table class="table align-items-center table-flush" id="dataTable">
             <thead class="thead-light">
             <tr>
-              <th style="color: #0da8ee">Id</th>
-              <th style="color: #0da8ee">Nom</th>
-              <th style="color: #0da8ee">Prénom</th>
-              <th style="color: #0da8ee">Email</th>
-              <th style="color: #0da8ee">Adresse</th>
-              <th style="color: #0da8ee">Numéro Telephone</th>
-              <th style="color: #0da8ee">Date de création</th>
-              <th style="color: #0da8ee">Statut Actuel </th>
-              <th style="color: #0da8ee">Bloquer/Débloquer</th>
-              <th style="color: #0da8ee">Valider/Réactiver  </th>
+              <th style="color: #6777EF">Id</th>
+              <th style="color: #6777EF">Nom</th>
+              <th style="color: #6777EF">Prénom</th>
+              <th style="color: #6777EF">Email</th>
+              <th style="color: #6777EF">Adresse</th>
+              <th style="color: #6777EF">Numéro Telephone</th>
+              <th style="color: #6777EF">Date de création</th>
+              <th style="color: #6777EF">Statut Actuel </th>
+              <th style="color: #6777EF">Bloquer/Activer/Réactiver</th>
+<!--              <th style="color: #0da8ee">Valider/Réactiver  </th>-->
 
             </tr>
             </thead>
@@ -53,19 +53,24 @@
 
               </td>
               <td>
-                <button *ngIf="med.blockedByAdmin" (click)="DebloquerMedecin(med)" type="button" class="btn btn-success">Débloquer </button>
-                <button *ngIf="!med.blockedByAdmin" (click)="bloqueMedecinByAdmin(med)" type="button" class="btn btn-danger">Bloquer </button>
-              </td>
-              <td>
-                <ng-container *ngIf="!med.validtologin">
-                  <button (click)="activateMedecin(med)" type="button" class="btn btn-primary">Valider</button>
+                <ng-container *ngIf="med.blockedByAdmin">
+                  <button style="width:80px;"  (click)="DebloquerMedecin(med)" type="button" class="btn btn-success">Débloquer </button>
+
                 </ng-container>
-                <ng-container *ngIf="med.validtologin&&!med.askForReactivation">
-                 <b> <p class="text-success">valide</p></b>
+                <ng-container *ngIf="!med.blockedByAdmin&&med.validtologin&&!med.askForReactivation">
+                  <button style="width:80px;" (click)="bloqueMedecinByAdmin(med)" type="button" class="btn  btn-danger">Bloquer </button>
+
                 </ng-container>
 
+                <ng-container *ngIf="!med.validtologin">
+                  <button style="width:80px;" (click)="activateMedecin(med)" type="button" class="btn btn-success">Valider</button>
+                </ng-container>
+<!--                <ng-container *ngIf="med.validtologin&&!med.askForReactivation">-->
+<!--                 <b> <p class="text-success">valide</p></b>-->
+<!--                </ng-container>-->
+
                 <ng-container *ngIf="med.askForReactivation">
-                  <button (click)="ReactivateCeMedecin(med)" type="button" class="btn btn-primary">Réactiver</button>
+                  <button style="width:80px;" (click)="ReactivateCeMedecin(med)" type="button" class="btn btn-success">Réactiver</button>
                 </ng-container>
               </td>
 

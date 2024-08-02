@@ -75,6 +75,7 @@
     flex-wrap: wrap; /* Pour s'assurer que les boutons s'adaptent aux petits écrans */
 
   }
+
 .but{
   /* Set height for round shape */
   border-radius: 50%;
@@ -336,11 +337,11 @@
 .fixed-button {
   position: fixed;
   /* Fixes the button to the screen */
-  top: 250px;
+  bottom:220px;
   /* Distance from the bottom of the screen */
-  right: 20px;
+  right: 35px;
   /* Distance from the right side of the screen */
-  background-color: #ff002f;
+  background-color: #E2504C;
   /* Button background color */
   color: white;
   /* Button text color */
@@ -396,6 +397,7 @@
 
 .button {
     padding: 15px 20px;
+  margin: 120px;
     background-color: #007bff;
     color: white;
     border: none;

@@ -292,6 +292,8 @@ console.error("user id",this.user.id);
     Tabac: new FormControl(''),
     motif_de_consultation:this.fb.array([]),
     motif_de_consultation_l: this.fb.array([]),
+    description_autres: new FormControl(''),
+
   });
 
   hypotheseFormGroup = new FormGroup({
@@ -319,6 +321,8 @@ console.error("user id",this.user.id);
     vie_sociale: new FormControl(''),
     voyage: new FormControl(''),
     resultatcalculateScore: new FormControl(''),
+    description_autres: new FormControl(''),
+
   });
 
   scorefinale:number=0;
@@ -717,6 +721,14 @@ isAutresChecked = false;
         Swal.fire("Continuez votre modification ", "", "info");
       }
     });
+  }
+
+  onChangePincement() {
+    if (this.pincement_discal.value === 'Oui') {
+      this.showNiveau = true;
+    } else {
+      this.showNiveau = false;
+    }
   }
 }
 
