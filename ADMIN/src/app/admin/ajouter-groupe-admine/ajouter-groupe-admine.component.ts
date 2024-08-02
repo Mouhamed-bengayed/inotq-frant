@@ -90,22 +90,7 @@ export class AjouterGroupeAdmineComponent implements OnInit {
     }
   }
 
-  supprimerGroupe(groupeId: number): void {
-    this.groupeMedService.deleteGroupeMed(groupeId).subscribe(
-      () => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Ce group est supprimé avec  succès',
-          showConfirmButton: false,
-          timer: 1500
-        });
-        this.rafraichirListe();
-      },
-      (error) => {
-        console.error('Error deleting group:', error);
-      }
-    );
-  }
+
 
   private getAllGroupes(): void {
     this.groupeMedService.getAllGroupeMed().subscribe(
@@ -167,19 +152,69 @@ export class AjouterGroupeAdmineComponent implements OnInit {
 
     return list;
   }
-
+//   supprimerGroupe(groupeId: number): void {
+//     this.groupeMedService.deleteGroupeMed(groupeId).subscribe(
+//       () => {
+//         Swal.fire({
+//           icon: 'success',
+//           title: 'Ce group est supprimé avec  succès',
+//           showConfirmButton: false,
+//           timer: 1500
+//         });
+//         this.rafraichirListe();
+//       },
+//       (error) => {
+//         console.error('Error deleting group:', error);
+//       }
+//     );
+//   }
+//   modifierGroupe(id: any) {
+//     this.groupeMedService.getGroupeMedById(id).subscribe(
+//       (groupe: any) => {
+//         Swal.fire({
+//           title:  ' <p style="color:whitesmoke;text-bold; background-color: #2e6da4;margin-top:35px">Modifier le groupe</p>',
+//           html: this.generateModifyFormHtml(groupe),
+//           showCloseButton: true,
+//           showConfirmButton: true,
+//           width: '40%',
+//           confirmButtonText: `
+//             modifier!
+// <!--    <i class="fa fa-thumbs-up"></i> m-->
+//   `,
+//
+//           focusConfirm: false,
+//           preConfirm: () => {
+//             const formValue = this.getModifyFormValues();
+//             if (!formValue) {
+//               Swal.showValidationMessage('Veuillez remplir tous les champs obligatoires.');
+//               return false;
+//             }
+//             return formValue;
+//           }
+//         }).then((result) => {
+//           if (result.isConfirmed) {
+//             this.Modifier(id, result.value);
+//           }
+//         });
+//       },
+//       (error) => {
+//         console.error('Error fetching group:', error);
+//       }
+//     );
+//   }
   modifierGroupe(id: any) {
     this.groupeMedService.getGroupeMedById(id).subscribe(
       (groupe: any) => {
         Swal.fire({
-          title:  ' <p style="color:whitesmoke;text-bold; background-color: #2e6da4;margin-top:35px">Modifier le groupe</p>',
+          title: '<p style="color:whitesmoke; font-weight:bold; background-color: #2e6da4; margin-top:35px">Modifier le groupe</p>',
           html: this.generateModifyFormHtml(groupe),
           showCloseButton: true,
           showConfirmButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Modifier',
+          cancelButtonText: 'Supprimer',
+          cancelButtonColor:'#d33',
           width: '40%',
-          confirmButtonText: `
-    <i class="fa fa-thumbs-up"></i> modifier!
-  `,
           focusConfirm: false,
           preConfirm: () => {
             const formValue = this.getModifyFormValues();
@@ -192,6 +227,8 @@ export class AjouterGroupeAdmineComponent implements OnInit {
         }).then((result) => {
           if (result.isConfirmed) {
             this.Modifier(id, result.value);
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            this.supprimerGroupe(id);
           }
         });
       },
@@ -201,11 +238,28 @@ export class AjouterGroupeAdmineComponent implements OnInit {
     );
   }
 
+  supprimerGroupe(groupeId: number): void {
+    this.groupeMedService.deleteGroupeMed(groupeId).subscribe(
+      () => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Ce groupe est supprimé avec succès',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.rafraichirListe();
+      },
+      (error) => {
+        console.error('Error deleting group:', error);
+      }
+    );
+  }
+
   private generateModifyFormHtml(groupe: any) {
     return `
       <form id="modify-group-form">
         <div class="form-group">
-          <label for="group-titre" style="color: rgb(103,119,239)">Modifier le titre</label>
+          <label for="group-titre" style="color: rgb(103,119,239)">Modifier le nom</label>
           <input type="text" class="form-control" id="group-titre" name="titre" value="${groupe.titre}" required>
         </div>
         <div class="form-group">

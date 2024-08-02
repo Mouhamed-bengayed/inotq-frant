@@ -76,10 +76,20 @@
 }
 
 .button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: rgb(33, 160, 75);
- 
+  margin: 120px;
+
+  padding: 15px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  /* Set height for round shape */
+  border-radius: 50%;
+  /* Rounded corners to make it a circle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
 }
 
 /* Pour des tailles d'écran plus petites, ajuster la taille des boutons */
@@ -91,7 +101,7 @@
 }
 /* Style au survol */
 .button:hover {
-  background-color: rgb(7, 128, 107);
+  background-color: rgb(7, 23, 128);
   /* Réduire légèrement l'opacité */
 }
 
@@ -230,7 +240,7 @@
 
 .custom-label-Testing{
   grid-column: span 2;
- 
+
 
 }
 

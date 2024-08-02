@@ -31,6 +31,7 @@ import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSet
 import { NgOtpInputModule } from 'ng-otp-input';
 import {environment} from "../environments/environment";
 import { ReactiveAccountComponent } from './FrontOffice/reactive-account/reactive-account.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ReactiveAccountComponent } from './FrontOffice/reactive-account/reactiv
 
 
     AdminLayoutModule,
+        FontAwesomeModule,
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],

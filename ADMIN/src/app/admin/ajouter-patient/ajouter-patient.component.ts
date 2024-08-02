@@ -8,11 +8,15 @@ import { AccountService } from 'src/app/Service/account.service';
 import swal from "sweetalert2";
 import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
+import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 
 @Component({
   selector: 'app-ajouter-patient',
   templateUrl: './ajouter-patient.component.html',
-  styleUrls: ['./ajouter-patient.component.css']
+  styleUrls: ['./ajouter-patient.component.css'],
+  // providers: [{
+  //   provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }
+  // }]
 })
 
 export class AjouterPatientComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -87,7 +91,7 @@ export class AjouterPatientComponent implements OnInit, OnDestroy, AfterViewInit
   showNiveau = false;
   radioControl = new FormControl();
   showNiveauOptions = false;
- 
+
   showOtherCheckboxes = false;
   antalgiqueControl = new FormControl(false);
   isLinear = false;
@@ -164,7 +168,7 @@ console.error("user id",this.user.id);
     this.formA = this.fb.group({
       telephone: ['', [Validators.required, telephoneValidator(),Validators.minLength(12)]]
     });
-    window.addEventListener('scroll', this.onScroll);
+    // window.addEventListener('scroll', this.onScroll);
 
   }
   ngAfterViewInit(): void {
@@ -183,23 +187,23 @@ console.error("user id",this.user.id);
     // window.removeEventListener('scroll', this.scrollHandler);
   }
 
-  onScroll(): void {
-    const fixedButtons = document.querySelector('.fixe-buttons') as HTMLElement;
-
-    if (!fixedButtons) {
-      console.warn('Element with class "fixed-buttons" not found');
-      return;
-    }
-
-    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const GOLDEN_SCROLL_RATIO = 0.95; // Adjust this ratio as needed
-
-    if (window.scrollY / scrollableHeight > GOLDEN_SCROLL_RATIO) {
-      fixedButtons.style.display = 'flex';
-    } else {
-      fixedButtons.style.display = 'none';
-    }
-  }
+  // onScroll(): void {
+  //   const fixedButtons = document.querySelector('.fixe-buttons') as HTMLElement;
+  //
+  //   if (!fixedButtons) {
+  //     console.warn('Element with class "fixed-buttons" not found');
+  //     return;
+  //   }
+  //
+  //   const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  //   const GOLDEN_SCROLL_RATIO = 0.95; // Adjust this ratio as needed
+  //
+  //   if (window.scrollY / scrollableHeight > GOLDEN_SCROLL_RATIO) {
+  //     fixedButtons.style.display = 'flex';
+  //   } else {
+  //     fixedButtons.style.display = 'none';
+  //   }
+  // }
 
   // onNextButtonClick(): void {
   //   switch (this.myStepper.selectedIndex) {
@@ -288,6 +292,8 @@ console.error("user id",this.user.id);
     Tabac: new FormControl(''),
     motif_de_consultation:this.fb.array([]),
     motif_de_consultation_l: this.fb.array([]),
+    description_autres: new FormControl(''),
+
   });
 
   hypotheseFormGroup = new FormGroup({
@@ -315,6 +321,8 @@ console.error("user id",this.user.id);
     vie_sociale: new FormControl(''),
     voyage: new FormControl(''),
     resultatcalculateScore: new FormControl(''),
+    description_autres: new FormControl(''),
+
   });
 
   scorefinale:number=0;
@@ -418,8 +426,8 @@ console.error("user id",this.user.id);
     n_symptomatologies: new FormControl(''),
     indication_chirurgicale: new FormControl(''),
     date: new FormControl(''),
-    Motif_de_consultation: new FormControl(''),
-    Motif_de_consultation_l: new FormControl(''),
+    motif_de_consultation: new FormControl(''),
+    motif_de_consultation_l: new FormControl(''),
 
   });
 
@@ -694,7 +702,7 @@ isAutresChecked = false;
     });
   }
 
-  yourButtonAction() {
+  quitter() {
     Swal.fire({
       title: "Etes-vous sûr ?",
       html: " Si vous quittez, toutes les modifications seront écrasées!",
@@ -713,6 +721,14 @@ isAutresChecked = false;
         Swal.fire("Continuez votre modification ", "", "info");
       }
     });
+  }
+
+  onChangePincement() {
+    if (this.pincement_discal.value === 'Oui') {
+      this.showNiveau = true;
+    } else {
+      this.showNiveau = false;
+    }
   }
 }
 
