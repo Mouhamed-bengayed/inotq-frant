@@ -293,15 +293,20 @@
 
                             <div *ngIf="pincementN.value === '3'">
                               <br><br>
-                              <label class="custom-label" style="padding-right: 30px;">Nouvelles symptomatologies</label>
-                              <div formArrayName="n_symptomatologies"class="grid-container">
-
+                              
+                              <div class="grid-container">
+                                <label class="custom-label" >Nouvelles symptomatologies</label>
                                 <mat-checkbox  class="grid-item" value="1" (change)="onCheckboxChange($event, 'motif_de_consultation')">Hyperalgique</mat-checkbox>
                                 <mat-checkbox  class="grid-item" value="2" (change)="onCheckboxChange($event, 'motif_de_consultation')">Déficitaire</mat-checkbox>
                                 <mat-checkbox  class="grid-item" value="3" (change)="onCheckboxChange($event, 'motif_de_consultation')">Apparition d'une claudication</mat-checkbox>
                                 <mat-checkbox  class="grid-item" value="4" (change)="onCheckboxChange($event, 'motif_de_consultation')">Pluriradiculaire</mat-checkbox>
                               </div>
                             </div>
+
+
+                 
+
+
                             <br><br>
 
                           
@@ -365,7 +370,7 @@
                                     <mat-radio-group aria-label="Select an option" [formControl]="intensityControl"class="grid-container">
                                       <label class="custom-label" >Intensité</label>
 
-                                      <mat-radio-button class="grid-item"  value="1">Invalidante</mat-radio-button>
+                                      <mat-radio-button class="grid-item" style="align-self: center;" value="1">Invalidante</mat-radio-button>
                                       <mat-radio-button class="grid-item"  value="2">Insomniante</mat-radio-button>
                                       <mat-radio-button class="grid-item"  value="3">Bien tolérée</mat-radio-button>
                                     </mat-radio-group>
@@ -373,8 +378,8 @@
                                     <br><br>
                                     <mat-radio-group aria-label="Select an option" [formControl]="modeControl"class="grid-container">
                                       <label class="custom-label" >Mode d'installation</label>
-                                      <mat-radio-button class="grid-item"  value="1">Brutale</mat-radio-button>
-                                      <mat-radio-button class="grid-item"  value="2">Progressive</mat-radio-button>
+                                      <mat-radio-button class="grid-item" style="align-self: center;" value="1">Brutale</mat-radio-button>
+                                      <mat-radio-button class="grid-item"  style="align-self: center;"value="2">Progressive</mat-radio-button>
                                     </mat-radio-group>
 
                                     <br><br>
@@ -651,8 +656,8 @@
                                     <mat-radio-group class="grid-container" aria-label="Select an option" formControlName="Amelioration_flexion_rachis">
                                       <label  class="custom-label" style="margin-right:17px" >Amélioration à la flexion du rachis  </label>
 
-                                                                            <mat-radio-button class="grid-item" value="1">Oui</mat-radio-button>
-                                                                            <mat-radio-button class="grid-item" value="2">Non</mat-radio-button>
+                                                                            <mat-radio-button class="grid-item" style="align-self: center;" value="1">Oui</mat-radio-button>
+                                                                            <mat-radio-button class="grid-item" style="align-self: center;"value="2">Non</mat-radio-button>
                                       </mat-radio-group>
                                       <br><br>
 

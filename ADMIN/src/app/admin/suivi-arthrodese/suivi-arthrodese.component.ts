@@ -23,7 +23,7 @@ export class SuiviArthrodeseComponent implements OnInit {
   checkboxControl8 = new FormControl(false);
   checkboxControl7 = new FormControl(false);
   checkboxControl9 = new FormControl(false);
-
+  checkboxControl998= new FormControl(false);
   checkboxControl10 = new FormControl(false);
   checkboxControl11 = new FormControl(false);
   checkboxControl12 = new FormControl(false);

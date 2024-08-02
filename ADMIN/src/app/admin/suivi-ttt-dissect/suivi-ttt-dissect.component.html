@@ -135,12 +135,13 @@
                                     <br><br>
                                     <div *ngIf="treatmentControl.value === 'Aggravation'">
                                       <br><br>
-                                      <label class="custom-label" style="padding-right: 30px;">Nouvelles symptomatologies</label>
-                                      <div formArrayName="evolution_nouvelles_symptomatologies">
-                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" (change)="onCheckboxChange($event, 'atcd')" value="1">Hyperalgique</mat-checkbox>
-                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" (change)="onCheckboxChange($event, 'atcd')" value="2">Déficitaire</mat-checkbox>
-                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" (change)="onCheckboxChange($event, 'atcd')" value="3">Apparition d'une claudication</mat-checkbox>
-                                        <mat-checkbox style="padding-right: 30px;" class="example-margin" (change)="onCheckboxChange($event, 'atcd')" value="4">Pluriradiculaire</mat-checkbox>
+                                      <div class="grid-container">
+                                        <label class="custom-label" >Nouvelles symptomatologies</label>
+                                       
+                                        <mat-checkbox  class="grid-item" value="1" (change)="onCheckboxChange($event, 'motif_de_consultation')">Hyperalgique</mat-checkbox>
+                                        <mat-checkbox  class="grid-item" value="2" (change)="onCheckboxChange($event, 'motif_de_consultation')">Déficitaire</mat-checkbox>
+                                        <mat-checkbox  class="grid-item"style="padding-right: 30px;" value="3" (change)="onCheckboxChange($event, 'motif_de_consultation')">Apparition d'une claudication</mat-checkbox>
+                                        <mat-checkbox  class="grid-item"style="padding-right: 35px;" value="4" (change)="onCheckboxChange($event, 'motif_de_consultation')">Pluriradiculaire</mat-checkbox>
                                       </div>
                                     </div>
 
