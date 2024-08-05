@@ -33,8 +33,8 @@
                                   <mat-checkbox class="custom-label" [formControl]="checkboxControl1" (change)="onChange()">Traitement Antalgique</mat-checkbox>
                                   <br>
                                   <mat-radio-group aria-label="Select an option" formControlName="indication_Antalgique" *ngIf="checkboxControl1.value">
-                                     <mat-radio-button style="padding-right: 30px;" value="1">AINS</mat-radio-button>
-                                     <mat-radio-button style="padding-right: 30px;" value="2">Corticoide</mat-radio-button>
+                                     <mat-radio-button style="padding-right: 30px;" class="test-testsens"value="1">AINS</mat-radio-button>
+                                     <mat-radio-button style="padding-right: 30px;" class="test-testsens"value="2">Corticoide</mat-radio-button>
 
                                   </mat-radio-group>
                              
@@ -53,40 +53,43 @@
                                   <mat-label>Numéro</mat-label>
                                   <input matInput formControlName="indication_Reeducation_Nbreseances" placeholder="Numéro " type="number">
                                 </mat-form-field>
+                                
+<br>
+                                <mat-checkbox class="custom-label" [formControl]="checkboxControl3" (change)="onChange()">Dissectomie</mat-checkbox>
                                 <br>
-
-                           
                               <mat-radio-group aria-label="Select an option" formControlName="indication_Dissectomie_etage" *ngIf="checkboxControl3.value">
-                                <label class="custom-label">Etage  </label>
+                                <label class="custom-label"style="padding-right: 30px;">Etage  </label>
 
-                                 <mat-radio-button style="padding-right: 30px;" value="1">L3L4</mat-radio-button>
-                                 <mat-radio-button style="padding-right: 30px;" value="2">L4L5</mat-radio-button>
-                                 <mat-radio-button style="padding-right: 30px;" value="3">L5s1</mat-radio-button>
+                                 <mat-radio-button style="padding-right: 30px;"class="test-testsens" value="1">L3-L4</mat-radio-button>
+                                 <mat-radio-button style="padding-right: 30px;" class="test-testsens"value="2">L4-L5</mat-radio-button>
+                                 <mat-radio-button style="padding-right: 30px;"class="test-testsens" value="3">L5-S1</mat-radio-button>
 
                               </mat-radio-group>
                             <br>
                             <mat-checkbox class="custom-label" [formControl]="checkboxControl4" (change)="onChange()">Libération post</mat-checkbox>
                               <br>
                               <mat-radio-group aria-label="Select an option" formControlName="indication_Liberation_etage" *ngIf="checkboxControl4.value">
-                                <label class="custom-label">Etage  </label>
+                                <label class="custom-label"style="padding-right: 30px;">Etage  </label>
 
-                               <mat-radio-button style="padding-right: 30px;" value="1">L3L4</mat-radio-button>
-                               <mat-radio-button  style="padding-right: 30px;"value="2">L4L5</mat-radio-button>
-                               <mat-radio-button style="padding-right: 30px;"value="3">L5s1</mat-radio-button>
+                               <mat-radio-button style="padding-right: 30px;" class="test-testsens"value="1">L3-L4</mat-radio-button>
+                               <mat-radio-button  style="padding-right: 30px;"class="test-testsens"value="2">L4-L5</mat-radio-button>
+                               <mat-radio-button style="padding-right: 30px;"class="test-testsens"value="3">L5-S1</mat-radio-button>
 
                             </mat-radio-group>
                           <br>
 
-                          <mat-checkbox class="custom-label" [formControl]="checkboxControl5" (change)="onChange()">Arthrodése</mat-checkbox>
+                          <mat-checkbox  class="custom-label"  style="padding-right: 30px;" [formControl]="checkboxControl13" (change)="onChange()">Arthrodése</mat-checkbox>
+                          
 
-                          <mat-checkbox-group class="custom-label"  formControlName="indication_Arthrodese" *ngIf="checkboxControl5.value">
-                          <br>
-                            <mat-checkbox style="padding-right: 30px;" value="option1">PLlF</mat-checkbox>
-                            <mat-checkbox style="padding-right: 30px;" value="option2">ALIF</mat-checkbox>
-                            <mat-checkbox style="padding-right: 30px;" value="option3">TLlF </mat-checkbox>
-                            <mat-checkbox style="padding-right: 30px;" value="option3">Postéro-latérale </mat-checkbox>
-                            <mat-checkbox style="padding-right: 30px;" value="option3">Auter </mat-checkbox>
-                          </mat-checkbox-group>
+                          <mat-radio-group aria-label="Select an option" formControlName="arthrodese_etage" *ngIf="checkboxControl13.value">
+<br>
+                            <mat-checkbox  style="padding-right: 30px;"  value="1">PLlF</mat-checkbox>
+                            <mat-checkbox  style="padding-right: 30px;"  value="2">Postérieure</mat-checkbox>
+                            <mat-checkbox  style="padding-right: 30px;"  value="3">Postéro-Iatérale</mat-checkbox>
+                            <mat-checkbox style="padding-right: 30px;"  value="3">OLIF</mat-checkbox>
+                            <mat-checkbox style="padding-right: 30px;"  value="3">ALlF</mat-checkbox>
+
+                          </mat-radio-group>
 
                                 <br>
                                 <mat-form-field>
@@ -94,7 +97,8 @@
                                   <input matInput formControlName="conclusion" placeholder="Conclusion">
                                 </mat-form-field>
                                 <div>
-                                  <button mat-flat-button color="primary" mat-button matStepperNext  (click)="addSuiviStafff()" >Next</button>
+                                  <button   class="button" mat-button matStepperNext (click)="addSuiviStafff()"><i class="fas fa-check"></i>  </button>
+
                                 </div>
                               </form>
                             </mat-step> 

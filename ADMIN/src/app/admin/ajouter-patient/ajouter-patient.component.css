@@ -27,7 +27,7 @@
 }
 
 .custom-label {
-    font-size: 12px;
+    font-size: 13px;
     /* Adjust the font size */
     color: #272727;
     /* Text color */
@@ -41,7 +41,7 @@
     /* Padding around the text */
     display: inline-block;
     /* Ensures margin and padding behave as expected */
-    background-color: #f7f5f5;
+    background-color: #fdf6f6;
     /* Background color */
     border-radius: 4px;
     /* Rounded corners */
@@ -202,9 +202,9 @@
 }
 
 .grid-item {
-    font-size: 10px;
+    font-size: 12px;
     padding-right: 20px;
-    padding: 1px;
+    padding: 2px;
     text-align: left;
     align-self: center;
 }

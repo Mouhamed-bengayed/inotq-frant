@@ -34,10 +34,10 @@
 
                               <label   class="custom-label"  style="padding-right: 30px; margin-right:10px;">Dossier médical </label>
 
-                              <mat-radio-group aria-label="Select an option" formControlName="dossierMedical">
-                                <mat-radio-button style="padding-right: 30px;"   style="padding-right: 30px;" value="1">IK</mat-radio-button>
-                                <mat-radio-button style="padding-right: 30px;" style="padding-right: 30px; " value="2">APC</mat-radio-button>
-                                <mat-radio-button style="padding-right: 30px;" style="padding-right: 30px; " value="3">Mongi Slim</mat-radio-button>
+                              <mat-radio-group aria-label="Select an option" formControlName="dossierMedical"style=" align-self: center">
+                                <mat-radio-button    style="padding-right: 30px;" value="1">IK</mat-radio-button>
+                                <mat-radio-button  style="padding-right: 30px;" value="2">APC</mat-radio-button>
+                                <mat-radio-button  style="padding-right: 30px;" value="3">Mongi Slim</mat-radio-button>
                               </mat-radio-group>
                               <br><br>
                               <mat-radio-group [formControl]="radioControl" (change)="onChange()">
@@ -96,11 +96,12 @@
                                 <mat-datepicker #picker2></mat-datepicker>
                               </mat-form-field>
                               <br><br>
-                              <label  class="custom-label" style="padding-right: 30px;"   style="padding-right: 30px;">Origine</label>
+                              <label  class="custom-label"  style="padding-right: 30px; margin-right:10px;" >Origine</label>
 
                               <mat-radio-group aria-label="Select an option" formControlName="origine">
-                                <mat-radio-button style="padding-right: 30px;"  style="padding-right: 30px;" value="1">Urbaine</mat-radio-button>
-                                <mat-radio-button style="padding-right: 30px;"  style="padding-right: 30px;" value="2">Rurale</mat-radio-button>
+
+                                <mat-radio-button style="padding-right: 30px;"   value="1">Urbaine</mat-radio-button>
+                                <mat-radio-button style="padding-right: 30px;"   value="2">Rurale</mat-radio-button>
                               </mat-radio-group>
                               <br><br>
 
@@ -285,7 +286,7 @@
                                         <br>
 
 
-
+<br>
                             <mat-radio-group aria-label="Select an option" [formControl]="pincementN" (change)="onChange()"class="grid-container">
                               <label class="custom-label " >Evolution</label>
                               <mat-radio-button class="grid-item" value="1">Amélioration partielle</mat-radio-button>
@@ -298,14 +299,17 @@
                               
                               <div class="grid-container">
                                 <label class="custom-label" >Nouvelles symptomatologies</label>
-                                <mat-checkbox  class="grid-item" value="1" (change)="onCheckboxChange($event, 'motif_de_consultation')">Hyperalgique</mat-checkbox>
-                                <mat-checkbox  class="grid-item" value="2" (change)="onCheckboxChange($event, 'motif_de_consultation')">Déficitaire</mat-checkbox>
-                                <mat-checkbox  class="grid-item" value="3" (change)="onCheckboxChange($event, 'motif_de_consultation')">Apparition d'une claudication</mat-checkbox>
-                                <mat-checkbox  class="grid-item" value="4" (change)="onCheckboxChange($event, 'motif_de_consultation')">Pluriradiculaire</mat-checkbox>
+                                <mat-checkbox  class="grid-item" value="1" >Hyperalgique</mat-checkbox>
+                                <mat-checkbox  class="grid-item" value="2" >Déficitaire</mat-checkbox>
+                                <mat-checkbox  class="grid-item" value="3" >Apparition d'une claudication</mat-checkbox>
+                                <mat-checkbox  class="grid-item" value="4" >Pluriradiculaire</mat-checkbox>
                               </div>
                             </div>
 
-
+                            <!-- (change)="onCheckboxChange($event, 'motif_de_consultation')"
+                            (change)="onCheckboxChange($event, 'motif_de_consultation')"
+                            (change)="onCheckboxChange($event, 'motif_de_consultation')"
+                            (change)="onCheckboxChange($event, 'motif_de_consultation')" -->
                  
 
 
@@ -330,6 +334,8 @@
 <br>
 <div *ngIf="treatmentControl.value === 'oui'">
   <mat-label class="custom-label" >Date </mat-label>
+  <br>
+  <br>
   <input  matInput [matDatepicker]="picker4" formControlName="Date_1consultation_medicale" placeholder="Date">
   <mat-datepicker-toggle matIconSuffix [for]="picker4"></mat-datepicker-toggle>
   <mat-datepicker #picker4></mat-datepicker>
@@ -690,7 +696,10 @@
                                       </mat-radio-group>
 
                                       <div *ngIf="pincement22.value === '1'">
+                                        <br>
+                                        <br>
                                         <mat-radio-group class="grid-container" aria-label="Select an option" formControlName="sonnette_Niveau">
+                                          
                                           <label class="custom-label" style="padding-right: 30px;">Niveau</label>
 
                                           <mat-radio-button class="grid-item"  value="1">L3</mat-radio-button>
@@ -700,9 +709,12 @@
                                         </mat-radio-group>
                                       </div>
                                       <div *ngIf="pincement22.value === '2'">
+                                        <br>
+                                        <br>
                                         <mat-radio-group class="grid-container" aria-label="Select an option" formControlName="sonnette_Niveau">
+                                       
                                           <label class="custom-label" style="padding-right: 30px;">Niveau</label>
-
+                  
                                           <mat-radio-button class="grid-item"  value="1">L3</mat-radio-button>
                                           <mat-radio-button class="grid-item"  value="2">L4</mat-radio-button>
                                           <mat-radio-button class="grid-item"  value="3">L5</mat-radio-button>
@@ -710,9 +722,11 @@
                                         </mat-radio-group>
                                       </div>
                                       <div *ngIf="pincement22.value === '3'">
+                                        <br>
+                                        <br>
                                         <mat-radio-group class="grid-container" aria-label="Select an option" formControlName="sonnette_Niveau">
+                                        
                                           <label class="custom-label" style="padding-right: 30px;">Niveau</label>
-
                                           <mat-radio-button class="grid-item"  value="1">L3</mat-radio-button>
                                           <mat-radio-button class="grid-item"  value="2">L4</mat-radio-button>
                                           <mat-radio-button class="grid-item"  value="3">L5</mat-radio-button>
@@ -796,7 +810,7 @@
                                             <br><br>
 
                                            <mat-radio-group class="grid-container" aria-label="Select an option" formControlName="marche_pointes_pieds">
-                                            <label  class="custom-label" style="margin-right:17px" >Marche sur les pointes des pieds  </label>
+                                            <label  class="custom-label"  >Marche sur les pointes des pieds  </label>
 
                                                <mat-radio-button class="grid-item" value="1">Oui</mat-radio-button>
                                                <mat-radio-button class="grid-item" value="2">Non</mat-radio-button>
@@ -1315,7 +1329,7 @@
                      <br><br>
 
                      <mat-radio-group class="grid-container" aria-label="Select an option"formControlName="anomalie_transitionnelle">
-                      <label  class="custom-label" style="margin-right:17px" >Anomalie transitionnelle</label>
+                      <label  class="custom-label"  >Anomalie transitionnelle</label>
 
                       <mat-radio-button class="grid-item" style="padding-right: 30px;" value="1">Sacralisation de L5
                      </mat-radio-button>
@@ -1691,7 +1705,7 @@
 
 
        <mat-radio-group class="grid-container" aria-label="Select an option"formControlName="iRM_Hypertrophie_jaunes">
-        <label  class="custom-label" style="margin-right:17px" >Hypertrophie de ligaments jaunes</label>
+        <label  class="custom-label" style="margin-right:15px" >Hypertrophie de ligaments jaunes</label>
 
         <mat-radio-button class="grid-item"  value="1">Oui</mat-radio-button>
         <mat-radio-button class="grid-item"  value="2">Non</mat-radio-button>
