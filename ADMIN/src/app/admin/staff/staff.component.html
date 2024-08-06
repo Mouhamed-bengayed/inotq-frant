@@ -3,9 +3,7 @@
         <div class="row bg-body ">
             <div class="col-md-12  " >
                 <div class="cardo">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Saisier les informations</h4>
-                    </div>
+                   
                     <div class="formbold-main-wrapper white-text bg-body" >
         
                           <mat-stepper>
@@ -29,7 +27,9 @@
                                  
                                 <br>
                                
-  
+                                <br>
+                                                              <label class="titer" style="padding-right: 30px;" > Indication  </label>
+                                                              <br><br>
                                   <mat-checkbox class="custom-label" [formControl]="checkboxControl1" (change)="onChange()">Traitement Antalgique</mat-checkbox>
                                   <br>
                                   <mat-radio-group aria-label="Select an option" formControlName="indication_Antalgique" *ngIf="checkboxControl1.value">
@@ -81,22 +81,29 @@
                           <mat-checkbox  class="custom-label"  style="padding-right: 30px;" [formControl]="checkboxControl13" (change)="onChange()">Arthrodése</mat-checkbox>
                           
 
-                          <mat-radio-group aria-label="Select an option" formControlName="arthrodese_etage" *ngIf="checkboxControl13.value">
-<br>
-                            <mat-checkbox  style="padding-right: 30px;"  value="1">PLlF</mat-checkbox>
-                            <mat-checkbox  style="padding-right: 30px;"  value="2">Postérieure</mat-checkbox>
-                            <mat-checkbox  style="padding-right: 30px;"  value="3">Postéro-Iatérale</mat-checkbox>
-                            <mat-checkbox style="padding-right: 30px;"  value="3">OLIF</mat-checkbox>
-                            <mat-checkbox style="padding-right: 30px;"  value="3">ALlF</mat-checkbox>
+                          <mat-radio-group aria-label="Select an option" formControlName="arthrodese_etage" *ngIf="checkboxControl13.value" (change)="onChange()">
+<br><br>
+                            <mat-checkbox  style="padding-right: 30px;" (change)="onCheckboxChange($event, 'arthrodese_etage')"  value="1">PLlF</mat-checkbox>
+                            <mat-checkbox  style="padding-right: 30px;" (change)="onCheckboxChange($event, 'arthrodese_etage')"  value="2">Postérieure</mat-checkbox>
+                            <mat-checkbox  style="padding-right: 30px;" (change)="onCheckboxChange($event, 'arthrodese_etage')"  value="3">Postéro-Iatérale</mat-checkbox>
+                            <mat-checkbox style="padding-right: 30px;" (change)="onCheckboxChange($event, 'arthrodese_etage')"  value="3">OLIF</mat-checkbox>
+                            <mat-checkbox style="padding-right: 30px;" (change)="onCheckboxChange($event, 'arthrodese_etage')"  value="3">ALlF</mat-checkbox>
 
                           </mat-radio-group>
+                          <br>
+<mat-form-field >
+  <mat-label >Autres Arthrodése
+  </mat-label>
+  <input matInput formControlName="description_autres" placeholder="Description" type="text">
+</mat-form-field>
 
+                                <br>
                                 <br>
                                 <mat-form-field>
                                   <mat-label class="custom-label"> Conclusion</mat-label>
                                   <input matInput formControlName="conclusion" placeholder="Conclusion">
                                 </mat-form-field>
-                                <div>
+                                <div class="button-container">
                                   <button   class="button" mat-button matStepperNext (click)="addSuiviStafff()"><i class="fas fa-check"></i>  </button>
 
                                 </div>

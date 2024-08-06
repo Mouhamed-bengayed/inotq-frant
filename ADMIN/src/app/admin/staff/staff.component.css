@@ -335,42 +335,6 @@
 
 
 
-.fixed-button {
-  position: fixed;
-  /* Fixes the button to the screen */
-  bottom:220px;
-  /* Distance from the bottom of the screen */
-  right: 35px;
-  /* Distance from the right side of the screen */
-  background-color: #E2504C;
-  /* Button background color */
-  color: white;
-  /* Button text color */
-  border: none;
-  /* Remove border */
-  padding: 10px;
-  /* Button padding, make it equal to ensure round shape */
-  width: 50px;
-  /* Set width for round shape */
-  height: 50px;
-  /* Set height for round shape */
-  border-radius: 50%;
-  /* Rounded corners to make it a circle */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  /* Button shadow */
-  cursor: pointer;
-  /* Change cursor to pointer on hover */
-  z-index: 1000;
-  /* Ensure the button is above other content */
-  display: flex;
-  /* Center align text */
-  align-items: center;
-  /* Center align text */
-  justify-content: center;
-  /* Center align text */
-  font-size: 16px;
-  /* Adjust text size */
-}
 
 
 .fixed-button:hover {
@@ -416,13 +380,13 @@
 }
 
 .left-button {
-    margin-left: 10px;
+    margin-left: 50px;
 }
 
 .right-button {
-    margin-right: 10px;
+    margin-right: 50px;
 }
 
 .main-content {
-    padding-bottom: 60px;
+    padding-bottom: center;
 }

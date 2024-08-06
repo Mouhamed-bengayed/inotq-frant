@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
 import { PatientService } from '../Services/patient.service';
 import { MatDatepicker } from '@angular/material/datepicker';
 
@@ -22,7 +22,7 @@ export class StaffComponent implements OnInit {
 
 
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
-  constructor( private patientService: PatientService) { }
+  constructor( private patientService: PatientService,private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -35,7 +35,7 @@ export class StaffComponent implements OnInit {
       indication_Reeducation_Nbreseances: new FormControl(''),
       indication_Dissectomie_etage: new FormControl(''),
       indication_Liberation_etage: new FormControl(''),
-      indication_Arthrodese: new FormControl(''),
+      indication_Arthrodese: this.fb.array([]),
       conclusion: new FormControl(''),
   });
 
@@ -70,6 +70,16 @@ export class StaffComponent implements OnInit {
     }
   }
   
+}
+onCheckboxChange(event: any, formArrayName: string) {
+  const formArray: FormArray = this.firstFormGroup.get(formArrayName) as FormArray;
+
+  if (event.checked) {
+    formArray.push(this.fb.control(event.source.value));
+  } else {
+    const index = formArray.controls.findIndex(x => x.value === event.source.value);
+    formArray.removeAt(index);
+  }
 }
 
 }
