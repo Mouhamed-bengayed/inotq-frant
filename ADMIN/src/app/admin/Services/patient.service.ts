@@ -25,6 +25,7 @@ export class PatientService {
       createsuiviImedia(patient: any): Observable<any> {
         return this.httpClient.post("http://localhost:8082/api/Suivi1/register/suivi1Post-Immediatt/", patient);
       }
+
       createsuivitttDissect(patient: any): Observable<any> {
         return this.httpClient.post("http://localhost:8082/api/Suivi1/register/Suivi_ttt_Dissect/", patient);
       }

@@ -414,6 +414,8 @@ console.error("user id",this.user.id);
 
   });
   symptomatologieFormGroup = new FormGroup({
+    typeCont : new FormControl(''),
+
     date_debut_maladie: new FormControl(''),
     facture_declanchants: new FormControl(''),
     Date_1consultation_medicale: new FormControl(''),
