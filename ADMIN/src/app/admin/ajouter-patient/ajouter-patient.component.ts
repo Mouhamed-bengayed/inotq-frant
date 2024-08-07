@@ -426,8 +426,8 @@ console.error("user id",this.user.id);
     n_symptomatologies: new FormControl(''),
     indication_chirurgicale: new FormControl(''),
     date: new FormControl(''),
-    motif_de_consultation: new FormControl(''),
-    motif_de_consultation_l: new FormControl(''),
+    // motif_de_consultation: new FormControl(''),
+    // motif_de_consultation_l: new FormControl(''),
 
   });
 
@@ -664,7 +664,14 @@ isAutresChecked = false;
   this.patientService.createPatient(patientData,this.user.id).subscribe(
     (response) => {
 
-      console.log("Patient enregistré avec succès : ", response);
+      // Try me!
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Fiche Patient est enregistrée !",
+        showConfirmButton: false,
+        timer: 1500
+      });
       localStorage.removeItem('FirstFormData');
       localStorage.removeItem('secondFormGroupData');
       localStorage.removeItem('symptomatologieFormGroupData');
@@ -680,7 +687,6 @@ isAutresChecked = false;
 }
 
   savePatientandQuit() {
-    this.savePatient();
     Swal.fire({
       icon:'warning',
       title: "Voulez-vous enregistrer cette fiche ?",
@@ -692,6 +698,8 @@ isAutresChecked = false;
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
+        this.savePatient();
+
         Swal.fire(
           "Fiche Patient est enregistrée avec succéss!",
           "", "success");

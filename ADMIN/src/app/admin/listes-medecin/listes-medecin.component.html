@@ -26,7 +26,7 @@
               <th style="color: #6777EF">Numéro Telephone</th>
               <th style="color: #6777EF">Date de création</th>
               <th style="color: #6777EF">Statut Actuel </th>
-              <th style="color: #6777EF">Bloquer/Activer/Réactiver</th>
+              <th style="color: #6777EF">Bloquer/Valider/Réactiver</th>
 <!--              <th style="color: #0da8ee">Valider/Réactiver  </th>-->
 
             </tr>
@@ -39,7 +39,7 @@
               <td>{{med.email}}</td>
               <td>{{med.addresse}}</td>
               <td>{{med.number}}</td>
-              <td>{{med.date}}</td>
+              <td>{{formatDate(med.date)}}</td>
               <td>
               <b> <p [ngClass]="{
               'text-danger': med.status === 'bloqué',

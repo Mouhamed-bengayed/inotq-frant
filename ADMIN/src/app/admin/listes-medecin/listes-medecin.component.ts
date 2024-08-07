@@ -15,6 +15,10 @@ export class ListesMedecinComponent implements OnInit {
   constructor(private medecinService :MedecinService) {
     this.medecinService=medecinService;
    }
+  formatDate(timestamp: any): string {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
 
   ngOnInit(): void {
     this.getAllMedecin();

@@ -82,6 +82,7 @@ export class AjouterGroupeAdmineComponent implements OnInit {
             timer: 1500
           });
           this.rafraichirListe();
+          this.groupForm.reset();
         },
         (error) => {
           console.error('Error adding group:', error);

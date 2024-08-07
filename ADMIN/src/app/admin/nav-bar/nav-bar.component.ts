@@ -12,27 +12,31 @@ import Swal from 'sweetalert2';
 export class NavBarComponent implements OnInit {
   user: any;
   Notifications: Notification[] = [];
-
+  iduser:any;
   constructor(
     private accountService: AccountService,
     private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
-    //this.user = this.accountService.CurrentUserInfoSubject.getValue();
-    this.user = localStorage.getItem('user');
-    const user = JSON.parse(this.user);
+    this.user = this.accountService.CurrentUserInfoSubject.getValue();
+    // this.user = localStorage.getItem('myuserinfo');
+    this.iduser=this.user.id;
+    console.log(this.iduser);
+    // const user = JSON.parse(this.user);
+    this.loadNotificationsByUser(this.iduser);
 
-    if (user.authorities && Array.isArray(user.authorities) && user.authorities.length > 0) {
-      const userAuthority = user.authorities[0].authority;
-
-      if (userAuthority === "ROLE_ADMIN") {
-        this.loadAdminNotifications(this.user.id);
-      }
-      else{
-        this.loadNotificationsByUser(this.user.id);
-      }
-  }}
+  //   if (user.authorities && Array.isArray(user.authorities) && user.authorities.length > 0) {
+  //     const userAuthority = user.authorities[0].authority;
+  //
+  //     if (userAuthority === "ROLE_ADMIN") {
+  //       this.loadAdminNotifications(this.iduser);
+  //     }
+  //     else{
+  //       this.loadNotificationsByUser(this.iduser);
+  //     }
+  // }
+    }
 
   loadNotificationsByUser(id: any): void {
     this.notificationService.getNotificationByUser(id).subscribe((data) => {

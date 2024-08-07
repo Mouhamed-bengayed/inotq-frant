@@ -30,47 +30,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12 col-md-6">
-            <div class="panel panel-white border-top-purple">
-              <div class="panel-heading">
-                <h3 class="panel-title">Description</h3>
-                <div class="controls pull-right">
-                  <span class="pull-right clickable">
-                    <i class="fa fa-chevron-up"></i>
-                  </span>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div class="body-section">
-                  <h5 class="section-heading">À propos</h5>
-                  <p (dblclick)="enableEdit('descreption_Personelle')" *ngIf="!editMode.descreption_Personelle && user.descreption_Personelle">{{user.descreption_Personelle}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.descreption_Personelle && !editMode.descreption_Personelle" (click)="enableEdit('descreption_Personelle')"></i>
-                  <input *ngIf="editMode.descreption_Personelle" [(ngModel)]="user.descreption_Personelle" (blur)="disableEdit('descreption_Personelle')" />
-                </div>
-                <div class="body-section">
-                  <h5 class="section-heading">Spécialité</h5>
-                  <p (dblclick)="enableEdit('specialite')" *ngIf="!editMode.specialite && user.specialite">{{user.specialite}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.specialite && !editMode.specialite" (click)="enableEdit('specialite')"></i>
-                  <input *ngIf="editMode.specialite" [(ngModel)]="user.specialite" (blur)="disableEdit('specialite')" />
-                </div>
-                <div class="body-section">
-                  <h5 class="section-heading">Historique Educative</h5>
-                  <p (dblclick)="enableEdit('lieu_deducation')" *ngIf="!editMode.lieu_deducation && user.lieu_deducation">{{user.lieu_deducation}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.lieu_deducation && !editMode.lieu_deducation" (click)="enableEdit('lieu_deducation')"></i>
-                  <input *ngIf="editMode.lieu_deducation" [(ngModel)]="user.lieu_deducation" (blur)="disableEdit('lieu_deducation')" />
-                </div>
-                <div class="body-section">
-                  <h5 class="section-heading">L'experience</h5>
-                  <p (dblclick)="enableEdit('annee_dexperience')" *ngIf="!editMode.annee_dexperience && user.annee_dexperience">{{user.annee_dexperience}}</p>
-                  <i class="fa fa-plus" *ngIf="!user.annee_dexperience && !editMode.annee_dexperience" (click)="enableEdit('annee_dexperience')"></i>
-                  <input *ngIf="editMode.annee_dexperience" [(ngModel)]="user.annee_dexperience" (blur)="disableEdit('annee_dexperience')" />
-                </div>
-                <div class="body-section">
-                  <button class="btn btn-purple btn-sm" (click)="saveChanges()">Enregistrer les changements</button>
-                </div>
-              </div>
-            </div>
-          </div>
+
           <div class="col-12 col-md-6">
             <div class="panel panel-white border-top-green">
               <div class="panel-heading">
@@ -120,6 +80,47 @@
                 </div>
                 <div class="body-section">
                   <button class="btn btn-green btn-sm" (click)="saveChanges()">Enregistrer les changements</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="panel panel-white border-top-purple">
+              <div class="panel-heading">
+                <h3 class="panel-title">Description</h3>
+                <div class="controls pull-right">
+                  <span class="pull-right clickable">
+                    <i class="fa fa-chevron-up"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="body-section">
+                  <h5 class="section-heading">À propos</h5>
+                  <p (dblclick)="enableEdit('descreption_Personelle')" *ngIf="!editMode.descreption_Personelle && user.descreption_Personelle">{{user.descreption_Personelle}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.descreption_Personelle && !editMode.descreption_Personelle" (click)="enableEdit('descreption_Personelle')"></i>
+                  <input *ngIf="editMode.descreption_Personelle" [(ngModel)]="user.descreption_Personelle" (blur)="disableEdit('descreption_Personelle')" />
+                </div>
+                <div class="body-section">
+                  <h5 class="section-heading">Spécialité</h5>
+                  <p (dblclick)="enableEdit('specialite')" *ngIf="!editMode.specialite && user.specialite">{{user.specialite}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.specialite && !editMode.specialite" (click)="enableEdit('specialite')"></i>
+                  <input *ngIf="editMode.specialite" [(ngModel)]="user.specialite" (blur)="disableEdit('specialite')" />
+                </div>
+                <div class="body-section">
+                  <h5 class="section-heading">Historique Educative</h5>
+                  <p (dblclick)="enableEdit('lieu_deducation')" *ngIf="!editMode.lieu_deducation && user.lieu_deducation">{{user.lieu_deducation}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.lieu_deducation && !editMode.lieu_deducation" (click)="enableEdit('lieu_deducation')"></i>
+                  <input *ngIf="editMode.lieu_deducation" [(ngModel)]="user.lieu_deducation" (blur)="disableEdit('lieu_deducation')" />
+                </div>
+                <div class="body-section">
+                  <h5 class="section-heading">L'experience</h5>
+                  <p (dblclick)="enableEdit('annee_dexperience')" *ngIf="!editMode.annee_dexperience && user.annee_dexperience">{{user.annee_dexperience}}</p>
+                  <i class="fa fa-plus" *ngIf="!user.annee_dexperience && !editMode.annee_dexperience" (click)="enableEdit('annee_dexperience')"></i>
+                  <input *ngIf="editMode.annee_dexperience" [(ngModel)]="user.annee_dexperience" (blur)="disableEdit('annee_dexperience')" />
+                </div>
+                <div class="body-section">
+                  <button class="btn btn-purple btn-sm" (click)="saveChanges()">Enregistrer les changements</button>
                 </div>
               </div>
             </div>

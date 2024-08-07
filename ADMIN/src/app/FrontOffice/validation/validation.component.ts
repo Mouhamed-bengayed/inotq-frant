@@ -15,10 +15,10 @@ export class ValidationComponent {
   test: Date = new Date();
 
   title = 'otp-app';
-  newotp: OTP | undefined; 
+  newotp: OTP | undefined;
 
   otp!: string;
-  inputDigitLeft: string = "Verify code";
+  inputDigitLeft: string = "Verifier le code";
   btnStatus: string = "btn-light";
 
   public configOptions = {
@@ -26,9 +26,9 @@ export class ValidationComponent {
     inputClass: 'digit-otp',
     containerClass: 'd-flex justify-content-between'
   }
-  
+
   ngOnInit() {
-   
+
   }
 
   onOtpChange(event: any) {
@@ -39,35 +39,35 @@ export class ValidationComponent {
     }
 
     if (this.otp.length === this.configOptions.length )  {
-      
+
       this.otpservice.verifyOTP(this.otp).subscribe(result => {
         if (result==true) {
           //console.log(result);
           this.otpservice.userstatus(this.email, result).subscribe(resp => {
           this.inputDigitLeft = "Let's go!";
           this.btnStatus = 'btn-primary';
-            
+
           } ,(error) => {
             console.error('Error while verifying OTP:', error);
-            
+
           });
         }
          else {
           // Faire quelque chose si le résultat est faux
-          this.inputDigitLeft = "Invalid OTP"; 
-        this.btnStatus = 'btn-danger'; 
+          this.inputDigitLeft = "Invalid OTP";
+        this.btnStatus = 'btn-danger';
         }
-          
+
       });
-           
+
     }
   }
 
   isButtonClicked = false;
   onButtonClick() {
-    if (this.inputDigitLeft === "Let's go!") {
+    if (this.inputDigitLeft === "Allez!") {
       this.isButtonClicked = true;
-      this.router.navigate(['/signin']); 
+      this.router.navigate(['/signin']);
     }
   }
   resend() {
@@ -79,8 +79,8 @@ export class ValidationComponent {
       console.error('Error while resending OTP:', error);
       Swal.fire("Erreur survenue essayer une autre fois !");
     }
-    
-    
+
+
     );
   }
 }

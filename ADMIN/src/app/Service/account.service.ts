@@ -112,7 +112,7 @@ export class AccountService {
         localStorage.removeItem('user');
         this.userSubject.next(null);
         this.CurrentUserInfoSubject.next(null);
-        this.router.navigate(['/signin']);
+        this.router.navigate(['/signIn']);
     }
 
     register(user: User) {
