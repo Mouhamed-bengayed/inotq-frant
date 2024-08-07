@@ -63,7 +63,7 @@
                                  <mat-radio-button style="padding-right: 30px;"class="test-testsens" value="1">L3-L4</mat-radio-button>
                                  <mat-radio-button style="padding-right: 30px;" class="test-testsens"value="2">L4-L5</mat-radio-button>
                                  <mat-radio-button style="padding-right: 30px;"class="test-testsens" value="3">L5-S1</mat-radio-button>
-
+                                 <br>
                               </mat-radio-group>
                             <br>
                             <mat-checkbox class="custom-label" [formControl]="checkboxControl4" (change)="onChange()">Libération post</mat-checkbox>
@@ -74,27 +74,27 @@
                                <mat-radio-button style="padding-right: 30px;" class="test-testsens"value="1">L3-L4</mat-radio-button>
                                <mat-radio-button  style="padding-right: 30px;"class="test-testsens"value="2">L4-L5</mat-radio-button>
                                <mat-radio-button style="padding-right: 30px;"class="test-testsens"value="3">L5-S1</mat-radio-button>
-
+                               <br>
                             </mat-radio-group>
                           <br>
 
                           <mat-checkbox  class="custom-label"  style="padding-right: 30px;" [formControl]="checkboxControl13" (change)="onChange()">Arthrodése</mat-checkbox>
                           
 
-                          <mat-radio-group aria-label="Select an option" formControlName="arthrodese_etage" *ngIf="checkboxControl13.value" (change)="onChange()">
+                          <mat-radio-group aria-label="Select an option" formControlName="indication_Arthrodese" *ngIf="checkboxControl13.value" (change)="onChange()">
 <br><br>
-                            <mat-checkbox  style="padding-right: 30px;" (change)="onCheckboxChange($event, 'arthrodese_etage')"  value="1">PLlF</mat-checkbox>
-                            <mat-checkbox  style="padding-right: 30px;" (change)="onCheckboxChange($event, 'arthrodese_etage')"  value="2">Postérieure</mat-checkbox>
-                            <mat-checkbox  style="padding-right: 30px;" (change)="onCheckboxChange($event, 'arthrodese_etage')"  value="3">Postéro-Iatérale</mat-checkbox>
-                            <mat-checkbox style="padding-right: 30px;" (change)="onCheckboxChange($event, 'arthrodese_etage')"  value="3">OLIF</mat-checkbox>
-                            <mat-checkbox style="padding-right: 30px;" (change)="onCheckboxChange($event, 'arthrodese_etage')"  value="3">ALlF</mat-checkbox>
+                            <mat-checkbox  style="padding-right: 30px;" (change)="onCheckboxChange($event, 'indication_Arthrodese')"  value="1">PLlF</mat-checkbox>
+                            <mat-checkbox  style="padding-right: 30px;" (change)="onCheckboxChange($event, 'indication_Arthrodese')"  value="2">Postérieure</mat-checkbox>
+                            <mat-checkbox  style="padding-right: 30px;" (change)="onCheckboxChange($event, 'indication_Arthrodese')"  value="3">Postéro-Iatérale</mat-checkbox>
+                            <mat-checkbox style="padding-right: 30px;" (change)="onCheckboxChange($event, 'indication_Arthrodese')"  value="4">OLIF</mat-checkbox>
+                            <mat-checkbox style="padding-right: 30px;" (change)="onCheckboxChange($event, 'indication_Arthrodese')"  value="5">ALlF</mat-checkbox>
 
                           </mat-radio-group>
                           <br>
 <mat-form-field >
   <mat-label >Autres Arthrodése
   </mat-label>
-  <input matInput formControlName="description_autres" placeholder="Description" type="text">
+  <input matInput formControlName="autreindication_Arthrodese" placeholder="Description" type="text">
 </mat-form-field>
 
                                 <br>

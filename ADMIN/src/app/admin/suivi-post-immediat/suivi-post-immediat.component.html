@@ -62,13 +62,13 @@
                               <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl3" (change)="onChange()">Arthrodése</mat-checkbox>
                               <br>
 
-                              <mat-radio-group aria-label="Select an option" formControlName="arthrodese_etage" *ngIf="checkboxControl3.value">
+                              <mat-radio-group aria-label="Select an option" formControlName="arthrodese_etage" *ngIf="checkboxControl3.value"(change)="onChange()">
 <br>
-                                <mat-checkbox  style="padding-right: 30px;"  value="1">PLlF</mat-checkbox>
-                                <mat-checkbox  style="padding-right: 30px;"  value="2">Postérieure</mat-checkbox>
-                                <mat-checkbox  style="padding-right: 30px;"  value="3">Postéro-Iatérale</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;"  value="3">OLIF</mat-checkbox>
-                                <mat-checkbox style="padding-right: 30px;"  value="3">ALlF</mat-checkbox>
+                                <mat-checkbox  style="padding-right: 30px;"  (change)="onCheckboxChange($event, 'arthrodese_etage')"value="1">PLlF</mat-checkbox>
+                                <mat-checkbox  style="padding-right: 30px;"  (change)="onCheckboxChange($event, 'arthrodese_etage')"value="2">Postérieure</mat-checkbox>
+                                <mat-checkbox  style="padding-right: 30px;"  (change)="onCheckboxChange($event, 'arthrodese_etage')"value="3">Postéro-Iatérale</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;"  (change)="onCheckboxChange($event, 'arthrodese_etage')"value="4">OLIF</mat-checkbox>
+                                <mat-checkbox style="padding-right: 30px;"  (change)="onCheckboxChange($event, 'arthrodese_etage')"value="5">ALlF</mat-checkbox>
 
                               </mat-radio-group>
 
@@ -123,9 +123,9 @@
                               </mat-radio-group>
                             <br><br>
                             <mat-checkbox  class="custom-label" class="example-margin" [formControl]="checkboxControl3" (change)="onChange()">Cruralgie</mat-checkbox>
-
+                            <br>
                             <mat-radio-group aria-label="Select an option" formControlName="arthrodese" *ngIf="checkboxControl3.value">
-<br>
+
                               <mat-radio-button style="padding-right: 30px;"  value="1">Diminution</mat-radio-button>
                                    <mat-radio-button style="padding-right: 30px;"  value="2">Persistence</mat-radio-button>
                                    <mat-radio-button style="padding-right: 30px;"  value="3">Aggravation</mat-radio-button>
@@ -148,11 +148,13 @@
                                       </div>
 
                                       <br>
-                                      <mat-checkbox style="padding-right: 30px;" value="1">Constipation</mat-checkbox>
+                                      <div formControlName="trouble_vesico_sphincteriens"(change)="onChange()">
+                                      <mat-checkbox style="padding-right: 30px;" (change)="onCheckboxChange($event, 'trouble_vesico_sphincteriens')"value="1">Constipation</mat-checkbox>
                                       <br>
-                                      <mat-checkbox style="padding-right: 30px;" value="1">Incontinence anale</mat-checkbox>
+                                      <mat-checkbox style="padding-right: 30px;" (change)="onCheckboxChange($event, 'trouble_vesico_sphincteriens')"value="2">Incontinence anale</mat-checkbox>
                                       <br>
-                                      <mat-checkbox style="padding-right: 30px;" value="1">Impériosité urinaire</mat-checkbox>
+                                      <mat-checkbox style="padding-right: 30px;" (change)="onCheckboxChange($event, 'trouble_vesico_sphincteriens')"value="3">Impériosité urinaire</mat-checkbox>
+                                    </div>
                                     </div>
                                     <br>
                                     <br>
@@ -330,7 +332,7 @@
                                                <div class="button-container">
                                                 <button  class="button" mat-button matStepperPrevious><i class="fas fa-arrow-left"></i></button>
 
-                                                <button   class="button" mat-button matStepperNext (click)="saveExamen_op()"><i class="fas fa-check"></i>  </button>
+                                                <button   class="button" mat-button matStepperNext (click)="addsuiviImed()"><i class="fas fa-check"></i>  </button>
                                               </div>
 
                               </form>

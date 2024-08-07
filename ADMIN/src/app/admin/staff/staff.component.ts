@@ -36,11 +36,11 @@ export class StaffComponent implements OnInit {
       indication_Dissectomie_etage: new FormControl(''),
       indication_Liberation_etage: new FormControl(''),
       indication_Arthrodese: this.fb.array([]),
+      autreindication_Arthrodese: new FormControl(''),
       conclusion: new FormControl(''),
   });
 
   addSuiviStafff() {
-    if (this.firstFormGroup.valid) {
       const patient = this.firstFormGroup.value;
       this.patientService.createSuiviStafff(patient).subscribe(
         (response) => {
@@ -52,7 +52,7 @@ export class StaffComponent implements OnInit {
           console.log('Erreur lors de l\'ajout du patient : ', error);
         }
       );
-    }
+    
   }
 
   

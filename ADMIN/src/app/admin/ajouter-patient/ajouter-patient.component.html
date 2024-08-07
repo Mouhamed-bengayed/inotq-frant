@@ -414,12 +414,12 @@
 
                                   <div *ngIf="checkboxControl12.value">
                                     <br><br>
-                                    <mat-radio-group class="grid-container" aria-label="Select an option" [formControl]="typeControl">
+                                    <div class="grid-container" aria-label="Select an option" formControlName="typeCont">
                                       <label class="custom-label" style="padding-right: 30px;">Loalisation</label>
 
                                       <mat-radio-button  class="grid-item"  value="1">L5</mat-radio-button>
                                       <mat-radio-button  class="grid-item"  value="2">S1</mat-radio-button>
-                                    </mat-radio-group>
+                                    </div>
                                     <br><br>
                                     <mat-radio-group class="grid-container" aria-label="Select an option" [formControl]="typeControl">
                                       <label class="custom-label" style="padding-right: 30px;">Coté</label>

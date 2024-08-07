@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PatientService } from '../Services/patient.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
@@ -29,7 +29,7 @@ export class SuiviPostImmediatComponent implements OnInit {
   showOtherCheckboxes = false;
   antalgiqueControl = new FormControl(false);
 
-  constructor( private patientService: PatientService) { }
+  constructor( private patientService: PatientService,private fb: FormBuilder) { }
 
   firstFormGroup = new FormGroup({
      date_chirurgie: new FormControl(''),
@@ -92,71 +92,48 @@ thridFormGroup = new FormGroup({
   savesymptomatologieFormGroup(){
     const symptomatologieFormGroupData = this.symptomatologieFormGroup.value;
       localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData));
-    
-
   }
   savethridForm() {
     const thridFormGroupData1 = this.thridFormGroup.value;
       localStorage.setItem('thridFormGroupData', JSON.stringify(thridFormGroupData1));
-
-  
    }
   savesFirstFormGroup(){
     const firstFormGroupData = this.firstFormGroup.value;
       localStorage.setItem('firstFormGroup', JSON.stringify(firstFormGroupData));
-    
-
   }
+
   addsuiviImed() {
-    if (this.firstFormGroup.valid) {
-      const patient = this.firstFormGroup.value;
-      this.patientService.createsuiviImedia(patient).subscribe(
+       // Récupérer les données des formulaires depuis le localStorage
+ const FirstFormData = JSON.parse(localStorage.getItem('FirstFormData') || '{}');
+ const secondFormGroupData = JSON.parse(localStorage.getItem('secondFormGroupData') || '{}');
+ const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
+
+ 
+   // Fusionner les données des formulaires avec les données du patient
+
+   const patientData = {
+    ...FirstFormData,
+    ...secondFormGroupData,
+    ...symptomatologieFormGroupData,
+
+  };
+  
+      this.patientService.createsuiviImedia(patientData).subscribe(
         (response) => {
-          console.log('Patient ajouté avec succès : ', response);
-          // Réinitialiser le formulaire après l'ajout du patient
-          this.firstFormGroup.reset();
+          console.log("Patient enregistré avec succès : ", response);
+    localStorage.removeItem('FirstFormData');
+    localStorage.removeItem('symptomatologieFormGroupData');
+    localStorage.removeItem('thridFormGroupData');
         },
         (error) => {
           console.log('Erreur lors de l\'ajout du patient : ', error);
         }
       );
-    }
+    
   }
   user:any;
 
-  // Enregistrer le patient
- saveExamen_op() {
-  this.savethridForm();
 
-  // Récupérer les données des formulaires depuis le localStorage
-const FirstFormData = JSON.parse(localStorage.getItem('FirstFormData') || '{}');
-const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
-const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
-
- // Fusionner les données des formulaires avec les données du patient
-
-const patientData = {
-  ...FirstFormData,
-  ...symptomatologieFormGroupData,
-  ...thridFormGroupData,
-};
- //const user:any=localStorage.getItem("user")!
-
-this.patientService.createPatient(patientData,this.user.id).subscribe(
-  (response) => {
-
-    console.log("Patient enregistré avec succès : ", response);
-    localStorage.removeItem('FirstFormData');
-    localStorage.removeItem('symptomatologieFormGroupData');
-    localStorage.removeItem('thridFormGroupData');
-
-
-  },
-  (error) => {
-    console.error("Erreur lors de l'enregistrement du patient : ", error);
-  }
-);
-}
 
 
   onChange() {
@@ -173,6 +150,16 @@ this.patientService.createPatient(patientData,this.user.id).subscribe(
       }
     }
     
+  }
+  onCheckboxChange(event: any, formArrayName: string) {
+    const formArray: FormArray = this.firstFormGroup.get(formArrayName) as FormArray;
+  
+    if (event.checked) {
+      formArray.push(this.fb.control(event.source.value));
+    } else {
+      const index = formArray.controls.findIndex(x => x.value === event.source.value);
+      formArray.removeAt(index);
+    }
   }
   
 
