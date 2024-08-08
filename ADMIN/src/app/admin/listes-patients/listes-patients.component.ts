@@ -58,4 +58,9 @@ user:any;
   reload() {
     window.location.reload();
   }
+
+  suivre(id: Number | undefined) {
+    this.router.navigate(['/admin/SuivitttDissect', id]);
+
+  }
 }

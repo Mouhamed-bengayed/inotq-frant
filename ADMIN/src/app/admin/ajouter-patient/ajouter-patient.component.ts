@@ -23,6 +23,7 @@ export class AjouterPatientComponent implements OnInit, OnDestroy, AfterViewInit
 
   // @ViewChild('stepper') private myStepper!: MatStepper  ;
   // private scrollHandler: () => void;
+  isSpecialTreatmentSelected: string | null | undefined = '';
 
   countries = [
     { name: 'Tunisia', code: '+216' },
@@ -100,6 +101,7 @@ export class AjouterPatientComponent implements OnInit, OnDestroy, AfterViewInit
   formS!: FormGroup ;
   treatmentCont!: string ;
 user:any;
+  private isSpecialTreatmentSelectedBool: boolean=false;
 
   constructor( private patientService: PatientService,private fb: FormBuilder,private accountservice:AccountService,private Router:Router) {
     this.user = this.accountservice.CurrentUserInfoSubject.getValue();
@@ -324,7 +326,16 @@ console.error("user id",this.user.id);
     description_autres: new FormControl(''),
 
   });
-
+  onTreatmentChange(): void {
+    const value = this.hypotheseFormGroup.get('Traitement_propose')?.value;
+    this.isSpecialTreatmentSelectedBool =
+      value === 'antalgique' ||
+      value === 'anti_inflammatoire' ||
+      value === 'corticoide' ||
+      value === 'infiltrations' ||
+      value === 'reeducation' ;
+    // Now `isSpecialTreatmentSelected` will be true if any of the specified treatments is selected
+  }
   scorefinale:number=0;
 
 
@@ -602,9 +613,9 @@ isAutresChecked = false;
 
   }
   savehypoteseForm() {
-    const hypotheseFormGroup = this.hypotheseFormGroup.value;
+    const hypotheseFormGroupData = this.hypotheseFormGroup.value;
 
-      localStorage.setItem('hypotheseFormGroup', JSON.stringify(hypotheseFormGroup));
+      localStorage.setItem('hypotheseFormGroupData', JSON.stringify(hypotheseFormGroupData));
 
   }
 
@@ -638,7 +649,7 @@ isAutresChecked = false;
 
  // Enregistrer le patient
  savePatient() {
-    this.saveFourthFormGroup();
+     this.saveFourthFormGroup();
 
     // Récupérer les données des formulaires depuis le localStorage
  const FirstFormData = JSON.parse(localStorage.getItem('FirstFormData') || '{}');
@@ -647,23 +658,25 @@ isAutresChecked = false;
   const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
   const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
   const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
-  const hypotheseFormGroup = JSON.parse(localStorage.getItem('hypotheseFormGroup') || '{}');
+  const hypotheseFormGroupData = JSON.parse(localStorage.getItem('hypotheseFormGroupData') || '{}');
 
    // Fusionner les données des formulaires avec les données du patient
 
   const patientData = {
+    ...hypotheseFormGroupData,
+
     ...FirstFormData,
     ...secondFormGroupData,
     ...symptomatologieFormGroupData,
     ...thridFormGroupData,
     ...odiFormGroupData,
-    ...hypotheseFormGroup,
     ...fourthFormGroupData,
-    resultatodi: this.scorefinale
+    resultatodi: this.scorefinale,
+
   };
    //const user:any=localStorage.getItem("user")!
 
-  this.patientService.createPatient(patientData,this.user.id).subscribe(
+  this.patientService.createPatient(patientData,this.user.id,this.isSpecialTreatmentSelectedBool).subscribe(
     (response) => {
 
       // Try me!
@@ -679,7 +692,7 @@ isAutresChecked = false;
       localStorage.removeItem('symptomatologieFormGroupData');
       localStorage.removeItem('thridFormGroupData');
       localStorage.removeItem('odiFormGroupData');
-      localStorage.removeItem('hypotheseFormGroup');
+      localStorage.removeItem('hypotheseFormGroupData');
       localStorage.removeItem('fourthFormGroupData');
     },
     (error) => {

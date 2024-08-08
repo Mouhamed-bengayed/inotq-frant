@@ -5,6 +5,7 @@ import { PatientService } from '../Services/patient.service';
 import Swal from 'sweetalert2';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AccountService } from '../Services/account.service';
+import {ActivatedRoute} from "@angular/router";
 type EditableField = 'addresse' | 'descreption_Personelle' | 'lieu_deducation' | 'annee_dexperience' | 'number' | 'email' | 'sexe' | 'specialite'| 'date_de_naissance';
 
 @Component({
@@ -13,7 +14,7 @@ type EditableField = 'addresse' | 'descreption_Personelle' | 'lieu_deducation' |
   styleUrls: ['./suivi-ttt-dissect.component.css']
 })
 export class SuiviTttDissectComponent implements OnInit {
-  user: any = {};  
+  user: any = {};
   editMode: Record<EditableField, boolean> = {
     addresse: false,
     descreption_Personelle: false,
@@ -95,13 +96,19 @@ export class SuiviTttDissectComponent implements OnInit {
   thridFormGroup: any;
   patientId: any;
   fichepatient: any;
-  constructor( private accountService: AccountService,private http: HttpClient,private patientService: PatientService,private fb: FormBuilder) {
-   
+  constructor(private route: ActivatedRoute, private accountService: AccountService,private http: HttpClient,private patientService: PatientService,private fb: FormBuilder) {
+
 
   }
- 
-  ngOnInit() {     
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.patientId = params.get('id');
+
+      console.log(this.patientId);
+
+    });
     this.setupBmiCalculation();
+
   }
 
 
@@ -242,7 +249,7 @@ scorefinale:number=0;
      evolution: new FormControl(''),
      evolution_nouvelles_symptomatologies: this.fb.array([]),
   });
- 
+
   examFormGroup = new FormGroup({
      poids: new FormControl(''),
      taille: new FormControl(''),
@@ -287,7 +294,7 @@ scorefinale:number=0;
      vie_sexuelle: new FormControl(''),
      vie_sociale: new FormControl(''),
      voyage: new FormControl(''),
-    
+
      resultat: new FormControl(''),
      hypothese_diagnostic_HD: new FormControl(''),
      hypothese_diagnostic_type: new FormControl(''),
@@ -298,7 +305,7 @@ scorefinale:number=0;
      traitement_propose_Type_chirurgie: new FormControl(''),
      traitement_propose_Auter        : new FormControl(''),
 
-    
+
   });
 
 odiFormGroup = new FormGroup({
@@ -327,9 +334,9 @@ symptomatologieFormGroup = new FormGroup({
   n_symptomatologies: new FormControl(''),
   indication_chirurgicale: new FormControl(''),
   date: new FormControl(''),
-  Motif_de_consultation: new FormControl(''),     
+  Motif_de_consultation: new FormControl(''),
   Motif_de_consultation_l: new FormControl(''),
-  
+
 });
 hypotheseFormGroup = new FormGroup({
   Nbre_infiltration: new FormControl(''),
@@ -403,30 +410,30 @@ fourthFormGroup = new FormGroup({
 
 
 saveFirstForm() {
-  this.saveChanges();
-  const thridFormGroupData1 = this.firstFormGroup.value;
-    localStorage.setItem('firstFormGroupData', JSON.stringify(thridFormGroupData1));
+  // this.saveChanges();
+  const firstFormGroupData = this.firstFormGroup.value;
+    localStorage.setItem('firstFormGroupData', JSON.stringify(firstFormGroupData));
 
-  
+
  }
 
  savesympFormGroup() {
   const symptomatologieFormGroupData1 = this.symptomatologieFormGroup.value;
     localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData1));
-  
+
  }
 
 saveexamForm() {
   const examFormGroupData1 = this.examFormGroup.value;
     localStorage.setItem('examFormGroupData', JSON.stringify(examFormGroupData1));
 
-  
+
  }
- 
+
  saveodiForm() {
   const odiFormGroupData1 = this.odiFormGroup.value;
     localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
-  
+
  }
 
  savethridForm() {
@@ -442,7 +449,7 @@ saveexamForm() {
  }
 
  savesuivi() {
-  this.savefourthFormGroup() ;
+  // this.savefourthFormGroup() ;
 
   // Récupérer les données des formulaires depuis le localStorage
 const firstFormGroupData = JSON.parse(localStorage.getItem('firstFormGroupData') || '{}');
@@ -463,7 +470,7 @@ const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData
 
 };
 
-this.patientService.createsuivitttDissect(patientData).subscribe(
+this.patientService.createsuivitttDissect(patientData, this.patientId).subscribe(
   (response) => {
     console.log("Patient enregistré avec succès : ", response);
     // Nettoyer les données des formulaires après l'enregistrement
@@ -491,7 +498,7 @@ this.patientService.createsuivitttDissect(patientData).subscribe(
       statutSocialControl.reset();
     }
   }
-  
+
 }
 
 
