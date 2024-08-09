@@ -35,7 +35,7 @@
                         <th>Addresse</th>
                         <th>Date de naissance</th>
                         <th>téléphone</th>
-<!--                        <th>Consulter </th>-->
+                        <th>Consulter </th>
                         <th > Suivi du patient </th>
 <!--                        <th>supprime</th>-->
 
@@ -53,10 +53,10 @@
                         <td>{{p.addresse}}</td>
                         <td>{{formatDate(p.annee_de_naissance)}}</td>
                         <td>{{p.telephone}}</td>
-<!--                        <td>-->
-<!--                          <button  type="button" class="btn btn-success " (click)=" consulter(p.id)" >consulter</button>-->
-<!--&lt;!&ndash;                          (click)=" cosulter(p.fichePatient)"&ndash;&gt;-->
-<!--                        </td>-->
+                        <td>
+                          <button  type="button" class="btn btn-success " (click)=" consulter(p.id)" >consulter</button>
+<!--                          (click)=" cosulter(p.fichePatient)"-->
+                        </td>
                         <td>
                           <button  type="button" style="background-color:#6777EF; color: white;" class="btn " (click)="suivre(p.id)">Suivre</button>
                         </td>

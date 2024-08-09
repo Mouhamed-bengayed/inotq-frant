@@ -3,14 +3,14 @@
         <div class="row bg-body ">
             <div class="col-md-12  " >
                 <div class="cardo">
-                   
+
                     <div class="formbold-main-wrapper white-text bg-body" >
-        
+
                           <mat-stepper>
                             <mat-step [stepControl]="firstFormGroup">
-                              
+
                               <form [formGroup]="firstFormGroup">
-                                <ng-template class="custom-label" matStepLabel>Informations staf</ng-template>          
+                                <ng-template class="custom-label" matStepLabel>Informations staff</ng-template>
                                 <mat-form-field>
                                   <mat-label class="custom-label">Date de consultation</mat-label>
                                   <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Date de consultation">
@@ -18,45 +18,45 @@
                                   <mat-datepicker #picker></mat-datepicker>
                                 </mat-form-field>
                                 <br>
-     
-                                 
+
+
                                   <mat-form-field>
                                     <mat-label class="custom-label">Diagnostic préop</mat-label>
                                     <input matInput formControlName="diagnostic_preop" placeholder="Diagnostic préop">
                                   </mat-form-field>
-                                 
+
                                 <br>
-                               
+
                                 <br>
                                                               <label class="titer" style="padding-right: 30px;" > Indication  </label>
                                                               <br><br>
                                   <mat-checkbox class="custom-label" [formControl]="checkboxControl1" (change)="onChange()">Traitement Antalgique</mat-checkbox>
-                                  <br>
+                                  <br><br>
                                   <mat-radio-group aria-label="Select an option" formControlName="indication_Antalgique" *ngIf="checkboxControl1.value">
                                      <mat-radio-button style="padding-right: 30px;" class="test-testsens"value="1">AINS</mat-radio-button>
                                      <mat-radio-button style="padding-right: 30px;" class="test-testsens"value="2">Corticoide</mat-radio-button>
 
                                   </mat-radio-group>
-                             
-                                  <br>
-                            
+
+                                  <br><br>
+
                                 <mat-checkbox class="custom-label" [formControl]="checkboxControl" (change)="onChange()">lnfiltrations </mat-checkbox>
                                 <br>
                                 <mat-form-field *ngIf="checkboxControl.value">
                                   <mat-label>Numéro</mat-label>
                                   <input matInput formControlName="indication_Infiltrations_Nbreinfiltrations" placeholder="Numéro " type="number">
                                 </mat-form-field>
-                                <br>
+                                <br><br>
                                 <mat-checkbox class="custom-label" [formControl]="checkboxControl7" (change)="onChange()">Rééducation </mat-checkbox>
                                 <br>
                                 <mat-form-field *ngIf="checkboxControl7.value">
                                   <mat-label>Numéro</mat-label>
                                   <input matInput formControlName="indication_Reeducation_Nbreseances" placeholder="Numéro " type="number">
                                 </mat-form-field>
-                                
-<br>
+
+                                <br><br>
                                 <mat-checkbox class="custom-label" [formControl]="checkboxControl3" (change)="onChange()">Dissectomie</mat-checkbox>
-                                <br>
+                                <br><br>
                               <mat-radio-group aria-label="Select an option" formControlName="indication_Dissectomie_etage" *ngIf="checkboxControl3.value">
                                 <label class="custom-label"style="padding-right: 30px;">Etage  </label>
 
@@ -65,21 +65,21 @@
                                  <mat-radio-button style="padding-right: 30px;"class="test-testsens" value="3">L5-S1</mat-radio-button>
                                  <br>
                               </mat-radio-group>
-                            <br>
+                            <br><br>
                             <mat-checkbox class="custom-label" [formControl]="checkboxControl4" (change)="onChange()">Libération post</mat-checkbox>
-                              <br>
+                              <br><br>
                               <mat-radio-group aria-label="Select an option" formControlName="indication_Liberation_etage" *ngIf="checkboxControl4.value">
                                 <label class="custom-label"style="padding-right: 30px;">Etage  </label>
 
                                <mat-radio-button style="padding-right: 30px;" class="test-testsens"value="1">L3-L4</mat-radio-button>
                                <mat-radio-button  style="padding-right: 30px;"class="test-testsens"value="2">L4-L5</mat-radio-button>
                                <mat-radio-button style="padding-right: 30px;"class="test-testsens"value="3">L5-S1</mat-radio-button>
-                               <br>
+                               <br><br>
                             </mat-radio-group>
-                          <br>
+                          <br><br>
 
                           <mat-checkbox  class="custom-label"  style="padding-right: 30px;" [formControl]="checkboxControl13" (change)="onChange()">Arthrodése</mat-checkbox>
-                          
+
 
                           <mat-radio-group aria-label="Select an option" formControlName="indication_Arthrodese" *ngIf="checkboxControl13.value" (change)="onChange()">
 <br><br>
@@ -90,7 +90,7 @@
                             <mat-checkbox style="padding-right: 30px;" (change)="onCheckboxChange($event, 'indication_Arthrodese')"  value="5">ALlF</mat-checkbox>
 
                           </mat-radio-group>
-                          <br>
+                          <br><br>
 <mat-form-field >
   <mat-label >Autres Arthrodése
   </mat-label>
@@ -108,8 +108,8 @@
 
                                 </div>
                               </form>
-                            </mat-step> 
-                                                      
+                            </mat-step>
+
                           </mat-stepper>
                     </div>
                 </div>
