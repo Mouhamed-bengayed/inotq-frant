@@ -290,8 +290,8 @@ console.error("user id",this.user.id);
     entourage_actuel: new FormControl(''),
     atcd: this.fb.array([]),
     Tabac: new FormControl(''),
-    motif_de_consultation:this.fb.array([]),
-    motif_de_consultation_l: this.fb.array([]),
+    // motif_de_consultation:this.fb.array([]),
+    // motif_de_consultation_l: this.fb.array([]),
     description_autres: new FormControl(''),
 
   });
@@ -591,9 +591,7 @@ isAutresChecked = false;
 
   saveSecondForm() {
     const SecondFormGroupData = this.secondFormGroup.value;
-
       localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData));
-
    }
   saveFirstForm() {
     const FirstFormData = this.firstFormGroup.value;
@@ -607,7 +605,6 @@ isAutresChecked = false;
       localStorage.setItem('hypotheseFormGroup', JSON.stringify(hypotheseFormGroup));
 
   }
-
 
    saveodiForm() {
     const odiFormGroupData1 = this.odiFormGroup.value;
