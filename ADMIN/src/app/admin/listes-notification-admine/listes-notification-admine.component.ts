@@ -38,4 +38,8 @@ export class ListesNotificationAdmineComponent implements OnInit {
     const seconds = date.getSeconds().toString().padStart(2, '0');
     return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
   }
+
+  reload() {
+    window.location.reload();
+  }
 }

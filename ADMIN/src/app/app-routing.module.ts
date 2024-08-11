@@ -15,11 +15,12 @@ const routes: Routes = [
   {path:'reactivation',component:ReactiveAccountComponent},
 
    // path: '', redirectTo: 'signIn', pathMatch: 'full' },
+  {path: '', redirectTo: 'signIn', pathMatch: 'full'},
 
-  // {path: '', redirectTo: 'signIn', pathMatch: 'full'},
-  {path: '',
+  {path: 'admin',
     loadChildren: () => import('./admin/admin-layout.module').then(m => m.AdminLayoutModule)
   },
+
   { path: '**', redirectTo: 'signIn' },
 
 ];

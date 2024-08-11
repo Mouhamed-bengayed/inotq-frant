@@ -4,6 +4,7 @@ import { Patient } from 'src/app/_models/patient';
 import { PatientService } from '../Services/patient.service';
 import {AccountService} from "../../Service/account.service";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-listes-patients',
@@ -60,7 +61,46 @@ user:any;
   }
 
   suivre(id: Number | undefined) {
-    this.router.navigate(['/admin/SuivitttDissect', id]);
+    this.patientService.getPatient(id).subscribe((data) => {
+      let suiviTitle = '';
+      let route = '';
 
-  }
+      if (data.traitement_propose === 'antalgique' ||
+        data.traitement_propose === 'Anti inflammatoire non stéroidien' ||
+        data.traitement_propose === 'corticoide' ||
+        data.traitement_propose === 'infiltrations' ||
+        data.traitement_propose === 'reeducation') {
+        suiviTitle = 'Suivi de tttDissect';
+        route = `/admin/SuivitttDissect/${id}`;
+      }
+
+      if (data.traitement_propose === 'Discectomie' ||
+        data.traitement_propose === 'Arthrodèse') {
+        suiviTitle = 'Suivi post-opératoire immédiat';
+        route = `/admin/SuiviPostImmediat/${id}`;
+      }
+
+      if (data.traitement_propose === 'Staff') {
+        suiviTitle = 'Suivi en staff';
+        route = `/admin/staff/${id}`;
+      }
+
+      if (route) {
+        Swal.fire({
+          title: suiviTitle,
+          text: "Voulez-vous vraiment accéder à cette page?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Oui, y aller!',
+          cancelButtonText: 'Annuler'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate([route]);
+          }
+        });
+      }
+    });}
+
 }

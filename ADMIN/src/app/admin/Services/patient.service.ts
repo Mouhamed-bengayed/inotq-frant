@@ -19,7 +19,7 @@ export class PatientService {
       return this.httpClient.post(this.baseURLAjouterPatient,patient);
       }
 
-  createPatient(patient: any, id: number, isSpecialTreatmentSelectedBool: boolean): Observable<any> {
+  createPatient(patient: any, id: number, isSpecialTreatmentSelectedBool: any): Observable<any> {
     const url = `${this.baseUrl}/register-patient/${id}?isSpecialTreatmentSelected=${isSpecialTreatmentSelectedBool}`;
     return this.httpClient.post(url, patient);
   }
@@ -51,9 +51,7 @@ export class PatientService {
       }
 
 
-
-
-
-
-
+  getPatient(id: Number | undefined):Observable<any>{
+    return this.httpClient.get<any>(`http://localhost:8082/api/fichPatient/getPatientById/${id}`);
+  }
 }

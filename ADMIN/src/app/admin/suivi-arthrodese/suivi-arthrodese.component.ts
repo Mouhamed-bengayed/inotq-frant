@@ -4,6 +4,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { PatientService } from '../Services/patient.service';
 import Swal from 'sweetalert2';
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -47,14 +48,21 @@ export class SuiviArthrodeseComponent implements OnInit {
   pincement24 = new FormControl();
 
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
-  constructor( private patientService: PatientService,private fb: FormBuilder) { }
+  constructor( private patientService: PatientService,private fb: FormBuilder,private route: ActivatedRoute) { }
   pincement27= new FormControl();
   pincement_discal= new FormControl();
   tDM_hernie_discale= new FormControl();
   sPDL= new FormControl();
+  patientId: any;
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.patientId = params.get('id');
+
+      console.log(this.patientId);
+
+    });
   }
-  
+
   firstFormGroup = new FormGroup({
     date_de_consultation: new FormControl(new Date()),
     age: new FormControl(''),
@@ -81,9 +89,9 @@ export class SuiviArthrodeseComponent implements OnInit {
   n_symptomatologies: new FormControl(''),
   indication_chirurgicale: new FormControl(''),
   date: new FormControl(''),
-  Motif_de_consultation: new FormControl(''),     
+  Motif_de_consultation: new FormControl(''),
   Motif_de_consultation_l: new FormControl(''),
-  
+
 });
 hypotheseFormGroup = new FormGroup({
   Nbre_infiltration: new FormControl(''),
@@ -142,7 +150,7 @@ hypotheseFormGroup = new FormGroup({
     vie_sexuelle: new FormControl(''),
     vie_sociale: new FormControl(''),
     voyage: new FormControl(''),
-   
+
     resultat: new FormControl(''),
     hypothese_diagnostic_HD: new FormControl(''),
     hypothese_diagnostic_type: new FormControl(''),
@@ -153,7 +161,7 @@ hypotheseFormGroup = new FormGroup({
     traitement_propose_Type_chirurgie: new FormControl(''),
     traitement_propose_Auter        : new FormControl(''),
 
-   
+
  });
  odiFormGroup = new FormGroup({
   intensite_douleur: new FormControl(''),
@@ -168,7 +176,7 @@ hypotheseFormGroup = new FormGroup({
   voyage: new FormControl(''),
 });
  fourthFormGroup = new FormGroup({
-   
+
 
     rx_standard: new FormControl(''),
     rx_standard_qualite: new FormControl(''),
@@ -300,33 +308,33 @@ saveODIAndShowScore() {
 saveFirstForm() {
   const FirstFormGroupData1 = this.firstFormGroup.value;
     localStorage.setItem('firstFormGroupData', JSON.stringify(FirstFormGroupData1));
-  
+
  }
  savesympFormGroup() {
   const symptomatologieFormGroupData1 = this.fourthFormGroup.value;
     localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData1));
-  
+
  }
 
 savesecondForm() {
   const secondFormGroupData1 = this.secondFormGroup.value;
- 
+
     localStorage.setItem('secondFormGroupData', JSON.stringify(secondFormGroupData1));
-  
+
  }
  saveodiForm() {
   const odiFormGroupData1 = this.odiFormGroup.value;
-  
+
     localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
-  
+
  }
  saveFourthFormGroup() {
   const fourthFormGroupData1 = this.fourthFormGroup.value;
- 
+
     localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
-  
+
  }
- 
+
 
 
  savesuivi() {
@@ -381,7 +389,7 @@ this.patientService.createSuiviArthrodese(patientData).subscribe(
       statutSocialControl.reset();
     }
   }
-  
+
 }
 
 

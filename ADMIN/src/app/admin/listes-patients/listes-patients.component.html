@@ -4,8 +4,8 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Liste des patients</h1>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="./">Home</a></li>
-              <li class="breadcrumb-item">Patient</li>
+<!--              <li class="breadcrumb-item"><a href="./">Home</a></li>-->
+              <li class="breadcrumb-item">Gestion des patients</li>
               <li class="breadcrumb-item active" aria-current="page">Liste des patients</li>
             </ol>
           </div>
@@ -14,11 +14,13 @@
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h4 class="m-0 font-weight-bold text-primary">
-<!--                    <p>..............</p>-->
-
+                    <form class="form-inline my-2 my-lg-0">
+                      <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+                      <button class="btn  my-2 my-sm-0" type="submit" style="background-color: #6777EF;color: white;width: auto;">Chercher</button>
+                    </form>
                   </h4>
                   <div>
-                    <button class="btn" (click)="reload()" ><i class="fas fa-sync-alt"></i>
+                    <button class="btn" style="width: auto" (click)="reload()" ><i class="fas fa-sync-alt"></i>
                     </button>
                   </div>
                 </div>
@@ -35,7 +37,7 @@
                         <th>Addresse</th>
                         <th>Date de naissance</th>
                         <th>téléphone</th>
-                        <th>Consulter </th>
+                        <th>Profile du patient </th>
                         <th > Suivi du patient </th>
 <!--                        <th>supprime</th>-->
 
@@ -54,11 +56,11 @@
                         <td>{{formatDate(p.annee_de_naissance)}}</td>
                         <td>{{p.telephone}}</td>
                         <td>
-                          <button  type="button" class="btn btn-success " (click)=" consulter(p.id)" >consulter</button>
+                          <button  type="button" style="width: auto" class="btn btn-facebook " (click)=" consulter(p.id)" >Consulter</button>
 <!--                          (click)=" cosulter(p.fichePatient)"-->
                         </td>
                         <td>
-                          <button  type="button" style="background-color:#6777EF; color: white;" class="btn " (click)="suivre(p.id)">Suivre</button>
+                          <button  type="button" class="btn btn-facebook " style="width: 95px" (click)="suivre(p.id)">Suivre</button>
                         </td>
 <!--                        <td>-->
 <!--                          <button (click)="suprimerPatient(med)" type="button" class="btn btn-danger" >supprimer</button>-->

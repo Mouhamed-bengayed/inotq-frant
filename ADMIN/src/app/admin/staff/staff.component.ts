@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
 import { PatientService } from '../Services/patient.service';
 import { MatDatepicker } from '@angular/material/datepicker';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-staff',
@@ -20,13 +21,19 @@ export class StaffComponent implements OnInit {
   checkboxControl13 = new FormControl(false);
 
 
-
+  patientId: any;
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
-  constructor( private patientService: PatientService,private fb: FormBuilder) { }
+  constructor( private patientService: PatientService,private fb: FormBuilder,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.patientId = params.get('id');
+
+      console.log(this.patientId);
+
+    });
   }
-  
+
   firstFormGroup = new FormGroup({
     date: new FormControl(''),
       diagnostic_preop: new FormControl(''),
@@ -52,10 +59,10 @@ export class StaffComponent implements OnInit {
           console.log('Erreur lors de l\'ajout du patient : ', error);
         }
       );
-    
+
   }
 
-  
+
  onChange() {
   if (this.checkboxControl.value) {
     const statutSocialControl = this.firstFormGroup.get('statut_social');
@@ -69,7 +76,7 @@ export class StaffComponent implements OnInit {
       statutSocialControl.reset();
     }
   }
-  
+
 }
 onCheckboxChange(event: any, formArrayName: string) {
   const formArray: FormArray = this.firstFormGroup.get(formArrayName) as FormArray;

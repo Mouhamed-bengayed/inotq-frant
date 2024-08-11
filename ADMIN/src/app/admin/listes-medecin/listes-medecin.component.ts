@@ -109,6 +109,9 @@ export class ListesMedecinComponent implements OnInit {
     );}
   }
 
+  reload() {
+    window.location.reload();
+  }
 }
 
 

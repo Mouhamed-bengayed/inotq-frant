@@ -328,12 +328,15 @@ console.error("user id",this.user.id);
   });
   onTreatmentChange(): void {
     const value = this.hypotheseFormGroup.get('Traitement_propose')?.value;
+    this.isSpecialTreatmentSelected=value;
+    console.log('Traitement_propose', value);
     this.isSpecialTreatmentSelectedBool =
       value === 'antalgique' ||
-      value === 'anti_inflammatoire' ||
+      value === 'Anti inflammatoire non stéroidien' ||
       value === 'corticoide' ||
       value === 'infiltrations' ||
       value === 'reeducation' ;
+
     // Now `isSpecialTreatmentSelected` will be true if any of the specified treatments is selected
   }
   scorefinale:number=0;
@@ -676,7 +679,7 @@ isAutresChecked = false;
   };
    //const user:any=localStorage.getItem("user")!
 
-  this.patientService.createPatient(patientData,this.user.id,this.isSpecialTreatmentSelectedBool).subscribe(
+  this.patientService.createPatient(patientData,this.user.id,this.isSpecialTreatmentSelected).subscribe(
     (response) => {
 
       // Try me!

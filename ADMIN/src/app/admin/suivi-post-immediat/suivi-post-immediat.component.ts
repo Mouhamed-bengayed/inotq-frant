@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PatientService } from '../Services/patient.service';
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-suivi-post-immediat',
@@ -20,7 +21,7 @@ export class SuiviPostImmediatComponent implements OnInit {
   checkboxControl7 = new FormControl(false);
   checkboxControl8 = new FormControl(false);
   checkboxControl9 = new FormControl(false);
-
+  patientId: any;
   @ViewChild('picker1') picker1!: MatDatepicker<any>;
   picker2!: MatDatepicker<any>;
   picker4!: MatDatepicker<any>;
@@ -30,7 +31,7 @@ export class SuiviPostImmediatComponent implements OnInit {
   showOtherCheckboxes = false;
   antalgiqueControl = new FormControl(false);
 
-  constructor( private patientService: PatientService,private fb: FormBuilder) { }
+  constructor( private patientService: PatientService,private fb: FormBuilder,private route: ActivatedRoute) { }
 
   firstFormGroup = new FormGroup({
      date_chirurgie: new FormControl(''),
@@ -40,10 +41,10 @@ export class SuiviPostImmediatComponent implements OnInit {
       arthrodese_etage: this.fb.array([]),
       complications_per_operatoire: new FormControl(''),
       complications_per_operatoire_auter: new FormControl(''),
-    
+
   });
-  
- 
+
+
   symptomatologieFormGroup = new FormGroup({
     lombalgie: new FormControl(''),
     sciatique: new FormControl(''),
@@ -55,8 +56,8 @@ export class SuiviPostImmediatComponent implements OnInit {
   });
 
 thridFormGroup = new FormGroup({
-    
-   
+
+
     testing_musculaire_l2: new FormControl(''),
     testing_musculaire_l3: new FormControl(''),
     testing_musculaire_l4: new FormControl(''),
@@ -70,11 +71,18 @@ thridFormGroup = new FormGroup({
     examen_perinee_sensibilite: new FormControl(''),
     examen_perinee_Tonus_anal: new FormControl(''),
     examen_perinee_Reflexe_anal : new FormControl(''),
-   
-   
+
+
 
   });
+
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.patientId = params.get('id');
+
+      console.log(this.patientId);
+
+    });
   }
   savesymptomatologieFormGroup(){
     const symptomatologieFormGroupData = this.symptomatologieFormGroup.value;
@@ -96,14 +104,14 @@ thridFormGroup = new FormGroup({
  const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
  const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
 
- 
+
    // Fusionner les données des formulaires avec les données du patient
 
    const patientData = {
     ...FirstFormData,
     ...symptomatologieFormGroupData,
     ...thridFormGroupData,
-   
+
 
   };
 
@@ -118,7 +126,7 @@ thridFormGroup = new FormGroup({
           console.log('Erreur lors de l\'ajout du patient : ', error);
         }
       );
-    
+
   }
   user:any;
 
@@ -138,11 +146,11 @@ thridFormGroup = new FormGroup({
         statutSocialControl.reset();
       }
     }
-    
+
   }
   onCheckboxChange(event: any, formArrayName: string) {
     const formArray: FormArray = this.firstFormGroup.get(formArrayName) as FormArray;
-  
+
     if (event.checked) {
       formArray.push(this.fb.control(event.source.value));
     } else {
@@ -150,6 +158,6 @@ thridFormGroup = new FormGroup({
       formArray.removeAt(index);
     }
   }
-  
+
 
 }

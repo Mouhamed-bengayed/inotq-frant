@@ -3,8 +3,8 @@
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Liste des médecins</h1>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="./">Home</a></li>
-      <li class="breadcrumb-item">Tables</li>
+<!--      <li class="breadcrumb-item"><a href="./">Home</a></li>-->
+      <li class="breadcrumb-item">Gestion des médecins</li>
       <li class="breadcrumb-item active" aria-current="page">liste des médecins</li>
     </ol>
   </div>
@@ -12,21 +12,31 @@
     <div class="col-lg-12">
       <div class="card mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h3 class="m-0 font-weight-bold text-primary">Les informations relatives aux comptes de vos médecins</h3>
+          <h4 class="m-0 font-weight-bold text-primary">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+              <button class="btn  my-2 my-sm-0" type="submit" style="background-color: #6777EF;color: white;width: auto;">Chercher</button>
+            </form>
+          </h4>
+          <div >
+            <button class="btn" style="width: auto" (click)="reload()" ><i class="fas fa-sync-alt"></i>
+            </button>
+          </div>
         </div>
+
         <div class="table-responsive p-3">
           <table class="table align-items-center table-flush" id="dataTable">
             <thead class="thead-light">
             <tr>
-              <th style="color: #6777EF">Id</th>
-              <th style="color: #6777EF">Nom</th>
-              <th style="color: #6777EF">Prénom</th>
-              <th style="color: #6777EF">Email</th>
-              <th style="color: #6777EF">Adresse</th>
-              <th style="color: #6777EF">Numéro Telephone</th>
-              <th style="color: #6777EF">Date de création</th>
-              <th style="color: #6777EF">Statut Actuel </th>
-              <th style="color: #6777EF">Bloquer/Valider/Réactiver</th>
+              <th >Id</th>
+              <th >Nom</th>
+              <th >Prénom</th>
+              <th >Email</th>
+              <th>Adresse</th>
+              <th >Numéro Telephone</th>
+              <th >Date de création</th>
+              <th >Statut Actuel </th>
+              <th >Bloquer/Valider/Réactiver</th>
 <!--              <th style="color: #0da8ee">Valider/Réactiver  </th>-->
 
             </tr>
@@ -42,10 +52,10 @@
               <td>{{formatDate(med.date)}}</td>
               <td>
               <b> <p [ngClass]="{
-              'text-danger': med.status === 'bloqué',
-              'text-success': med.status === 'activé' || med.status === 'réactivé',
-              'text-warning': med.status === 'en attente de réactivation',
-              'text-info': med.status === 'en attente de validation'
+              'text-danger': med.status === 'Bloqué',
+              'text-success': med.status === 'Activé' || med.status === 'Réactivé',
+              'text-warning': med.status === 'En attente de réactivation',
+              'text-info': med.status === 'En attente d\'activation'
               }">
                   {{med.status}}
                 </p></b>
@@ -63,7 +73,7 @@
                 </ng-container>
 
                 <ng-container *ngIf="!med.validtologin">
-                  <button style="width:80px;" (click)="activateMedecin(med)" type="button" class="btn btn-success">Valider</button>
+                  <button style="width:80px;" (click)="activateMedecin(med)" type="button" class="btn btn-info">Valider</button>
                 </ng-container>
 <!--                <ng-container *ngIf="med.validtologin&&!med.askForReactivation">-->
 <!--                 <b> <p class="text-success">valide</p></b>-->

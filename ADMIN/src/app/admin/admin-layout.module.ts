@@ -44,7 +44,7 @@ import {MatIconModule} from "@angular/material/icon";
 
 const AdminLayoutRoutes: Routes = [
 
-  {path:'admin', component:AdminLayoutComponent,
+  {path:'', component:AdminLayoutComponent,
   children: [
 
      { path: 'admindashboard',  component: DashboardAdminComponent },
@@ -57,7 +57,7 @@ const AdminLayoutRoutes: Routes = [
      { path: 'SuiviPostImmediat/:id',  component: SuiviPostImmediatComponent },
      { path: 'SuivitttDissect/:id',  component: SuiviTttDissectComponent },
      { path: 'suiviArhrodese/:id',  component: SuiviArthrodeseComponent },
-     { path: 'stafff',  component: StaffComponent },
+     { path: 'staff/:id',  component: StaffComponent },
      {path: 'FichePatient/:id', component: ProfilePatientComponent},
     {path: 'notification', component: NotificationAdmineComponent},
     {path: 'listeNotification', component: ListesNotificationAdmineComponent},
