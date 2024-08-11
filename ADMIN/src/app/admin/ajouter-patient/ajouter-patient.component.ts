@@ -172,64 +172,13 @@ console.error("user id",this.user.id);
 
   }
   ngAfterViewInit(): void {
-    // // Initialize or interact with view child properties here
-    // if (this.myStepper) {
-    //   console.log('Stepper initialized:', this.myStepper);
-    //   // Example: Go to the next step programmatically
-    //   this.myStepper.next();
-    // }
-    // else       console.error('Stepper notfound:');
-    //
-    // window.addEventListener('scroll', this.scrollHandler);
+ 
   }
 
   ngOnDestroy(): void {
-    // window.removeEventListener('scroll', this.scrollHandler);
   }
 
-  // onScroll(): void {
-  //   const fixedButtons = document.querySelector('.fixe-buttons') as HTMLElement;
-  //
-  //   if (!fixedButtons) {
-  //     console.warn('Element with class "fixed-buttons" not found');
-  //     return;
-  //   }
-  //
-  //   const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-  //   const GOLDEN_SCROLL_RATIO = 0.95; // Adjust this ratio as needed
-  //
-  //   if (window.scrollY / scrollableHeight > GOLDEN_SCROLL_RATIO) {
-  //     fixedButtons.style.display = 'flex';
-  //   } else {
-  //     fixedButtons.style.display = 'none';
-  //   }
-  // }
 
-  // onNextButtonClick(): void {
-  //   switch (this.myStepper.selectedIndex) {
-  //     case 0:
-  //       this.saveFirstForm();
-  //       break;
-  //     case 1:
-  //       this.savesymptomatologieFormGroup();
-  //       break;
-  //     case 2:
-  //       this.savethridForm();
-  //       break;
-  //     case 3:
-  //       this.saveODIAndShowScore();
-  //       break;
-  //     case 4:
-  //       this.savehypoteseForm();
-  //       break;
-  //     case 5:
-  //       this.savePatient();
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  //   this.myStepper.next();
-  // }
   getTelephoneErrorMessage() {
     const telephoneControl = this.formA.get('telephone');
     if (!telephoneControl) {
@@ -271,60 +220,239 @@ console.error("user id",this.user.id);
 
 
   firstFormGroup = new FormGroup({
-    date_de_consultation: new FormControl(new Date()),
+     dateDeConsultation: new FormControl(new Date()),
     dossierMedical: new FormControl(''),
-    n_Dossier_medical: new FormControl(''),
-    Dossier_medical_num: new FormControl(''),
+    nDossierMedical: new FormControl(''),
     name: new FormControl(''),
     username: new FormControl(''),
     sexe: new FormControl(''),
-    annee_de_naissance: new FormControl(''),
+    anneeDeNaissance: new FormControl(''),
     origine: new FormControl(''),
     idPatient: new FormControl(''),
     addresse: new FormControl(''),
     country: new FormControl(this.countries[0].code),  // Default to the first country
     telephone: new FormControl('', [Validators.required, this.telephoneValidator()]),
-     profession: new FormControl(''),
-    adresse_par: new FormControl(''),
-    statut_social: new FormControl(''),
-    entourage_actuel: new FormControl(''),
+    profession: new FormControl(''),
+    adressePar: new FormControl(''),
+    statutSocial: new FormControl(''),
+    entourageActuel: new FormControl(''),
     atcd: this.fb.array([]),
     Tabac: new FormControl(''),
     // motif_de_consultation:this.fb.array([]),
     // motif_de_consultation_l: this.fb.array([]),
-    description_autres: new FormControl(''),
+    descriptionAutres: new FormControl(''),
 
   });
 
   hypotheseFormGroup = new FormGroup({
-    Nbre_infiltration: new FormControl(''),
-    Nbre_seances: new FormControl(''),
-    description_autres: new FormControl(''),
-    Hypothese_diagnostic_HD: new FormControl(''),
-    Hypothese_diagnostic_type: new FormControl(''),
-    Hypothese_diagnostic_Localisation: new FormControl(''),
-    Traitement_propose : new FormControl(''),
-    Traitement_propose_Nbre_infiltrations : new FormControl(''),
-    Traitement_propose_Nbre_seances: new FormControl(''),
-    Traitement_propose_Type_chirurgie: new FormControl(''),
-    Traitement_propose_Auter: new FormControl(''),
-  });
+    hypotheseDiagnosticHD: new FormControl(''),
+      hypotheseDiagnosticType: new FormControl(''),
+      hypotheseDiagnosticLocalisation: new FormControl(''),
+      hypotheseDiagnosticCote: new FormControl(''),
+      traitementPropose: new FormControl(''),
+      traitementProposeNbreInfiltrations: new FormControl(''),
+      traitementProposeNbreSeances: new FormControl(''),
+      traitementProposeTypeChirurgie: new FormControl(''),
+ 
+ });
+  
   odiFormGroup = new FormGroup({
-    intensite_douleur: new FormControl(''),
-    soins_personnels: new FormControl(''),
-    levee: new FormControl(''),
-    marche: new FormControl(''),
-    assis: new FormControl(''),
-    debout: new FormControl(''),
-    sommeil: new FormControl(''),
-    vie_sexuelle: new FormControl(''),
-    vie_sociale: new FormControl(''),
-    voyage: new FormControl(''),
-    resultatcalculateScore: new FormControl(''),
-    description_autres: new FormControl(''),
+   intensiteDouleur: new FormControl(''),
+   soinsPersonnels: new FormControl(''),
+   levee: new FormControl(''),
+   marche: new FormControl(''),
+   assis: new FormControl(''),
+   debout: new FormControl(''),
+   sommeil: new FormControl(''),
+   vieSexuelle: new FormControl(''),
+   vieSociale: new FormControl(''),
+   voyage: new FormControl(''),
+ });
+  fourthFormGroup = new FormGroup({
+    
+ 
+    rxStandard: new FormControl(''),
+      rxStandardPincement: new FormControl(''),
+      rxPincementDiscalEtage: new FormControl(''),
+      rxPincementDiscalPourcentage: new FormControl(''),
+      rxVideDiscal: new FormControl(''),
+      rxVideDiscalEtage: new FormControl(''),
+      rxSPDL: new FormControl(''),
+      rxSPDLEtage: new FormControl(''),
+      rxSPDLGrade: new FormControl(''),
+      rxAnomalieTransitionnelle: new FormControl(''),
+      rxCanalLombaireEtroit: new FormControl(''),
+      rxLordoseLombaire: new FormControl(''),
+      rxIncidencePelvienne: new FormControl(''),
+      rxPenteSacree: new FormControl(''),
+      rxVersionPerlvienne: new FormControl(''),
+ 
+      rxDynamique: new FormControl(''),
+      rxDynamiqueQualite: new FormControl(''),
+      rxDynamiqueInstabilite: new FormControl(''),
+ 
+      tdm: new FormControl(''),
+      tdmPincementDiscal: new FormControl(''),
+      tdmPincementDiscalEtage: new FormControl(''),
+      tdmPincementDiscalPourcentage: new FormControl(''),
+      tdmVideDiscal: new FormControl(''),
+      tdmVideDiscalEtage: new FormControl(''),
+      tdmHernieDiscale: new FormControl(''),
+      tdmHernieDiscaleType: new FormControl(''),
+      tdmHernieDiscaleEtage: new FormControl(''),
+      tdmHernieDiscaleCote: new FormControl(''),
+      tdmSPDL: new FormControl(''),
+      tdmSPDLEtage: new FormControl(''),
+      tdmSPDLGrade: new FormControl(''),
+      tdmInstabilite: new FormControl(''),
+      tdmInstabiliteEtage: new FormControl(''),
+      tdmApophysaire: new FormControl(''),
+      tdmApophysaireEtage: new FormControl(''),
+      tdmAnomalieTransitionnelle: new FormControl(''),
+      tdmCanalLombaireEtroit: new FormControl(''),
+      tdmQualiteFusion: new FormControl(''),
+ 
+      irm: new FormControl(''),
+      irmPincementDiscal: new FormControl(''),
+      irmPincementDiscalEtage: new FormControl(''),
+      irmPincementDiscalPourcentage: new FormControl(''),
+      irmHernieDiscale: new FormControl(''),
+      irmHernieDiscaleEtage: new FormControl(''),
+      irmHernieDiscaleType: new FormControl(''),
+      irmHernieDiscaleCote: new FormControl(''),
+      irmHypertrophieJaunes: new FormControl(''),
+      irmArthroseApophysaire: new FormControl(''),
+      irmArthroseApophysaireEtage: new FormControl(''),
+      irmCanalLombaireEtroit: new FormControl(''),
+      irmVolumeDisqueHernie: new FormControl(''),
+      irmEtatDisquesSousJacent: new FormControl(''),
+      irmEtatDisquesSusJacent: new FormControl(''),
+ 
+ 
+ });
 
-  });
+ symptomatologieFormGroup = new FormGroup({
+  lombalgieType: new FormControl(''),
+  lombalgieIntensity: new FormControl(''),
+  lombalgieMode: new FormControl(''),
+  lombalgieVolution: new FormControl(''),
+  lombalgieResponse: new FormControl(''),
+  sciatiqueLocalisation: new FormControl(''),
+  sciatiqueCote: new FormControl(''),
+  sciatiqueIntensity: new FormControl(''),
+  sciatiqueMode: new FormControl(''),
+  sciatiqueVolution: new FormControl(''),
+  sciatiqueResponse: new FormControl(''),
+  cruralgieLocalisation: new FormControl(''),
+  cruralgieCote: new FormControl(''),
+  cruralgieIntensity: new FormControl(''),
+  cruralgieMode: new FormControl(''),
+  cruralgieVolution: new FormControl(''),
+  cruralgieResponse: new FormControl(''),
+  claudicationType: new FormControl(''),
+  claudicationCote: new FormControl(''),
+  derobementType: new FormControl(''),
+  derobementCote: new FormControl(''),
+  troubleSphincteriens: new FormControl(''),
+  troubleSphincteriensUrinaire: new FormControl(''),
+  pm: new FormControl(''),
+  pmDistance: new FormControl(''),
+  pmCauseArret: new FormControl(''),
+ 
+});
+secondFormGroup = new FormGroup({
+  poids: new FormControl(''),
+  taille: new FormControl(''),
+  bmi: new FormControl(''),
+  deformationRachidienne: new FormControl(''),
+  douleurPressionLombairerEpineuses: new FormControl(''),
+  ameliorationFlexionRachis: new FormControl(''),
+  contractureMusclesParavertebraux: new FormControl(''),
+  dms: new FormControl(''),
+  sonnette: new FormControl(''),
+  sonnetteNiveau: new FormControl(''),
+  lasegue: new FormControl(''),
+  lasegueControlateral: new FormControl(''),
+  leri: new FormControl(''),
+  indiceShober: new FormControl(''),
+  rotRotulien: new FormControl(''),
+  rotAchillien: new FormControl(''),
+  rotPerinee: new FormControl(''),
+  marcheTalons: new FormControl(''),
+  marchePointesPieds: new FormControl(''),
+  testingMusculaireL2: new FormControl(''),
+  testingMusculaireL3: new FormControl(''),
+  testingMusculaireL4: new FormControl(''),
+  testingMusculaireL5: new FormControl(''),
+  testingMusculaireS1: new FormControl(''),
+  sensibiliteL2: new FormControl(''),
+  sensibiliteL3: new FormControl(''),
+  sensibiliteL4: new FormControl(''),
+  sensibiliteL5: new FormControl(''),
+  sensibiliteS1: new FormControl(''),
+  examenPerineeSensibilite: new FormControl(''),
+  examenPerineeTonusAnal: new FormControl(''),
+  examenPerineeReflexeAnal: new FormControl(''),
 
+
+});
+
+
+
+thridFormGroup = new FormGroup({
+  poids: new FormControl(''),
+  taille: new FormControl(''),
+  bMI: new FormControl({value: '', disabled: true}),
+  deformation_rachidienne: new FormControl(''),
+  douleur_pression_lombairer_epineuses: new FormControl(''),
+  Amelioration_flexion_rachis: new FormControl(''),
+  Contracture_muscles_paravertebraux: new FormControl(''),
+  dMS: new FormControl(''),
+  sonnette: new FormControl(''),
+  sonnette_Niveau: new FormControl(''),
+  lasegue: new FormControl(''),
+  lasegue_controlateral: new FormControl(''),
+  leri: new FormControl(''),
+  indice_shober: new FormControl(''),
+  rOT_Rotulien: new FormControl(''),
+  rOT_Achillien: new FormControl(''),
+  rOT_Perinee: new FormControl(''),
+  marche_talons: new FormControl(''),
+  marche_pointes_pieds: new FormControl(''),
+  testing_musculaire_L2: new FormControl(''),
+  testing_musculaire_L3: new FormControl(''),
+  testing_musculaire_L4: new FormControl(''),
+  testing_musculaire_L5: new FormControl(''),
+  testing_musculaire_S1: new FormControl(''),
+  Sensibilte_L2: new FormControl(''),
+  Sensibilte_L3: new FormControl(''),
+  Sensibilte_L4: new FormControl(''),
+  Sensibilte_L5: new FormControl(''),
+  Sensibilte_S1: new FormControl(''),
+  examen_perinee_sensibilite: new FormControl(''),
+  examen_perinee_Tonus_anal: new FormControl(''),
+  examen_perinee_Reflexe_anal : new FormControl(''),
+  intensite_douleur: new FormControl(''),
+  soins_personnels: new FormControl(''),
+  levee: new FormControl(''),
+  marche: new FormControl(''),
+  assis: new FormControl(''),
+  debout: new FormControl(''),
+  sommeil: new FormControl(''),
+  vie_sexuelle: new FormControl(''),
+  vie_sociale: new FormControl(''),
+  voyage: new FormControl(''),
+  Hypothese_diagnostic_HD: new FormControl(''),
+  Hypothese_diagnostic_type: new FormControl(''),
+  Hypothese_diagnostic_Localisation: new FormControl(''),
+  Traitement_propose : new FormControl(''),
+  Traitement_propose_Nbre_infiltrations : new FormControl(''),
+  Traitement_propose_Nbre_seances: new FormControl(''),
+  Traitement_propose_Type_chirurgie: new FormControl(''),
+  Traitement_propose_Auter: new FormControl(''),
+
+
+});
   scorefinale:number=0;
 
 
@@ -343,7 +471,6 @@ console.error("user id",this.user.id);
     return scoreReal;
   }
   saveODIAndShowScore() {
-    this.saveodiForm();
 
     let score = this.calculateScore();
     let message = '';
@@ -398,155 +525,7 @@ console.error("user id",this.user.id);
 
 
 
-  secondFormGroup = new FormGroup({
-    date_debut_maladie: new FormControl(''),
-    facture_declanchants: new FormControl(''),
-    Date_1consultation_medicale: new FormControl(''),
-    Date_1consultation_specialisee: new FormControl(''),
-    medecin_traitants: new FormControl(''),
-    traitants_anterieur: new FormControl(''),
-    Nbre_infiltration: new FormControl(''),
-    Nbre_seances: new FormControl(''),
-    evalution: new FormControl(''),
-    n_symptomatologies: new FormControl(''),
-    indication_chirurgicale: new FormControl(''),
-    date: new FormControl(''),
-
-  });
-  symptomatologieFormGroup = new FormGroup({
-    typeCont : new FormControl(''),
-
-    date_debut_maladie: new FormControl(''),
-    facture_declanchants: new FormControl(''),
-    Date_1consultation_medicale: new FormControl(''),
-    Date_1consultation_specialisee: new FormControl(''),
-    medecin_traitants: new FormControl(''),
-    traitants_anterieur: new FormControl(''),
-    Nbre_infiltration: new FormControl(''),
-    Nbre_seances: new FormControl(''),
-    evalution: new FormControl(''),
-    n_symptomatologies: new FormControl(''),
-    indication_chirurgicale: new FormControl(''),
-    date: new FormControl(''),
-    motif_de_consultation: new FormControl(''),
-    motif_de_consultation_l: new FormControl(''),
-
-  });
-
-
-  thridFormGroup = new FormGroup({
-    poids: new FormControl(''),
-    taille: new FormControl(''),
-    bMI: new FormControl({value: '', disabled: true}),
-    deformation_rachidienne: new FormControl(''),
-    douleur_pression_lombairer_epineuses: new FormControl(''),
-    Amelioration_flexion_rachis: new FormControl(''),
-    Contracture_muscles_paravertebraux: new FormControl(''),
-    dMS: new FormControl(''),
-    sonnette: new FormControl(''),
-    sonnette_Niveau: new FormControl(''),
-    lasegue: new FormControl(''),
-    lasegue_controlateral: new FormControl(''),
-    leri: new FormControl(''),
-    indice_shober: new FormControl(''),
-    rOT_Rotulien: new FormControl(''),
-    rOT_Achillien: new FormControl(''),
-    rOT_Perinee: new FormControl(''),
-    marche_talons: new FormControl(''),
-    marche_pointes_pieds: new FormControl(''),
-    testing_musculaire_L2: new FormControl(''),
-    testing_musculaire_L3: new FormControl(''),
-    testing_musculaire_L4: new FormControl(''),
-    testing_musculaire_L5: new FormControl(''),
-    testing_musculaire_S1: new FormControl(''),
-    Sensibilte_L2: new FormControl(''),
-    Sensibilte_L3: new FormControl(''),
-    Sensibilte_L4: new FormControl(''),
-    Sensibilte_L5: new FormControl(''),
-    Sensibilte_S1: new FormControl(''),
-    examen_perinee_sensibilite: new FormControl(''),
-    examen_perinee_Tonus_anal: new FormControl(''),
-    examen_perinee_Reflexe_anal : new FormControl(''),
-    intensite_douleur: new FormControl(''),
-    soins_personnels: new FormControl(''),
-    levee: new FormControl(''),
-    marche: new FormControl(''),
-    assis: new FormControl(''),
-    debout: new FormControl(''),
-    sommeil: new FormControl(''),
-    vie_sexuelle: new FormControl(''),
-    vie_sociale: new FormControl(''),
-    voyage: new FormControl(''),
-    Hypothese_diagnostic_HD: new FormControl(''),
-    Hypothese_diagnostic_type: new FormControl(''),
-    Hypothese_diagnostic_Localisation: new FormControl(''),
-    Traitement_propose : new FormControl(''),
-    Traitement_propose_Nbre_infiltrations : new FormControl(''),
-    Traitement_propose_Nbre_seances: new FormControl(''),
-    Traitement_propose_Type_chirurgie: new FormControl(''),
-    Traitement_propose_Auter: new FormControl(''),
-
-
-  });
-  fourthFormGroup = new FormGroup({
-    checkboxControl7 : new FormControl(''),
-
-
-    rx_Standard: new FormControl(''),
-    rx_Standard_qualite: new FormControl(''),
-    pincement_discal: new FormControl(''),
-    pincement_discal_etage: new FormControl(''),
-    pincement_discal_Pourcentage: new FormControl(''),
-    vide_discal: new FormControl(''),
-    vide_discal_etage: new FormControl(''),
-    sPDL: new FormControl(''),
-    sPDL_etage: new FormControl(''),
-    sPDL_Grade: new FormControl(''),
-    anomalie_transitionnelle: new FormControl(''),
-    canal_lombaire_etroit: new FormControl(''),
-    Lordose_Lombaire: new FormControl(''),
-    incidence_pelvienne: new FormControl(''),
-    pente_sacree: new FormControl(''),
-    version_perlvienne: new FormControl(''),
-    rx_dynamique: new FormControl(''),
-    rx_dynamique_qualite: new FormControl(''),
-    rx_dynamique_Instabilite: new FormControl(''),
-
-    tDM: new FormControl(''),
-    tDM_Pincement_discal: new FormControl(''),
-    tDM_Pincement_discal_etage: new FormControl(''),
-    tDM_Pincement_discal_pourcentage: new FormControl(''),
-    tDM_vide_discal: new FormControl(''),
-    tDM_vide_discal_etage: new FormControl(''),
-    tDM_vide_discal_Pourcentage: new FormControl(''),
-    tDM_hernie_discale: new FormControl(''),
-    tDM_hernie_discale_type: new FormControl(''),
-    tDM_hernie_discale_etage: new FormControl(''),
-    tDM_SPDL: new FormControl(''),
-    tDM_SPDL_etage: new FormControl(''),
-    tDM_SPDL_Grade: new FormControl(''),
-    tDM_Instabilite: new FormControl(''),
-    tDM_Instabilite_etage: new FormControl(''),
-    tDM_apophysaire: new FormControl(''),
-    tDM_apophysaire_etage: new FormControl(''),
-    tDM_Anomalie_transitionnelle: new FormControl(''),
-    tDM_Canal_lombaire_etroit: new FormControl(''),
-
-    iRM: new FormControl(''),
-    iRM_Pincementdiscal: new FormControl(''),
-    iRM_Pincementdiscal_etage: new FormControl(''),
-    iRM_Pincementdiscal_Pourcentage: new FormControl(''),
-    iRM_Herniediscale: new FormControl(''),
-    iRM_Herniediscale_etage: new FormControl(''),
-    iRM_Herniediscale_Type: new FormControl(''),
-    iRM_Hypertrophie_jaunes : new FormControl(''),
-    iRM_Arthrose_apophysaire: new FormControl(''),
-    iRM_Arthrose_apophysaire_etage: new FormControl(''),
-    iRM_Canal_lombaire_etroit: new FormControl(''),
-    iRM_Volume_disque_hernie: new FormControl(''),
-    iRM_etat_disques_sous_jacent: new FormControl(''),
-    iRM_etat_disques_sus_jacent: new FormControl(''),
-});
+ 
 
 isAutresChecked = false;
 
@@ -571,64 +550,34 @@ isAutresChecked = false;
     }
   }
 
-  /*addPatient() {
-    if (this.firstFormGroup.valid) {
-      const patient = this.firstFormGroup.value;
-      this.patientService.createPatient(patient ).subscribe(
-        (response) => {
-          console.log('Patient ajouté avec succès : ', response);
-          // Réinitialiser le formulaire après l'ajout du patient
-          this.firstFormGroup.reset();
-        },
-        (error) => {
-          console.log('Erreur lors de l\'ajout du patient : ', error);
-        }
-      );
-    }
-  }*/
+ 
 
 
 
-  saveSecondForm() {
-    const SecondFormGroupData = this.secondFormGroup.value;
-      localStorage.setItem('SecondFormGroupData', JSON.stringify(SecondFormGroupData));
-   }
   saveFirstForm() {
     const FirstFormData = this.firstFormGroup.value;
 
       localStorage.setItem('FirstFormData', JSON.stringify(FirstFormData));
 
   }
-  savehypoteseForm() {
-    const hypotheseFormGroup = this.hypotheseFormGroup.value;
-
-      localStorage.setItem('hypotheseFormGroup', JSON.stringify(hypotheseFormGroup));
-
-  }
-
-   saveodiForm() {
-    const odiFormGroupData1 = this.odiFormGroup.value;
-
-      localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
-
+  savehypotheseFormGroup() {
+    const hypotheseFormGroupData1 = this.hypotheseFormGroup.value;
+      localStorage.setItem('hypotheseFormGroupData', JSON.stringify(hypotheseFormGroupData1));
    }
-  savethridForm() {
-    const thridFormGroupData1 = this.thridFormGroup.value;
-      localStorage.setItem('thridFormGroupData', JSON.stringify(thridFormGroupData1));
-
-
+   savesympFormGroup() {
+    const symptomatologieFormGroupData1 = this.symptomatologieFormGroup.value;
+      localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData1));
    }
+  
+  savesecondForm() {
+    const secondFormGroupData1 = this.secondFormGroup.value;
+      localStorage.setItem('secondFormGroupData', JSON.stringify(secondFormGroupData1));  
+   }
+  
    saveFourthFormGroup() {
     const fourthFormGroupData1 = this.fourthFormGroup.value;
       localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
-
    }
-  savesymptomatologieFormGroup(){
-    const symptomatologieFormGroupData = this.symptomatologieFormGroup.value;
-      localStorage.setItem('symptomatologieFormGroupData', JSON.stringify(symptomatologieFormGroupData));
-
-
-  }
 
 
 
@@ -643,8 +592,8 @@ isAutresChecked = false;
   const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
   const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
   const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
-  const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
   const hypotheseFormGroup = JSON.parse(localStorage.getItem('hypotheseFormGroup') || '{}');
+  const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
 
    // Fusionner les données des formulaires avec les données du patient
 
@@ -656,7 +605,7 @@ isAutresChecked = false;
     ...odiFormGroupData,
     ...hypotheseFormGroup,
     ...fourthFormGroupData,
-    resultatodi: this.scorefinale
+    resultat: this.scorefinale
   };
    //const user:any=localStorage.getItem("user")!
 
@@ -677,6 +626,7 @@ isAutresChecked = false;
     }
   );
 }
+
 
   savePatientandQuit() {
     this.savePatient();

@@ -313,11 +313,7 @@ savesecondForm() {
   const secondFormGroupData1 = this.secondFormGroup.value;
     localStorage.setItem('secondFormGroupData', JSON.stringify(secondFormGroupData1));  
  }
-//  saveodiForm() {
-//   const odiFormGroupData1 = this.odiFormGroup.value;
-//     localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
-  
-//  }
+
  saveFourthFormGroup() {
   const fourthFormGroupData1 = this.fourthFormGroup.value;
     localStorage.setItem('fourthFormGroupData', JSON.stringify(fourthFormGroupData1));
@@ -348,7 +344,7 @@ const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData
 
 };
 
-this.patientService.createSuiviArthrodese(patientData).subscribe(
+this.patientService.createsuivitttDissect(patientData).subscribe(
   (response) => {
     console.log("Patient enregistré avec succès : ", response);
     // Nettoyer les données des formulaires après l'enregistrement
