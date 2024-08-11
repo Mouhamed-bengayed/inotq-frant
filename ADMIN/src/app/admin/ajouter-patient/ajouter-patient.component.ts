@@ -618,7 +618,7 @@ isAutresChecked = false;
       localStorage.removeItem('symptomatologieFormGroupData');
       localStorage.removeItem('thridFormGroupData');
       localStorage.removeItem('odiFormGroupData');
-      localStorage.removeItem('hypotheseFormGroup');
+      localStorage.removeItem('hypotheseFormGroupData');
       localStorage.removeItem('fourthFormGroupData');
     },
     (error) => {
