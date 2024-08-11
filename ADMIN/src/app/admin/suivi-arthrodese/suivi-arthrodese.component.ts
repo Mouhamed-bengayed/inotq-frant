@@ -5,6 +5,7 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { PatientService } from '../Services/patient.service';
 import Swal from 'sweetalert2';
 import {ActivatedRoute} from "@angular/router";
+import swal from "sweetalert2";
 
 
 @Component({
@@ -252,6 +253,12 @@ calculateScore(): number {
   this.scorefinale = score;
   return score;
 }
+  saveodiForm() {
+    const odiFormGroupData1 = this.odiFormGroup.value;
+
+    localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
+
+  }
 saveODIAndShowScore() {
   this.saveodiForm();
 
@@ -354,9 +361,13 @@ const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData
 
 };
 
-this.patientService.createSuiviArthrodese(patientData).subscribe(
+this.patientService.createSuiviArthrodese(patientData,this.patientId).subscribe(
   (response) => {
     console.log("Patient enregistré avec succès : ", response);
+    swal.fire(
+      'Suivi ajouté avec succès',
+      'success'
+    );
     // Nettoyer les données des formulaires après l'enregistrement
     localStorage.removeItem('firstFormGroupData');
     localStorage.removeItem('symptomatologieFormGroupData');

@@ -48,12 +48,12 @@
                     <tbody  >
                       <tr *ngFor="let p of patients">
                         <td>{{p.id}}</td>
-                        <td>{{ formatDate(p.date_de_consultation)}}</td>
+                        <td>{{ formatDate(p.dateDeConsultation)}}</td>
                         <td>{{p.name}}</td>
                         <td>{{p.username}}</td>
                         <td>{{p.sexe}}</td>
                         <td>{{p.addresse}}</td>
-                        <td>{{formatDate(p.annee_de_naissance)}}</td>
+                        <td>{{formatDate(p.anneeDeNaissance)}}</td>
                         <td>{{p.telephone}}</td>
                         <td>
                           <button  type="button" style="width: auto" class="btn btn-facebook " (click)=" consulter(p.id)" >Consulter</button>

@@ -1173,63 +1173,68 @@
                                 <mat-radio-button class="grid-item" value="2">Droite</mat-radio-button>
                                </mat-radio-group>
                                <br><br>
-                               <label  class="titer" style="padding-right: 30px;" >Traitement Proposé</label>
-<br>
-<br>
+                                <label  class="titer" style="padding-right: 30px;" >Traitement Proposé</label>
+                                <br>
+                                <br>
 
-<mat-radio-group formControlName="traitementPropose" >
-<mat-radio-button style="padding-right: 30px;" value="1">Antalgique</mat-radio-button>
-<br><br>
-<mat-radio-button style="padding-right: 30px;" value="2">Anti inflammatoire non stéroidien</mat-radio-button>
-<br><br>
-<mat-radio-button style="padding-right: 30px;" value="3">Corticoide</mat-radio-button>
-<br><br>
-
-
-
-<mat-radio-button style="padding-right: 30px;" value="infiltrations">Infiltrations</mat-radio-button>
-<mat-form-field *ngIf="treatmentControl.value === 'infiltrations'">
-<mat-label  class="custom-label">Nombre d'infiltration</mat-label>
-<input matInput formControlName="traitementProposeNbreInfiltrations" placeholder="Nbre d'infiltration" type="number">
-</mat-form-field>
-<br><br>
-
-<mat-radio-button style="padding-right: 30px;" value="4">Rééducation</mat-radio-button>
-<mat-form-field *ngIf="treatmentControl.value === 'reeducation'">
-<mat-label  class="custom-label">Nombre de séances</mat-label>
-<input matInput formControlName="traitementProposeNbreSeances" placeholder="Nbre de séances" type="number">
-</mat-form-field>
-<br><br>
-
-<mat-radio-button style="padding-right: 30px;" value="5">Chirurgie</mat-radio-button>
-
-<br><br>
-<mat-radio-button style="padding-right: 30px;" value="6">dissect</mat-radio-button>
-
-<br><br>
-<mat-radio-button style="padding-right: 30px;" value="7">arthrodése</mat-radio-button>
-
-<br><br>
-<mat-radio-button style="padding-right: 30px;" value="autres">Autres</mat-radio-button>
-<mat-form-field *ngIf="treatmentControl.value === 'autres'">
-<mat-label>Description</mat-label>
-<input matInput formControlName="description_autres" placeholder="Description" type="text">
-</mat-form-field>
-</mat-radio-group>
-<br><br>
+                                <mat-radio-group formControlName="traitementPropose" (change)="onTreatmentChange()">
+                                  <mat-radio-button style="padding-right: 30px;" value="antalgique">Antalgique</mat-radio-button>
+                                  <br><br>
+                                  <mat-radio-button style="padding-right: 30px;" value="Anti inflammatoire non stéroidien">Anti inflammatoire non stéroidien</mat-radio-button>
+                                  <br><br>
+                                  <mat-radio-button style="padding-right: 30px;" value="corticoide">Corticoide</mat-radio-button>
+                                  <br><br>
 
 
 
+                                  <mat-radio-button style="padding-right: 30px;" value="infiltrations">Infiltrations</mat-radio-button>
+                                  <mat-form-field *ngIf="treatmentControl.value === 'infiltrations'">
+                                    <mat-label  class="custom-label">Nombre d'infiltration</mat-label>
+                                    <input matInput formControlName="Nbre_infiltration" placeholder="Nbre d'infiltration" type="number">
+                                  </mat-form-field>
+                                  <br><br>
+
+                                  <mat-radio-button style="padding-right: 30px;" value="reeducation">Rééducation</mat-radio-button>
+                                  <mat-form-field *ngIf="treatmentControl.value === 'reeducation'">
+                                    <mat-label  class="custom-label">Nombre de séances</mat-label>
+                                    <input matInput formControlName="Nbre_seances" placeholder="Nbre de séances" type="number">
+                                  </mat-form-field>
+                                  <br><br>
+
+                                  <mat-radio-button style="padding-right: 30px;" value="chirurgie">Chirurgie</mat-radio-button>
+
+                                  <br><br>
+
+                                  <!--    <div *ngIf="treatmentControl.value === 'chirurgie'" >-->
+
+                                  <div class="grid-container" >
+                                    <mat-radio-button class="grid-item" value="Arthrodèse">Arthrodèse</mat-radio-button>
+                                    <mat-radio-button class="grid-item" value="Discectomie">Discectomie</mat-radio-button>
 
 
 
+                                  </div>
+                                  <br>
+
+                                  <mat-radio-button class="grid-item" value="Staff">Staff</mat-radio-button>
+                                  <br>
+                                  <!--    </div>-->
+                                  <br>
+                                  <mat-radio-button style="padding-right: 30px;" value="autres">Autres</mat-radio-button>
+                                  <mat-form-field *ngIf="treatmentControl.value === 'autres'">
+                                    <mat-label>Description</mat-label>
+                                    <input matInput formControlName="description_autres" placeholder="Description" type="text">
+                                  </mat-form-field>
+                                </mat-radio-group>
+                                <br><br>
 
 
 
+                                <br>
 
                                 <div class="button-container">
                                   <button class="button" mat-button matStepperPrevious><i class="fas fa-arrow-left"></i></button>
-                                  <button  class="button" mat-button (click)="savePatient()"><i class="fas fa-check"></i> </button>
+                                  <button  class="button" mat-button (click)="savePatientandQuit()"><i class="fas fa-check"></i> </button>
                                   <button class="button" mat-button matStepperNext (click)="savehypotheseFormGroup()"><i class="fas fa-arrow-right"></i></button>
                                 </div>
                               </form>
@@ -1767,7 +1772,7 @@
             </div>
                                       <div class="button-container">
                                         <button style="padding-right: 30px;" class="button" mat-button matStepperPrevious><i class="fas fa-arrow-left"></i></button>
-                                        <button style="padding-right: 30px; " class="button" mat-button (click)="savePatient()"><i class="fas fa-arrow-right"></i></button>
+                                        <button style="padding-right: 30px; " class="button" mat-button (click)="savePatient()"><i class="fas fa-check"></i> </button>
                                       </div>
 
                                   </form>

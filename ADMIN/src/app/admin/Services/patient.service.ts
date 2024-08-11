@@ -23,25 +23,25 @@ export class PatientService {
     const url = `${this.baseUrl}/register-patient/${id}?isSpecialTreatmentSelected=${isSpecialTreatmentSelectedBool}`;
     return this.httpClient.post(url, patient);
   }
-      createsuiviImedia(patient: any): Observable<any> {
-        return this.httpClient.post("http://localhost:8082/api/Suivi1/register/suivi1Post-Immediatt/", patient);
-      }
+  createsuiviImedia(patient: any, patientId: any): Observable<any> {
+    const url = `http://localhost:8082/api/Suivi1/register/suivi1Post-Immediatt/${patientId}`;
+    return this.httpClient.post(url, patient);
+  }
 
   createsuivitttDissect(patient: any, patientId: any): Observable<any> {
     const url = `${this.apiUrl}${patientId}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    return this.httpClient.put(url, JSON.stringify(patient), { headers });
+
+    return this.httpClient.put(url, patient);
   }
 
-  createSuiviArthrodese(patient: any): Observable<any> {
-        return this.httpClient.post("http://localhost:8082/api/SuiviArthrodese/register/Suivi_Arthodese/", patient);
-      }
-
-      createSuiviStafff(patient: any): Observable<any> {
-        return this.httpClient.post("http://localhost:8082/api/staff/register/staff/", patient);
-      }
+  createSuiviArthrodese(patient: any, patientId: any): Observable<any> {
+    const url = `http://localhost:8082/api/SuiviArthrodese/register/Suivi_Arthodese/${patientId}`;
+    return this.httpClient.post(url, patient);
+  }
+  createSuiviStafff(patient: any, patientId: any): Observable<any> {
+    const url = `http://localhost:8082/api/staff/register/staff/${patientId}`;
+    return this.httpClient.post(url, patient);
+  }
       getListePatient(id:any):Observable<any>{
         return this.httpClient.get<any>(`http://localhost:8082/api/patient/list-patient/${id}`);
       }

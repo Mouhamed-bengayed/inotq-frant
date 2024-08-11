@@ -1,13 +1,13 @@
 export class Patient {
     id?:Number;
-    date_de_consultation?: Date;
+    date_de_consultation?: string;
     dossierMedical?: string;
     n_Dossier_medical?: string;
     Dossier_medical_num?:string;
     name?: string;
     username?: string;
     sexe?: string;
-    annee_de_naissance?: Date;
+    annee_de_naissance?: string;
     origine?: boolean;
     idPatient?:boolean;
     addresse?: string;

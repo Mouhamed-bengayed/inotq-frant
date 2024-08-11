@@ -3,6 +3,7 @@ import { PatientService } from '../Services/patient.service';
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import {ActivatedRoute} from "@angular/router";
+import swal from "sweetalert2";
 
 @Component({
   selector: 'app-suivi-post-immediat',
@@ -115,9 +116,13 @@ thridFormGroup = new FormGroup({
 
   };
 
-      this.patientService.createsuiviImedia(patientData).subscribe(
+      this.patientService.createsuiviImedia(patientData,this.patientId).subscribe(
         (response) => {
           console.log("Patient enregistré avec succès : ", response);
+          swal.fire(
+            'Suivi ajouté avec succès',
+            'success'
+          );
     localStorage.removeItem('firstFormGroup');
     localStorage.removeItem('symptomatologieFormGroupData');
     localStorage.removeItem('thridFormGroupData');

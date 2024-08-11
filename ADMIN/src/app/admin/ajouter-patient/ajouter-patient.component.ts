@@ -506,7 +506,7 @@ thridFormGroup = new FormGroup({
 
   });
   onTreatmentChange(): void {
-    const value = this.hypotheseFormGroup.get('Traitement_propose')?.value;
+    const value = this.hypotheseFormGroup.get('traitementPropose')?.value;
     this.isSpecialTreatmentSelected=value;
     console.log('Traitement_propose', value);
     this.isSpecialTreatmentSelectedBool =
@@ -656,7 +656,7 @@ isAutresChecked = false;
   const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
   const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
   const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
-  const hypotheseFormGroup = JSON.parse(localStorage.getItem('hypotheseFormGroup') || '{}');
+  // const hypotheseFormGroup = JSON.parse(localStorage.getItem('hypotheseFormGroup') || '{}');
   const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
   const hypotheseFormGroup = JSON.parse(localStorage.getItem('hypotheseFormGroup') || '{}');
 
@@ -698,7 +698,12 @@ isAutresChecked = false;
     }
   );
 }
+  saveodiForm() {
+    const odiFormGroupData1 = this.odiFormGroup.value;
 
+    localStorage.setItem('odiFormGroupData', JSON.stringify(odiFormGroupData1));
+
+  }
   savePatientandQuit() {
     Swal.fire({
       icon:'warning',

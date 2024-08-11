@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
 import { PatientService } from '../Services/patient.service';
 import { MatDatepicker } from '@angular/material/datepicker';
 import {ActivatedRoute} from "@angular/router";
+import swal from "sweetalert2";
 
 @Component({
   selector: 'app-staff',
@@ -49,9 +50,13 @@ export class StaffComponent implements OnInit {
 
   addSuiviStafff() {
       const patient = this.firstFormGroup.value;
-      this.patientService.createSuiviStafff(patient).subscribe(
+      this.patientService.createSuiviStafff(patient,this.patientId).subscribe(
         (response) => {
           console.log('Patient ajouté avec succès : ', response);
+          swal.fire(
+            'Staff ajouté avec succès',
+            'success'
+          )
           // Réinitialiser le formulaire après l'ajout du patient
           this.firstFormGroup.reset();
         },

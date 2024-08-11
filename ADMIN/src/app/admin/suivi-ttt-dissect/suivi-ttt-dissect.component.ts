@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AccountService } from '../Services/account.service';
 import {ActivatedRoute} from "@angular/router";
+import swal from "sweetalert2";
 type EditableField = 'addresse' | 'descreption_Personelle' | 'lieu_deducation' | 'annee_dexperience' | 'number' | 'email' | 'sexe' | 'specialite'| 'date_de_naissance';
 
 @Component({
@@ -357,6 +358,10 @@ const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData
 this.patientService.createsuivitttDissect(patientData, this.patientId).subscribe(
   (response) => {
     console.log("Patient enregistré avec succès : ", response);
+    swal.fire(
+      'Suivi ajouté avec succès',
+      'success'
+    );
     // Nettoyer les données des formulaires après l'enregistrement
     localStorage.removeItem('firstFormGroupData');
     localStorage.removeItem('symptomatologieFormGroupData');
