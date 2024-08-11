@@ -561,8 +561,8 @@ isAutresChecked = false;
 
   }
   savehypotheseFormGroup() {
-    const hypotheseFormGroupData1 = this.hypotheseFormGroup.value;
-      localStorage.setItem('hypotheseFormGroupData', JSON.stringify(hypotheseFormGroupData1));
+    const hypotheseFormGroupData = this.hypotheseFormGroup.value;
+      localStorage.setItem('hypotheseFormGroupData', JSON.stringify(hypotheseFormGroupData));
    }
    savesympFormGroup() {
     const symptomatologieFormGroupData1 = this.symptomatologieFormGroup.value;
@@ -592,7 +592,7 @@ isAutresChecked = false;
   const symptomatologieFormGroupData = JSON.parse(localStorage.getItem('symptomatologieFormGroupData') || '{}');
   const thridFormGroupData = JSON.parse(localStorage.getItem('thridFormGroupData') || '{}');
   const odiFormGroupData = JSON.parse(localStorage.getItem('odiFormGroupData') || '{}');
-  const hypotheseFormGroup = JSON.parse(localStorage.getItem('hypotheseFormGroup') || '{}');
+  const hypotheseFormGroup = JSON.parse(localStorage.getItem('hypotheseFormGroupData') || '{}');
   const fourthFormGroupData = JSON.parse(localStorage.getItem('fourthFormGroupData') || '{}');
 
    // Fusionner les données des formulaires avec les données du patient
