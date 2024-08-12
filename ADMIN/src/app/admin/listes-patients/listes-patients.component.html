@@ -14,10 +14,20 @@
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h4 class="m-0 font-weight-bold text-primary">
-                    <form class="form-inline my-2 my-lg-0">
-                      <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
-                      <button class="btn  my-2 my-sm-0" type="submit" style="background-color: #6777EF;color: white;width: auto;">Chercher</button>
+                    <form class="form-inline my-2 my-lg-0" (ngSubmit)="filterPatients()">
+                      <input
+                        class="form-control mr-sm-2"
+                        #searchInput
+                        placeholder="Search..."
+                        aria-label="Search">
+                      <button
+                        class="btn  my-2 my-sm-0"
+                        type="submit"
+                        style="background-color: #6777EF;color: white;width: auto;">
+                        Chercher
+                      </button>
                     </form>
+
                   </h4>
                   <div>
                     <button class="btn" style="width: auto" (click)="reload()" ><i class="fas fa-sync-alt"></i>
@@ -46,7 +56,7 @@
                     </thead>
 
                     <tbody  >
-                      <tr *ngFor="let p of patients">
+                      <tr *ngFor="let p of filteredPatients">
                         <td>{{p.id}}</td>
                         <td>{{ formatDate(p.dateDeConsultation)}}</td>
                         <td>{{p.name}}</td>

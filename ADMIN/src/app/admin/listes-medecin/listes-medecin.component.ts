@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { MedecinService } from '../Services/medecin.service';
 import { Medecin } from 'src/app/_models';
 
@@ -9,9 +9,9 @@ import { Medecin } from 'src/app/_models';
 })
 
 export class ListesMedecinComponent implements OnInit {
-
+  @ViewChild('searchInput') searchInput!: ElementRef;
   medecins: Medecin[] = [];
-
+  filtredMedecins: Medecin[] = [];
   constructor(private medecinService :MedecinService) {
     this.medecinService=medecinService;
    }
@@ -26,7 +26,8 @@ export class ListesMedecinComponent implements OnInit {
 
   private getAllMedecin(){
     this.medecinService.getUserByRoles('ROLE_MEDECIN').subscribe((data) => {
-    this.medecins = data
+    this.medecins = data;
+        this.filtredMedecins = data;
   console.info(data);
   },
  (err)=>console.error("lhnaa",err)
@@ -115,6 +116,25 @@ export class ListesMedecinComponent implements OnInit {
 
   formatDateInYearsMonthsDays(date: string) {
     return "";
+  }
+  filterPatients() {
+    const searchTerm = this.searchInput.nativeElement.value.trim().toLowerCase();
+    console.log('Filtering patients with search term:', searchTerm);
+
+    if (searchTerm) {
+      this.filtredMedecins = this.medecins.filter((patient) => {
+        return (
+          patient.name.toLowerCase().includes(searchTerm) ||
+          patient.username.toLowerCase().includes(searchTerm) ||
+          patient.email.toLowerCase().includes(searchTerm) ||
+          patient.addresse.toLowerCase().includes(searchTerm) ||
+          patient.status.toLowerCase().includes(searchTerm) ||
+          patient.number.toString().includes(searchTerm)
+        );
+      });
+    } else {
+      this.filtredMedecins = this.medecins;
+    }
   }
 }
 

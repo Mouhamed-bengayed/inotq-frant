@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { MedecinService } from '../Services/medecin.service';
 import { Patient } from 'src/app/_models/patient';
 import { PatientService } from '../Services/patient.service';
@@ -14,6 +14,9 @@ import Swal from "sweetalert2";
 export class ListesPatientsComponent implements OnInit {
   patients: any[] = [];
 user:any;
+  @ViewChild('searchInput') searchInput!: ElementRef;
+  filteredPatients: any[] = [];
+
   // activationStatus: string = "demande d'activation";
 
   constructor(private patientService:PatientService,private accounntservice:AccountService,private router:Router) {
@@ -42,8 +45,10 @@ user:any;
 
    getAllPatients(){
     this.patientService.getListePatient(this.user.id).subscribe((data) => {
-    this.patients = data
-  console.info(data);
+    this.patients = data;
+        this.filteredPatients = data; // Initialize the filtered patients list
+
+        console.info(data);
   },(err)=>console.error("lhnaa",err)
     );
     }
@@ -142,5 +147,69 @@ user:any;
         });
       }
     });}
+  // filterPatients() {
+  //   const searchTerm = this.searchInput.nativeElement.value.trim().toLowerCase();
+  //   console.log('Filtering patients with search term:', searchTerm);
+  //
+  //   if (searchTerm) {
+  //     this.filteredPatients = this.patients.filter((patient) => {
+  //       return (
+  //         patient.name.toLowerCase().includes(searchTerm) ||
+  //         patient.username.toLowerCase().includes(searchTerm) ||
+  //         patient.sexe.toLowerCase().includes(searchTerm) ||
+  //         patient.addresse.toLowerCase().includes(searchTerm) ||
+  //           patient.traitementPropose.toLowerCase().includes(searchTerm) ||
+  //         patient.telephone.includes(searchTerm)
+  //       );
+  //     });
+  //   } else {
+  //     this.filteredPatients = this.patients;
+  //   }
+  // }
+  filterPatients() {
+    const searchTerm = this.searchInput.nativeElement.value.trim().toLowerCase();
+    // console.log('Filtering patients with search term:', searchTerm);
+
+    if (searchTerm) {
+      this.filteredPatients = this.patients.filter((patient) => {
+        // Basic filtering for name, username, sexe, etc.
+        const basicMatch = (
+          patient.name.toLowerCase().includes(searchTerm) ||
+          patient.username.toLowerCase().includes(searchTerm) ||
+          patient.sexe.toLowerCase().includes(searchTerm) ||
+          patient.addresse.toLowerCase().includes(searchTerm) ||
+          patient.traitementPropose.toLowerCase().includes(searchTerm) ||
+          patient.telephone.includes(searchTerm)
+        );
+
+        // Refined filtering for 'traitementPropose' based on specific terms
+        const traitementMatch = this.matchTraitementPropose(patient.traitementPropose.toLowerCase(), searchTerm);
+
+        // Return true if either basic match or traitement match is found
+        return basicMatch || traitementMatch;
+      });
+    } else {
+      this.filteredPatients = this.patients;
+    }
+  }
+
+// Helper method to match 'traitementPropose' against specific keywords
+  matchTraitementPropose(traitement: string, searchTerm: string): boolean {
+    console.info('Traitement:', traitement);
+    console.info('Search term:', searchTerm);
+    const suiviTttKeywords = ['antalgique', 'infiltrations', 'corticoide', 'reeducation', 'Anti inflammatoire non stéroidien'];
+    const postOptKeywords = ['Discectomie', 'Arthrodèse'];
+    const staffKeyword = 'Staff';
+
+    if (searchTerm.includes('suivi ttt')) {
+      return suiviTttKeywords.some(keyword => traitement.includes(keyword));
+    } else if (searchTerm.includes('postopt')) {
+      return postOptKeywords.some(keyword => traitement.includes(keyword));
+    } else if (searchTerm.includes('staff')) {
+      return traitement.includes(staffKeyword);
+    }
+
+    return false;
+  }
 
 }

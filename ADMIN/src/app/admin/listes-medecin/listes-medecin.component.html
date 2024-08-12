@@ -12,11 +12,20 @@
     <div class="col-lg-12">
       <div class="card mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h4 class="m-0 font-weight-bold text-primary">
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
-              <button class="btn  my-2 my-sm-0" type="submit" style="background-color: #6777EF;color: white;width: auto;">Chercher</button>
-            </form>
+            <h4 class="m-0 font-weight-bold text-primary">
+              <form class="form-inline my-2 my-lg-0" (ngSubmit)="filterPatients()">
+                <input
+                  class="form-control mr-sm-2"
+                  #searchInput
+                  placeholder="Search..."
+                  aria-label="Search">
+                <button
+                  class="btn  my-2 my-sm-0"
+                  type="submit"
+                  style="background-color: #6777EF;color: white;width: auto;">
+                  Chercher
+                </button>
+              </form>
           </h4>
           <div >
             <button class="btn" style="width: auto" (click)="reload()" ><i class="fas fa-sync-alt"></i>
@@ -36,13 +45,13 @@
               <th >Numéro Telephone</th>
               <th >Date de création</th>
               <th >Statut Actuel </th>
-              <th >Bloquer/Valider/Réactiver</th>
+              <th >Bloquer/Activer/Réactiver</th>
 <!--              <th style="color: #0da8ee">Valider/Réactiver  </th>-->
 
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let med of medecins">
+            <tr *ngFor="let med of filtredMedecins">
               <td>{{med.id}}</td>
               <td>{{med.name}}</td>
               <td>{{med.username}}</td>
@@ -73,7 +82,7 @@
                 </ng-container>
 
                 <ng-container *ngIf="!med.validtologin">
-                  <button style="width:80px;" (click)="activateMedecin(med)" type="button" class="btn btn-info">Valider</button>
+                  <button style="width:80px;" (click)="activateMedecin(med)" type="button" class="btn btn-info">Activer</button>
                 </ng-container>
 <!--                <ng-container *ngIf="med.validtologin&&!med.askForReactivation">-->
 <!--                 <b> <p class="text-success">valide</p></b>-->
